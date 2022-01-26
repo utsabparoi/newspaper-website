@@ -15,7 +15,7 @@ class AdsManagementController extends Controller
     */
     public function index()
     {
-        return view('ad_management.index',[
+        return view('backend.ad_management.index',[
             'all_adds'=> AdsManagement::all(),
         ]);
     }
@@ -31,7 +31,7 @@ class AdsManagementController extends Controller
     */
     public function create()
     {
-        return view('ad_management.create');
+        return view('backend.ad_management.create');
     }
 
 
@@ -78,7 +78,7 @@ class AdsManagementController extends Controller
     */
     public function edit($id)
     {
-        return view('ad_management.edit',[
+        return view('backend.ad_management.edit',[
             'target_ads'=> AdsManagement::find($id),
         ]);
     }
@@ -144,30 +144,6 @@ class AdsManagementController extends Controller
             ]);
         }
     }
-    // ====================================================================
-    // public function changestatus($id)
-    // {
-    //     $var = AdsManagement::find($id);
-
-    //     $var->status == 0 ? $val1 : $val0;
-
-    //     $val1->update(['status'=> 1]);
-    //     $val0->update(['status'=> 0]);
-    // }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | LOAD MAX SERIAL METHOD
-    |--------------------------------------------------------------------------
-    */
-    public function load_max_serial($id)
-    {
-         $max_serial=AdsManagement::where('position_id',$id)->max('serial_num');
-
-         return view('backend.adsmanagement.loadSerialno',compact('max_serial'));
-
-
-
-    }
 }

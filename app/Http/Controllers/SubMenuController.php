@@ -16,7 +16,7 @@ class SubMenuController extends Controller
     */
     public function index()
     {
-        return view('submenu.index',[
+        return view('backend.submenu.index',[
             'all_adds'=> SubMenu::all(),
         ]);
     }
@@ -32,7 +32,7 @@ class SubMenuController extends Controller
     */
     public function create()
     {
-        return view('submenu.create',[
+        return view('backend.submenu.create',[
             'menu_infos' => Menu::where('status',1)->get(),
         ]);
     }
@@ -81,7 +81,7 @@ class SubMenuController extends Controller
     */
     public function edit($id)
     {
-        return view('submenu.edit',[
+        return view('backend.submenu.edit',[
             'target_ads'=> SubMenu::find($id),
             'menu_infos'=> Menu::all(),
         ]);

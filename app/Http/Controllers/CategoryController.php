@@ -15,9 +15,7 @@ class CategoryController extends Controller
     */
     public function index()
     {
-        // return Category::all();
-        // die();
-        return view('category.index',[
+        return view('backend.category.index',[
             'all_adds'=> Category::all(),
         ]);
     }
@@ -33,7 +31,7 @@ class CategoryController extends Controller
     */
     public function create()
     {
-        return view('category.create');
+        return view('backend.category.create');
     }
 
 
@@ -81,7 +79,7 @@ class CategoryController extends Controller
     */
     public function edit($id)
     {
-        return view('category.edit',[
+        return view('backend.category.edit',[
             'target_ads'=> Category::find($id),
         ]);
     }

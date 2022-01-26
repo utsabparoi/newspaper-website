@@ -4,17 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PagePhoto;
 use App\Models\Page;
-use App\Models\Category;
-use App\Models\SubCategory;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 use App\Traits\FileSaver;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
-use Module\Inventory\Exports\CategoryExport;
 
 class PagePhotoController extends Controller
 {
@@ -26,7 +17,7 @@ class PagePhotoController extends Controller
     */
     public function index()
     {
-        return view('page-photo.index',[
+        return view('backend.page-photo.index',[
             'all_adds'=> PagePhoto::all(),
         ]);
     }
@@ -42,7 +33,7 @@ class PagePhotoController extends Controller
     */
     public function create()
     {
-        return view('page-photo.create',[
+        return view('backend.page-photo.create',[
             'all_infos'=> Page::all(),
         ]);
     }
@@ -66,8 +57,9 @@ class PagePhotoController extends Controller
                     'fk_page_id'=> $request->fk_page_id,
                     'photo'=> 'default.jpg',
                 ]);
-                $this->upload_file($request->photo, $page, 'photo', 'images/page-photo');
-                // $this->uploadFileWithResize($request->photo, $page, 'photo', 'admin/img/page-photo', 850, 350);
+
+             $this->upload_file($request->photo, $page, 'photo', 'images/page-photo');
+
            return back()->with('success','Data Added Successfully');
 
         } catch(\Exception $ex) {
@@ -99,7 +91,7 @@ class PagePhotoController extends Controller
     */
     public function edit($id)
     {
-        return view('page-photo.edit',[
+        return view('backend.page-photo.edit',[
             'target_ads'=> PagePhoto::find($id),
             'all_infos'=> Page::all(),
         ]);
@@ -133,7 +125,6 @@ class PagePhotoController extends Controller
                 'photo'=> $page->photo,
             ]);
 
-            // $this->uploadFileWithResize($request->photo, $page, 'photo', 'admin/img/page-photo', 850, 350);
             $this->upload_file($request->photo, $page, 'photo', 'images/page-photo');
 
            return back()->with('success','Data Added Successfully');
@@ -182,15 +173,4 @@ class PagePhotoController extends Controller
         return back()->with('success','Status Changed!');
     }
 
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | CATEGORY EXPORT METHOD
-     |--------------------------------------------------------------------------
-    */
-    // public function categoryExport()
-    // {
-    //     return Excel::download(new CategoryExport, 'category-collection.xlsx');
-    // }
 }

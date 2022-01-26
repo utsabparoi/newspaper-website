@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Events;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -18,7 +17,7 @@ class EventsController extends Controller
     {
         // return Event::all();
         // die();
-        return view('events.index',[
+        return view('backend.events.index',[
             'all_adds'=> Event::all(),
         ]);
     }
@@ -34,7 +33,7 @@ class EventsController extends Controller
     */
     public function create()
     {
-        return view('events.create');
+        return view('backend.events.create');
     }
 
 
@@ -80,7 +79,7 @@ class EventsController extends Controller
     */
     public function edit($id)
     {
-        return view('events.edit',[
+        return view('backend.events.edit',[
             'target_ads'=> Event::find($id),
         ]);
     }

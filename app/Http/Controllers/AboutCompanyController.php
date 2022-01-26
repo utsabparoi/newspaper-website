@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutCompany;
-use App\Models\Company;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 
 class AboutCompanyController extends Controller
 {
@@ -19,11 +15,10 @@ class AboutCompanyController extends Controller
      |--------------------------------------------------------------------------
     */
     function company_index(){
-        return view('company_info.company_info',[
+        return view('backend.company_info.company_info',[
             'allSiteInfo'=> AboutCompany::first(),
         ]);
     }
-
 
 
 
@@ -41,8 +36,7 @@ class AboutCompanyController extends Controller
         ]);
 
         try {
-            $id = 1; // only one data for admin and the id is 1
-            $model = AboutCompany::find($id);
+            $model = AboutCompany::first();;
 
             $model->update([
                 'company_name'=> $request->company_name,
@@ -56,7 +50,6 @@ class AboutCompanyController extends Controller
                 'logo'=> $model->logo,
             ]);
 
-        // $this->uploadFileWithResize($request->logo, $model, 'logo', 'admin/img/logo', 300, 130);
         $this->upload_file($request->logo, $model, 'logo', 'images/logo');
 
         return back()->with('success','Data Updated Successfully');
@@ -66,14 +59,6 @@ class AboutCompanyController extends Controller
             return redirect()->back()->withError($ex->getMessage());
         }
 
-        // if(AboutCompany::where('email',$request->email)->exists()){
-        //     return back()->with('failed','Email Already Exists');
-        // }
-        // else{
-        //     AboutCompany::find($id)->update([
-        //         'email'=> $request->email,
-        //     ]);
-        // }
 
     }
 }

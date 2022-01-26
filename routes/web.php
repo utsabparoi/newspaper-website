@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{DashboardController,ArchiveController,CategoryNewsController,OthersInfoController,ManageNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,FrontendController,AdsManagementController,AboutCompanyController,HomeController};
+use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,FrontendController,AdsManagementController,AboutCompanyController,HomeController};
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
@@ -83,7 +83,6 @@ Route::get('/blog/status/change/{id}', [BlogCategoryController::class, 'change_s
 */
 Route::resource('ads-management', AdsManagementController::class);
 Route::get('/Ads/Management/status/change/{id}', [AdsManagementController::class, 'change_status'])->name('adsManagement_status');
-Route::get('/loadmaxserial/{id}', [AdsManagementController::class, 'load_max_serial']);
 
 /*
 |--------------------------------------------------------------------------
@@ -104,7 +103,7 @@ Route::get('/Ads/Position/status/change/{id}', [AdsPositionController::class, 'c
 */
 Route::resource('menu', MenuController::class);
 Route::get('/menu/status/change/{id}', [MenuController::class, 'change_status'])->name('menu_status');
-Route::get('page-menu', [MenuController::class, 'page']);
+
 
 
 /*
@@ -134,7 +133,7 @@ Route::resource('manage-news', NewsController::class);
 Route::get('/news/status/change/{id}', [NewsController::class, 'change_status'])->name('news_status');
 Route::post('/get/subcat/data', [NewsController::class, 'getsubcat_method'])->name('getsubcat');
 Route::get('article/{id}/{link}', [NewsController::class, 'news_details']);
-// Route::post('/get/subcat/data/edit', [NewsController::class, 'getsubcatedit_method'])->name('getsubcatedit');
+// Route::post('/get/sub/subcat/data/edit', [NewsController::class, 'getsubcatedit_method'])->name('getsubcatedit');
 
 /*
 |--------------------------------------------------------------------------
@@ -218,16 +217,6 @@ Route::get('/subsubmenu/status/change/{id}', [SubSubMenuController::class, 'chan
 
 
 
-/*
-|--------------------------------------------------------------------------
-| ManageNewsController Routes
-|--------------------------------------------------------------------------
-*/
-Route::get('/publish_news/{id}', [ManageNewsController::class, 'publishNews']);
-Route::get('/loadSubcategory/{id}', [ManageNewsController::class, 'loadSubcategory']);
-Route::get('news/search', [ManageNewsController::class, 'search']);
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -237,13 +226,6 @@ Route::get('news/search', [ManageNewsController::class, 'search']);
 Route::get('{link}', [CategoryNewsController::class, 'index']);
 Route::get('/{cat_link}/{sub_link}', [CategoryNewsController::class, 'sub_category_news']);
 Route::get('/search', [CategoryNewsController::class, 'search']);
-
-/*
-|--------------------------------------------------------------------------
-| OthersInfoController Routes
-|--------------------------------------------------------------------------
-*/
-Route::get('other/about', [OthersInfoController::class, 'about']);
 
 
 
@@ -256,9 +238,4 @@ Route::get('archive/{date}', [ArchiveController::class, 'index']);
 
 
 
-/*
-|--------------------------------------------------------------------------
-| DashboardController Routes
-|--------------------------------------------------------------------------
-*/
-Route::get('dashboard', [DashboardController::class, 'index']);
+

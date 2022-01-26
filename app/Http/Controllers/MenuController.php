@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
-use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,7 @@ class MenuController extends Controller
     */
     public function index()
     {
-        return view('menu.index',[
+        return view('backend.menu.index',[
             'all_adds'=> Menu::all(),
         ]);
     }
@@ -32,7 +31,7 @@ class MenuController extends Controller
     */
     public function create()
     {
-        return view('menu.create');
+        return view('backend.menu.create');
     }
 
 
@@ -78,7 +77,7 @@ class MenuController extends Controller
     */
     public function edit($id)
     {
-        return view('menu.edit',[
+        return view('backend.menu.edit',[
             'target_ads'=> Menu::find($id),
         ]);
     }
@@ -145,14 +144,4 @@ class MenuController extends Controller
         return back()->with('success','Menu Status Changed!');
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | PAGE METHOD
-    |--------------------------------------------------------------------------
-    */
-    public function page(){
-        $max_serial=Menu::max('serial_num');
-        $page=Page::where('status',1)->pluck('name','link');
-        return view('backend.menu.pageMenu',compact('max_serial','page'));
-    }
 }

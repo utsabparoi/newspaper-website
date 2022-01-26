@@ -5,16 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\AboutCompany;
 use App\Models\AdsManagement;
 use App\Models\News;
-use App\Models\Blog;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Traits\FileSaver;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
-use Image;
 
 class NewsController extends Controller
 {
@@ -26,8 +21,6 @@ class NewsController extends Controller
     */
     public function index()
     {
-        // return News::all();
-        // die();
         return view('news.index',[
             'all_adds'=> News::all(),
         ]);
@@ -89,7 +82,6 @@ class NewsController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $model, 'photo', 'admin/img/news-photo', 110, 50);
         $this->upload_file($request->photo, $model, 'photo', 'images/news-photo');
 
            return back()->with('success','Data Added Successfully');
@@ -169,8 +161,7 @@ class NewsController extends Controller
                 'photo'=> $model->photo,
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $model, 'photo', 'admin/img/news-photo', 500, 267);
-           $this->upload_file($request->photo, $model, 'photo', 'images/news-photo');
+            $this->upload_file($request->photo, $model, 'photo', 'images/news-photo');
 
            return back()->with('success','Data Edited Successfully');
 
@@ -233,6 +224,15 @@ class NewsController extends Controller
         }
        echo $show_cat;
     }
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SUB SUB Category Method for getting Sub Sub Category info
+    |--------------------------------------------------------------------------
+    */
     // public function getsubcatedit_method(Request $request)
     // {
 

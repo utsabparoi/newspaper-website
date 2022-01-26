@@ -16,7 +16,7 @@ class MediaCategoryController extends Controller
     */
     public function index()
     {
-        return view('media_category.index',[
+        return view('backend.media_category.index',[
             'all_adds'=> MediaCategory::all(),
         ]);
     }
@@ -32,7 +32,7 @@ class MediaCategoryController extends Controller
     */
     public function create()
     {
-        return view('media_category.create',[
+        return view('backend.media_category.create',[
             'category_infos'=> Category::where('status',1)->get(),
         ]);
     }
@@ -80,7 +80,7 @@ class MediaCategoryController extends Controller
     */
     public function edit($id)
     {
-        return view('media_category.edit',[
+        return view('backend.media_category.edit',[
             'target_ads'=> MediaCategory::find($id),
             'category_infos'=> Category::all(),
         ]);

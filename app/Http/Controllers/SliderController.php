@@ -3,15 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slider;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 use App\Traits\FileSaver;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
-use Module\Inventory\Exports\CategoryExport;
 
 class SliderController extends Controller
 {
@@ -23,7 +16,7 @@ class SliderController extends Controller
     */
     public function index()
     {
-        return view('slider.index',[
+        return view('backend.slider.index',[
             'all_adds'=> Slider::all(),
         ]);
     }
@@ -39,7 +32,7 @@ class SliderController extends Controller
     */
     public function create()
     {
-        return view('slider.create');
+        return view('backend.slider.create');
     }
 
 
@@ -73,8 +66,7 @@ class SliderController extends Controller
            return back()->with('success','Data Added Successfully');
 
         } catch(\Exception $ex) {
-            // return redirect()->back()->withError($ex->getMessage());
-            return back()->with('error','Operation Unsuccessful');
+            return redirect()->back()->withError($ex->getMessage());
         }
 
     }
@@ -102,7 +94,7 @@ class SliderController extends Controller
     */
     public function edit($id)
     {
-        return view('slider.edit',[
+        return view('backend.slider.edit',[
             'target_ads'=> Slider::find($id),
         ]);
     }
@@ -144,8 +136,7 @@ class SliderController extends Controller
            return back()->with('success','Data Added Successfully');
 
         } catch(\Exception $ex) {
-            // return redirect()->back()->withError($ex->getMessage());
-            return back()->with('error','Operation Unsuccessful');
+            return redirect()->back()->withError($ex->getMessage());
         }
 
     }
@@ -188,15 +179,4 @@ class SliderController extends Controller
         return back()->with('success','Status Changed!');
     }
 
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | CATEGORY EXPORT METHOD
-     |--------------------------------------------------------------------------
-    */
-    // public function categoryExport()
-    // {
-    //     return Excel::download(new CategoryExport, 'category-collection.xlsx');
-    // }
 }

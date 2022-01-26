@@ -15,7 +15,7 @@ class BlogCategoryController extends Controller
     */
     public function index()
     {
-        return view('blog_category.index',[
+        return view('backend.blog_category.index',[
             'all_adds'=> BlogCategory::all(),
         ]);
     }
@@ -31,7 +31,7 @@ class BlogCategoryController extends Controller
     */
     public function create()
     {
-        return view('blog_category.create');
+        return view('backend.blog_category.create');
     }
 
 
@@ -76,7 +76,7 @@ class BlogCategoryController extends Controller
     */
     public function edit($id)
     {
-        return view('blog_category.edit',[
+        return view('backend.blog_category.edit',[
             'target_ads'=> BlogCategory::find($id),
         ]);
     }

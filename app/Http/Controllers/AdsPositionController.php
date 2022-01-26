@@ -15,7 +15,7 @@ class AdsPositionController extends Controller
     */
     public function index()
     {
-        return view('ad_position.index',[
+        return view('backend.ad_position.index',[
             'all_adds'=> AdsPosition::all(),
         ]);
     }
@@ -31,7 +31,7 @@ class AdsPositionController extends Controller
     */
     public function create()
     {
-        return view('ad_position.create');
+        return view('backend.ad_position.create');
     }
 
 
@@ -74,7 +74,7 @@ class AdsPositionController extends Controller
     */
     public function edit($id)
     {
-        return view('ad_position.edit',[
+        return view('backend.ad_position.edit',[
             'target_ads'=> AdsPosition::find($id),
         ]);
     }

@@ -4,15 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\SubMenu;
 use App\Models\SubSubMenu;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 use App\Traits\FileSaver;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
-use Module\Inventory\Exports\CategoryExport;
 
 class SubSubMenuController extends Controller
 {
@@ -24,7 +17,7 @@ class SubSubMenuController extends Controller
     */
     public function index()
     {
-        return view('sub-sub-menu.index',[
+        return view('backend.sub-sub-menu.index',[
             'all_adds'=> SubSubMenu::all(),
         ]);
     }
@@ -40,7 +33,7 @@ class SubSubMenuController extends Controller
     */
     public function create()
     {
-        return view('sub-sub-menu.create',[
+        return view('backend.sub-sub-menu.create',[
             'infos'=> SubMenu::all(),
         ]);
     }
@@ -94,7 +87,7 @@ class SubSubMenuController extends Controller
     */
     public function edit($id)
     {
-        return view('sub-sub-menu.edit',[
+        return view('backend.sub-sub-menu.edit',[
             'target_ads'=> SubSubMenu::find($id),
             'infos'=> SubMenu::all(),
         ]);
@@ -172,15 +165,4 @@ class SubSubMenuController extends Controller
         return back()->with('success','Status Changed!');
     }
 
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | CATEGORY EXPORT METHOD
-     |--------------------------------------------------------------------------
-    */
-    // public function categoryExport()
-    // {
-    //     return Excel::download(new CategoryExport, 'category-collection.xlsx');
-    // }
 }

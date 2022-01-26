@@ -1,22 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-// dompdf
-// require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Models\Page;
-use App\Models\Category;
 use App\Models\PagePhoto;
-use App\Models\SubCategory;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 use App\Traits\FileSaver;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
-use Module\Inventory\Exports\CategoryExport;
 
 class PageController extends Controller
 {
@@ -28,7 +17,7 @@ class PageController extends Controller
     */
     public function index()
     {
-        return view('page.index',[
+        return view('backend.page.index',[
             'all_adds'=> Page::all(),
         ]);
     }
@@ -44,7 +33,7 @@ class PageController extends Controller
     */
     public function create()
     {
-        return view('page.create');
+        return view('backend.page.create');
     }
 
 
@@ -107,7 +96,7 @@ class PageController extends Controller
     */
     public function edit($id)
     {
-        return view('page.edit',[
+        return view('backend.page.edit',[
             'target_ads'=> Page::find($id),
         ]);
     }
@@ -148,8 +137,7 @@ class PageController extends Controller
             return back()->with('success','Data Updated Successfully');
 
         } catch(\Exception $ex) {
-            // return redirect()->back()->withError($ex->getMessage());
-            return back()->with('error','Operation Unsuccessful');
+            return redirect()->back()->withError($ex->getMessage());
         }
 
     }
@@ -193,16 +181,6 @@ class PageController extends Controller
     }
 
 
-
-    /*
-     |--------------------------------------------------------------------------
-     | CATEGORY EXPORT METHOD
-     |--------------------------------------------------------------------------
-    */
-    // public function categoryExport()
-    // {
-    //     return Excel::download(new CategoryExport, 'category-collection.xlsx');
-    // }
 
     /*
      |--------------------------------------------------------------------------

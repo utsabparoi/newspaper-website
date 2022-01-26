@@ -16,7 +16,7 @@ class SubCategoryController extends Controller
     */
     public function index()
     {
-        return view('subcategory.index',[
+        return view('backend.subcategory.index',[
             'all_adds'=> SubCategory::all(),
         ]);
     }
@@ -32,7 +32,7 @@ class SubCategoryController extends Controller
     */
     public function create()
     {
-        return view('subcategory.create',[
+        return view('backend.subcategory.create',[
             'category_infos'=> Category::where('status',1)->get(),
         ]);
     }
@@ -81,7 +81,7 @@ class SubCategoryController extends Controller
     */
     public function edit($id)
     {
-        return view('subcategory.edit',[
+        return view('backend.subcategory.edit',[
             'target_ads'=> SubCategory::find($id),
             'category_infos'=> Category::all(),
         ]);

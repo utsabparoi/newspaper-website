@@ -6,8 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-use Image;
 
 class HomeController extends Controller
 {
@@ -36,7 +34,7 @@ class HomeController extends Controller
     */
     public function user_index()
     {
-        return view('user_info.user_info',[
+        return view('backend.user_info.user_info',[
             'allUserInfo'=> User::find(auth()->id()),
         ]);
     }
@@ -75,7 +73,6 @@ class HomeController extends Controller
         }
         User::find($id)->update([
             'name'=> $request->name,
-            // 'email'=> $request->email,
         ]);
         return back();
     }

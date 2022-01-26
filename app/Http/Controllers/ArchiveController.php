@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\AdsManagement;
 use App\Models\News;
-use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
 {

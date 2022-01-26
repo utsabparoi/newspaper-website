@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Traits\FileSaver;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 
 class BlogController extends Controller
 {
@@ -21,9 +17,7 @@ class BlogController extends Controller
     */
     public function index()
     {
-        // return Blog::all();
-        // die();
-        return view('blog.index',[
+        return view('backend.blog.index',[
             'all_adds'=> Blog::all(),
         ]);
     }
@@ -39,7 +33,7 @@ class BlogController extends Controller
     */
     public function create()
     {
-        return view('blog.create',[
+        return view('backend.blog.create',[
             'category_infos'=> Category::all(),
         ]);
     }
@@ -78,7 +72,6 @@ class BlogController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $model, 'photo', 'admin/img/blog-photo', 110, 50);
             $this->upload_file($request->photo, $model, 'photo', 'images/blog-photo');
            return back()->with('success','Data Added Successfully');
 
@@ -106,7 +99,7 @@ class BlogController extends Controller
     */
     public function edit($id)
     {
-        return view('blog.edit',[
+        return view('backend.blog.edit',[
             'target_ads'=> Blog::find($id),
             'category_infos'=> Category::all(),
         ]);
@@ -151,8 +144,7 @@ class BlogController extends Controller
                 'photo'=> $model->photo,
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $model, 'photo', 'admin/img/blog-photo', 110, 50);
-           $this->upload_file($request->photo, $model, 'photo', 'images/blog-photo');
+            $this->upload_file($request->photo, $model, 'photo', 'images/blog-photo');
 
            return back()->with('success','Data Edited Successfully');
 

@@ -4,13 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AllMedia;
 use App\Models\Category;
-use App\Models\SubCategory;
 use App\Traits\FileSaver;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 
 class AllMediaController extends Controller
 {
@@ -22,9 +17,8 @@ class AllMediaController extends Controller
     */
     public function index()
     {
-        // return AllMedia::all();
-        // die();
-        return view('all-media.index',[
+
+        return view('backend.all-media.index',[
             'all_adds'=> AllMedia::all(),
         ]);
     }
@@ -40,7 +34,7 @@ class AllMediaController extends Controller
     */
     public function create()
     {
-        return view('all-media.create',[
+        return view('backend.all-media.create',[
             'category_infos'=> Category::all(),
         ]);
     }
@@ -74,7 +68,6 @@ class AllMediaController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'admin/img/all-media-pic', 110, 50);
            $this->upload_file($request->photo, $all_media, 'photo', 'images/all-media-pic');
 
            return back()->with('success','Data Added Successfully');
@@ -103,7 +96,7 @@ class AllMediaController extends Controller
     */
     public function edit($id)
     {
-        return view('all-media.edit',[
+        return view('backend.all-media.edit',[
             'target_ads'=> AllMedia::find($id),
             'category_infos'=> Category::all(),
         ]);
@@ -146,7 +139,6 @@ class AllMediaController extends Controller
                     'photo'=> $all_media->photo,
                 ]);
 
-            // $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'admin/img/all-media-pic', 110, 50);
             $this->upload_file($request->photo, $all_media, 'photo', 'images/all-media-pic');
 
             return back()->with('success','Data Added Successfully');
@@ -194,23 +186,6 @@ class AllMediaController extends Controller
         }
         return back()->with('success','Ads Status Changed!');
     }
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Get Sub Category Method for getting sub Category info
-    |--------------------------------------------------------------------------
-    */
-    // public function getsubcat_method(Request $request)
-    // {
-    //     $show_cat = "<option value=''>-Select a Sub Category-</option>";
-    //     foreach (SubCategory::where('fk_category_id',$request->catx_id)->get(['id','name']) as $subcat_data) {
-    //         $show_cat .= "<option value='$subcat_data->id'>$subcat_data->name</option>";
-    //     }
-    //    echo $show_cat;
-    // }
-
 
 
 }

@@ -6,10 +6,6 @@ use App\Models\Event;
 use App\Models\PerformerSchedule;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Image;
 
 class PerformerScheduleController extends Controller
 {
@@ -21,9 +17,7 @@ class PerformerScheduleController extends Controller
     */
     public function index()
     {
-        // return PerformerSchedule::all();
-        // die();
-        return view('performer-schedule.index',[
+        return view('backend.performer-schedule.index',[
             'all_adds'=> PerformerSchedule::all(),
         ]);
     }
@@ -39,7 +33,7 @@ class PerformerScheduleController extends Controller
     */
     public function create()
     {
-        return view('performer-schedule.create',[
+        return view('backend.performer-schedule.create',[
             'events_infos'=> Event::all(),
         ]);
     }
@@ -74,7 +68,6 @@ class PerformerScheduleController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $model, 'photo', 'admin/img/schedule-photo', 110, 50);
         $this->upload_file($request->photo, $model, 'photo', 'images/schedule-photo');
 
            return back()->with('success','Data Added Successfully');
@@ -103,7 +96,7 @@ class PerformerScheduleController extends Controller
     */
     public function edit($id)
     {
-        return view('performer-schedule.edit',[
+        return view('backend.performer-schedule.edit',[
             'target_ads'=> PerformerSchedule::find($id),
             'event_infos'=> Event::all(),
         ]);
@@ -144,8 +137,7 @@ class PerformerScheduleController extends Controller
                 'photo'=> $model->photo,
             ]);
 
-        //    $this->uploadFileWithResize($request->photo, $model, 'photo', 'admin/img/schedule-photo', 500, 267);
-           $this->upload_file($request->photo, $model, 'photo', 'images/schedule-photo');
+          $this->upload_file($request->photo, $model, 'photo', 'images/schedule-photo');
 
            return back()->with('success','Data Edited Successfully');
 
@@ -194,18 +186,4 @@ class PerformerScheduleController extends Controller
     }
 
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Get Sub Category Method for getting sub Category info
-    |--------------------------------------------------------------------------
-    */
-    // public function getsubcat_method(Request $request)
-    // {
-    //     $show_cat = "<option value=''>-Select a Sub Category-</option>";
-    //     foreach (SubCategory::where('fk_category_id',$request->catx_id)->get(['id','name']) as $subcat_data) {
-    //         $show_cat .= "<option value='$subcat_data->id'>$subcat_data->name</option>";
-    //     }
-    //    echo $show_cat;
-    // }
 }

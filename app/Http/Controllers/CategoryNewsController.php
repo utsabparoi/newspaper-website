@@ -89,16 +89,16 @@ class CategoryNewsController extends Controller
 
     public function search(Request $request)
     {
-         $result=$request->search;
+        $result=$request->search;
         $allData=News::where('status','1')
                 ->where('title','like',"%$result%")
                 ->orwhere('short_description','like',"%$result%")
                 ->orderBy('id','DESC')
 
                 ->paginate(10);
-         $popular_news=News::where('status',1)->orderBy('hit_counter','DESC')->paginate(5);
-         $ads1=AdsManagement::where('status',1)->where('position_id',6)->where('serial_num',1)->first();
-          $ads2=AdsManagement::where('status',1)->where('position_id',6)->where('serial_num',2)->first();
-                return view('frontend.search',compact('allData','popular_news','ads1','ads2'));
+        $popular_news=News::where('status',1)->orderBy('hit_counter','DESC')->paginate(5);
+        $ads1=AdsManagement::where('status',1)->where('position_id',6)->where('serial_num',1)->first();
+        $ads2=AdsManagement::where('status',1)->where('position_id',6)->where('serial_num',2)->first();
+        return view('frontend.search',compact('allData','popular_news','ads1','ads2'));
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\SocialLink;
-use App\Models\SocialLinks;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -16,9 +15,7 @@ class SocialLinksController extends Controller
     */
     public function index()
     {
-        // return SocialLink::all();
-        // die();
-        return view('social-links.index',[
+        return view('backend.social-links.index',[
             'all_adds'=> SocialLink::all(),
         ]);
     }
@@ -34,7 +31,7 @@ class SocialLinksController extends Controller
     */
     public function create()
     {
-        return view('social-links.create');
+        return view('backend.social-links.create');
     }
 
 
@@ -47,7 +44,7 @@ class SocialLinksController extends Controller
     */
     public function store(Request $request)
     {
-       
+
         $request->validate([
             'name' => 'required',
             'link' => 'required|url',
@@ -83,7 +80,7 @@ class SocialLinksController extends Controller
     */
     public function edit($id)
     {
-        return view('social-links.edit',[
+        return view('backend.social-links.edit',[
             'target_ads'=> SocialLink::find($id),
         ]);
     }
