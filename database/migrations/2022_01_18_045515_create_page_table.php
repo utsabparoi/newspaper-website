@@ -16,11 +16,11 @@ class CreatePageTable extends Migration
         Schema::create('page', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('title');
-            $table->longText('description');
-            $table->integer('status');
             $table->string('link');
+            $table->string('title');
             $table->string('file');
+            $table->text('description');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

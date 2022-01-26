@@ -18,7 +18,7 @@ class CreateSocialLinksTable extends Migration
             $table->string('name');
             $table->tinyText('link');
             $table->string('icon_class');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->integer('serial_num');
             $table->timestamps();
         });

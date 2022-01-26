@@ -23,9 +23,9 @@ class CreateNewsTable extends Migration
             $table->text('short_description');
             $table->longText('description');
             $table->integer('hit_counter')->default(0);
-            $table->integer('is_featured')->default(0);
-            $table->integer('is_not_home')->default(1);
-            $table->integer('is_slider')->default(0);
+            $table->integer('is_featured')->default(0)->comment('1=Featured,0=not Featured');
+            $table->integer('is_not_home')->default(1)->comment('1=home,0=not home');
+            $table->integer('is_slider')->default(0)->comment('1=slider,0=not slider');
             $table->string('tags')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('publish_status');

@@ -19,7 +19,7 @@ class CreateBlogTable extends Migration
             $table->string('short_description');
             $table->string('link')->nullable();
             $table->integer('category');
-            $table->longText('description');
+            $table->text('description');
             $table->string('photo');
             $table->tinyInteger('status')->default(1);
             $table->integer('hit_count')->nullable();

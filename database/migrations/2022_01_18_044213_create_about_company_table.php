@@ -16,7 +16,7 @@ class CreateAboutCompanyTable extends Migration
         Schema::create('about_company', function (Blueprint $table) {
             $table->id();
             $table->string('company_name');
-            $table->string('logo')->default('default.png');
+            $table->string('logo');
             $table->text('address');
             $table->string('mobile_no');
             $table->string('fb_link');

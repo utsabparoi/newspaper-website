@@ -15,7 +15,7 @@ class CreatePagePhotoTable extends Migration
     {
         Schema::create('page_photo', function (Blueprint $table) {
             $table->id();
-            $table->string('photo');
+            $table->longText('photo');
             $table->integer('fk_page_id');
             $table->timestamps();
         });

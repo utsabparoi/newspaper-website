@@ -17,9 +17,9 @@ class CreateSubSubMenuTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->integer('status');
-            $table->integer('serial_num');
+            $table->string('serial_num');
             $table->integer('fk_sub_menu_id');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

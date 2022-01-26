@@ -17,8 +17,8 @@ class CreateSliderTable extends Migration
             $table->id();
             $table->string('caption1');
             $table->string('caption2');
-            $table->integer('serialno');
-            $table->string('photo');
+            $table->integer('serialno')->nullable();
+            $table->text('photo');
             $table->integer('status');
             $table->timestamps();
         });

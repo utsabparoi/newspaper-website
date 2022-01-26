@@ -16,7 +16,7 @@ class CreateSubCategoryTable extends Migration
         Schema::create('sub_category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->integer('fk_category_id');
             $table->integer('serial_num')->nullable();
             $table->integer('status');
