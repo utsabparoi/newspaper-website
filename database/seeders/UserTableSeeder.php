@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
         DB::table('users')->insert([
@@ -23,4 +19,5 @@ class UserTableSeeder extends Seeder
     		'password'	=>Hash::make(12345678),
         ]);
     }
+    
 }

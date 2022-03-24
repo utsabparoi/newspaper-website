@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class AllMedia extends Model
 {
     use HasFactory;
-    protected $table = 'all_media';
 
+    protected $table = 'all_media';
     protected $guarded = [];
+
+
 
     function relationtocategory(){
         return $this->hasOne(Category::class,'id','fk_category_id');

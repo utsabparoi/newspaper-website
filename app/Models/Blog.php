@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    protected $table = 'blog';
 
+    protected $table = 'blog';
+    protected $guarded = [];
+
+
+    
     function relationtocategory(){
         return $this->hasOne(Category::class,'id','category');
     }
 
-    protected $guarded = [];
+
 }

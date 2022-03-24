@@ -68,7 +68,7 @@ class AllMediaController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-           $this->upload_file($request->photo, $all_media, 'photo', 'images/all-media-pic');
+           $this->upload_file($request->photo, $all_media, 'photo', 'uploads/all-media');
 
            return back()->with('success','Data Added Successfully');
 
@@ -139,7 +139,7 @@ class AllMediaController extends Controller
                     'photo'=> $all_media->photo,
                 ]);
 
-            $this->upload_file($request->photo, $all_media, 'photo', 'images/all-media-pic');
+            $this->upload_file($request->photo, $all_media, 'photo', 'uploads/all-media');
 
             return back()->with('success','Data Added Successfully');
 

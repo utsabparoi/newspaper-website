@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PagePhoto extends Model
 {
     use HasFactory;
+
     protected $table = 'page_photo';
-
-
     protected $guarded = [];
 
 

@@ -9,30 +9,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace.min.css" />
         {{-- custom css --}}
-        <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/custom.css" />
+        <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/custom.css" />
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-part2.min.css" />
+			<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-part2.min.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-rtl.min.css" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-ie.min.css" />
 		<![endif]-->
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="{{ asset('dashboard') }}/assets/js/html5shiv.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/respond.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/html5shiv.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
 
@@ -45,7 +45,7 @@
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Ace</span>
+									<span class="red"><a href="{{ route('frontend') }}" style="text-decoration: none; text-style:none">Ace</a></span>
 									<span class="white" id="id-text2">Application</span>
 								</h1>
 								{{-- <h4 class="blue" id="id-company-text">&copy; Company Name</h4> --}}
@@ -82,12 +82,12 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="{{ asset('dashboard') }}/assets/js/jquery-2.1.4.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery-2.1.4.min.js"></script>
 
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-<script src="{{ asset('dashboard') }}/assets/js/jquery-1.11.3.min.js"></script>
+<script src="{{ asset('assets/dashboard') }}/assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='{{ asset("dashboard") }}/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");

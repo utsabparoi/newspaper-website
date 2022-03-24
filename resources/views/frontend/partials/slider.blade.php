@@ -47,10 +47,9 @@
 						<div class="col-md-12 no-padding" style="height: 70px">
 							<div class="col-md-4 no-padding">
 								<?php if($featurd->photo){ ?>
-								<img class="img-responsive" src="{{ asset($featurd->photo)}}" alt="{{$featurd->title}}" style="height: 67px"/>
-
+								    <img class="img-responsive" src="{{ asset($featurd->photo)}}" alt="{{$featurd->title}}" style="height: 67px"/>
 								<?php }else{ ?>
-								<img style="" class="img-responsive" src="{{ asset('img/news/images.png')}}" alt="image">
+								    <img style="" class="img-responsive" src="{{ asset('assets/frontend/images/news/images.png')}}" alt="image">
 								<?php } ?>
 							</div>
 							<div class="col-md-8 no-padding-right">

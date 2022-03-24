@@ -21,7 +21,7 @@ class NewsController extends Controller
     */
     public function index()
     {
-        return view('news.index',[
+        return view('backend.news.index',[
             'all_adds'=> News::all(),
         ]);
     }
@@ -37,7 +37,7 @@ class NewsController extends Controller
     */
     public function create()
     {
-        return view('news.create',[
+        return view('backend.news.create',[
             'category_infos'=> Category::all(),
         ]);
     }
@@ -82,7 +82,7 @@ class NewsController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-        $this->upload_file($request->photo, $model, 'photo', 'images/news-photo');
+        $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
 
            return back()->with('success','Data Added Successfully');
 
@@ -110,7 +110,7 @@ class NewsController extends Controller
     */
     public function edit($id)
     {
-        return view('news.edit',[
+        return view('backend.news.edit',[
             'target_ads'=> News::find($id),
             'category_infos'=> Category::all(),
             'subcategory_infos'=> SubCategory::all(),
@@ -161,7 +161,7 @@ class NewsController extends Controller
                 'photo'=> $model->photo,
             ]);
 
-            $this->upload_file($request->photo, $model, 'photo', 'images/news-photo');
+            $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
 
            return back()->with('success','Data Edited Successfully');
 

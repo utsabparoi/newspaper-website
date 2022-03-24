@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 class AboutCompanyController extends Controller
 {
     use FileSaver;
+
     /*
-     |--------------------------------------------------------------------------
-     | Index METHOD for company information edit & view
-     |--------------------------------------------------------------------------
+     |--------------------------------------
+     |          Index METHOD
+     |--------------------------------------
     */
-    function company_index(){
+    function index(){
         return view('backend.company_info.company_info',[
             'allSiteInfo'=> AboutCompany::first(),
         ]);
@@ -24,19 +25,19 @@ class AboutCompanyController extends Controller
 
 
     /*
-     |--------------------------------------------------------------------------
-     | Update METHOD for user information update
-     |--------------------------------------------------------------------------
+     |--------------------------------------
+     |          Update METHOD
+     |--------------------------------------
     */
-    function company_update(Request $request){
+    function update(Request $request){
 
-        $request->validate([
-            '*'=> 'required',
-            'logo'=> 'nullable',
-        ]);
+        // $request->validate([
+        //     '*'=> 'required',
+        //     'logo'=> 'nullable',
+        // ]);
 
         try {
-            $model = AboutCompany::first();;
+            $model = AboutCompany::first();
 
             $model->update([
                 'company_name'=> $request->company_name,
@@ -50,7 +51,7 @@ class AboutCompanyController extends Controller
                 'logo'=> $model->logo,
             ]);
 
-        $this->upload_file($request->logo, $model, 'logo', 'images/logo');
+        $this->upload_file($request->logo, $model, 'logo', 'uploads/logo');
 
         return back()->with('success','Data Updated Successfully');
 

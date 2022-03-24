@@ -72,7 +72,7 @@ class BlogController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-            $this->upload_file($request->photo, $model, 'photo', 'images/blog-photo');
+            $this->upload_file($request->photo, $model, 'photo', 'uploads/blog');
            return back()->with('success','Data Added Successfully');
 
         } catch(\Exception $ex) {
@@ -144,7 +144,7 @@ class BlogController extends Controller
                 'photo'=> $model->photo,
             ]);
 
-            $this->upload_file($request->photo, $model, 'photo', 'images/blog-photo');
+            $this->upload_file($request->photo, $model, 'photo', 'uploads/blog');
 
            return back()->with('success','Data Edited Successfully');
 

@@ -60,10 +60,10 @@
 							</div>
 							<div class="col-md-4 col-xs-12" id="middle_part2">
 								<div class="footer_apple">
-									<a href="#"><img class="img-responsive" src="{{asset('frontend/images/download.png')}}" alt="" /></a>
+									<a href="#"><img class="img-responsive" src="{{asset('assets/frontend/images/download.png')}}" alt="" /></a>
 								</div>
 								<div  class="footer_playstore">
-									<a href=""><img class="img-responsive" src="{{asset('frontend/images/en_badge_web_generic.png')}}" alt="" /></a>
+									<a href=""><img class="img-responsive" src="{{asset('assets/frontend/images/en_badge_web_generic.png')}}" alt="" /></a>
 								</div>
 							</div>
 							<div class="col-md-4 col-xs-12">
@@ -149,24 +149,24 @@
 	================================================== -->
 
 	<!-- initialize jQuery Library -->
-	<script type="text/javascript" src="{{asset('frontend/js/jquery.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/jquery.js')}}"></script>
 	<!-- Bootstrap jQuery -->
-	<script type="text/javascript" src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/bootstrap.min.js')}}"></script>
 	<!-- Owl Carousel -->
-	<script type="text/javascript" src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/owl.carousel.min.js')}}"></script>
 	<!-- Counter -->
-	<script type="text/javascript" src="{{asset('frontend/js/jquery.counterup.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/jquery.counterup.min.js')}}"></script>
 	<!-- Waypoints -->
-	<script type="text/javascript" src="{{asset('frontend/js/waypoints.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/waypoints.min.js')}}"></script>
 	<!-- Color box -->
-	<script type="text/javascript" src="{{asset('frontend/js/jquery.colorbox.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/jquery.colorbox.js')}}"></script>
 	<!-- Smoothscroll -->
-	<script type="text/javascript" src="{{asset('frontend/js/smoothscroll.js')}}"></script>
-	<script type="text/javascript" src="{{asset('frontend/js/jquery.minical.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/smoothscroll.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/jquery.minical.js')}}"></script>
 
-	<script src="{{ asset('frontend/jssocials/jssocials.min.js') }}"></script>
+	<script src="{{ asset('assets/frontend/jssocials/jssocials.min.js') }}"></script>
 	<!-- Template custom -->
-	<script type="text/javascript" src="{{asset('frontend/js/custom.js')}}"></script>
+	<script type="text/javascript" src="{{asset('assets/frontend/js/custom.js')}}"></script>
 	<script type="text/javascript">
 
 

@@ -61,7 +61,7 @@ class SliderController extends Controller
                 'status'=> $request->status,
             ]);
 
-           $this->upload_file($request->photo, $page, 'photo', 'images/slider-photo');
+           $this->upload_file($request->photo, $page, 'photo', 'uploads/slider');
 
            return back()->with('success','Data Added Successfully');
 
@@ -131,7 +131,7 @@ class SliderController extends Controller
                 'photo'=> $page->photo,
             ]);
 
-            $this->upload_file($request->photo, $page, 'photo', 'images/slider-photo');
+            $this->upload_file($request->photo, $page, 'photo', 'uploads/slider');
 
            return back()->with('success','Data Added Successfully');
 

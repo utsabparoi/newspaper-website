@@ -58,7 +58,7 @@ class PagePhotoController extends Controller
                     'photo'=> 'default.jpg',
                 ]);
 
-             $this->upload_file($request->photo, $page, 'photo', 'images/page-photo');
+             $this->upload_file($request->photo, $page, 'photo', 'uploads/page-photo');
 
            return back()->with('success','Data Added Successfully');
 
@@ -125,7 +125,7 @@ class PagePhotoController extends Controller
                 'photo'=> $page->photo,
             ]);
 
-            $this->upload_file($request->photo, $page, 'photo', 'images/page-photo');
+            $this->upload_file($request->photo, $page, 'photo', 'uploads/page-photo');
 
            return back()->with('success','Data Added Successfully');
 

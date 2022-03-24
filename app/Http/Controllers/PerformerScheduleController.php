@@ -68,7 +68,7 @@ class PerformerScheduleController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-        $this->upload_file($request->photo, $model, 'photo', 'images/schedule-photo');
+        $this->upload_file($request->photo, $model, 'photo', 'uploads/schedule');
 
            return back()->with('success','Data Added Successfully');
 
@@ -137,7 +137,7 @@ class PerformerScheduleController extends Controller
                 'photo'=> $model->photo,
             ]);
 
-          $this->upload_file($request->photo, $model, 'photo', 'images/schedule-photo');
+          $this->upload_file($request->photo, $model, 'photo', 'uploads/schedule');
 
            return back()->with('success','Data Edited Successfully');
 

@@ -55,15 +55,15 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    {{-- <label class=" control-label no-padding-right" for="form-field-1"> time_schedule </label>
-                                    <div class="input-group bootstrap-timepicker">
+                                     <label class=" control-label no-padding-right" for="form-field-1"> Time Schedule </label>
+                                    {{--<div class="input-group bootstrap-timepicker">
                                         <input id="timepicker1" type="text" class="form-control" name="time_schedule">
                                         <span class="input-group-addon">
                                             <i class="fa fa-clock-o bigger-110"></i>
                                         </span>
                                     </div> --}}
                                     <div class="input-group bootstrap-timepicker">
-                                        <input id="timepicker1" type="text" class="form-control" name="time_schedule">
+                                        <input id="timepicker1" type="text" class="form-control" name="time_schedule" placeholder="Ex: 10:00 - 12:00">
                                         <span class="input-group-addon">
                                             <i class="fa fa-clock-o bigger-110"></i>
                                         </span>

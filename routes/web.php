@@ -33,8 +33,8 @@ Route::get('/home/admin/info', [HomeController::class, 'user_index'])->name('use
  | AboutCompanyController Routes
  |--------------------------------------------------------------------------
 */
-Route::get('/company/info/index', [AboutCompanyController::class, 'company_index'])->name('company_index');
-Route::post('/company/info/update', [AboutCompanyController::class, 'company_update'])->name('company_update');
+Route::get('/company/info/index', [AboutCompanyController::class, 'index'])->name('company_index');
+Route::post('/company/info/update', [AboutCompanyController::class, 'update'])->name('company_update');
 
 
 /*

@@ -17,10 +17,7 @@ class FrontendController extends Controller
      | Index METHOD for Frontend page view
      |--------------------------------------------------------------------------
     */
-
-    public function index()
-    {
-
+    public function index(){
 
         $info=AboutCompany::first();
         Session::put('title_msg',$info->comapny_name);
@@ -31,10 +28,10 @@ class FrontendController extends Controller
         $popular_news   = News::where('status',1)->where('publish_status',1)->latest()->paginate(8);
         $latest_news    = News::where('status',1)->where('publish_status',1)->latest()->paginate(8);
 
-
+        // return $featurd_news;
+        // die();
 
         // category-1 news
-
 
         $category_1=Category::where('status',1)->where('serial_num',1)->first();
         $cat1_sub_cat=SubCategory::where('status',1)->where('fk_category_id',$category_1->id)->simplePaginate(7);
@@ -58,7 +55,6 @@ class FrontendController extends Controller
 
         // category 2 news
 
-
         $category_2=Category::where('status',1)->where('serial_num',2)->first();
 
         $cat2_sub_cat=SubCategory::where('status',1)->where('fk_category_id',$category_2->id)->simplePaginate(7);
@@ -74,6 +70,7 @@ class FrontendController extends Controller
         else{
             $cat2_news=News::where('status',1)->where('publish_status',1)->where('fk_category_id',$category_2->id)->latest()->simplePaginate(5);
         }
+
 
 
         // category-5 news
@@ -165,30 +162,5 @@ class FrontendController extends Controller
         // );
     }
 
-    
 
-    public function create()
-    {
-        //
-    }
-    public function store(Request $request)
-    {
-        //
-    }
-    public function show($id)
-    {
-        //
-    }
-    public function edit($id)
-    {
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    public function destroy($id)
-    {
-        //
-    }
 }

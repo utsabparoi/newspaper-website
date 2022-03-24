@@ -15,11 +15,11 @@
 								<div class="post-block-style clearfix">
 									<div class="post-thumb">
 										<a href='{{URL::to("article/$featured->id/$featured->link")}}'>
-										<?php if($featured->photo){ ?>
-										<img style="max-height: 180px;min-height: 180px" class="img-responsive" src="{{asset($featured->photo)}}" alt="{{$featured->title}}" />
-										<?php }else{ ?>
-										<img style="max-height: 180px;min-height: 180px" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
-										<?php } ?>
+                                            @if ($featured->photo)
+                                                <img style="max-height: 180px;min-height: 180px" class="img-responsive" src="{{asset($featured->photo)}}" alt="{{$featured->title}}" />
+                                            @else
+                                                <img style="max-height: 180px;min-height: 180px" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
+                                            @endif
 										</a>
 									</div>
 
@@ -1037,7 +1037,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<a href="http://www.smartsoftware.com.bd/" target="_blank"><img class="img-responsive" src="{{asset('/adManager/banner1.jpg')}}" alt="" /> </a>
+					<a href="http://www.smartsoftware.com.bd/" target="_blank"><img class="img-responsive" src="{{asset('assets/frontend/images/adManager/banner1.jpg')}}" alt="" /> </a>
 				</div>
 			</div>
 		</div>

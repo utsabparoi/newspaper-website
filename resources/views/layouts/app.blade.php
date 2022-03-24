@@ -3,44 +3,44 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard</title>
+		<title>Admin Panel</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- page specific plugin styles -->
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-skins.min.css" />
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-rtl.min.css" />
-		<link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/custom.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/custom.css" />
         {{-- <link rel="stylesheet" href="sweetalert2.min.css"> --}}
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="{{ asset('dashboard') }}/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-ie.min.css" />
 		<![endif]-->
 
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		<script src="{{ asset('dashboard') }}/assets/js/ace-extra.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/ace-extra.min.js"></script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="{{ asset('dashboard') }}/assets/js/html5shiv.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/respond.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/html5shiv.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
 
@@ -924,13 +924,13 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-        {{-- <script src="{{ asset('dashboard') }}/assets/js/jquery-1.11.3.min.js"></script> --}}
-	    {{-- <script src="{{ asset('dashboard') }}/assets/js/jquery-1.12.4.min.js"></script> --}}
-		{{-- <script src="{{ asset('dashboard') }}/assets/js/jquery-3.6.0.min.js"></script> --}}
-		<script src="{{ asset('dashboard') }}/assets/js/jquery-2.1.4.min.js"></script>
-		{{-- <script src="{{ asset('dashboard') }}/assets/js/jquery.min.js"></script> --}}
-        <script src="{{ asset('dashboard') }}/assets/js/bootstrap.min.js"></script>
-		{{-- <script src="{{ asset('dashboard') }}/assets/js/popper.min.js"></script> --}}
+        {{-- <script src="{{ asset('assets/dashboard') }}/assets/js/jquery-1.11.3.min.js"></script> --}}
+	    {{-- <script src="{{ asset('assets/dashboard') }}/assets/js/jquery-1.12.4.min.js"></script> --}}
+		{{-- <script src="{{ asset('assets/dashboard') }}/assets/js/jquery-3.6.0.min.js"></script> --}}
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery-2.1.4.min.js"></script>
+		{{-- <script src="{{ asset('assets/dashboard') }}/assets/js/jquery.min.js"></script> --}}
+        <script src="{{ asset('assets/dashboard') }}/assets/js/bootstrap.min.js"></script>
+		{{-- <script src="{{ asset('assets/dashboard') }}/assets/js/popper.min.js"></script> --}}
 		<!-- <![endif]-->
 
 
@@ -946,25 +946,25 @@
 
 
 		<!--[if lte IE 8]>
-		  <script src="{{ asset('dashboard') }}/assets/js/excanvas.min.js"></script>
+		  <script src="{{ asset('assets/dashboard') }}/assets/js/excanvas.min.js"></script>
 		<![endif]-->
 
 
 		<!-- jQuery Scripts file -->
-		<script src="{{ asset('dashboard') }}/assets/js/jquery-ui.custom.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.ui.touch-punch.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.easypiechart.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.sparkline.index.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.flot.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.flot.pie.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.flot.resize.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/jquery.flot.min.js"></script>
-        <script src="{{ asset('dashboard') }}/assets/js/sweetalert2@11.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery-ui.custom.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.easypiechart.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.sparkline.index.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.flot.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.flot.pie.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.flot.resize.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery.flot.min.js"></script>
+        <script src="{{ asset('assets/dashboard') }}/assets/js/sweetalert2@11.js"></script>
 
 
         <!-- ace scripts -->
-		<script src="{{ asset('dashboard') }}/assets/js/ace-elements.min.js"></script>
-		<script src="{{ asset('dashboard') }}/assets/js/ace.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/ace-elements.min.js"></script>
+		<script src="{{ asset('assets/dashboard') }}/assets/js/ace.min.js"></script>
 
 
 		<!-- inline scripts related to this page -->

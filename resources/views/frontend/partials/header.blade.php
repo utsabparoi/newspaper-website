@@ -87,31 +87,33 @@ if(Session::has('metaDescription')){
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="<? echo $title; ?>" />
 	<meta property="og:description" content="<? echo $metaDescription; ?>" />
+
 	@if(isset($ogImage))
-	<?php $image=URL::to("public/img/news/$ogImage");?>
-	<meta property="og:image" content="{{$image}}" />
+	    <?php $image=URL::to("public/assets/frontend/images/news/$ogImage");?>
+	    <meta property="og:image" content="{{$image}}" />
 	@else
-	<meta property="og:image" content="{{ asset('img/'.$info->logo)}}" />
+	    <meta property="og:image" content="{{ asset('assets/uploads/logo/'.$info->logo)}}" />
 	@endif
+
 	<link rel="canonical" href="www.desimediapoint.com"/>
 
 	<!--Favicon-->
-<link rel="apple-touch-icon" sizes="57x57"   href="{{ asset('favicon/apple-icon-57x57.png')}}">
-<link rel="apple-touch-icon" sizes="60x60"   href="{{ asset('favicon/apple-icon-60x60.png')}}">
-<link rel="apple-touch-icon" sizes="72x72"   href="{{ asset('favicon/apple-icon-72x72.png')}}">
-<link rel="apple-touch-icon" sizes="76x76" 	 href="{{ asset('favicon/apple-icon-76x76.png')}}">
-<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png')}}">
-<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png')}}">
-<link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png')}}">
-<link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png')}}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png')}}">
-<link rel="icon" type="image/png" sizes="192x192"  href="{{asset('favicon/android-icon-192x192.png')}}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{asset('favicon/favicon-96x96.png')}}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
-<link rel="manifest" href="{{ asset('favicon/manifest.json')}}">
+<link rel="apple-touch-icon" sizes="57x57"   href="{{ asset('assets/favicon/apple-icon-57x57.png')}}">
+<link rel="apple-touch-icon" sizes="60x60"   href="{{ asset('assets/favicon/apple-icon-60x60.png')}}">
+<link rel="apple-touch-icon" sizes="72x72"   href="{{ asset('assets/favicon/apple-icon-72x72.png')}}">
+<link rel="apple-touch-icon" sizes="76x76" 	 href="{{ asset('assets/favicon/apple-icon-76x76.png')}}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/favicon/apple-icon-114x114.png')}}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/favicon/apple-icon-120x120.png')}}">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/favicon/apple-icon-144x144.png')}}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/favicon/apple-icon-152x152.png')}}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-icon-180x180.png')}}">
+<link rel="icon" type="image/png" sizes="192x192"  href="{{asset('assets/favicon/android-icon-192x192.png')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/favicon/favicon-32x32.png')}}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{asset('assets/favicon/favicon-96x96.png')}}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/favicon/favicon-16x16.png')}}">
+<link rel="manifest" href="{{ asset('assets/favicon/manifest.json')}}">
 <meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png')}}">
+<meta name="msapplication-TileImage" content="{{ asset('assets/favicon/ms-icon-144x144.png')}}">
 <meta name="theme-color" content="#ffffff">
 
 	<!--Favicon-End-->
@@ -120,24 +122,24 @@ if(Session::has('metaDescription')){
 	================================================== -->
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}">
 	<!-- Template styles-->
-	<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/style.css')}}">
 	<!-- Responsive styles-->
-	<link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/responsive.css')}}">
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/font-awesome.min.css')}}">
 	<!-- Animation -->
-	<link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/animate.css')}}">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/css/owl.theme.default.min.css')}}">
-	<link rel="stylesheet" href="{{asset('frontend/jssocials/jssocials.css')}}" />
-  	<link rel="stylesheet" href="{{asset('frontend/jssocials/jssocials-theme-flat.css')}}" />
-	<link rel="stylesheet" href="{{asset('frontend/css/jquery.minical.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.theme.default.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/jssocials/jssocials.css')}}" />
+  	<link rel="stylesheet" href="{{asset('assets/frontend/jssocials/jssocials-theme-flat.css')}}" />
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/jquery.minical.css')}}">
 	<!-- Colorbox -->
-	<link rel="stylesheet" href="{{asset('frontend/css/colorbox.css')}}">
-	  <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/custom.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/frontend/css/colorbox.css')}}">
+	  <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/custom.css')}}">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110586749-1"></script>
@@ -211,34 +213,58 @@ if(Session::has('metaDescription')){
 	<!-- Header start -->
 	<header id="header" class="header">
 		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-4 col-md-4">
+			<div class="row header-row">
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
 					<div class="logo">
-						 <a href="{{URL::to('/')}}">
-							<img style="width:250px" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
-						 </a>
+
+                        {{-- TEST 1 --}}
+                        {{-- @if (file_exists(base_path('public/img/'. $info->logo)))
+                                <a href="{{URL::to('/')}}">
+                                    <img style="width:250px" src="{{asset('img/'.$info->logo)}}" alt="image">
+                                </a>
+                            @else
+                                <a href="{{URL::to('/')}}">
+                                    <img style="width:250px" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
+                                </a>
+                        @endif --}}
+
+
+                        {{-- TEST 2 --}}
+                        @if ( strpos($info->logo,'assets') )
+                            <a href="{{URL::to('/')}}">
+                                <img style="width:250px" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
+                            </a>
+                        @else
+                            <a href="{{URL::to('/')}}">
+                                <img style="width:250px" src="{{asset('img/'.$info->logo)}}" alt="image">
+                            </a>
+                        @endif
+                        
 					</div>
 				</div><!-- logo col end -->
-			@if(Request::path()=='media')
-				<div class="col-xs-12 col-sm-8 col-md-8 header-right">
-					<div class="ad-banner pull-right">
-<a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
 
-					</div>
-				</div><!-- header right end -->
-			@else
-				<div class="col-xs-12 col-sm-8 col-md-8 header-right">
-					<div class="ad-banner pull-right">
-					<?php if($ads1) {
-						echo $ads1->script;
-					}else{ ?>
-					<a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
-					<?php }
-					?>
+                @if(Request::path()=='media')
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 header-right">
+                        <div class="ad-banner pull-right">
+                            <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                        </div>
+                    </div><!-- header right end -->
+                @else
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 header-right">
+                        <div class="ad-banner pull-right">
+                        <?php if($ads1) {
+                            echo $ads1->script;
+                        }else{ ?>
+                            <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                        <?php }
+                        ?>
 
-					</div>
-				</div><!-- header right end -->
-			@endif
+                        </div>
+                    </div><!-- header right end -->
+                @endif
+
+
+
 			</div><!-- Row end -->
 		</div><!-- Logo and banner area end -->
 	</header><!--/ Header end -->

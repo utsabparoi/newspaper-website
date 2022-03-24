@@ -63,7 +63,7 @@ class PageController extends Controller
                 'file'=> 'default.pdf',
             ]);
 
-           $this->upload_file($request->file, $page, 'file', 'images/page-file');
+           $this->upload_file($request->file, $page, 'file', 'uploads/page');
 
            return back()->with('success','Data Added Successfully');
 
@@ -133,7 +133,7 @@ class PageController extends Controller
                 'status'=> $request->status,
                 'link'=> $request->link,
             ]);
-            $this->upload_file($request->file, $page, 'file', 'images/page-file');
+            $this->upload_file($request->file, $page, 'file', 'uploads/page');
             return back()->with('success','Data Updated Successfully');
 
         } catch(\Exception $ex) {
