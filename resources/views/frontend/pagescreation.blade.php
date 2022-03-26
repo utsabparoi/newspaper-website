@@ -12,18 +12,24 @@
 		</li>
 
 	@endforeach
-	</ul>		
+	</ul>
 	</div>
 
-				<div class="col-sm-8" > 
+				<div class="col-sm-8" >
 				<div class="details text-center" >
 						<h2 >{{$single->title}}</h2>
 						<br>
-						<div class="text-center"> 
+						<div class="text-center">
 							@foreach($pagePics as $pagePic)
-							<img width="300" height="200"  src="{{asset('img/page/'.$pagePic->photo)}}" alt=""> 
+                            
+                                @if ( strpos($pagePic->photo,'assets') )
+                                    <img width="300" height="200"  src="{{asset($pagePic->photo)}}" alt="">
+                                @else
+                                    <img width="300" height="200"  src="{{asset('img/page/'.$pagePic->photo)}}" alt="">
+                                @endif
+
 							@endforeach
-						</div> 
+						</div>
 						<div class="text-center">
 						<?php echo $single->description; ?>
 						</div>

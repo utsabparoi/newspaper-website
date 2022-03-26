@@ -97,7 +97,12 @@
                                             width="100%"
                                         ></iframe> --}}
                                         {{-- <object data="{{ asset($target_ads->file) }}" type=""></object> --}}
-                                        <embed src="{{ asset($target_ads->file) }}" width="475px" height="600px" />
+                                        @if ( strpos($target_ads->photo,'assets') )
+                                            <embed src="{{ asset($target_ads->file) }}" width="475px" height="600px" />
+                                        @else
+                                            <embed src="{{ asset('assets/backend/page/'.$target_ads->file) }}" width="475px" height="600px" />
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>

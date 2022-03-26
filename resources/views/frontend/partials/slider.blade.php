@@ -7,9 +7,11 @@
 
 							<div id="featured-sliders" class="custom-featured-sliders">
 
-							<?php
+                                @foreach ($all_news_in_one->take(1) as $slider_news)
 
-							 if($slider_news->photo){
+                                <?php
+
+                                if($slider_news->photo){
 
 										$slider_img=$slider_news->photo;
 										} else{
@@ -31,39 +33,45 @@
 									</div><!--/ Featured post end -->
 
 								</div>
+
+                                @endforeach
 							<!-- Item 2 end -->
 							</div><!-- Featured owl carousel end-->
 					</div>
 					<div class="col-md-4 col-xs-12 col-sm-4 no-padding">
 
-								@foreach($featurd_news as $key =>$featurd)
-								<?php if($key>3){
-									break;
-								}
+								@foreach($all_news_in_one->skip(0)->take(10) as $key =>$featurd)
+                                    @if ($featurd->is_featured == 1)
+                                        <?php if($key>3){
+                                            break;
+                                        }
 
-								?>
-								@if($key <= 3)
+                                        ?>
+                                        @if($key <= 3)
 
-						<div class="col-md-12 no-padding" style="height: 70px">
-							<div class="col-md-4 no-padding">
-								<?php if($featurd->photo){ ?>
-								    <img class="img-responsive" src="{{ asset($featurd->photo)}}" alt="{{$featurd->title}}" style="height: 67px"/>
-								<?php }else{ ?>
-								    <img style="" class="img-responsive" src="{{ asset('assets/frontend/images/news/images.png')}}" alt="image">
-								<?php } ?>
-							</div>
-							<div class="col-md-8 no-padding-right">
-								<h5 class="no-margin">
-									<a href='{{URL::to("article/$featurd->id/$featurd->link")}}' style="font-size: 13px;">{{$featurd->title}}</a>
-								</h5>
-							</div>
+                                            <div class="col-md-12 no-padding" style="height: 70px">
+                                                <div class="col-md-4 no-padding">
 
-						</div>
-						<div class="col-md-12 no-padding">
-							<hr class="min">
-						</div>
+                                                    @if ( strpos($featurd->photo,'assets') )
+                                                        <img class="img-responsive" src="{{ asset($featurd->photo)}}" alt="{{$featurd->title}}" style="height: 67px"/>
+                                                    @else
+                                                        <img class="img-responsive" src="{{ asset('img/news/'.$featurd->photo)}}" alt="{{$featurd->title}}" style="height: 67px"/>
+                                                    @endif
+
+                                                </div>
+                                                <div class="col-md-8 no-padding-right">
+                                                    <h5 class="no-margin">
+                                                        <a href='{{URL::to("article/$featurd->id/$featurd->link")}}' style="font-size: 13px;">{{$featurd->title}}</a>
+                                                    </h5>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12 no-padding">
+                                                <hr class="min">
+                                            </div>
+                                        @endif
 									@endif
-									@endforeach
+                                @endforeach
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 col-xs-12">
@@ -78,7 +86,7 @@
 							    <div id="home" class="tab-pane fade">
 							      <div class="list-post-block header_post_block scrioll_header">
 										<ul class="list-post">
-										@foreach($popular_news as $popular)
+										@foreach($all_news_in_one as $popular)
 											<li class="clearfix">
 												<div class="post-block-style post-float clearfix">
 													<!-- Post thumb end -->
@@ -102,25 +110,20 @@
 							    <div id="menu1" class="tab-pane fade  in active">
 									      <div class="list-post-block scrioll_header header_post_block">
 												<ul class="list-post">
-												@foreach($latest_news as $l_news)
-													<li class="clearfix">
-														<div class="post-block-style post-float clearfix">
+                                                    @foreach($all_news_in_one as $l_news)
+                                                        <li class="clearfix">
+                                                            <div class="post-block-style post-float clearfix">
 
 
-															<div class="post-content">
-													 			<h2 class="post-title title-small">
-													 				<a href='{{URL::to("article/$l_news->id/$l_news->link")}}'>{{$l_news->title}}</a>
-													 			</h2>
+                                                                <div class="post-content">
+                                                                    <h2 class="post-title title-small">
+                                                                        <a href='{{URL::to("article/$l_news->id/$l_news->link")}}'>{{$l_news->title}}</a>
+                                                                    </h2>
 
-												 			</div><!-- Post content end -->
-														</div><!-- Post block style end -->
-													</li><!-- Li 1 end -->
-													@endforeach
-
-
-
-
-
+                                                                </div><!-- Post content end -->
+                                                            </div><!-- Post block style end -->
+                                                        </li><!-- Li 1 end -->
+                                                    @endforeach
 												</ul><!-- List post end -->
 									</div>
 								    </div>

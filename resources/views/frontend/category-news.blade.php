@@ -26,7 +26,7 @@
 							@foreach($subcategory as $s_category)
 							<li><a href='{{URL::to("$category->link/$s_category->link")}}'>{{$s_category->name}}</a></li>
 							@endforeach
-						
+
 						</ul>
 
 						<div class="row">
@@ -37,18 +37,22 @@
 								<div class="category_news post-thumb">
 									<a href="#">
 									<?php if($news->photo){ ?>
+                                        @if ( strpos($news->photo,'assets') )
+                                            <img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @else
+                                            <img class="img-responsive" src="{{asset('img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+                                        @endif
 
-										<img class="img-responsive" src="{{asset('public/img/news/'.$news->photo)}}" alt="{{$news->title}}" />
 										<?php } else{ ?>
 
 
-										<img class="img-responsive" src="{{asset('public/img/news/images.png')}}" alt="image">
+										<img class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
 									</a>
 								</div>
-								
+
 								<div class="post-content">
-						 			
+
 						 			<h2 class="post-title title-small">
 						 				<a href='{{URL::to("article/$news->id/$news->link")}}'>{{$news->title}}</a>
 						 			</h2>
@@ -66,7 +70,7 @@
 											<?php if($ads1) {
 							echo $ads1->script;
 							} else{ ?>
-								<img class="img-responsive" src="{{asset('public/img/ads-image/730x90-placeholder.png')}}" alt="" />
+								<img class="img-responsive" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
 							<?php 	}?>
 									</div>
 							    </div>
@@ -78,14 +82,19 @@
 										<a href='{{URL::to("article/$news->id/$news->link")}}'>
 									<?php if($news->photo){ ?>
 
-										<img class="img-responsive" src="{{asset('public/img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+										@if ( strpos($news->photo,'assets') )
+                                            <img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @else
+                                            <img class="img-responsive" src="{{asset('img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+                                        @endif
+
 										<?php } else{ ?>
 
 
-										<img class="img-responsive" src="{{asset('public/img/news/images.png')}}" alt="image">
+										<img class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
 									</a>
-										
+
 									</div>
 								</div><!-- Img thumb col end -->
 
@@ -95,9 +104,9 @@
 							 				<a href='{{URL::to("article/$news->id/$news->link")}}'>{{$news->title}}</a>
 							 			</h2>
 							 			<div class="post-meta">
-							 				
-							 			
-							 				
+
+
+
 							 			</div>
 							 			<p>{{$news->short_description}}</p>
 						 			</div><!-- Post content end -->
@@ -106,10 +115,10 @@
 						</div>
 							@endif
 							@endforeach
-						
+
 						</div><!-- Row end -->
 						<div class="row">
-							
+
 						</div>
 					</div><!-- Block Lifestyle end -->
 
@@ -141,21 +150,26 @@
 								<a href="#">
 								<?php if($p_news->photo){ ?>
 
-										<img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
-										<?php } else{ ?>
+                                        @if ( strpos($p_news->photo,'assets') )
+                                            <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
+                                        @else
+                                            <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
+                                        @endif
+
+                                        <?php } else{ ?>
 
 
 										<img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
-									
+
 								</a>
 							</div>
-							
+
 							<div class="post-content">
 					 			<h2 class="post-title">
 					 				<a href='{{URL::to("article/$p_news->id/$p_news->link")}}'>{{$p_news->title}}</a>
 					 			</h2>
-					 			
+
 				 			</div><!-- Post content end -->
 						</div><!-- Post Overaly Article end -->
 							@endif
@@ -170,8 +184,13 @@
 											<a href="#">
 												<?php if($p_news->photo){ ?>
 
-										<img style="max-height: 80px;min-height:80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
-										<?php } else{ ?>
+                                                    @if ( strpos($p_news->photo,'assets') )
+                                                        <img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
+                                                    @else
+                                                        <img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
+                                                    @endif
+
+                                                <?php } else{ ?>
 
 
 										<img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
@@ -183,12 +202,12 @@
 								 			<h2 class="post-title title-small">
 								 				<a href='{{URL::to("article/$p_news->id/$p_news->link")}}'>{{$p_news->title}}</a>
 								 			</h2>
-								 			
+
 							 			</div><!-- Post content end -->
 									</div><!-- Post block style end -->
 								</li><!-- Li 1 end -->
 									@endif
-									
+
 
 								</ul><!-- List post end -->
 							</div><!-- List post block end -->

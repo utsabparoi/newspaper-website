@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AllMedia;
 use App\Models\Category;
+use App\Models\MediaCategory;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class AllMediaController extends Controller
     public function create()
     {
         return view('backend.all-media.create',[
-            'category_infos'=> Category::all(),
+            'category_infos'=> MediaCategory::where('status',1)->get(),
         ]);
     }
 
@@ -98,7 +99,7 @@ class AllMediaController extends Controller
     {
         return view('backend.all-media.edit',[
             'target_ads'=> AllMedia::find($id),
-            'category_infos'=> Category::all(),
+            'category_infos'=> MediaCategory::where('status',1)->get(),
         ]);
     }
 
@@ -123,7 +124,7 @@ class AllMediaController extends Controller
 
             if($request->hasFile('photo')){
                 $request->validate([
-                    'photo'=> 'required|image',
+                    'photo'=> 'required',
                 ]);
             }
 

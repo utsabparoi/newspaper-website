@@ -70,7 +70,12 @@
                                                 <td>{{ $all_adds->title }}</td>
                                                 <td>{{ $all_adds->description }}</td>
                                                 <td>
-                                                    <a href="{{ asset($all_adds->file) }}" target="_blank" class="btn btn-sm btn-info">View File</a>
+                                                    @if ( strpos($all_adds->photo,'assets') )
+                                                        <a href="{{ asset($all_adds->file) }}" target="_blank" class="btn btn-sm btn-info">View File</a>
+                                                    @else
+                                                        <a href="{{ asset('assets/backend/page/'.$all_adds->file) }}" target="_blank" class="btn btn-sm btn-info">View File</a>
+                                                    @endif
+
                                                     {{-- <embed src="{{ asset($all_adds->file) }}" width="475px" height="600px" /> --}}
                                                 </td>
                                                 <td>{{ $all_adds->link }}</td>

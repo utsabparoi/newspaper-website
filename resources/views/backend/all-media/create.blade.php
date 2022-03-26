@@ -50,7 +50,7 @@
                                     <select name="fk_category_id" class="form-control" id="cat_dropdown">
                                         <option value="">-Select One-</option>
                                         @foreach ($category_infos as $category_info)
-                                            <option value="{{ $category_info->id }}">{{ $category_info->name }}</option>
+                                            <option value="{{ $category_info->id }}">{{ $category_info->category_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -50,7 +50,7 @@
                                     <select name="fk_category_id" class="form-control">
                                         <option value="" >-Select Category-</option>
                                         @foreach ($category_infos as $category)
-                                            <option value="{{ $category->id }}" {{ ( $category->id )== $target_ads->relationtocategory->id ? 'selected' : "" }}>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ ( $category->id )== $target_ads->media_category->id ? 'selected' : "" }}>{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,7 +69,11 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1">  Previous Image </label>
                                     <div >
-                                        <img src="{{ asset($target_ads->photo) }}" alt="not found" width="100px">
+                                        @if ( strpos($target_ads->photo,'assets') )
+                                            <img src="{{ asset($target_ads->photo) }}" alt="not found" width="100px">
+                                        @else
+                                            <img src="{{asset('assets/backend/all-media/'.$target_ads->photo)}}" alt="not found" width="100px">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">

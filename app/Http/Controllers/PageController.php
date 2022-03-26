@@ -116,7 +116,7 @@ class PageController extends Controller
             $page = Page::find($id);
 
             $request->validate([
-                'link'  => 'required|max:50|unique:page,link',
+                'link'  => "required|max:50|unique:page,link,$id",
                 'name'  => 'required',
                 'title' => 'required',
             ]);

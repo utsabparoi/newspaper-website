@@ -27,7 +27,13 @@
 				<div class="col-sm-2 min-padding">
 					<label class="slide_upload medial-list-item" for="file">
 						<a href='{{URL::to("media?url=$media->media_link")}}'>
-	                    	<img src="{{asset($media->photo)}}" id="image_load" class="text-center" width="110" height="50">
+
+                            @if ( strpos($media->photo,'assets') )
+                                <img src="{{asset($media->photo)}}" id="image_load" class="text-center" width="110" height="50">
+                            @else
+                                <img src="{{asset('img/allMedia/'.$media->photo)}}" id="image_load" class="text-center" width="110" height="50">
+                            @endif
+
 	                		<div class="media_name">{{$media->media_name}}
 	                		</div>
                     	</a>

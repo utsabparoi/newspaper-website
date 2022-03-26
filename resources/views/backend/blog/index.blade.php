@@ -82,7 +82,12 @@
                                             <td>{{ $all_adds->created_by }}</td>
                                             <td>{{ $all_adds->updated_by }}</td>
                                             <td>
-                                                <img src="{{ asset($all_adds->photo) }}" alt="not found" width="80px">
+                                                @if ( strpos($all_adds->photo,'assets') )
+                                                    <img src="{{ asset($all_adds->photo) }}" alt="not found" width="80px">
+                                                @else
+                                                    <img src="{{asset('assets/backend/blog/'.$all_adds->photo)}}" alt="not found" width="80px">
+                                                @endif
+
                                             </td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">

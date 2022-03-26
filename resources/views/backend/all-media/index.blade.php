@@ -70,7 +70,11 @@
                                                 <td>{{ $all_adds->media_name }}</td>
                                                 <td>{{ $all_adds->media_link }}</td>
                                                 <td>
-                                                    <img src="{{ asset($all_adds->photo) }}" alt="not found" width="100px">
+                                                    @if ( strpos($all_adds->photo,'assets') )
+                                                        <img src="{{ asset($all_adds->photo) }}" alt="not found" width="100px">
+                                                    @else
+                                                        <img src="{{asset('assets/backend/all-media/'.$all_adds->photo)}}" alt="not found" width="100px">
+                                                    @endif
                                                 </td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">

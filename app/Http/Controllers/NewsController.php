@@ -58,8 +58,7 @@ class NewsController extends Controller
             'fk_category_id' => 'required',
             'short_description' => 'required|max:255',
             'description' => 'required',
-
-            'photo' => 'required|image|Max:1000',
+            'photo' => 'required',
         ]);
 
         try {
@@ -136,7 +135,7 @@ class NewsController extends Controller
         ]);
         if($request->hasFile('photo')){
             $request->validate([
-                'photo' => 'required|image|Max:500',
+                'photo' => 'required',
             ]);
         }
         try {

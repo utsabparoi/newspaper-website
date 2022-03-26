@@ -13,9 +13,30 @@ class SubCategory extends Model
     protected $guarded = [];
 
 
-    
+
+    function category()
+    {
+        return $this->belongsTo(Category::class,'fk_category_id');
+    }
+
+
+    function news()
+    {
+        return $this->hasMany(News::class,'fk_sub_category_id');
+    }
+
+
+
+
+
+
+
+
+
+
+
     function relationtocategory(){
-        return $this->hasOne(Category::class,'id','fk_category_id');
+        return $this->belongsTo(Category::class,'fk_category_id');
     }
 
 }

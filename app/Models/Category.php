@@ -8,11 +8,34 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'category';
     protected $guarded = [];
 
 
+    function subcategories()
+    {
+        return $this->hasMany(SubCategory::class,'fk_category_id');
+    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function sub_categories()
+    {
+        return $this->hasMany(SubCategory::class,'id');
+    }
 
 }

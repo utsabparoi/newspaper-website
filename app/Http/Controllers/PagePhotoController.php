@@ -117,7 +117,7 @@ class PagePhotoController extends Controller
             ]);
             if($request->hasFile('photo')){
                 $request->validate([
-                    'photo'=> 'required|image',
+                    'photo'=> 'required',
                 ]);
             }
             $page->update([

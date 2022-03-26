@@ -48,7 +48,6 @@ class EventsController extends Controller
     {
         $request->validate([
             '*'=>'required',
-            'link'=>'nullable',
         ]);
 
         Event::insert([

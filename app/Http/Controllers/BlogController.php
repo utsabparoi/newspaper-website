@@ -123,7 +123,7 @@ class BlogController extends Controller
         ]);
         if($request->hasFile('photo')){
             $request->validate([
-                'photo' => 'image|Max:500',
+                'photo' => 'image|Max:1000',
             ]);
         }
         try {

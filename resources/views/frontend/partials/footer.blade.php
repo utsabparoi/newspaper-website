@@ -52,9 +52,15 @@
 						<div class="row">
 							<div class="col-md-4 col-xs-12" id="middle_part1">
 								<div style="max-width: 180px;min-width: 180px" class="footer-logo">
-                                    <a href="{{ url('/') }}">
-									    <img class="img-responsive" src="{{asset($info->logo)}}" alt="" />
-                                    </a>
+                                    @if ( strpos($info->logo,'assets') )
+                                        <a href="{{URL::to('/')}}">
+                                            <img class="img-responsive" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
+                                        </a>
+                                    @else
+                                        <a href="{{URL::to('/')}}">
+                                            <img class="img-responsive" src="{{asset('img/'.$info->logo)}}" alt="image">
+                                        </a>
+                                    @endif
                                 </div>
 
 							</div>

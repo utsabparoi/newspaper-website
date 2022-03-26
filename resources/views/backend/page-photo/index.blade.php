@@ -64,7 +64,11 @@
                                                 file
                                                 <td>{{ $all_adds->relationtopage->name }}</td>
                                                 <td>
-                                                    <img src="{{ asset($all_adds->photo) }}" alt="not found" width="200px">
+                                                    @if ( strpos($all_adds->photo,'assets') )
+                                                        <img src="{{ asset($all_adds->photo) }}" alt="not found" width="200px">
+                                                    @else
+                                                        <img src="{{asset('assets/backend/page-photo/'.$all_adds->photo)}}" alt="not found" width="200px">
+                                                    @endif
                                                 </td>
                                             <td style="display: flex; ">
                                                 <a href="{{ route('page-photo.edit',$all_adds->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>

@@ -31,7 +31,12 @@
 									<a href="#">
 									<?php if($news->photo){ ?>
 
-										<img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @if ( strpos($news->photo,'assets') )
+                                            <img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @else
+                                            <img class="img-responsive" src="{{asset('img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+                                        @endif
+
 										<?php } else{ ?>
 
 
@@ -71,7 +76,12 @@
 										<a href='{{URL::to("article/$news->id/$news->link")}}'>
 									<?php if($news->photo){ ?>
 
-										<img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @if ( strpos($news->photo,'assets') )
+                                            <img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @else
+                                            <img class="img-responsive" src="{{asset('img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+                                        @endif
+
 										<?php } else{ ?>
 
 
@@ -132,8 +142,12 @@
 								<a href="#">
 								<?php if($p_news->photo){ ?>
 
-										<img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
-										<?php } else{ ?>
+                                        @if ( strpos($p_news->photo,'assets') )
+                                            <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
+                                        @else
+                                            <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
+                                        @endif
+                                        <?php } else{ ?>
 
 
 										<img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
@@ -161,8 +175,13 @@
 											<a href="#">
 												<?php if($p_news->photo){ ?>
 
-										<img style="max-height: 80px;min-height:80px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
-										<?php } else{ ?>
+                                                    @if ( strpos($p_news->photo,'assets') )
+                                                        <img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
+                                                    @else
+                                                        <img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
+                                                    @endif
+
+                                        <?php } else{ ?>
 
 
 										<img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">

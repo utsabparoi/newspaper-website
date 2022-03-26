@@ -81,7 +81,11 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-2">Previous Photo </label>
                                     <div >
-                                        <img width="100px" src="{{ asset($target_ads->photo) }}" alt="img not found">
+                                        @if ( strpos($target_ads->photo,'assets') )
+                                            <img src="{{ asset($target_ads->photo) }}" alt="not found" width="80px">
+                                        @else
+                                            <img src="{{asset('assets/backend/blog/'.$target_ads->photo)}}" alt="not found" width="80px">
+                                        @endif
                                             <br>
                                         <small>size must be 110 x 50</small>
                                     </div>

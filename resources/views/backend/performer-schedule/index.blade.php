@@ -76,7 +76,11 @@
                                                 <td>{{ $all_adds->serialno }}</td>
                                                 <td>{{ $all_adds->details }}</td>
                                                 <td>
-                                                    <img src="{{ asset($all_adds->photo) }}" alt="not found" width="80px">
+                                                    @if ( strpos($all_adds->photo,'assets') )
+                                                        <img src="{{ asset($all_adds->photo) }}" alt="not found" width="80px">
+                                                    @else
+                                                        <img src="{{asset('assets/backend/schedule/'.$all_adds->photo)}}" alt="not found" width="80px">
+                                                    @endif
                                                 </td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">

@@ -23,7 +23,7 @@
 					<?php $showDate=date('D jS M, Y',strtotime($newDate)); ?>
 						<h3 class="block-title"><span><?php echo $showDate; ?></span></h3>
 
-						
+
 
 							<div class="row">
 							@foreach($datenews as $key => $news)
@@ -33,18 +33,22 @@
 								<div class="category_news post-thumb">
 									<a href="#">
 									<?php if($news->photo){ ?>
+                                        @if ( strpos($news->photo,'assets') )
+                                            <img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @else
+                                            <img class="img-responsive" src="{{asset('img/news/'.$news->photo)}}" alt="news image" />
+                                        @endif
 
-										<img class="img-responsive" src="{{asset('public/img/news/'.$news->photo)}}" alt="{{$news->title}}" />
 										<?php } else{ ?>
 
 
-										<img class="img-responsive" src="{{asset('public/img/news/images.png')}}" alt="image">
+										<img class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
 									</a>
 								</div>
-								
+
 								<div class="post-content">
-						 			
+
 						 			<h2 class="post-title title-small">
 						 				<a href='{{URL::to("article/$news->id/$news->link")}}'>{{$news->title}}</a>
 						 			</h2>
@@ -62,7 +66,7 @@
 																	<?php if($ads1) {
 										echo $ads1->script;
 										} else{ ?>
-											<img class="img-responsive" src="{{asset('public/img/ads-image/730x90-placeholder.png')}}" alt="" />
+											<img class="img-responsive" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
 										<?php 	}?>
 									</div>
 							    </div>
@@ -74,14 +78,19 @@
 										<a href='{{URL::to("article/$news->id/$news->link")}}'>
 									<?php if($news->photo){ ?>
 
-										<img class="img-responsive" src="{{asset('public/img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+                                        @if ( strpos($news->photo,'assets') )
+                                            <img class="img-responsive" src="{{asset($news->photo)}}" alt="{{$news->title}}" />
+                                        @else
+                                            <img class="img-responsive" src="{{asset('img/news/'.$news->photo)}}" alt="{{$news->title}}" />
+                                        @endif
+
 										<?php } else{ ?>
 
 
-										<img class="img-responsive" src="{{asset('public/img/news/images.png')}}" alt="image">
+										<img class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
 									</a>
-										
+
 									</div>
 								</div><!-- Img thumb col end -->
 
@@ -91,11 +100,11 @@
 							 				<a href='{{URL::to("article/$news->id/$news->link")}}'>{{$news->title}}</a>
 							 			</h2>
 							 			<div class="post-meta">
-							 				
+
 							 				<span class="post-date"><?
                                 echo date(' jS M Y',strtotime($news->created_at));
                                 ?></span>
-							 				
+
 							 			</div>
 							 			<p>{{$news->short_description}}</p>
 						 			</div><!-- Post content end -->
@@ -104,9 +113,9 @@
 						</div>
 							@endif
 							@endforeach
-						
+
 						</div><!-- Row end -->
-						
+
 					</div><!-- Block Lifestyle end -->
 
 					<div class="paging">
@@ -126,7 +135,7 @@
 							@foreach($social_link as $s_link)
 								<li><a href='{{URL::to("$s_link->link")}}' target="_blank"><i class="fa {{$s_link->icon_class}}"></i></a></li>
 								@endforeach
-								
+
 							</ul>
 						</div><!-- Widget Social end -->
 
@@ -138,17 +147,21 @@
 							<div class="post-thumb">
 								<a href="#">
 								<?php if($p_news->photo){ ?>
+                                    @if ( strpos($p_news->photo,'assets') )
+                                        <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
+                                    @else
+                                        <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
+                                    @endif
 
-										<img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('public/img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
-										<?php } else{ ?>
 
+                                    <?php } else{ ?>
 
-										<img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('public/img/news/images.png')}}" alt="image">
-										<?php } ?>
-									
+                                        <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
+                                    <?php } ?>
+
 								</a>
 							</div>
-							
+
 							<div class="post-content">
 					 			<h2 class="post-title">
 					 				<a href='{{URL::to("article/$p_news->id/$p_news->link")}}'>{{$p_news->title}}</a>
@@ -172,11 +185,15 @@
 											<a href="#">
 												<?php if($p_news->photo){ ?>
 
-										<img style="max-height: 80px;min-height:80px;min-width: 100%" class="img-responsive" src="{{asset('public/img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
-										<?php } else{ ?>
+                                                    @if ( strpos($p_news->photo,'assets') )
+                                                        <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset($p_news->photo)}}" alt="{{$p_news->title}}" />
+                                                    @else
+                                                        <img style="max-height: 220px;min-height: 220px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
+                                                    @endif
+                                        <?php } else{ ?>
 
 
-										<img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('public/img/news/images.png')}}" alt="image">
+										<img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
 											</a>
 										</div><!-- Post thumb end -->
@@ -195,11 +212,11 @@
 								</li><!-- Li 1 end -->
 									@endif
 
-									
 
-									
 
-									
+
+
+
 
 								</ul><!-- List post end -->
 							</div><!-- List post block end -->
@@ -211,7 +228,7 @@
 														<?php if($ads2) {
 										echo $ads2->script;
 										} else{ ?>
-											<img class="img-responsive" src="{{asset('public/img/ads-image/300.png')}}" alt="" />
+											<img class="img-responsive" src="{{asset('img/ads-image/300.png')}}" alt="" />
 										<?php 	}?>
 						</div><!-- Sidebar Ad end -->
 
@@ -221,7 +238,7 @@
 
 							        	<input id="changeDate" type='text' class="form-control">
 
-							        
+
 							      </form><!-- Newsletter end -->
 						</div><!-- Newsletter widget end -->
 

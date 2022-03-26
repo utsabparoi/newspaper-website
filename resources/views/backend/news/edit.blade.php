@@ -96,7 +96,11 @@
                                     <label class=" control-label no-padding-right" for="form-field-2">Previous Image </label>
                                     <div >
                                         <div class=" no-padding-right" style="padding-left: 0px !important;">
-                                            <img src="{{ asset($target_ads->photo) }}" alt="not found" width="100px">
+                                            @if ( strpos($target_ads->photo,'assets') )
+                                                <img src="{{ asset($target_ads->photo) }}" alt="not found" width="80px">
+                                            @else
+                                                <img src="{{asset('assets/backend/news/'.$target_ads->photo)}}" alt="not found" width="80px">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

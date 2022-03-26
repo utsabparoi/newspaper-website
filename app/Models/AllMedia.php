@@ -23,4 +23,10 @@ class AllMedia extends Model
     function media_category() {
         return $this->belongsTo(MediaCategory::class,'fk_category_id');
     }
+
+
+
+    function mediacategory() {
+        return $this->belongsTo(MediaCategory::class,'id');
+    }
 }
