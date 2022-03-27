@@ -36,9 +36,9 @@ class AllMediaShowController extends Controller
 
             }])->where('status', 1)->select('id', 'category_name')->get();
 
-    	// Session::put('title_msg','All Bangla Newspaper & Media  List');
-        // Session::put('metaDescription','All Bangla Newspapaers by Category such as National, Online, Sharenews, International, Print, Business, IT  Energy-news etc. Newspapers like Prothom Alo, Bdnews24.com, Banglanews24.com, Sharenews24.com, BBC Bangla, Bangladesh Pratidin, Kaler Kantho, Ittefaq, Amardesh, Samakal, Amader Shomoys, Daily Naya Diganta, Daily Inqilab, Manab Zamin, Jai Jai Din, Jugantor etc. are in One Page.');
-        // Session::put('keywords','All Bangla Newspapaers by Category such as National, Online, Sharenews, International, Print, Business, IT  Energy-news etc. Newspapers like Prothom Alo, Bdnews24.com, Banglanews24.com, Sharenews24.com, BBC Bangla, Bangladesh Pratidin, Kaler Kantho, Ittefaq, Amardesh, Samakal, Amader Shomoys, Daily Naya Diganta, Daily Inqilab, Manab Zamin, Jai Jai Din, Jugantor etc. are in One Page.');
+    	Session::put('title_msg','All Bangla Newspaper & Media  List');
+        Session::put('metaDescription','All Bangla Newspapaers by Category such as National, Online, Sharenews, International, Print, Business, IT  Energy-news etc. Newspapers like Prothom Alo, Bdnews24.com, Banglanews24.com, Sharenews24.com, BBC Bangla, Bangladesh Pratidin, Kaler Kantho, Ittefaq, Amardesh, Samakal, Amader Shomoys, Daily Naya Diganta, Daily Inqilab, Manab Zamin, Jai Jai Din, Jugantor etc. are in One Page.');
+        Session::put('keywords','All Bangla Newspapaers by Category such as National, Online, Sharenews, International, Print, Business, IT  Energy-news etc. Newspapers like Prothom Alo, Bdnews24.com, Banglanews24.com, Sharenews24.com, BBC Bangla, Bangladesh Pratidin, Kaler Kantho, Ittefaq, Amardesh, Samakal, Amader Shomoys, Daily Naya Diganta, Daily Inqilab, Manab Zamin, Jai Jai Din, Jugantor etc. are in One Page.');
 
         // return $mediaWithCategories;
         // die();
@@ -65,7 +65,7 @@ class AllMediaShowController extends Controller
 
         Session::put('title_msg',$category->category_name);
         Session::put('metaDescription',$category->category_name);
-        
+
         return view('frontend.categoryMedia',compact('category','allMedia'));
     }
 

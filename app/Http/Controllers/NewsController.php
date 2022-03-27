@@ -279,12 +279,15 @@ class NewsController extends Controller
          Session::put('title_msg',$news_details->title);
          Session::put('metaDescription',$news_details->short_description);
          Session::put('tags',$news_details->tags);
-         $ads1=AdsManagement::where('status',1)->where('position_id',4)->where('serial_num',1)->first();
-          $ads2=AdsManagement::where('status',1)->where('position_id',4)->where('serial_num',2)->first();
 
         $singleTitle=$news_details->title;
         $ogImage=$news_details->photo;
-        $ads=AdsManagement::where('status',1)->where('position_id',4)->get()->keyBy('serial_num');
-    	return view('frontend.article',compact('news_details','related_news','popular_news','ads1','ads2','singleTitle','ogImage','ads'));
+
+
+
+        $ads_manages = AdsManagement::where('status',1)->where('position_id',4)->get();
+
+
+    	return view('frontend.article',compact('news_details','related_news','popular_news','ads_manages','singleTitle','ogImage','ads'));
     }
 }

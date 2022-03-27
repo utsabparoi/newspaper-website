@@ -37,11 +37,19 @@
 
 						<div class="post-content-area">
 							<div class="post-media post-featured-image">
-								@if(isset($ads[1]))
-								<div  class="banner_section">
-									<?php echo $ads[1]->script; ?>
-								</div>
-								@endif
+
+                                    @foreach ($ads_manages as $ads_manage)
+                                        @if ($ads_manage->serial_num == 1)
+                                            @if ($ads_manage)
+                                                <div  class="banner_section">
+                                                    {{ $ads_manage->script }}
+                                                </div>
+                                            @else
+                                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                            @endif
+                                        @endif
+                                    @endforeach
+
 									<?php if($news_details->photo){ ?>
                                         @if ( strpos($news_details->photo,'assets') )
                                             <a href="{{asset($news_details->photo)}}" class="gallery-popup">
@@ -59,22 +67,34 @@
 										<img style="min-width: 100%;min-height: 400px;max-height: 400px" class="img-responsive" src="{{asset('img/news/images.png')}}" alt="image">
 										<?php } ?>
 
-						@if(isset($ads[2]))
-							<div  class="banner_section">
-								<?php echo $ads[2]->script; ?>
-							</div>
-							@endif
+                                        @foreach ($ads_manages as $ads_manage)
+                                        @if ($ads_manage->serial_num == 2)
+                                            @if ($ads_manage)
+                                                <div  class="banner_section">
+                                                    {{ $ads_manage->script }}
+                                                </div>
+                                            @else
+                                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                            @endif
+                                        @endif
+                                    @endforeach
 					<br/>
 
 							</div>
 							<div class="entry-content">
 								 <?php echo $news_details->description; ?>
 							</div><!-- Entery content end -->
-							@if(isset($ads[3]))
-							<div  class="banner_section">
-								<?php echo $ads[3]->script; ?>
-							</div>
-							@endif
+							@foreach ($ads_manages as $ads_manage)
+                                        @if ($ads_manage->serial_num == 3)
+                                            @if ($ads_manage)
+                                                <div  class="banner_section">
+                                                    {{ $ads_manage->script }}
+                                                </div>
+                                            @else
+                                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                            @endif
+                                        @endif
+                                    @endforeach
    								<div id="share"></div>
 
             		    <div class="contact-form blog_comment">
@@ -145,11 +165,17 @@
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="sidebar sidebar-right">
 						<div class="widget">
-							@if(isset($ads[5]))
-								<div  class="banner_section">
-									<?php echo $ads[5]->script; ?>
-								</div>
-								@endif
+							@foreach ($ads_manages as $ads_manage)
+                                        @if ($ads_manage->serial_num == 5)
+                                            @if ($ads_manage)
+                                                <div  class="banner_section">
+                                                    {{ $ads_manage->script }}
+                                                </div>
+                                            @else
+                                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                            @endif
+                                        @endif
+                                    @endforeach
 						</div><!-- Widget Social end -->
 
 						<div class="widget color-default">
@@ -203,7 +229,7 @@
                                                 @else
                                                     <img style="max-height: 80px;min-height: 80px;min-width: 100%" class="img-responsive" src="{{asset('img/news/'.$p_news->photo)}}" alt="{{$p_news->title}}" />
                                                 @endif
-										
+
 										<?php } else{ ?>
 
 
@@ -239,11 +265,17 @@
 						</div><!-- Popular news widget end -->
 
 						<div class="widget">
-							@if(isset($ads[4]))
-								<div  class="banner_section">
-									<?php echo $ads[5]->script; ?>
-								</div>
-								@endif
+							@foreach ($ads_manages as $ads_manage)
+                                        @if ($ads_manage->serial_num == 4)
+                                            @if ($ads_manage)
+                                                <div  class="banner_section">
+                                                    {{ $ads_manage->script }}
+                                                </div>
+                                            @else
+                                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                            @endif
+                                        @endif
+                                    @endforeach
 						</div>
 
 						<?php $info=DB::table('about_company')->First(); ?>

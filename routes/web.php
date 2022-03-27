@@ -47,6 +47,20 @@ Route::get('/category/status/change/{id}', [CategoryController::class, 'change_s
 
 
 
+
+/*
+|--------------------------------------------------------------------------
+| CategoryNewsController Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('{link}', [CategoryNewsController::class, 'index']);
+Route::get('/{cat_link}/{sub_link}', [CategoryNewsController::class, 'sub_category_news']);
+Route::get('/search', [CategoryNewsController::class, 'search']);
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | SubCategoryController Routes
@@ -168,6 +182,8 @@ Route::get('/media-list/{id}', [AllMediaShowController::class, 'category']);
 Route::get('/media', [AllMediaShowController::class, 'show']);
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | PerformerScheduleController Routes
@@ -215,17 +231,6 @@ Route::get('/slider/status/change/{id}', [SliderController::class, 'change_statu
 Route::resource('sub-sub-menu', SubSubMenuController::class);
 Route::get('/subsubmenu/status/change/{id}', [SubSubMenuController::class, 'change_status'])->name('subSubMenu_status');
 
-
-
-
-/*
-|--------------------------------------------------------------------------
-| CategoryNewsController Routes
-|--------------------------------------------------------------------------
-*/
-Route::get('{link}', [CategoryNewsController::class, 'index']);
-Route::get('/{cat_link}/{sub_link}', [CategoryNewsController::class, 'sub_category_news']);
-Route::get('/search', [CategoryNewsController::class, 'search']);
 
 
 

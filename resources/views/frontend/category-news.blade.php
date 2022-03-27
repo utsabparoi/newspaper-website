@@ -14,7 +14,7 @@
 			</div><!-- Row end -->
 		</div><!-- Container end -->
 	</div><!-- Page title end -->
-<section class="block-wrapper">
+<section class="block-wrapper category-news-section sid-pagination">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -67,11 +67,15 @@
 							@if($key == 4)
 								<div class="col-xs-12 col-sm-12 col-md-12 ">
 									<div  class="ad-banner custom-ad-banner text-center">
-											<?php if($ads1) {
-							echo $ads1->script;
-							} else{ ?>
-								<img class="img-responsive" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-							<?php 	}?>
+                                        @foreach ($ads_manages as $ads_manage)
+                                            @if ($ads_manage->serial_num == 1)
+                                                <?php if($ads_manage) {
+                                                        echo $ads_manage->script;
+                                                        } else{ ?>
+                                                    <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                                <?php 	}?>
+                                            @endif
+                                        @endforeach
 									</div>
 							    </div>
 							@endif
@@ -133,11 +137,15 @@
 					<div class="sidebar sidebar-right">
 						<div class="widget">
 							<div class="widget text-center">
-							<?php if($ads2) {
-								echo $ads2->script;
-							} else{ ?>
-								<img class="img-responsive" src="{{asset('img/ads-image/300.png')}}" alt="" />
-							<?php 	}?>
+                                @foreach ($ads_manages as $ads_manage)
+                                @if ($ads_manage->serial_num == 2)
+                                    <?php if($ads_manage) {
+                                            echo $ads_manage->script;
+                                            } else{ ?>
+                                        <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                    <?php 	}?>
+                                @endif
+                            @endforeach
 						</div><!-- Sidebar Ad end -->
 						</div><!-- Widget Social end -->
 
@@ -216,11 +224,15 @@
 						</div><!-- Popular news widget end -->
 
 						<div class="widget text-center">
-											<?php if($ads2) {
-							echo $ads2->script;
-							} else{ ?>
-								<img class="img-responsive" src="{{asset('img/ads-image/300.png')}}" alt="" />
-							<?php 	}?>
+                            @foreach ($ads_manages as $ads_manage)
+                            @if ($ads_manage->serial_num == 1)
+                                <?php if($ads_manage) {
+                                        echo $ads_manage->script;
+                                        } else{ ?>
+                                    <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                                <?php 	}?>
+                            @endif
+                        @endforeach
 						</div><!-- Sidebar Ad end -->
 
 						<?php $info=DB::table('about_company')->First(); ?>

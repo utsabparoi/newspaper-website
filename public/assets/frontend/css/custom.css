@@ -5,7 +5,86 @@
     justify-content: center;
 }
 
-
+/* sid pagination */
+.sid-pagination .paging   .items-center .hidden{
+    display: block !important;
+}
+.sid-pagination .paging   .items-center .hidden p{
+    display: none !important;
+}
+.sid-pagination .paging   .items-center .flex-1{
+    display: none !important;
+}
+.sid-pagination .paging   .items-center .hidden svg{
+    width: 20px;
+    height: 20px;
+}
+.sid-pagination .paging   .items-center .hidden span a{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.sid-pagination .paging   .items-center .hidden span span .cursor-default.rounded-l-md{
+    position: relative;
+    float: left;
+    padding: 5px 12px 1px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.sid-pagination .paging   .items-center .hidden span .relative.rounded-l-md{
+    position: relative;
+    float: left;
+    padding: 5px 12px 1px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.sid-pagination .paging   .items-center .hidden span .relative.rounded-r-md{
+    position: relative;
+    float: left;
+    padding: 5px 12px 1px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.sid-pagination .paging   .items-center .hidden span span span{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7;
+    border: 1px solid #337ab7;
+}
+.sid-pagination .paging   .items-center .hidden span span .text-gray-700.cursor-default{
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #000;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
 
 
 

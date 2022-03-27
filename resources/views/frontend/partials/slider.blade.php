@@ -18,21 +18,51 @@
 
 										$slider_img='images.png';
 										 } ?>
-								<div class="item" style="background-image:url({{ asset($slider_img)}});background-repeat: no-repeat;background-size: 100% 100%;">
-									<div class="featured-post">
-										<div class="post-content custom_post_content new-title-hover">
-											<h2 class="post-title title-extra-large ">
-												<a href='{{URL::to("article/$slider_news->id/$slider_news->link")}}' style="font-size: 21px;margin-top: 10px;color: #fff;font-weight: bold">
-												{{-- {{ str_limit($slider_news->title,50) }} --}}
-                                                {{-- my custom code --}}
-												{{ Str::limit($slider_news->title, 50) }}
-												</a>
-											</h2>
 
-										</div>
-									</div><!--/ Featured post end -->
 
-								</div>
+                                @if ( strpos($slider_img,'assets') )
+
+                                         <div class="item" style="background-image:url({{ asset($slider_img)}});background-repeat: no-repeat;background-size: 100% 100%;">
+                                            <div class="featured-post">
+                                                <div class="post-content custom_post_content new-title-hover">
+                                                    <h2 class="post-title title-extra-large ">
+                                                        <a href='{{URL::to("article/$slider_news->id/$slider_news->link")}}' style="font-size: 21px;margin-top: 10px;color: #fff;font-weight: bold">
+                                                        {{-- {{ str_limit($slider_news->title,50) }} --}}
+                                                        {{-- my custom code --}}
+                                                        {{ Str::limit($slider_news->title, 50) }}
+                                                        </a>
+                                                    </h2>
+
+                                                </div>
+                                            </div><!--/ Featured post end -->
+
+                                        </div>
+
+
+                                @else
+
+                                         <div class="item" style="background-image:url({{ asset('img/news/'.$slider_img)}});background-repeat: no-repeat;background-size: 100% 100%;">
+                                            <div class="featured-post">
+                                                <div class="post-content custom_post_content new-title-hover">
+                                                    <h2 class="post-title title-extra-large ">
+                                                        <a href='{{URL::to("article/$slider_news->id/$slider_news->link")}}' style="font-size: 21px;margin-top: 10px;color: #fff;font-weight: bold">
+                                                        {{-- {{ str_limit($slider_news->title,50) }} --}}
+                                                        {{-- my custom code --}}
+                                                        {{ Str::limit($slider_news->title, 50) }}
+                                                        </a>
+                                                    </h2>
+
+                                                </div>
+                                            </div><!--/ Featured post end -->
+
+                                        </div>
+
+
+                                @endif
+
+
+
+
 
                                 @endforeach
 							<!-- Item 2 end -->

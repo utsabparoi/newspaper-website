@@ -14,7 +14,7 @@
 			</div><!-- Row end -->
 		</div><!-- Container end -->
 	</div><!-- Page title end -->
-<section class="block-wrapper">
+<section class="block-wrapper search-section sid-pagination">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
