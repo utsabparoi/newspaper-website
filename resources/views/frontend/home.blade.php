@@ -8,6 +8,7 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="latest-news block color-red">
                     <div class="custom_item">
+
                         @foreach($all_news_in_one->skip(0)->take(10) as $key => $featured)
                             @if ($featured->is_featured == 1)
                                 @if($key >= 4)

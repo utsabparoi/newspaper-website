@@ -40,14 +40,14 @@
 					</div>
 					<div class="col-md-4 col-xs-12 col-sm-4 no-padding">
 
-								@foreach($all_news_in_one->skip(0)->take(10) as $key =>$featurd)
+								@foreach($all_news_in_one->skip(1)->take(10) as $key =>$featurd)
                                     @if ($featurd->is_featured == 1)
-                                        <?php if($key>3){
+                                        <?php if($key>4){
                                             break;
                                         }
 
                                         ?>
-                                        @if($key <= 3)
+                                        @if($key <= 4)
 
                                             <div class="col-md-12 no-padding" style="height: 70px">
                                                 <div class="col-md-4 no-padding">
