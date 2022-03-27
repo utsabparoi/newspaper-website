@@ -26,12 +26,12 @@ class FrontendController extends Controller
         // all news
         $all_news_in_one = News::where('status',1)->where('publish_status',1)->latest()->get();
 
-        
+
         // all category news
         $categories = Category::with(['subcategories' => function ($q) {
             $q->with(['news' => function ($q) {
                 $q->select('id','title','link','fk_category_id','fk_sub_category_id','photo','short_description')->where('publish_status',1)->where('status', 1)->latest();
-            }])->select('id','name','link','fk_category_id')->where('status',1)->latest();
+            }])->select('id','name','link','fk_category_id')->where('status',1);
         }])->select('id','name','link','serial_num','is_home')->where('status', 1)->get();
 
 
