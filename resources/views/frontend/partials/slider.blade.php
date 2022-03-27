@@ -86,7 +86,7 @@
 							    <div id="home" class="tab-pane fade">
 							      <div class="list-post-block header_post_block scrioll_header">
 										<ul class="list-post">
-										@foreach($all_news_in_one as $popular)
+										@foreach($all_news_in_one->skip(10) as $popular)
 											<li class="clearfix">
 												<div class="post-block-style post-float clearfix">
 													<!-- Post thumb end -->
@@ -110,7 +110,7 @@
 							    <div id="menu1" class="tab-pane fade  in active">
 									      <div class="list-post-block scrioll_header header_post_block">
 												<ul class="list-post">
-                                                    @foreach($all_news_in_one as $l_news)
+                                                    @foreach($all_news_in_one->skip(1) as $l_news)
                                                         <li class="clearfix">
                                                             <div class="post-block-style post-float clearfix">
 
