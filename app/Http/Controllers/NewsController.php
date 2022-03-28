@@ -288,6 +288,6 @@ class NewsController extends Controller
         $ads_manages = AdsManagement::where('status',1)->where('position_id',4)->get();
 
 
-    	return view('frontend.article',compact('news_details','related_news','popular_news','ads_manages','singleTitle','ogImage','ads'));
+    	return view('frontend.article',compact('news_details','related_news','popular_news','ads_manages','singleTitle','ogImage'));
     }
 }
