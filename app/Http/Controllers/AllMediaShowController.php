@@ -16,17 +16,6 @@ class AllMediaShowController extends Controller
     */
     public function index()
     {
-    // 	$categories = MediaCategory::where('status',1)->get();
-
-    // 	$category=AllMedia::leftJoin('media_categories','all_media.fk_category_id','media_categories.id')
-        //     ->select('media_categories.id','media_categories.category_name')
-        //     ->get();
-
-        //    // $category = AllMedia::with('media_category')->get();
-
-        //     foreach ($category as $value) {
-        // 		$allMedia[$value->id]=AllMedia::where('status',1)->where('fk_category_id',$value->id)->get();
-    // 	}
 
         $mediaWithCategories = MediaCategory::with(['all_medias' => function ($q) {
 
@@ -40,10 +29,8 @@ class AllMediaShowController extends Controller
         Session::put('metaDescription','All Bangla Newspapaers by Category such as National, Online, Sharenews, International, Print, Business, IT  Energy-news etc. Newspapers like Prothom Alo, Bdnews24.com, Banglanews24.com, Sharenews24.com, BBC Bangla, Bangladesh Pratidin, Kaler Kantho, Ittefaq, Amardesh, Samakal, Amader Shomoys, Daily Naya Diganta, Daily Inqilab, Manab Zamin, Jai Jai Din, Jugantor etc. are in One Page.');
         Session::put('keywords','All Bangla Newspapaers by Category such as National, Online, Sharenews, International, Print, Business, IT  Energy-news etc. Newspapers like Prothom Alo, Bdnews24.com, Banglanews24.com, Sharenews24.com, BBC Bangla, Bangladesh Pratidin, Kaler Kantho, Ittefaq, Amardesh, Samakal, Amader Shomoys, Daily Naya Diganta, Daily Inqilab, Manab Zamin, Jai Jai Din, Jugantor etc. are in One Page.');
 
-        // return $mediaWithCategories;
-        // die();
-
         return view('frontend.allMedia',compact('mediaWithCategories'));
+
     }
 
 

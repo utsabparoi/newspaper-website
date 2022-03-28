@@ -50,19 +50,6 @@ Route::get('/category/status/change/{id}', [CategoryController::class, 'change_s
 
 /*
 |--------------------------------------------------------------------------
-| CategoryNewsController Routes
-|--------------------------------------------------------------------------
-*/
-Route::get('{link}', [CategoryNewsController::class, 'index']);
-Route::get('/{cat_link}/{sub_link}', [CategoryNewsController::class, 'sub_category_news']);
-Route::get('/search', [CategoryNewsController::class, 'search']);
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
 | SubCategoryController Routes
 |--------------------------------------------------------------------------
 */
@@ -176,10 +163,25 @@ Route::get('/events/status/change/{id}', [EventsController::class, 'change_statu
 Route::resource('all-media', AllMediaController::class);
 Route::get('/media/status/change/{id}', [AllMediaController::class, 'change_status'])->name('allMedia_status');
 
+
 // Backend routes
 Route::get('/media-list', [AllMediaShowController::class, 'index']);
 Route::get('/media-list/{id}', [AllMediaShowController::class, 'category']);
 Route::get('/media', [AllMediaShowController::class, 'show']);
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| CategoryNewsController Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('{link}', [CategoryNewsController::class, 'index']);
+Route::get('/{cat_link}/{sub_link}', [CategoryNewsController::class, 'sub_category_news']);
+Route::get('/search', [CategoryNewsController::class, 'search']);
+
 
 
 

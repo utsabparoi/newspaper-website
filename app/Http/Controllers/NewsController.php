@@ -284,10 +284,10 @@ class NewsController extends Controller
         $ogImage=$news_details->photo;
 
 
+        $ads1=AdsManagement::where('status',1)->where('position_id',4)->where('serial_num',1)->first();
+        $ads2=AdsManagement::where('status',1)->where('position_id',4)->where('serial_num',2)->first();
+        $ads=AdsManagement::where('status',1)->where('position_id',4)->get()->keyBy('serial_num');
 
-        $ads_manages = AdsManagement::where('status',1)->where('position_id',4)->get();
-
-
-    	return view('frontend.article',compact('news_details','related_news','popular_news','ads_manages','singleTitle','ogImage'));
+    	return view('frontend.article',compact('news_details','related_news','popular_news','ads1','ads2','singleTitle','ogImage','ads'));
     }
 }
