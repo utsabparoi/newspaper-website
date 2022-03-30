@@ -24,7 +24,10 @@ class FrontendController extends Controller
         Session::put('metaDescription',$info->comapny_name);
 
         // all news
-        $all_news_in_one = News::where('status',1)->where('publish_status',1)->latest()->get();
+        $slider_news    = News::where('status',1)->where('is_slider',1)->orderby('id','DESC')->first();
+        $featurd_news   = News::where('status',1)->where('publish_status',1)->where('is_featured',1)->whereNotIn('id',[$slider_news->id])->orderby('id','DESC')->paginate(10);
+        $popular_news   = News::where('status',1)->where('publish_status',1)->orderby('hit_counter','DESC')->paginate(8);
+        $latest_news    = News::where('status',1)->where('publish_status',1)->orderby('id','DESC')->paginate(8);
 
 
         // all category news
@@ -39,7 +42,7 @@ class FrontendController extends Controller
         //all ads management
         $ads_manages = AdsManagement::where('status',1)->where('position_id',1)->get();
 
-        return view('frontend.home',compact('categories','all_news_in_one','ads_manages')
+        return view('frontend.home',compact('categories','slider_news','featurd_news','popular_news','latest_news','ads_manages')
         );
 
     }

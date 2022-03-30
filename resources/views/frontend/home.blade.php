@@ -9,8 +9,8 @@
                 <div class="latest-news block color-red">
                     <div class="custom_item">
 
-                        @foreach($all_news_in_one->skip(0)->take(10) as $key => $featured)
-                            @if ($featured->is_featured == 1)
+                        @foreach($featurd_news as $key => $featured)
+
                                 @if($key >= 4)
                                     <div class="item  col-md-4 col-sm-4 col-xs-12 no-padding">
 
@@ -47,7 +47,7 @@
 
                                     </div><!-- Item 2 end -->
                                 @endif
-                            @endif
+
                         @endforeach
 
                         <!-- Item 4 end -->

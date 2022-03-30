@@ -7,18 +7,16 @@
 
 							<div id="featured-sliders" class="custom-featured-sliders">
 
-                                @foreach ($all_news_in_one->take(1) as $slider_news)
-
                                 <?php
-
-                                if($slider_news->photo){
-
-										$slider_img=$slider_news->photo;
-										} else{
-
-										$slider_img='images.png';
-										 } ?>
-
+                                    if(isset($slider_news->photo))
+                                    {
+                                        $slider_img=$slider_news->photo;
+                                    }
+                                    else
+                                    {
+                                        $slider_img='images.png';
+                                    }
+                                ?>
 
                                 @if ( strpos($slider_img,'assets') )
 
@@ -61,23 +59,19 @@
                                 @endif
 
 
-
-
-
-                                @endforeach
 							<!-- Item 2 end -->
 							</div><!-- Featured owl carousel end-->
 					</div>
 					<div class="col-md-4 col-xs-12 col-sm-4 no-padding">
 
-								@foreach($all_news_in_one->skip(1)->take(10) as $key =>$featurd)
-                                    @if ($featurd->is_featured == 1)
-                                        <?php if($key>4){
+								@foreach($featurd_news as $key =>$featurd)
+
+                                        <?php if($key>3){
                                             break;
                                         }
 
                                         ?>
-                                        @if($key <= 4)
+                                        @if($key <= 3)
 
                                             <div class="col-md-12 no-padding" style="height: 70px">
                                                 <div class="col-md-4 no-padding">
@@ -100,7 +94,7 @@
                                                 <hr class="min">
                                             </div>
                                         @endif
-									@endif
+
                                 @endforeach
 					</div>
 				</div>
@@ -116,7 +110,7 @@
 							    <div id="home" class="tab-pane fade">
 							      <div class="list-post-block header_post_block scrioll_header">
 										<ul class="list-post">
-										@foreach($all_news_in_one->skip(10) as $popular)
+										@foreach($popular_news as $popular)
 											<li class="clearfix">
 												<div class="post-block-style post-float clearfix">
 													<!-- Post thumb end -->
@@ -140,7 +134,7 @@
 							    <div id="menu1" class="tab-pane fade  in active">
 									      <div class="list-post-block scrioll_header header_post_block">
 												<ul class="list-post">
-                                                    @foreach($all_news_in_one->skip(1) as $l_news)
+                                                    @foreach($latest_news as $l_news)
                                                         <li class="clearfix">
                                                             <div class="post-block-style post-float clearfix">
 
