@@ -61,7 +61,7 @@
 					<a href="{{ url('/') }}" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							Ace Admin
+							Admin Panel
 						</small>
                         {{-- <div class="my_div" style="display:flex">
                             <img src="{{ asset('uploads/logo').'/'.App\Models\Company::find(1)->company_logo }}" alt="image not found" width="40px" height="30px">
@@ -1247,7 +1247,18 @@
             </script>
         @endif
 
-
+        <script>
+            let fileInput = document.getElementById("file-upload-input");
+            let fileSelect = document.getElementsByClassName("file-upload-select")[0];
+            fileSelect.onclick = function() {
+                fileInput.click();
+            }
+            fileInput.onchange = function() {
+                let filename = fileInput.files[0].name;
+                let selectName = document.getElementsByClassName("file-select-name")[0];
+                selectName.innerText = filename;
+            }
+        </script>
         {{-- Custom Scripts --}}
         @yield('footer_scripts')
         @yield('scripts')

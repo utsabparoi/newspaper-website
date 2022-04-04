@@ -10,6 +10,8 @@ class AboutCompanyController extends Controller
 {
     use FileSaver;
 
+
+
     /*
      |--------------------------------------
      |          Index METHOD
@@ -30,30 +32,45 @@ class AboutCompanyController extends Controller
      |--------------------------------------
     */
     function update(Request $request){
-
         // $request->validate([
-        //     '*'=> 'required',
-        //     'logo'=> 'nullable',
+        //     '*'      => 'required',
+        //     'logo'   => 'nullable',
         // ]);
 
         try {
             $model = AboutCompany::first();
 
-            $model->update([
-                'company_name'=> $request->company_name,
-                'address'=> $request->address,
-                'email'=> $request->email,
-                'mobile_no'=> $request->mobile_no,
-                'fb_link'=> $request->fb_link,
-                'short_description'=> $request->short_description,
-                'description'=> $request->description,
-                'map_embed'=> $request->map_embed,
-                'logo'=> $model->logo,
-            ]);
+            if($request->file('logo') != NULL)
+            {
+                $model->update([
+                    'company_name'      => $request->company_name,
+                    'address'           => $request->address,
+                    'email'             => $request->email,
+                    'mobile_no'         => $request->mobile_no ?? 0,
+                    'fb_link'           => $request->fb_link ?? 0,
+                    'short_description' => $request->short_description ?? 0,
+                    'description'       => $request->description ?? 0,
+                    'map_embed'         => $request->map_embed ?? 0,
+                    'logo'              => $model->logo,
+                ]);
 
-        $this->upload_file($request->logo, $model, 'logo', 'uploads/logo');
+                $this->upload_file($request->logo, $model, 'logo', 'uploads/logo');
+            }
+            else{
+                $model->update([
+                    'company_name'      => $request->company_name,
+                    'address'           => $request->address,
+                    'email'             => $request->email,
+                    'mobile_no'         => $request->mobile_no ?? 0,
+                    'fb_link'           => $request->fb_link ?? 0,
+                    'short_description' => $request->short_description ?? 0,
+                    'description'       => $request->description ?? 0,
+                    'map_embed'         => $request->map_embed ?? 0,
+                ]);
+            }
 
-        return back()->with('success','Data Updated Successfully');
+
+            return back()->with('success','Data Updated Successfully');
 
         }
         catch(\Exception $ex) {

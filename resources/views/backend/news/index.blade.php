@@ -26,12 +26,7 @@
         </div>
 
         <div class="page-content">
-            <div class="ace-settings-container" id="ace-settings-container">
-                <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-                    <i class="ace-icon fa fa-cog bigger-130"></i>
-                </div>
 
-            </div><!-- /.ace-settings-container -->
 
             <div class="page-header">
                 <h1>
@@ -66,36 +61,36 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($all_adds as $all_adds)
+                                    @forelse ($all_adds as $all_add)
                                         <tr>
                                                 <th>{{ $loop->index+1 }}</th>
-                                                <td>{{ $all_adds->title }}</td>
-                                                <td>{{ $all_adds->short_description }}</td>
-                                                <td>{{ $all_adds->link }}</td>
-                                                <td>{{ $all_adds->fk_category_id }}</td>
-                                                <td>{{ $all_adds->fk_sub_category_id }}</td>
-                                                <td>{{ $all_adds->is_slider }}</td>
-                                                <td>{{ $all_adds->tags }}</td>
-                                                <td>{{ $all_adds->created_by }}</td>
+                                                <td>{{ $all_add->title }}</td>
+                                                <td>{{ $all_add->short_description }}</td>
+                                                <td>{{ $all_add->link }}</td>
+                                                <td>{{ $all_add->fk_category_id }}</td>
+                                                <td>{{ $all_add->fk_sub_category_id }}</td>
+                                                <td>{{ $all_add->is_slider }}</td>
+                                                <td>{{ $all_add->tags }}</td>
+                                                <td>{{ $all_add->created_by }}</td>
                                                 <td>
-                                                    @if ( strpos($all_adds->photo,'assets') )
-                                                        <img src="{{ asset($all_adds->photo) }}" alt="not found" width="80px">
+                                                    @if ( strpos($all_add->photo,'assets') )
+                                                        <img src="{{ asset($all_add->photo) }}" alt="not found" width="80px">
                                                     @else
-                                                        <img src="{{asset('assets/backend/news/'.$all_adds->photo)}}" alt="not found" width="80px">
+                                                        <img src="{{asset('img/news/'.$all_add->photo)}}" alt="not found" width="80px">
                                                     @endif
                                                 </td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">
-                                                    @if ($all_adds->status == 1)
-                                                        <a href="{{ route('news_status',$all_adds->id) }}"><i class="fa fa-toggle-on" style="font-size: 24px"></i></a>
+                                                    @if ($all_add->status == 1)
+                                                        <a href="{{ route('news_status',$all_add->id) }}"><i class="fa fa-toggle-on" style="font-size: 24px"></i></a>
                                                     @else
-                                                        <a href="{{ route('news_status',$all_adds->id) }}"><i class="fa fa-toggle-off" style="font-size: 24px"></i></a>
+                                                        <a href="{{ route('news_status',$all_add->id) }}"><i class="fa fa-toggle-off" style="font-size: 24px"></i></a>
                                                     @endif
                                                 </div>
                                             </td>
                                             <td style="display: flex">
-                                                <a href="{{ route('manage-news.edit',$all_adds->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
-                                                <form action="{{ route('manage-news.destroy',$all_adds->id) }}" method="POST">
+                                                <a href="{{ route('manage-news.edit',$all_add->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
+                                                <form action="{{ route('manage-news.destroy',$all_add->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" style="background: none; border:none;"><i class="fa fa-trash-o" aria-hidden="true"  style=" font-size:22px;margin-top: -2px;
@@ -114,6 +109,7 @@
                                     @endforelse
                                 </tbody>
                               </table>
+                              {{ $all_adds->links() }}
                         </div>
                     </div>
 

@@ -4,13 +4,13 @@
 <div id="signup-box" class="signup-box widget-box no-border visible">
     <div class="widget-body">
         <div class="widget-main">
-            {{-- <h4 class="header green lighter bigger">
-                <i class="ace-icon fa fa-users blue"></i>
-                New User Registration
-            </h4> --}}
+            <h4 class="header green lighter bigger text-center">
+                {{-- <i class="ace-icon fa fa-users blue"></i> --}}
+                Enter Your Details to Begin
+            </h4>
 
             <div class="space-6"></div>
-            <h5> Enter your details to begin: </h5>
+            {{-- <h5> Enter your details to begin: </h5> --}}
             @if ($errors->any())
                 <div class="alert alert-danger error_div">
                     @foreach ($errors->all() as $error)

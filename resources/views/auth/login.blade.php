@@ -4,10 +4,10 @@
 <div id="login-box" class="login-box visible widget-box no-border">
     <div class="widget-body">
         <div class="widget-main">
-            {{-- <h4 class="header blue lighter bigger">
+            <h4 class="header blue lighter bigger">
                 <i class="ace-icon fa fa-coffee green"></i>
                 Please Enter Your Information
-            </h4> --}}
+            </h4>
             <div class="space-6"></div>
 
             @if ($errors->any())

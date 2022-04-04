@@ -11,9 +11,9 @@
                 </li>
 
                 <li>
-                    <a href="#">Blog</a>
+                    <a href="#">News</a>
                 </li>
-                <li class="active">Add</li>
+                <li class="active">Edit</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -30,7 +30,7 @@
 
             <div class="page-header">
                 <h1>
-                    <b>Adding Blog</b>
+                    <b>Adding News</b>
                     <small>
                         <i class="ace-icon fa fa-angle-double-right"></i>
                         Common form elements and layouts
@@ -41,12 +41,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <form action="{{ route('manage-news.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('manage-news.store') }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PATCH')
                         <div class="row">
-                            <div class="left col-lg-5" style="margin-left: 20px">
+                            <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
+                                    <label for="category_id">Category</label>
                                     <select name="fk_category_id" class="form-control">
                                         <option value="" >-Select Category-</option>
                                         @foreach ($category_infos as $category)
@@ -62,12 +62,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label for="subcategory_id">Sub Category</label>
-                                    <select name="fk_sub_category_id" class="form-control" id="subcat_dropdown">
-                                        <option value="">--Select one--</option>
-                                    </select>
-                                </div> --}}
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> News title </label>
                                     <div >
@@ -83,13 +77,19 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Short Description </label>
                                     <div >
-                                        <textarea name="short_description" class="form-control" placeholder="short description">{{ $target_ads->short_description }}</textarea>
+                                        <textarea name="short_description" cols="30" rows="8" placeholder="Short description..." class="form-control">{{ $target_ads->short_description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1">Description </label>
                                     <div >
-                                        <textarea name="description" class="form-control" placeholder="long description">{{ $target_ads->description }}</textarea>
+                                        <textarea name="description" cols="30" rows="15" placeholder="Long description...." class="form-control">{{ $target_ads->description }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> tags </label>
+                                    <div >
+                                        <input value="{{ $target_ads->tags }}" name="tags" type="text" id="form-field-1" placeholder="tags" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -99,80 +99,70 @@
                                             @if ( strpos($target_ads->photo,'assets') )
                                                 <img src="{{ asset($target_ads->photo) }}" alt="not found" width="80px">
                                             @else
-                                                <img src="{{asset('assets/backend/news/'.$target_ads->photo)}}" alt="not found" width="80px">
+                                                <img src="{{asset('img/news/'.$target_ads->photo)}}" alt="not found" width="80px">
                                             @endif
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-2">Choose News Image </label>
-                                    <div >
-                                        <div class="control-label no-padding-right" style="padding-left: 0px !important;">
-                                            <label class="ace-file-input ace-file-multiple"><input  name="photo" type="file" id="id-input-file-3"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                                <div class="file-upload form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-2">Choose New Image </label>
+                                    <div class="file-upload-select">
+                                        <div class="file-select-button" >Choose File</div>
+                                    <div class="file-select-name">No file chosen...</div>
+                                    <input type="file" name="photo" id="file-upload-input">
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-around; text-align: center; margin-top:50px">
+                                    <div class="form-group">
+                                        <label class=" control-label no-padding-right" for="form-field-1">Status </label>
+                                        <div >
+                                            <div class="toggle-btn {{ $target_ads->status == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="status" checked class="cb-value" />
+                                                <span class="round-btn"></span>
+                                            </div>
                                         </div>
-                                        <small class="text-danger">* Photo size must be 110 x 50</small>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="right col-lg-5" style="margin-left: 20px">
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">Status </label>
-                                    <div >
-                                        <input value="{{ $target_ads->status }}" name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
+                                    <div class="form-group">
+                                        <label class=" control-label no-padding-right" for="form-field-1">Public Status </label>
+                                        <div >
+                                            <div class="toggle-btn {{ $target_ads->publish_status == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="publish_status"  checked  class="cb-value" />
+                                                <span class="round-btn"></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">Public Status </label>
-                                    <div >
-                                        <input value="{{ $target_ads->publish_status }}" name="publish_status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
+                                    <div class="form-group">
+                                        <label class=" control-label no-padding-right" for="form-field-1"> Is Featured </label>
+                                        <div >
+                                            <div class="toggle-btn {{ $target_ads->is_featured == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="is_featured"  checked  class="cb-value" />
+                                                <span class="round-btn"></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> hit_counter </label>
-                                    <div >
-                                        <input value="{{ $target_ads->hit_counter }}" name="hit_counter" type="number" id="form-field-1" placeholder="hit_counter" class="form-control">
+                                    <div class="form-group">
+                                        <label class=" control-label no-padding-right" for="form-field-1"> Is Home </label>
+                                        <div >
+                                            <div class="toggle-btn {{ $target_ads->is_not_home == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="is_not_home"  checked  class="cb-value" />
+                                                <span class="round-btn"></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> is_featured </label>
-                                    <div >
-                                        <input value="{{ $target_ads->is_featured }}" name="is_featured" type="number" id="form-field-1" placeholder="is_featured" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> is_not_home </label>
-                                    <div >
-                                        <input value="{{ $target_ads->is_not_home }}" name="is_not_home" type="number" id="form-field-1" placeholder="is_not_home" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> is_slider </label>
-                                    <div >
-                                        <input value="{{ $target_ads->is_slider }}" name="is_slider" type="number" id="form-field-1" placeholder="is_slider" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> tags </label>
-                                    <div >
-                                        <input value="{{ $target_ads->tags }}" name="tags" type="number" id="form-field-1" placeholder="tags" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> created_by </label>
-                                    <div >
-                                        <input value="{{ $target_ads->created_by }}" name="created_by" type="number" id="form-field-1" placeholder="created_by" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> updated_by </label>
-                                    <div >
-                                        <input value="{{ $target_ads->updated_by }}" name="updated_by" type="number" id="form-field-1" placeholder="updated_by" class="form-control">
+                                    <div class="form-group">
+                                        <label class=" control-label no-padding-right" for="form-field-1"> Is Slider </label>
+                                        <div >
+                                            <div class="toggle-btn {{ $target_ads->is_slider == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="is_slider" checked  class="cb-value" />
+                                                <span class="round-btn"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group text-left" style="margin-top: 40px;">
-                            <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Submit</button>
+                        <div class="form-group text-right" style="margin-top: 40px; margin-right:6%">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div><!-- /.col -->
@@ -181,21 +171,57 @@
     </div>
 </div>
 @endsection
-{{-- @section('ajax_dropdown')
-$('#cat_dropdown').change(function(){
-    var catx_id = $(this).val();
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+@section('ajax_dropdown')
+    $('#cat_dropdown').change(function(){
+        var catx_id = $(this).val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type:'POST',
+            url:'/get/subcat/data',
+            data:{catx_id:catx_id},
+            success:function(data){
+                $('#subcat_dropdown').html(data);
+            }
+        });
     });
-    $.ajax({
-        type:'POST',
-        url:'/get/subcat/data/edit',
-        data:{catx_id:catx_id},
-        success:function(data){
-            $('#subcat_dropdown').html(data);
+@endsection
+@section('footer_scripts')
+    <script>
+
+        // Slug Creator
+
+        var slug = function(str) {
+            var $slug = '';
+            var trimmed = $.trim(str);
+            $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
+            replace(/-+/g, '-').
+            replace(/^-|-$/g, '');
+            return $slug.toLowerCase();
         }
-    });
-});
-@endsection --}}
+
+        $('.slug-input').keyup(function() {
+            var takedata = $('.slug-input').val();
+            $('.slug-output').val(slug(takedata));
+        });
+
+
+
+
+        // Toogle switch
+
+        $('.cb-value').click(function() {
+            var mainParent = $(this).parent('.toggle-btn');
+
+            if($(mainParent).find('input.cb-value').is(':checked')) {
+                $(mainParent).addClass('active');
+            } else {
+                $(mainParent).removeClass('active');
+            }
+        });
+
+    </script>
+@endsection

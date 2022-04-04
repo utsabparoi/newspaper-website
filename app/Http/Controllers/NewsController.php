@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 class NewsController extends Controller
 {
     use FileSaver;
+
+
     /*
     |--------------------------------------------------------------------------
     | Index Method for Reading Category
@@ -22,7 +24,7 @@ class NewsController extends Controller
     public function index()
     {
         return view('backend.news.index',[
-            'all_adds'=> News::all(),
+            'all_adds'  => News::latest()->paginate(15),
         ]);
     }
 
@@ -38,7 +40,7 @@ class NewsController extends Controller
     public function create()
     {
         return view('backend.news.create',[
-            'category_infos'=> Category::all(),
+            'category_infos'    => Category::all(),
         ]);
     }
 
@@ -52,33 +54,37 @@ class NewsController extends Controller
     */
     public function store(Request $request)
     {
+
+        // $request->validate([
+        //     'title'             => 'required|max:255',
+        //     'link'              => 'required|max:70|unique:news',
+        //     'fk_category_id'    => 'required',
+        //     'short_description' => 'required|max:255',
+        //     'description'       => 'required',
+        //     'photo'             => 'required',
+        // ]);
         $request->validate([
-            'title' => 'required|max:255',
-            'link' => 'required|max:70|unique:news',
-            'fk_category_id' => 'required',
-            'short_description' => 'required|max:255',
-            'description' => 'required',
-            'photo' => 'required',
+            'title'             => 'required',
+            'link'              => 'required|unique:news',
+            'fk_category_id'    => 'required',
         ]);
 
         try {
             $model = News::create([
-                'title'=> $request->title,
-                'link'=> $request->link,
-                'fk_category_id'=> $request->fk_category_id,
-                'fk_sub_category_id'=> $request->fk_sub_category_id,
-                'short_description'=> $request->short_description,
-                'description'=> $request->description,
-                'hit_counter'=> $request->hit_counter,
-                'is_featured'=> $request->is_featured,
-                'is_not_home'=> $request->is_not_home,
-                'is_slider'=> $request->is_slider,
-                'tags'=> $request->tags,
-                'status'=> $request->status,
-                'publish_status'=> $request->publish_status,
-                'created_by'=> $request->created_by,
-                'updated_by'=> $request->updated_by,
-                'photo'=> 'default.jpg',
+                'title'                 => $request->title,
+                'link'                  => $request->link,
+                'fk_category_id'        => $request->fk_category_id,
+                'fk_sub_category_id'    => $request->fk_sub_category_id,
+                'short_description'     => $request->short_description ?? NULL,
+                'description'           => $request->description ?? NULL,
+                'is_featured'           => $request->is_featured == 'on' ? 1 : 0,
+                'is_not_home'           => $request->is_not_home == 'on' ? 1 : 0,
+                'is_slider'             => $request->is_slider == 'on' ? 1 : 0,
+                'tags'                  => $request->tags,
+                'status'                => $request->status == 'on' ? 1 : 0,
+                'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
+                'created_by'            => auth()->id(),
+                'photo'                 => 'default.jpg',
             ]);
 
         $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
@@ -102,6 +108,7 @@ class NewsController extends Controller
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | Edit Method for Edit the Category
@@ -119,6 +126,7 @@ class NewsController extends Controller
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | Update Method for Updating Category
@@ -126,41 +134,59 @@ class NewsController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required|max:255',
-            'link' => 'required|max:70',
-            'short_description' => 'required|max:255',
-            'description' => 'required',
+        // $request->validate([
+        //     'title'             => 'required|max:255',
+        //     'link'              => 'required|max:70',
+        //     'short_description' => 'required|max:255',
+        //     'description'       => 'required',
 
-        ]);
-        if($request->hasFile('photo')){
-            $request->validate([
-                'photo' => 'required',
-            ]);
-        }
+        // ]);
+        // if($request->hasFile('photo')){
+        //     $request->validate([
+        //         'photo' => 'required',
+        //     ]);
+        // }
         try {
             $model = News::find($id);
+            if($request->file('photo') != NULL){
+                $model->update([
+                    'title'                 => $request->title,
+                    'link'                  => $request->link,
+                    'fk_category_id'        => $request->fk_category_id,
+                    'fk_sub_category_id'    => $request->fk_sub_category_id,
+                    'short_description'     => $request->short_description ?? NULL,
+                    'description'           => $request->description ?? NULL,
+                    'is_featured'           => $request->is_featured == 'on' ? 1 : 0,
+                    'is_not_home'           => $request->is_not_home == 'on' ? 1 : 0,
+                    'is_slider'             => $request->is_slider == 'on' ? 1 : 0,
+                    'tags'                  => $request->tags,
+                    'status'                => $request->status == 'on' ? 1 : 0,
+                    'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
+                    'updated_by'            => auth()->id(),
+                    'photo'                 => $model->photo,
+                ]);
 
-            $model->update([
-                'title'=> $request->title,
-                'link'=> $request->link,
-                'fk_category_id'=> $request->fk_category_id,
-                'fk_sub_category_id'=> $request->fk_sub_category_id,
-                'short_description'=> $request->short_description,
-                'description'=> $request->description,
-                'hit_counter'=> $request->hit_counter,
-                'is_featured'=> $request->is_featured,
-                'is_not_home'=> $request->is_not_home,
-                'is_slider'=> $request->is_slider,
-                'tags'=> $request->tags,
-                'status'=> $request->status,
-                'publish_status'=> $request->publish_status,
-                'created_by'=> $request->created_by,
-                'updated_by'=> $request->updated_by,
-                'photo'=> $model->photo,
-            ]);
+                $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
+            }
+            else{
+                $model->update([
+                    'title'                 => $request->title,
+                    'link'                  => $request->link,
+                    'fk_category_id'        => $request->fk_category_id,
+                    'fk_sub_category_id'    => $request->fk_sub_category_id,
+                    'short_description'     => $request->short_description ?? NULL,
+                    'description'           => $request->description ?? NULL,
+                    'is_featured'           => $request->is_featured == 'on' ? 1 : 0,
+                    'is_not_home'           => $request->is_not_home == 'on' ? 1 : 0,
+                    'is_slider'             => $request->is_slider == 'on' ? 1 : 0,
+                    'tags'                  => $request->tags,
+                    'status'                => $request->status == 'on' ? 1 : 0,
+                    'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
+                    'updated_by'            => auth()->id(),
+                ]);
 
-            $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
+            }
+
 
            return back()->with('success','Data Edited Successfully');
 
@@ -169,6 +195,7 @@ class NewsController extends Controller
         }
 
     }
+
 
 
 
@@ -186,6 +213,7 @@ class NewsController extends Controller
         $smart_move->delete();
         return back()->with('deleted','Deleted!');
     }
+
 
 
 
@@ -242,6 +270,8 @@ class NewsController extends Controller
     //     }
     //    echo $show_cat;
     // }
+
+
 
 
     /*
