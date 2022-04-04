@@ -1,66 +1,36 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><img src="https://www.smartsoftware.com.bd/assets/img/logo/software-company-bangladesh.png" alt="smartsoftware" width="400"></p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://www.facebook.com/smartsoftbd"><img src="https://www.smartsoftware.com.bd/assets/img/icons/facebook.png" alt="facebook"></a>
+<a href="https://twitter.com/SmartSoftwarebd"><img src="https://www.smartsoftware.com.bd/assets/img/icons/twitter.png" alt="twitter"></a>
+<a href="https://www.linkedin.com/company/smart-software-inc"><img src="https://www.smartsoftware.com.bd/assets/img/icons/linkedin.png" alt="linkedin"></a>
+<a href="https://www.pinterest.com/smartsoftwarebd/"><img src="https://www.smartsoftware.com.bd/assets/img/icons/pinterest.png" alt="pinterest"></a>
 </p>
 
-## About Laravel
+## About Smart Software Ltd.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Smart Software Limited is a Software Website, ecommerce and Mobile Application Development service provider company in Bangladesh. Not just a software company but we have gained the faith of customers and positioned as one of the best software development company in Bangladesh since 2014. We aim to provide fully interactive and cost-effective solutions by establishing a bridge between the latest Smart Technologies. We have an excellent team of experts who are highly skilled in software architects, software engineers, and determined solid growth in the web solution market. Our mission is 100% client satisfaction by delivering creative and reliable solutions according to our client's needs. We focused on versatile project management intending to provide Software, Web, 3Ds &amp; other solutions with global acceptability.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Thank you for considering contributing to the Smart Software Project to all our Developer Team!
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within our Project, please send an e-mail to MD. Shahidul Islam via [ceo@smartsoftware.com.bd](mailto:ceo@smartsoftware.com.bd). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Except if in any case expressed, Smart Software Ltd. as well as it's licencors own the keep safe revolution rights for all components on Smart Software all licensed revolution rights are saved. You may see as well as print pages from [Smart Software] (https://www.smartsoftware.com.bd) for your very own utilization subject to restriction set in these terms and conditions.
+
+Smart Software maintains whatever authority is needed to screen all Comments and to remove any Comments which it considers in its unique prudence to be wrong, adverse or in any case in penetrate of these Terms and Conditions.
+
+## Privacy Policy
+
+This Privacy information sheet describes in detail the types of individual data we may collect about you when you interconnected with Smart Software. It also describes how we'll collect and control that data and maintenance it safe.
+
+We appreciate that there's a lot of documents here, but we want you to be fully informed about your rights, and how Smart Software manage your data.
+
+## Copyright 
+The basic legal instrument governing copyright law in Bangladesh is the Copyright Act, 2020. All rights reserved [Smart Software Ltd.] (https://www.smartsoftware.com.bd)
