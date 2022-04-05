@@ -131,65 +131,14 @@
 
 
 				<ul class="nav nav-list">
-                    {{-- three level view --}}
-							{{-- <li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									Three Level Menu
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="#">
-											<i class="menu-icon fa fa-leaf green"></i>
-											Item #1
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="#" class="dropdown-toggle">
-											<i class="menu-icon fa fa-pencil orange"></i>
-
-											4th level
-											<b class="arrow fa fa-angle-down"></b>
-										</a>
-
-										<b class="arrow"></b>
-
-										<ul class="submenu">
-											<li class="">
-												<a href="#">
-													<i class="menu-icon fa fa-plus purple"></i>
-													Add Product
-												</a>
-
-												<b class="arrow"></b>
-											</li>
-
-											<li class="">
-												<a href="#">
-													<i class="menu-icon fa fa-eye pink"></i>
-													View Products
-												</a>
-
-												<b class="arrow"></b>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li> --}}
                     {{--
                      |--------------------------------------------------------------------------
                      | Dashboard list start
                      |--------------------------------------------------------------------------
                     --}}
-					<li class="active">
+					<li class="
+								{{ request()->routeIs('home') ? 'active' : '' }}
+							">
 						<a href="{{ url('/home') }}">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
@@ -205,7 +154,10 @@
                      | Setting list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+                            {{ request()->routeIs('user_index') ? 'open active' : '' }}
+                            {{ request()->routeIs('company_index') ? 'open active' : '' }}
+                            ">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-cog"></i>
 							<span class="menu-text"> Settings </span>
@@ -216,7 +168,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-                            <li class="">
+                            <li class="{{ request()->routeIs('user_index') ? 'active' : '' }}">
                                 <a href="{{ route('user_index') }}">
                                     <i class=" fa fa-user"></i>
                                     <span class="menu-text"> User </span>
@@ -224,7 +176,7 @@
 
                                 <b class="arrow"></b>
                             </li>
-							<li class="">
+							<li class="{{ request()->routeIs('company_index') ? 'active' : '' }}">
                                 <a href="{{ route('company_index') }}">
                                     <i class=" fa fa-building"></i>
                                     <span class="menu-text"> Company </span>
@@ -244,7 +196,16 @@
                      | Category list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+
+                    <li class="
+                                {{ request()->routeIs('category.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('category.index') ? 'open active' : '' }}
+                                {{ request()->routeIs('category.edit') ? 'open active' : '' }}
+
+                                {{ request()->routeIs('class-sub-category.edit') ? 'open active' : '' }}
+                                {{ request()->routeIs('class-sub-category.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('class-sub-category.index') ? 'open active' : '' }}
+                            ">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text">
@@ -253,12 +214,10 @@
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
-
 						<ul class="submenu">
-                            {{-- paste --}}
-                            <li class="">
+                            {{-- category --}}
+                            <li class="{{ request()->routeIs('category.create') ? 'active' : '' }}">
                                 <a href="{{ route('category.create') }}">
                                     <i class=" fa fa-plus purple"></i>
                                     Add Category
@@ -266,7 +225,8 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li class="">
+
+                            <li class="{{ request()->routeIs('category.index') ? 'active' : '' }}">
                                 <a href="{{ route('category.index') }}">
                                     <i class=" fa fa-eye pink"></i>
                                     View Category
@@ -274,18 +234,22 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li class="">
+
+                            <li class="
+                                        {{ request()->routeIs('class-sub-category.create') ? 'open active' : '' }}
+                                        {{ request()->routeIs('class-sub-category.edit') ? 'open active' : '' }}
+                                        {{ request()->routeIs('class-sub-category.index') ? 'open active' : '' }}
+                                    ">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
 									Sub Category
 									<b class="arrow fa fa-angle-down"></b>
 								</a>
-
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
+									<li class="{{ request()->routeIs('class-sub-category.create') ? 'active' : '' }}">
                                         <a href="{{ route('class-sub-category.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Sub Category
@@ -294,7 +258,7 @@
                                         <b class="arrow"></b>
                                     </li>
 
-                                    <li class="">
+                                    <li class="{{ request()->routeIs('class-sub-category.index') ? 'active' : '' }}">
                                         <a href="{{ route('class-sub-category.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Sub Category
@@ -314,7 +278,17 @@
                      | Menu list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+                                {{ request()->routeIs('menu.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('menu.edit') ? 'open active' : '' }}
+                                {{ request()->routeIs('menu.index') ? 'open active' : '' }}
+                                {{ request()->routeIs('sub-menu.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('sub-menu.edit') ? 'open active' : '' }}
+                                {{ request()->routeIs('sub-menu.index') ? 'open active' : '' }}
+                                {{ request()->routeIs('subsub-menu.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('subsub-menu.edit') ? 'open active' : '' }}
+                                {{ request()->routeIs('subsub-menu.index') ? 'open active' : '' }}
+                            ">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-bars"></i>
 							<span class="menu-text"> Menu </span>
@@ -325,8 +299,8 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-                            {{-- paste --}}
-                            <li class="">
+
+                            <li class="{{ request()->routeIs('menu.create') ? 'active' : '' }}">
 								<a href="{{ route('menu.create') }}">
 									<i class="fa fa-plus purple"></i>
 									Add Menu
@@ -334,7 +308,8 @@
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
+
+							<li class="{{ request()->routeIs('menu.index') ? 'active' : '' }}">
 								<a href="{{ route('menu.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View Menu
@@ -342,7 +317,13 @@
 
 								<b class="arrow"></b>
 							</li>
-                            <li class="">
+
+                            {{-- Sub Menu --}}
+                            <li class="
+                                    {{ request()->routeIs('sub-menu.create') ? 'open active' : '' }}
+                                    {{ request()->routeIs('sub-menu.edit') ? 'open active' : '' }}
+                                    {{ request()->routeIs('sub-menu.index') ? 'open active' : '' }}
+                                    ">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -353,7 +334,7 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
+									<li class="{{ request()->routeIs('sub-menu.create') ? 'active' : '' }}">
                                         <a href="{{ route('sub-menu.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Sub Menu
@@ -361,7 +342,7 @@
 
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class="">
+                                    <li class="{{ request()->routeIs('sub-menu.index') ? 'active' : '' }}">
                                         <a href="{{ route('sub-menu.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Sub Menu
@@ -371,7 +352,13 @@
                                     </li>
 								</ul>
 							</li>
-                            <li class="">
+
+                            {{-- Sub Sub Menu --}}
+                            <li class="
+                                        {{ request()->routeIs('subsub-menu.create') ? 'open active' : '' }}
+                                        {{ request()->routeIs('subsub-menu.edit') ? 'open active' : '' }}
+                                        {{ request()->routeIs('subsub-menu.index') ? 'open active' : '' }}
+                                    ">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -382,16 +369,16 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
-                                        <a href="{{ route('sub-sub-menu.create') }}">
+									<li class="{{ request()->routeIs('subsub-menu.create') ? 'active' : '' }}">
+                                        <a href="{{ route('subsub-menu.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Sub Sub Menu
                                         </a>
 
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class="">
-                                        <a href="{{ route('sub-sub-menu.index') }}">
+                                    <li class="{{ request()->routeIs('subsub-menu.index') ? 'active' : '' }}">
+                                        <a href="{{ route('subsub-menu.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Sub Sub Menu
                                         </a>
@@ -400,7 +387,9 @@
                                     </li>
 								</ul>
 							</li>
+
 						</ul>
+
 					</li>
 
 
@@ -410,7 +399,14 @@
                      | Blog list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+                                {{ request()->routeIs('admin-blog.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('admin-blog.edit') ? 'open active' : '' }}
+                                {{ request()->routeIs('admin-blog.index') ? 'open active' : '' }}
+                                {{ request()->routeIs('blog-category.create') ? 'open active' : '' }}
+                                {{ request()->routeIs('blog-category.edit') ? 'open active' : '' }}
+                                {{ request()->routeIs('blog-category.index') ? 'open active' : '' }}
+                            ">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-rss"></i>
 							<span class="menu-text"> Blog </span>
@@ -422,7 +418,7 @@
 
 						<ul class="submenu">
                             {{-- paste --}}
-                            <li class="">
+                            <li class="{{ request()->routeIs('admin-blog.create') ? 'active' : '' }}">
                                 <a href="{{ route('admin-blog.create') }}">
                                     <i class=" fa fa-plus purple"></i>
                                     Add Blog
@@ -431,7 +427,7 @@
                                 <b class="arrow"></b>
                             </li>
 
-                            <li class="">
+                            <li class="{{ request()->routeIs('admin-blog.index') ? 'active' : '' }}">
                                 <a href="{{ route('admin-blog.index') }}">
                                     <i class=" fa fa-eye pink"></i>
                                     View Blog
@@ -439,7 +435,12 @@
 
                                 <b class="arrow"></b>
                             </li>
-                            <li class="">
+
+                            <li class="
+                                        {{ request()->routeIs('blog-category.create') ? 'open active' : '' }}
+                                        {{ request()->routeIs('blog-category.edit') ? 'open active' : '' }}
+                                        {{ request()->routeIs('blog-category.index') ? 'open active' : '' }}
+                                    ">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -450,7 +451,7 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
+									<li class="{{ request()->routeIs('blog-category.create') ? 'active' : '' }}">
                                         <a href="{{ route('blog-category.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Blog Category
@@ -459,7 +460,7 @@
                                         <b class="arrow"></b>
                                     </li>
 
-                                    <li class="">
+                                    <li class="{{ request()->routeIs('blog-category.index') ? 'active' : '' }}">
                                         <a href="{{ route('blog-category.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Blog Category
@@ -479,7 +480,14 @@
                      | Advertisement list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('ads-management.create') ? 'open active' : '' }}
+								{{ request()->routeIs('ads-management.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('ads-management.index') ? 'open active' : '' }}
+								{{ request()->routeIs('ad-position.create') ? 'open active' : '' }}
+								{{ request()->routeIs('ad-position.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('ad-position.index') ? 'open active' : '' }}
+                            ">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-bullhorn"></i>
 							<span class="menu-text"> Advertisement </span>
@@ -490,7 +498,11 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-                            <li class="">
+							<li class="
+										{{ request()->routeIs('ads-management.create') ? 'open active' : '' }}
+										{{ request()->routeIs('ads-management.edit') ? 'open active' : '' }}
+										{{ request()->routeIs('ads-management.index') ? 'open active' : '' }}
+									">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -501,7 +513,7 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
+									<li class="{{ request()->routeIs('ads-management.create') ? 'active' : '' }}">
                                         <a href="{{ route('ads-management.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Ads
@@ -509,7 +521,7 @@
 
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class="">
+                                    <li class="{{ request()->routeIs('ads-management.index') ? 'active' : '' }}">
                                         <a href="{{ route('ads-management.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Ads
@@ -519,7 +531,11 @@
                                     </li>
 								</ul>
 							</li>
-                            <li class="">
+							<li class="
+										{{ request()->routeIs('ad-position.create') ? 'open active' : '' }}
+										{{ request()->routeIs('ad-position.edit') ? 'open active' : '' }}
+										{{ request()->routeIs('ad-position.index') ? 'open active' : '' }}
+									">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -530,7 +546,7 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
+									<li class="{{ request()->routeIs('ad-position.create') ? 'active' : '' }}">
                                         <a href="{{ route('ad-position.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Ads Position
@@ -538,7 +554,7 @@
 
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class="">
+                                    <li class="{{ request()->routeIs('ad-position.index') ? 'active' : '' }}">
                                         <a href="{{ route('ad-position.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Ads Position
@@ -558,7 +574,11 @@
                      | News list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('manage-news.create') ? 'open active' : '' }}
+								{{ request()->routeIs('manage-news.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('manage-news.index') ? 'open active' : '' }}
+							">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-newspaper-o"></i>
 							<span class="menu-text"> News </span>
@@ -569,7 +589,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
+							<li class="{{ request()->routeIs('manage-news.create') ? 'active' : '' }}">
 								<a href="{{ route('manage-news.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add News
@@ -577,7 +597,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
+							<li class="{{ request()->routeIs('manage-news.index') ? 'active' : '' }}">
 								<a href="{{ route('manage-news.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View News
@@ -596,7 +616,14 @@
                      | Page list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('pages-problem.create') ? 'open active' : '' }}
+								{{ request()->routeIs('pages-problem.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('pages-problem.index') ? 'open active' : '' }}
+								{{ request()->routeIs('pages-photo.create') ? 'open active' : '' }}
+								{{ request()->routeIs('pages-photo.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('pages-photo.index') ? 'open active' : '' }}
+							">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-file"></i>
 							<span class="menu-text"> Page </span>
@@ -608,23 +635,28 @@
 
 						<ul class="submenu">
                             {{-- paste --}}
-                            <li class="">
-								<a href="{{ route('pages.create') }}">
+                            <li class="{{ request()->routeIs('pages-problem.create') ? 'active' : '' }}">
+								<a href="{{ route('pages-problem.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add Page
 								</a>
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
-								<a href="{{ route('pages.index') }}">
+							<li class="{{ request()->routeIs('pages-problem.index') ? 'active' : '' }}">
+								<a href="{{ route('pages-problem.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View Page
 								</a>
 
 								<b class="arrow"></b>
 							</li>
-                            <li class="">
+
+							<li class="
+										{{ request()->routeIs('pages-photo.create') ? 'open active' : '' }}
+										{{ request()->routeIs('pages-photo.edit') ? 'open active' : '' }}
+										{{ request()->routeIs('pages-photo.index') ? 'open active' : '' }}
+									">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -635,16 +667,16 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
-                                        <a href="{{ route('page-photo.create') }}">
+									<li class="{{ request()->routeIs('pages-photo.create') ? 'active' : '' }}">
+                                        <a href="{{ route('pages-photo.create') }}">
                                             <i class=" fa fa-plus purplet"></i>
                                             Add Page Photo
                                         </a>
 
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class="">
-                                        <a href="{{ route('page-photo.index') }}">
+                                    <li class="{{ request()->routeIs('pages-photo.index') ? 'active' : '' }}">
+                                        <a href="{{ route('pages-photo.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Page Photo
                                         </a>
@@ -663,7 +695,11 @@
                      | Events list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('events.create') ? 'open active' : '' }}
+								{{ request()->routeIs('events.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('events.index') ? 'open active' : '' }}
+							">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-calendar"></i>
 							<span class="menu-text"> Events </span>
@@ -674,7 +710,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
+							<li class="{{ request()->routeIs('events.create') ? 'active' : '' }}">
 								<a href="{{ route('events.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add Events
@@ -682,7 +718,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
+							<li class="{{ request()->routeIs('events.index') ? 'active' : '' }}">
 								<a href="{{ route('events.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View Events
@@ -700,7 +736,14 @@
                      | All Media list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('all-media.create') ? 'open active' : '' }}
+								{{ request()->routeIs('all-media.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('all-media.index') ? 'open active' : '' }}
+								{{ request()->routeIs('media-category.create') ? 'open active' : '' }}
+								{{ request()->routeIs('media-category.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('media-category.index') ? 'open active' : '' }}
+							">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-video-camera"></i>
 							<span class="menu-text"> All Media </span>
@@ -711,7 +754,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
+							<li class="{{ request()->routeIs('all-media.create') ? 'active' : '' }}">
 								<a href="{{ route('all-media.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add Media
@@ -719,7 +762,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
+							<li class="{{ request()->routeIs('all-media.index') ? 'active' : '' }}">
 								<a href="{{ route('all-media.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View Media
@@ -727,7 +770,11 @@
 
 								<b class="arrow"></b>
 							</li>
-                            <li class="">
+                            <li class="
+										{{ request()->routeIs('media-category.create') ? 'open active' : '' }}
+										{{ request()->routeIs('media-category.edit') ? 'open active' : '' }}
+										{{ request()->routeIs('media-category.index') ? 'open active' : '' }}
+									">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
@@ -738,7 +785,7 @@
 								<b class="arrow"></b>
                                 {{-- sub category --}}
 								<ul class="submenu">
-									<li class="">
+									<li class="{{ request()->routeIs('media-category.create') ? 'active' : '' }}">
                                         <a href="{{ route('media-category.create') }}">
                                             <i class=" fa fa-plus purple"></i>
                                             Add Media Category
@@ -747,7 +794,7 @@
                                         <b class="arrow"></b>
                                     </li>
 
-                                    <li class="">
+                                    <li class="{{ request()->routeIs('media-category.index') ? 'active' : '' }}">
                                         <a href="{{ route('media-category.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Media Category
@@ -767,7 +814,11 @@
                      | Slider list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('sliders.create') ? 'open active' : '' }}
+								{{ request()->routeIs('sliders.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('sliders.index') ? 'open active' : '' }}
+							">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-sliders"></i>
 							<span class="menu-text"> SLider </span>
@@ -778,16 +829,16 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
-								<a href="{{ route('slider.create') }}">
+							<li class="{{ request()->routeIs('sliders.create') ? 'active' : '' }}">
+								<a href="{{ route('sliders.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add SLider
 								</a>
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
-								<a href="{{ route('slider.index') }}">
+							<li class="{{ request()->routeIs('sliders.index') ? 'active' : '' }}">
+								<a href="{{ route('sliders.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View SLider
 								</a>
@@ -806,7 +857,11 @@
                      | Performer Schedule list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('schedule.create') ? 'open active' : '' }}
+								{{ request()->routeIs('schedule.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('schedule.index') ? 'open active' : '' }}
+							">
                         <a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-clock-o"></i>
 							<span class="menu-text"> Performer Schedule </span>
@@ -817,7 +872,8 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
+
+							<li class="{{ request()->routeIs('schedule.create') ? 'active' : '' }}">
 								<a href="{{ route('schedule.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add Schedule
@@ -825,7 +881,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
+							<li class="{{ request()->routeIs('schedule.index') ? 'active' : '' }}">
 								<a href="{{ route('schedule.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View Schedule
@@ -844,7 +900,11 @@
                      | Social Links list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="">
+                    <li class="
+								{{ request()->routeIs('social-links.create') ? 'open active' : '' }}
+								{{ request()->routeIs('social-links.edit') ? 'open active' : '' }}
+								{{ request()->routeIs('social-links.index') ? 'open active' : '' }}
+							">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-share-square"></i>
 							<span class="menu-text"> Social Links </span>
@@ -855,7 +915,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
+							<li class="{{ request()->routeIs('social-links.create') ? 'active' : '' }}">
 								<a href="{{ route('social-links.create') }}">
 									<i class=" fa fa-plus purple"></i>
 									Add Social Links
@@ -863,7 +923,7 @@
 
 								<b class="arrow"></b>
 							</li>
-							<li class="">
+							<li class="{{ request()->routeIs('social-links.index') ? 'active' : '' }}">
 								<a href="{{ route('social-links.index') }}">
 									<i class=" fa fa-eye pink"></i>
 									View Social Links
@@ -882,7 +942,10 @@
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
+
 			</div>
+
+
            {{--
             |--------------------------------------------------------------------------
             | Main Content area start

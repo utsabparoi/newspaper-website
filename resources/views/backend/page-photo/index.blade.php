@@ -71,8 +71,8 @@
                                                     @endif
                                                 </td>
                                             <td style="display: flex; ">
-                                                <a href="{{ route('page-photo.edit',$all_adds->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
-                                                <form action="{{ route('page-photo.destroy',$all_adds->id) }}" method="POST">
+                                                <a href="{{ route('pages-photo.edit',$all_adds->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
+                                                <form action="{{ route('pages-photo.destroy',$all_adds->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" style="background: none; border:none;"><i class="fa fa-trash-o" aria-hidden="true"  style=" font-size:22px;margin-top: -2px;

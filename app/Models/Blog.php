@@ -13,10 +13,15 @@ class Blog extends Model
     protected $guarded = [];
 
 
-    
+
     function relationtocategory(){
         return $this->hasOne(Category::class,'id','category');
     }
 
+
+
+    function category(){
+        return $this->belongsTo(Category::class, 'category');
+    }
 
 }

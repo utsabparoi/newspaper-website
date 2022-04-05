@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use App\Models\Category;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class BlogController extends Controller
     public function create()
     {
         return view('backend.blog.create',[
-            'category_infos'=> Category::all(),
+            'category_infos'=> BlogCategory::where('status',1)->get(),
         ]);
     }
 
@@ -101,7 +102,7 @@ class BlogController extends Controller
     {
         return view('backend.blog.edit',[
             'target_ads'=> Blog::find($id),
-            'category_infos'=> Category::all(),
+            'category_infos'=> BlogCategory::where('status',1)->get(),
         ]);
     }
 

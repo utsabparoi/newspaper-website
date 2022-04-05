@@ -16,6 +16,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 
 
 
+
 /*
  |--------------------------------------------------------------------------
  | HomeController Routes
@@ -35,6 +36,9 @@ Route::get('/home/admin/info', [HomeController::class, 'user_index'])->name('use
 */
 Route::get('/company/info/index', [AboutCompanyController::class, 'index'])->name('company_index');
 Route::post('/company/info/update', [AboutCompanyController::class, 'update'])->name('company_update');
+
+
+
 
 
 /*
@@ -67,6 +71,10 @@ Route::get('/sub/category/status/change/{id}', [SubCategoryController::class, 'c
 Route::resource('admin-blog', BlogController::class);
 Route::get('/blog/cat/status/change/{id}', [BlogController::class, 'change_status'])->name('blog_status');
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | BlogCategoryController Routes
@@ -84,6 +92,10 @@ Route::get('/blog/status/change/{id}', [BlogCategoryController::class, 'change_s
 */
 Route::resource('ads-management', AdsManagementController::class);
 Route::get('/Ads/Management/status/change/{id}', [AdsManagementController::class, 'change_status'])->name('adsManagement_status');
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +119,77 @@ Route::get('/menu/status/change/{id}', [MenuController::class, 'change_status'])
 
 
 
+
+
+
+/*
+|--------------------------------------------------------------------------
+| PageController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('pages-problem', PageController::class);
+Route::get('/page/status/change/{id}', [PageController::class, 'change_status'])->name('page_status');
+Route::get('page/{link}', [PageController::class, 'page']);
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| PagePhotoController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('pages-photo', PagePhotoController::class);
+Route::get('/page/photo/status/change/{id}', [PagePhotoController::class, 'change_status'])->name('pagePhoto_status');
+
+
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| PerformerScheduleController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('schedule', PerformerScheduleController::class);
+Route::get('/schedule/status/change/{id}', [PerformerScheduleController::class, 'change_status'])->name('schedule_status');
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| SliderController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('sliders', SliderController::class);
+Route::get('/slider/status/change/{id}', [SliderController::class, 'change_status'])->name('slider_status');
+
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| SubSubMenuController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('subsub-menu', SubSubMenuController::class);
+Route::get('/subsubmenu/status/change/{id}', [SubSubMenuController::class, 'change_status'])->name('subSubMenu_status');
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | SubMenuController Routes
@@ -116,6 +199,9 @@ Route::resource('sub-menu', SubMenuController::class);
 Route::get('/submenu/status/change/{id}', [SubMenuController::class, 'change_status'])->name('subMenu_status');
 
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | MediaCategoryController Routes
@@ -123,6 +209,10 @@ Route::get('/submenu/status/change/{id}', [SubMenuController::class, 'change_sta
 */
 Route::resource('media-category', MediaCategoryController::class);
 Route::get('/media/cat/status/change/{id}', [MediaCategoryController::class, 'change_status'])->name('mediaCat_status');
+
+
+
+
 
 
 /*
@@ -136,6 +226,10 @@ Route::post('/get/subcat/data', [NewsController::class, 'getsubcat_method'])->na
 Route::get('article/{id}/{link}', [NewsController::class, 'news_details']);
 // Route::post('/get/sub/subcat/data/edit', [NewsController::class, 'getsubcatedit_method'])->name('getsubcatedit');
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | SocialLinksController Routes
@@ -143,6 +237,10 @@ Route::get('article/{id}/{link}', [NewsController::class, 'news_details']);
 */
 Route::resource('social-links', SocialLinksController::class);
 Route::get('/social/status/change/{id}', [SocialLinksController::class, 'change_status'])->name('social_status');
+
+
+
+
 
 
 /*
@@ -154,17 +252,17 @@ Route::resource('events', EventsController::class);
 Route::get('/events/status/change/{id}', [EventsController::class, 'change_status'])->name('event_status');
 
 
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | AllMediaController Routes
 |--------------------------------------------------------------------------
 */
-// Frontend routes
 Route::resource('all-media', AllMediaController::class);
 Route::get('/media/status/change/{id}', [AllMediaController::class, 'change_status'])->name('allMedia_status');
-
-
-// Backend routes
 Route::get('/media-list', [AllMediaShowController::class, 'index']);
 Route::get('/media-list/{id}', [AllMediaShowController::class, 'category']);
 Route::get('/media', [AllMediaShowController::class, 'show']);
@@ -188,60 +286,13 @@ Route::get('/search', [CategoryNewsController::class, 'search']);
 
 /*
 |--------------------------------------------------------------------------
-| PerformerScheduleController Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('schedule', PerformerScheduleController::class);
-Route::get('/schedule/status/change/{id}', [PerformerScheduleController::class, 'change_status'])->name('schedule_status');
-
-
-/*
-|--------------------------------------------------------------------------
-| PageController Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('pages', PageController::class);
-Route::get('/page/status/change/{id}', [PageController::class, 'change_status'])->name('page_status');
-Route::get('page/{link}', [PageController::class, 'page']);
-
-
-/*
-|--------------------------------------------------------------------------
-| PagePhotoController Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('page-photo', PagePhotoController::class);
-Route::get('/page/photo/status/change/{id}', [PagePhotoController::class, 'change_status'])->name('pagePhoto_status');
-
-
-
-/*
-|--------------------------------------------------------------------------
-| SliderController Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('slider', SliderController::class);
-Route::get('/slider/status/change/{id}', [SliderController::class, 'change_status'])->name('slider_status');
-
-
-
-/*
-|--------------------------------------------------------------------------
-| SubSubMenuController Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('sub-sub-menu', SubSubMenuController::class);
-Route::get('/subsubmenu/status/change/{id}', [SubSubMenuController::class, 'change_status'])->name('subSubMenu_status');
-
-
-
-
-/*
-|--------------------------------------------------------------------------
 | ArchiveController Routes
 |--------------------------------------------------------------------------
 */
 Route::get('archive/{date}', [ArchiveController::class, 'index']);
+
+
+
 
 
 

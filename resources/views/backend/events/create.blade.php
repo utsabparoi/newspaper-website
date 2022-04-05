@@ -44,7 +44,7 @@
                     <form action="{{ route('events.store') }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="left col-lg-5" style="margin-left: 20px">
+                            <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1">  Name </label>
                                     <div >
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group text-left" style="margin-top: 40px;">
+                        <div class="form-group text-right" style="margin-top: 40px; margin-right:6%">
                             <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Submit</button>
                         </div>
                     </form>

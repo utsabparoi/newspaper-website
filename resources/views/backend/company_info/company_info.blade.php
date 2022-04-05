@@ -46,7 +46,7 @@
                         </div> --}}
 
                         <div class="row">
-                            <div class="col-lg-8" style="margin:0 0 50px 22px">
+                            <div class="col-lg-11" style="margin:0 0 50px 22px">
 
                                 <div class="form-group">
                                     <label class=" no-padding-right" for="form-field-1"> Company Name </label>
@@ -152,7 +152,7 @@
 
                             </div>
                         </div>
-                        <div class="form-group text-left" style="margin-top: 30px; margin-left:10px">
+                        <div class="form-group text-right" style="margin-top: 30px; margin-right:6%">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>

@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <form action="{{ route('slider.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('sliders.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="row">

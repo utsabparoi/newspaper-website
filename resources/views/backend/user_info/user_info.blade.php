@@ -54,7 +54,7 @@
                             @endforeach
                         @endif
                         <div class="row">
-                            <div class="left col-lg-5" style="margin-left: 20px">
+                            <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
                                     <label class=" no-padding-right" for="form-field-1"> User Name </label>
                                     <div >
@@ -67,7 +67,8 @@
                                         <input value="{{ $allUserInfo->email }}" name="email" type="text" id="form-field-1" placeholder="Short Form" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <br><br>
+                                <div class="form-group" style="margin-bottom: 0 !important">
                                     <label  for="form-field-2"><h5><b>Change Password</b></h5></label>
                                 </div>
                                 <div class="form-group">
@@ -90,8 +91,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group text-left" style="margin-top: 40px;">
-                            <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Submit</button>
+                        <div class="form-group text-right" style="margin-top: 40px; margin-right: 6%;">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div><!-- /.col -->

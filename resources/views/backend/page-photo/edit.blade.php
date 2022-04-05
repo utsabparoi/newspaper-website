@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <form action="{{ route('page-photo.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pages-photo.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="row">

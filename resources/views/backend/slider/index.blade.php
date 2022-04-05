@@ -80,8 +80,8 @@
                                                 </div>
                                             </td>
                                             <td style="display: flex; ">
-                                                <a href="{{ route('slider.edit',$all_adds->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
-                                                <form action="{{ route('slider.destroy',$all_adds->id) }}" method="POST">
+                                                <a href="{{ route('sliders.edit',$all_adds->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
+                                                <form action="{{ route('sliders.destroy',$all_adds->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" style="background: none; border:none;"><i class="fa fa-trash-o" aria-hidden="true"  style=" font-size:22px;margin-top: -2px;

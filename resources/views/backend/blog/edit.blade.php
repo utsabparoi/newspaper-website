@@ -45,12 +45,12 @@
                         @csrf
                         @method('PATCH')
                         <div class="row">
-                            <div class="left col-lg-5" style="margin-left: 20px">
+                            <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
                                     <select name="category" class="form-control">
                                         <option value="" >-Select Category-</option>
                                         @foreach ($category_infos as $category)
-                                            <option value="{{ $category->id }}" {{ ( $category->id )== $target_ads->relationtocategory->id ? 'selected' : "" }}>{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" {{ ( $category->id )== $target_ads->category ? 'selected' : "" }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group text-left" style="margin-top: 40px;">
+                        <div class="form-group text-right" style="margin-top: 40px; margin-right:6%">
                             <button type="submit" class="btn btn-primary" style="margin-left: 15px;">Submit</button>
                         </div>
                     </form>

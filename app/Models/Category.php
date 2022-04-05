@@ -21,6 +21,14 @@ class Category extends Model
 
 
 
+    function blogs()
+    {
+        return $this->hasMany(Blog::class,'id');
+    }
+
+
+
+
 
 
 

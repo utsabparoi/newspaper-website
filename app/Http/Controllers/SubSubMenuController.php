@@ -10,6 +10,8 @@ use App\Traits\FileSaver;
 class SubSubMenuController extends Controller
 {
     use FileSaver;
+
+
     /*
     |--------------------------------------------------------------------------
     | Index Method for Reading Category
@@ -17,6 +19,7 @@ class SubSubMenuController extends Controller
     */
     public function index()
     {
+
         return view('backend.sub-sub-menu.index',[
             'all_adds'=> SubSubMenu::all(),
         ]);
@@ -33,6 +36,7 @@ class SubSubMenuController extends Controller
     */
     public function create()
     {
+
         return view('backend.sub-sub-menu.create',[
             'infos'=> SubMenu::all(),
         ]);
