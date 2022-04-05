@@ -41,8 +41,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <form action="{{ route('manage-news.store') }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('manage-news.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
@@ -117,7 +118,7 @@
                                         <label class=" control-label no-padding-right" for="form-field-1">Status </label>
                                         <div >
                                             <div class="toggle-btn {{ $target_ads->status == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="status" checked class="cb-value" />
+                                                <input type="checkbox" name="status" {{ $target_ads->status == 1 ? 'checked' : " " }} class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -126,7 +127,7 @@
                                         <label class=" control-label no-padding-right" for="form-field-1">Public Status </label>
                                         <div >
                                             <div class="toggle-btn {{ $target_ads->publish_status == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="publish_status"  checked  class="cb-value" />
+                                                <input type="checkbox" name="publish_status"  {{ $target_ads->publish_status == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -135,7 +136,7 @@
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Featured </label>
                                         <div >
                                             <div class="toggle-btn {{ $target_ads->is_featured == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="is_featured"  checked  class="cb-value" />
+                                                <input type="checkbox" name="is_featured"  {{ $target_ads->is_featured == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -144,7 +145,7 @@
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Home </label>
                                         <div >
                                             <div class="toggle-btn {{ $target_ads->is_not_home == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="is_not_home"  checked  class="cb-value" />
+                                                <input type="checkbox" name="is_not_home"  {{ $target_ads->is_not_home == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -153,7 +154,7 @@
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Slider </label>
                                         <div >
                                             <div class="toggle-btn {{ $target_ads->is_slider == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="is_slider" checked  class="cb-value" />
+                                                <input type="checkbox" name="is_slider" {{ $target_ads->is_slider == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
