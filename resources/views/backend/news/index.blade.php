@@ -109,7 +109,8 @@
                                     @endforelse
                                 </tbody>
                               </table>
-                              {{ $all_adds->links() }}
+                              {{-- {{ $all_adds->links() }} --}}
+                              {{$all_adds->links('pagination::bootstrap-4')}}
                         </div>
                     </div>
 

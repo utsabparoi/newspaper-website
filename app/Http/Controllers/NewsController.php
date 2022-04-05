@@ -134,7 +134,6 @@ class NewsController extends Controller
     */
     public function update(Request $request, $id)
     {
-        // return $request->all(); die();
 
         // $request->validate([
         //     'title'             => 'required|max:255',
