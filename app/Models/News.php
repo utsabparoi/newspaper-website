@@ -13,6 +13,16 @@ class News extends Model
     protected $guarded = [];
 
 
+    function category()
+    {
+        return $this->belongsTo(Category::class,'fk_category_id');
+    }
+
+
+
+
+
+
     function subcategory()
     {
         return $this->belongsTo(SubCategory::class,'fk_sub_category_id');

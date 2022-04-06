@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 class AllMediaController extends Controller
 {
     use FileSaver;
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Index Method for Reading Category
@@ -20,7 +23,7 @@ class AllMediaController extends Controller
     {
 
         return view('backend.all-media.index',[
-            'all_adds'=> AllMedia::all(),
+            'all_adds'=> AllMedia::where('status',1)->paginate(20),
         ]);
     }
 

@@ -51,10 +51,7 @@
                                         <th>short_description</th>
                                         <th>link</th>
                                         <th>category</th>
-                                        <th>sub_category</th>
-                                        <th>is_slider</th>
                                         <th>tags</th>
-                                        <th>created_by</th>
                                         <th>photo</th>
                                         <th>status</th>
                                         <th>Action</th>
@@ -67,11 +64,8 @@
                                                 <td>{{ $all_add->title }}</td>
                                                 <td>{{ $all_add->short_description }}</td>
                                                 <td>{{ $all_add->link }}</td>
-                                                <td>{{ $all_add->fk_category_id }}</td>
-                                                <td>{{ $all_add->fk_sub_category_id }}</td>
-                                                <td>{{ $all_add->is_slider }}</td>
+                                                <td>{{ $all_add->category->name }}</td>
                                                 <td>{{ $all_add->tags }}</td>
-                                                <td>{{ $all_add->created_by }}</td>
                                                 <td>
                                                     @if ( strpos($all_add->photo,'assets') )
                                                         <img src="{{ asset($all_add->photo) }}" alt="not found" width="80px">
