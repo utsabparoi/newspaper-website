@@ -48,7 +48,7 @@
 
                                 <div class="form-group">
                                     <label for="category_id">Category</label>   {{-- category --}}
-                                    <select name="fk_category_id" id="cat_dropdown" class="form-control">
+                                    <select name="fk_category_id" id="cat_dropdown" class="chosen-select"  style="width:100%">
                                         <option value="">-Select a Category-</option>
 
                                         @foreach ($category_infos as $category_info)
@@ -61,7 +61,7 @@
                                 <div class="form-group">    {{-- sub category --}}
                                     <label for="subcategory_id">Sub Category</label>
 
-                                    <select name="fk_sub_category_id" id="subcat_dropdown" class="form-control">
+                                    <select name="fk_sub_category_id" id="subcat_dropdown" class="chosen-select"  style="width:100%">
                                         <option value="">-Select a Category First-</option>
                                     </select>
 

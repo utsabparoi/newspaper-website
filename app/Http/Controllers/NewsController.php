@@ -250,12 +250,16 @@ class NewsController extends Controller
         foreach (SubCategory::where('fk_category_id',$request->catx_id)->get(['id','name']) as $subcat_data) {
             $show_cat .= "<option value='$subcat_data->id'>$subcat_data->name</option>";
         }
+
        echo $show_cat;
     }
 
 
 
 
+
+
+    
     /*
     |--------------------------------------------------------------------------
     | SUB SUB Category Method for getting Sub Sub Category info

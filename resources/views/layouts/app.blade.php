@@ -26,6 +26,7 @@
 		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-rtl.min.css" />
 		<link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/custom.css" />
+        <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/chosen.css" class="ace-main-stylesheet" />
         {{-- <link rel="stylesheet" href="sweetalert2.min.css"> --}}
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="{{ asset('assets/dashboard') }}/assets/css/ace-ie.min.css" />
@@ -1012,6 +1013,9 @@
 		  <script src="{{ asset('assets/dashboard') }}/assets/js/excanvas.min.js"></script>
 		<![endif]-->
 
+        {{-- chosen scripts --}}
+        <script src="{{ asset('assets/dashboard') }}/assets/js/chosen-box.js"></script>
+        <script src="{{ asset('assets/dashboard') }}/assets/js/chosen.jquery.min.js"></script>
 
 		<!-- jQuery Scripts file -->
 		<script src="{{ asset('assets/dashboard') }}/assets/js/jquery-ui.custom.min.js"></script>
