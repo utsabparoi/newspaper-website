@@ -315,7 +315,7 @@ class NewsController extends Controller
          Session::put('metaDescription',$news_details->short_description);
          Session::put('tags',$news_details->tags);
 
-        $singleTitle=$news_details->title;
+        $singleTitle=$news_details->title ." |  Desi Media Point ";
         $ogImage=$news_details->photo;
 
 

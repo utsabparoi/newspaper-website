@@ -69,9 +69,9 @@
 
     @if ( isset($ogImage) )
         @if (strpos($ogImage,'assets'))
-            <meta property="og:image" content="{{$ogImage}}" />
+            <meta property="og:image" content="{{ asset($ogImage) }}" />
         @else
-            @php $image=URL::to("public/assets/frontend/images/news/$ogImage"); @endphp
+            @php $image=URL::to("img/news/$ogImage"); @endphp
             <meta property="og:image" content="{{$image}}" />
         @endif
     @else
