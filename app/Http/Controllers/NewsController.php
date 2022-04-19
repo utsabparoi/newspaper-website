@@ -87,7 +87,7 @@ class NewsController extends Controller
                 'photo'                 => 'default.jpg',
             ]);
 
-        $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
+        $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
 
            return back()->with('success','Data Added Successfully');
 
@@ -167,7 +167,7 @@ class NewsController extends Controller
                     'photo'                 => $model->photo,
                 ]);
 
-                $this->upload_file($request->photo, $model, 'photo', 'uploads/news');
+                $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
             }
             else{
                 $model->update([
@@ -259,7 +259,7 @@ class NewsController extends Controller
 
 
 
-    
+
     /*
     |--------------------------------------------------------------------------
     | SUB SUB Category Method for getting Sub Sub Category info

@@ -112,6 +112,7 @@
                                     <div class="file-select-name">No file chosen...</div>
                                     <input type="file" name="photo" id="file-upload-input">
                                     </div>
+                                    <small class="text-danger">* News Image size 470 x 360 (Max)</small>
                                 </div>
                                 <div style="display: flex; justify-content: space-around; text-align: center; margin-top:50px">
                                     <div class="form-group">

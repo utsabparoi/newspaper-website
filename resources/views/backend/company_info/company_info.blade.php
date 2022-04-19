@@ -115,7 +115,7 @@
                                         @endif
 
                                             <br>
-                                        <small class="text-danger">*Logo size must be 300 x 130</small>
+                                        <small class="text-danger">*Logo size 270 x 100 (Max)</small>
                                     </div>
                                 </div><br>
 

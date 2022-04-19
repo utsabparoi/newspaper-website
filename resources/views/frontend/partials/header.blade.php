@@ -1,19 +1,16 @@
 <?php
-$category=DB::table('category')->where('status',1)->orderBy('serial_num','ASC')->get();
-
-
+    $category=DB::table('category')->where('status',1)->orderBy('serial_num','ASC')->get();
 ?>
+
 <?php
-$info=DB::table('about_company')->first();
- $social_link=DB::table('social_links')->get();
- $mediaCat=DB::table('media_categories')->orderBy('serial','ASC')->get();
-
-
- ?>
+    $info=DB::table('about_company')->first();
+    $social_link=DB::table('social_links')->get();
+    $mediaCat=DB::table('media_categories')->orderBy('serial','ASC')->get();
+?>
 
  <?php
 
-if(Session::has('metaDescription')){
+    if(Session::has('metaDescription')){
         $metaDescription=Session::get('metaDescription');
     }else{
         $metaDescription='Desi Media Point Online Latest Bangla News/Article - Sports, Crime, Entertainment, Business, Politics, Education, Opinion, Lifestyle, Photo, Video, Travel, National & World';
@@ -37,63 +34,62 @@ if(Session::has('metaDescription')){
 
      $ads1=DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
 
-    ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
-
-
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 	<!-- Basic Page Needs
 	================================================== -->
 
-	<title>
-
-	   @if(isset($singleTitle))
-	   {{$singleTitle}}
-	   @else
-	   {{$title}} | Latest Bangla News, Infotainment, Entertenment, Science, Lifestyle, bangla news, current News, News, Infotainment, videos, photos, news for india, pakistan, usa, uk, iraq, breaking news, bangla newspaper, bangladesh news, online newspaper, bangladeshi newspaper, bangladesh newspapers, all bangla news, bd news, news paper, daily News, bangla paper, election, news website, politics, world news, business news, bollywood news, cricket news, sports, lifestyle, gadgets, tech news, video news,video song, music, film, drama, talk show, reciepe, sports news, celebrity photo, picture, automible news, travel news, healthcare news, welness news, travel news, fashion news, education news, অনলাইন নিউজ পেপার, আজকের নিউজ পেপার, আমার দেশ নিউজ পেপার, সকল পত্রিকা, অনলাইন, বাংলাদেশ, আজকের সংবাদ/খবর , আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর
-
-	   @endif
-	    </title>
+	<title>@if(isset($singleTitle)){{$singleTitle}}@else{{$title}} | Latest Bangla News, Infotainment, Entertenment, Science, Lifestyle, bangla news, current News, News, Infotainment, videos, photos, news for india, pakistan, usa, uk, iraq, breaking news, bangla newspaper, bangladesh news, online newspaper, bangladeshi newspaper, bangladesh newspapers, all bangla news, bd news, news paper, daily News, bangla paper, election, news website, politics, world news, business news, bollywood news, cricket news, sports, lifestyle, gadgets, tech news, video news,video song, music, film, drama, talk show, reciepe, sports news, celebrity photo, picture, automible news, travel news, healthcare news, welness news, travel news, fashion news, education news, অনলাইন নিউজ পেপার, আজকের নিউজ পেপার, আমার দেশ নিউজ পেপার, সকল পত্রিকা, অনলাইন, বাংলাদেশ, আজকের সংবাদ/খবর , আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর@endif</title>
 
 	<!-- Mobile Specific Metas
 	================================================== -->
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
 	<meta name="description" content="{{$metaDescription}}">
 	<meta name="keywords" content="{{$tags}}">
 	<meta name="Developed By" content="Smart Software Ltd."/>
 	<meta name="Googlebot" content="all" />
-
 	<meta http-equiv="imagetoolbar" content="no" />
-
 	<meta name="Author" content="DesiMediaPoint.com" />
-
 	<meta name="Copyright" content="DesiMediaPoint.com" />
-
 	<meta name="owner" content="DesiMediaPoint.com" />
-
 	<meta name="Rating" content="General" />
-
 	<meta http-equiv="Pragma" content="no-cache" />
-
 	<meta name="distribution" content="Global" />
 	<meta property="og:url" content="{{Request::fullUrl()}}" />
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content="<? echo $title; ?>" />
-	<meta property="og:description" content="<? echo $metaDescription; ?>" />
+	<meta property="og:title" content="{{ $title }}" />
+	<meta property="og:description" content="{{ $metaDescription }}" />
 
-	@if(isset($ogImage))
-	    <?php $image=URL::to("public/assets/frontend/images/news/$ogImage");?>
-	    <meta property="og:image" content="{{$image}}" />
+    @if ( isset($ogImage) )
+        @if (strpos($ogImage,'assets'))
+            <meta property="og:image" content="{{$ogImage}}" />
+        @else
+            @php $image=URL::to("public/assets/frontend/images/news/$ogImage"); @endphp
+            <meta property="og:image" content="{{$image}}" />
+        @endif
+    @else
+        @if (strpos($info->logo,'assets'))
+            <meta property="og:image" content="{{ asset($info->logo)}}" />
+        @else
+            <meta property="og:image" content="{{ asset('assets/uploads/logo/'.$info->logo)}}" />
+        @endif
+    @endif
+
+	{{-- @if(isset($ogImage))
+        @php $image=URL::to("public/assets/frontend/images/news/$ogImage"); @endphp
+	    <meta property="og:image" content="{{$ogImage}}" />
 	@else
 	    <meta property="og:image" content="{{ asset('assets/uploads/logo/'.$info->logo)}}" />
-	@endif
+	@endif --}}
+
+
 
 	<link rel="canonical" href="www.desimediapoint.com"/>
 
@@ -139,7 +135,7 @@ if(Session::has('metaDescription')){
 	<link rel="stylesheet" href="{{asset('assets/frontend/css/jquery.minical.css')}}">
 	<!-- Colorbox -->
 	<link rel="stylesheet" href="{{asset('assets/frontend/css/colorbox.css')}}">
-	  <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/custom.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/custom.css')}}">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -216,29 +212,16 @@ if(Session::has('metaDescription')){
 	<header id="header" class="header">
 		<div class="container">
 			<div class="row header-row">
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
-					<div class="logo">
-
-                        {{-- TEST 1 --}}
-                        {{-- @if (file_exists(base_path('public/img/'. $info->logo)))
-                                <a href="{{URL::to('/')}}">
-                                    <img style="width:250px" src="{{asset('img/'.$info->logo)}}" alt="image">
-                                </a>
-                            @else
-                                <a href="{{URL::to('/')}}">
-                                    <img style="width:250px" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
-                                </a>
-                        @endif --}}
-
-
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important">
+					<div class="logo" style="width: 272px;">
                         {{-- TEST 2 --}}
                         @if ( strpos($info->logo,'assets') )
                             <a href="{{URL::to('/')}}">
-                                <img style="width:250px" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
+                                <img style="width:100%; height:100%;" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
                             </a>
                         @else
                             <a href="{{URL::to('/')}}">
-                                <img style="width:250px" src="{{asset('img/'.$info->logo)}}" alt="image">
+                                <img style="width:100%; height:100%;" src="{{asset('img/'.$info->logo)}}" alt="image">
                             </a>
                         @endif
 

@@ -82,7 +82,7 @@
                                         <div class="control-label no-padding-right" style="padding-left: 0px !important;">
                                             <label class="ace-file-input ace-file-multiple"><input  name="photo" type="file" id="id-input-file-3"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
                                         </div>
-                                        <small class="text-danger">* Photo size must be 110 x 50</small>
+                                        <small class="text-danger">* Photo size 110 x 50 (Max)</small>
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -54,7 +54,7 @@ class AboutCompanyController extends Controller
                     'logo'              => $model->logo,
                 ]);
 
-                $this->upload_file($request->logo, $model, 'logo', 'uploads/logo');
+                $this->uploadFileWithResize($request->logo, $model, 'logo', 'uploads/logo', 270, 100);
             }
             else{
                 $model->update([

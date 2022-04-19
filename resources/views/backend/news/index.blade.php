@@ -52,7 +52,7 @@
                                         <th>link</th>
                                         <th>category</th>
                                         <th>tags</th>
-                                        <th>Web</th>
+                                        <th>Photo</th>
                                         <th>status</th>
                                         <th>Action</th>
                                   </tr>
