@@ -163,10 +163,12 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<div class="ts-date">
-						<i class="fa fa-calendar-check-o"></i><?php
-
-						echo date('D jS M Y, g:i a');
+						{{-- <i class="fa fa-calendar-check-o"></i> --}}
+                        <span>Today
+                        <?php
+						    echo date('D jS M Y, g:i a');
 						?>
+                        </span>
 					</div>
 					<ul class="unstyled top-nav">
 						<li><a href="#">About</a></li>
@@ -192,10 +194,6 @@
 				<div class="col-md-3 col-sm-3 col-xs-12 top-social text-right">
 					<ul class="unstyled">
 						<li>
-
-
-
-
 							@foreach($social_link as $s_link)
 							<a title="{{$s_link->name}}" href='{{URL::to("$s_link->link")}}'>
 								<span class="social-icon"><i class="fa {{$s_link->icon_class}}"></i></span>
@@ -284,9 +282,6 @@
 								</li>
 								@endforeach -->
 
-
-
-
 								@foreach($category as $v_category)
 								<li class="dropdown">
 									<a href='{{URL::to("$v_category->link")}}' class="dropdown-toggle">{{$v_category->name}}
@@ -298,23 +293,19 @@
 									</a>
 									 @if(count($sub_category)>0)
 									<ul class="dropdown-menu" role="menu">
-										@foreach($sub_category as $s_cat)
+										@foreach($sub_category->sortBy('serial_num') as $s_cat)
 										<li>
 											<a href='{{URL::to("$v_category->link/$s_cat->link")}}'>{{$s_cat->name}}</a>
 
 										</li>
 										@endforeach
-
-
-
-
 									</ul>
 									@endif
 
 								</li>
 								@endforeach<!-- Features menu end -->
 								<li class="dropdown">
-									<a href="{{url('/media-list')}}" class="dropdown-toggle">Media Point <i class="fa fa-angle-down"></i></a>
+									<a href="{{url('/media-list')}}" class="dropdown-toggle">অন্যান্য <i class="fa fa-angle-down"></i></a>
 									<ul class="dropdown-menu" role="menu">
 									@foreach($mediaCat as $mCat)
 										<li><a href='{{URL::to("media-list/$mCat->id")}}'>{{$mCat->category_name}}</a></li>

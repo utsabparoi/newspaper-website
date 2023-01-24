@@ -21,6 +21,8 @@ class CreateSubCategoryTable extends Migration
             $table->integer('serial_num')->nullable();
             $table->integer('status');
             $table->timestamps();
+
+            
         });
     }
 

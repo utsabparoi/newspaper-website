@@ -59,12 +59,13 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($all_adds as $all_add)
+                                        {{-- @dd($all_add) --}}
                                         <tr>
                                                 <th>{{ $loop->index+1 }}</th>
                                                 <td>{{ $all_add->title }}</td>
                                                 <td>{{ $all_add->short_description }}</td>
                                                 <td>{{ $all_add->link }}</td>
-                                                <td>{{ $all_add->category->name }}</td>
+                                                <td>{{ optional($all_add->category)->name }}</td>
                                                 <td>{{ $all_add->tags }}</td>
                                                 <td>
                                                     @if ( strpos($all_add->photo,'assets') )
