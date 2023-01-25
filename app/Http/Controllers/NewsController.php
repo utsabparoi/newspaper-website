@@ -116,11 +116,12 @@ class NewsController extends Controller
     */
     public function edit($id)
     {
-        return view('backend.news.edit',[
-            'target_ads'=> News::find($id),
-            'category_infos'=> Category::all(),
-            'subcategory_infos'=> SubCategory::all(),
-        ]);
+        $data['news']               = News::find($id);
+        $data['categories']         = Category::all();
+        $data['subcategories']      = SubCategory::all();
+
+        // dd($data);
+        return view('backend.news.edit',$data);
     }
 
 

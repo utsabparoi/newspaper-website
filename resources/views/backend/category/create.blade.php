@@ -13,7 +13,7 @@
                 <li>
                     <a href="#">Category</a>
                 </li>
-                <li class="active">Add</li>
+                <li class="active">Add Category</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -30,10 +30,10 @@
 
             <div class="page-header">
                 <h1>
-                    <b>Adding Category</b>
+                    <b>Add New Category</b>
                     <small>
                         <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
+                        Create category for news
                     </small>
                 </h1>
             </div><!-- /.page-header -->

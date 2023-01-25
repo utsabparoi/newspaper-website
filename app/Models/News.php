@@ -18,36 +18,14 @@ class News extends Model
         return $this->belongsTo(Category::class,'fk_category_id');
     }
 
-
-
-
-
-
     function subcategory()
     {
         return $this->belongsTo(SubCategory::class,'fk_sub_category_id');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     function relationtocategory(){
         return $this->hasOne(Category::class,'id','fk_category_id');
     }
-
 
 
     function relationtoSubCategory(){

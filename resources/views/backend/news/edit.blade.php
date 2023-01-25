@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <form action="{{ route('manage-news.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('manage-news.update',$news->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="row">
@@ -50,57 +50,58 @@
                                     <label for="category_id">Category</label>
                                     <select name="fk_category_id" class="form-control">
                                         <option value="" >-Select Category-</option>
-                                        @foreach ($category_infos as $category)
-                                            <option value="{{ $category->id }}" {{ ( $category->id )== $target_ads->relationtocategory->id ? 'selected' : "" }}>{{ $category->name }}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $category->id == $news->fk_category_id ? 'selected' : "" }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="subcategory_id">Sub Category</label>
                                     <select name="fk_sub_category_id" class="form-control" id="subcat_dropdown">
-                                        @foreach ($subcategory_infos as $subcategory)
-                                            <option value="{{ $subcategory->id }}" {{ ( $subcategory->id )== $target_ads->relationtoSubCategory->id ? 'selected' : "" }}>{{ $subcategory->name }}</option>
+                                        <option value="">-Select-</option>
+                                        @foreach ($subcategories as $subcategory)
+                                            <option value="{{ $subcategory->id }}" {{ $subcategory->id == $news->fk_sub_category_id ? 'selected' : "" }}>{{ $subcategory->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> News title </label>
                                     <div >
-                                        <input value="{{ $target_ads->title }}" name="title" type="text" id="form-field-1" placeholder="News title" class="form-control">
+                                        <input value="{{ $news->title }}" name="title" type="text" id="form-field-1" placeholder="News title" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> News link </label>
                                     <div >
-                                        <input value="{{ $target_ads->link }}" name="link" type="text" id="form-field-1" placeholder="News link " class="form-control">
+                                        <input value="{{ $news->link }}" name="link" type="text" id="form-field-1" placeholder="News link " class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Short Description </label>
                                     <div >
-                                        <textarea name="short_description" cols="30" rows="8" placeholder="Short description..." class="form-control">{{ $target_ads->short_description }}</textarea>
+                                        <textarea name="short_description" cols="30" rows="8" placeholder="Short description..." class="form-control">{{ $news->short_description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1">Description </label>
                                     <div >
-                                        <textarea name="description" cols="30" rows="15" placeholder="Long description...." class="form-control">{{ $target_ads->description }}</textarea>
+                                        <textarea name="description" cols="30" rows="15" placeholder="Long description...." class="form-control">{{ $news->description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> tags </label>
                                     <div >
-                                        <input value="{{ $target_ads->tags }}" name="tags" type="text" id="form-field-1" placeholder="tags" class="form-control">
+                                        <input value="{{ $news->tags }}" name="tags" type="text" id="form-field-1" placeholder="tags" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-2">Previous Image </label>
                                     <div >
                                         <div class=" no-padding-right" style="padding-left: 0px !important;">
-                                            @if ( strpos($target_ads->photo,'assets') )
-                                                <img src="{{ asset($target_ads->photo) }}" alt="not found" width="80px">
+                                            @if ( strpos($news->photo,'assets') )
+                                                <img src="{{ asset($news->photo) }}" alt="not found" width="80px">
                                             @else
-                                                <img src="{{asset('img/news/'.$target_ads->photo)}}" alt="not found" width="80px">
+                                                <img src="{{asset('img/news/'.$news->photo)}}" alt="not found" width="80px">
                                             @endif
                                         </div>
                                     </div>
@@ -118,8 +119,8 @@
                                     <div class="form-group">
                                         <label class=" control-label no-padding-right" for="form-field-1">Status </label>
                                         <div >
-                                            <div class="toggle-btn {{ $target_ads->status == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="status" {{ $target_ads->status == 1 ? 'checked' : " " }} class="cb-value" />
+                                            <div class="toggle-btn {{ $news->status == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="status" {{ $news->status == 1 ? 'checked' : " " }} class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -127,8 +128,8 @@
                                     <div class="form-group">
                                         <label class=" control-label no-padding-right" for="form-field-1">Public Status </label>
                                         <div >
-                                            <div class="toggle-btn {{ $target_ads->publish_status == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="publish_status"  {{ $target_ads->publish_status == 1 ? 'checked' : " " }}  class="cb-value" />
+                                            <div class="toggle-btn {{ $news->publish_status == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="publish_status"  {{ $news->publish_status == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -136,8 +137,8 @@
                                     <div class="form-group">
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Featured </label>
                                         <div >
-                                            <div class="toggle-btn {{ $target_ads->is_featured == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="is_featured"  {{ $target_ads->is_featured == 1 ? 'checked' : " " }}  class="cb-value" />
+                                            <div class="toggle-btn {{ $news->is_featured == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="is_featured"  {{ $news->is_featured == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -145,8 +146,8 @@
                                     <div class="form-group">
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Home </label>
                                         <div >
-                                            <div class="toggle-btn {{ $target_ads->is_not_home == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="is_not_home"  {{ $target_ads->is_not_home == 1 ? 'checked' : " " }}  class="cb-value" />
+                                            <div class="toggle-btn {{ $news->is_not_home == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="is_not_home"  {{ $news->is_not_home == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>
@@ -154,8 +155,8 @@
                                     <div class="form-group">
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Slider </label>
                                         <div >
-                                            <div class="toggle-btn {{ $target_ads->is_slider == 1 ? 'active' : " " }}">
-                                                <input type="checkbox" name="is_slider" {{ $target_ads->is_slider == 1 ? 'checked' : " " }}  class="cb-value" />
+                                            <div class="toggle-btn {{ $news->is_slider == 1 ? 'active' : " " }}">
+                                                <input type="checkbox" name="is_slider" {{ $news->is_slider == 1 ? 'checked' : " " }}  class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>
                                         </div>

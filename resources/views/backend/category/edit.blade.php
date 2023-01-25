@@ -11,9 +11,9 @@
                 </li>
 
                 <li>
-                    <a href="#">AdsManagements</a>
+                    <a href=" route('category.index') ">Category</a>
                 </li>
-                <li class="active">Add</li>
+                <li class="active">Edit</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
