@@ -48,17 +48,22 @@ class CategoryController extends Controller
             'name' => 'required|unique:category',
             'link' =>'required|unique:category',
             'serial_num' => 'required',
+            'status'    => 'required|boolean',
         ]);
 
-        Category::insert([
-            'name'=> $request->name,
-            'link'=> $request->link,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'is_home'=> $request->is_home,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Category Added Successfully');
+        try {
+            Category::insert([
+                'name'=> $request->name,
+                'link'=> $request->link,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status,
+                'is_home'=> $request->is_home,
+                'created_at'=> Carbon::now(),
+            ]);
+            return redirect()->route('category.index')->with('success','Category Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 

@@ -10,9 +10,9 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="{{ route('category.index') }}">Category</a>
                 </li>
-                <li class="active">Simple &amp; Dynamic</li>
+                <li class="active">All Categories</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -26,15 +26,17 @@
         </div>
 
         <div class="page-content">
-            
-            <div class="page-header">
-                <h1>
-                    Tables
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Static &amp; Dynamic Tables
-                    </small>
-                </h1>
+
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list-alt"></i> Categories
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('category.create') }}" class="">
+                        <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">

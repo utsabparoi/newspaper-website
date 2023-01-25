@@ -11,7 +11,7 @@
                 </li>
 
                 <li>
-                    <a href="#">Category</a>
+                    <a href="{{ route('category.index') }}">Category</a>
                 </li>
                 <li class="active">Add Category</li>
             </ul><!-- /.breadcrumb -->
@@ -28,14 +28,16 @@
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    <b>Add New Category</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Create category for news
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list"></i> Add New Category
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('category.index') }}" class="">
+                        <i class="fa fa-list-alt"></i> View <span class="hide-in-sm">Categories</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -46,33 +48,42 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Category Name </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Category Name <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="name" type="text" id="form-field-1" placeholder="Category Name" class="form-control">
+                                        @if($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Category link </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Category link <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="link" type="text" id="form-field-1" placeholder="Category link " class="form-control">
+                                        @if($errors->has('link'))
+                                            <span class="text-danger">{{ $errors->first('link') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Category serial num </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Category serial num <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="serial_num" type="number" id="form-field-1" placeholder="serial_num" class="form-control">
+                                        @if($errors->has('serial_num'))
+                                            <span class="text-danger">{{ $errors->first('serial_num') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Status </label>
                                     <div >
-                                        <input name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
+                                        <input name="status" type="number" id="form-field-1" placeholder="Input: 1 or 0" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Category is Home </label>
                                     <div >
-                                        <input name="is_home" type="number" id="form-field-1" placeholder="Category is Home" class="form-control">
+                                        <input name="is_home" type="number" id="form-field-1" placeholder="Input: 1 or 0" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -87,3 +98,4 @@
     </div>
 </div>
 @endsection
+
