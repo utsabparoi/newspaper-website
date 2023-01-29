@@ -49,9 +49,9 @@
                                   <tr>
                                     <th>#</th>
                                     <th>Category Name</th>
-                                    <th>link</th>
-                                    <th>serial_num</th>
-                                    <th>is_home</th>
+                                    <th>Category Link</th>
+                                    <th class="text-center">Serial Num</th>
+                                    <th class="text-center">Is Home</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -62,8 +62,8 @@
                                             <th>{{ $loop->index+1 }}</th>
                                             <td>{{ $all_adds->name }}</td>
                                             <td>{{ $all_adds->link }}</td>
-                                            <td>{{ $all_adds->serial_num }}</td>
-                                            <td>{{ $all_adds->is_home }}</td>
+                                            <td class="text-center">{{ $all_adds->serial_num }}</td>
+                                            <td class="text-center">{{ $all_adds->is_home }}</td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">
                                                     @if ($all_adds->status == 1)

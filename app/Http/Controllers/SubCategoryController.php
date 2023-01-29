@@ -17,7 +17,8 @@ class SubCategoryController extends Controller
     public function index()
     {
         return view('backend.subcategory.index',[
-            'all_adds'=> SubCategory::all(),
+            'all_adds' => SubCategory::all(),
+            // 'cat_name' => Category::select('name')->where($all_adds->fk_category_id,'id'),
         ]);
     }
 
@@ -48,17 +49,21 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:category',
-            'link' =>'required|unique:category',
+            'fk_category_id'=> 'required',
+            'name'          => 'required|unique:sub_category',
+            'link'          => 'required|unique:sub_category',
+            'serial_num'    => 'required|numeric',
+            'status'        => 'required|boolean',
         ]);
+
         try {
             SubCategory::insert([
-                'name'=> $request->name,
-                'link'=> $request->link,
+                'name'          => $request->name,
+                'link'          => $request->link,
                 'fk_category_id'=> $request->fk_category_id,
-                'serial_num'=> $request->serial_num,
-                'status'=> $request->status,
-                'created_at'=> Carbon::now(),
+                'serial_num'    => $request->serial_num,
+                'status'        => $request->status,
+                'created_at'    => Carbon::now(),
             ]);
             return back()->with('success','Sub Category Added Successfully');
         } catch (\Throwable $th) {
@@ -102,15 +107,19 @@ class SubCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'fk_category_id'=> 'required',
+            'name'          => 'required',
+            'link'          => 'required',
+            'serial_num'    => 'required|numeric',
+            'status'        => 'required|boolean',
         ]);
         try {
             SubCategory::find($id)->update([
-                'name'=> $request->name,
-                'link'=> $request->link,
+                'name'          => $request->name,
+                'link'          => $request->link,
                 'fk_category_id'=> $request->fk_category_id,
-                'serial_num'=> $request->serial_num,
-                'status'=> $request->status,
+                'serial_num'    => $request->serial_num,
+                'status'        => $request->status,
             ]);
             return back()->with('success','Sub Category Updated Successfully');
         } catch (\Throwable $th) {
@@ -128,12 +137,17 @@ class SubCategoryController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = SubCategory::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Sub Category Deleted!');
+        try {
+            $smart_move = SubCategory::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Sub Category Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
