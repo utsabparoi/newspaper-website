@@ -66,7 +66,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Status </label>
                                     <div >
                                         <input value="{{ $target_ads->status }}" name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
@@ -82,6 +82,32 @@
                                         @if($errors->has('is_home'))
                                             <span class="text-danger">{{ $errors->first('is_home') }}</span>
                                         @endif
+                                    </div>
+                                </div> --}}
+
+                                <div class="form-group">
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn {{ $target_ads->status == 1 ? 'active' : " " }}">
+                                            <input type="checkbox" name="status" {{ $target_ads->status == 1 ? 'checked' : " " }} class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1"> Is Home </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Is Home
+                                        </span>
+                                        <div class="toggle-btn {{ $target_ads->is_home == 1 ? 'active' : " " }}">
+                                            <input type="checkbox" name="is_home" {{ $target_ads->is_home == 1 ? 'checked' : " " }} class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

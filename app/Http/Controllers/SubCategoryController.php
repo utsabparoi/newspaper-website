@@ -53,7 +53,6 @@ class SubCategoryController extends Controller
             'name'          => 'required|unique:sub_category',
             'link'          => 'required|unique:sub_category',
             'serial_num'    => 'required|numeric',
-            'status'        => 'required|boolean',
         ]);
 
         try {
@@ -62,7 +61,7 @@ class SubCategoryController extends Controller
                 'link'          => $request->link,
                 'fk_category_id'=> $request->fk_category_id,
                 'serial_num'    => $request->serial_num,
-                'status'        => $request->status,
+                'status'        => $request->status== 'on' ? 1 : 0,
                 'created_at'    => Carbon::now(),
             ]);
             return back()->with('success','Sub Category Added Successfully');
@@ -111,7 +110,6 @@ class SubCategoryController extends Controller
             'name'          => 'required',
             'link'          => 'required',
             'serial_num'    => 'required|numeric',
-            'status'        => 'required|boolean',
         ]);
         try {
             SubCategory::find($id)->update([
@@ -119,7 +117,7 @@ class SubCategoryController extends Controller
                 'link'          => $request->link,
                 'fk_category_id'=> $request->fk_category_id,
                 'serial_num'    => $request->serial_num,
-                'status'        => $request->status,
+                'status'        => $request->status == 'on' ? 1 : 0,
             ]);
             return back()->with('success','Sub Category Updated Successfully');
         } catch (\Throwable $th) {

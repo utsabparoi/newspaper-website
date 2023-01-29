@@ -79,12 +79,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Status <span class="text-danger">*</span></label>
-                                    <div >
-                                        <input value="{{ $target_ads->status }}" name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
-                                        @if($errors->has('status'))
-                                            <span class="text-danger">{{ $errors->first('status') }}</span>
-                                        @endif
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn {{ $target_ads->status == 1 ? 'active' : " " }}">
+                                            <input type="checkbox" name="status" {{ $target_ads->status == 1 ? 'checked' : " " }} class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
 

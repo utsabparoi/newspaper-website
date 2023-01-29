@@ -74,19 +74,45 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Status <span class="text-danger">*</span></label>
-                                    <div >
-                                        <input name="status" type="number" id="form-field-1" placeholder="Input: 1 or 0" class="form-control">
-                                        @if($errors->has('status'))
-                                            <span class="text-danger">The status field must be 0 or 1</span>
-                                        @endif
+                                {{-- <div class="form-group">
+                                    <div class="row">
+                                        <label class=" control-label no-padding-right" for="form-field-1"> Status: </label>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="status" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Category is Home <span class="text-warning">(If this category is a home category then insert 1 else 0)</span></label>
                                     <div >
                                         <input name="is_home" type="number" id="form-field-1" placeholder="Input: 1 or 0" class="form-control">
+                                    </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="status" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1"> Is Home </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Is Home
+                                        </span>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="is_home" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -100,5 +126,7 @@
         </div><!-- /.page-content -->
     </div>
 </div>
+
 @endsection
+
 

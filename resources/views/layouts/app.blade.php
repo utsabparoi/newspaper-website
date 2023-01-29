@@ -83,7 +83,7 @@
 								{{-- <img class="nav-user-photo" src="{{ asset('uploads/admin_profile').'/'. auth()->user()->admin_image}}" width="100px" alt="Jason's Photo" /> --}}
 								<span class="user-info">
 									<small>Welcome,</small>
-									<strong>{{ Auth()->user()->name }}</strong>
+									<strong>{{ optional(Auth()->user())->name }}</strong>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -1229,6 +1229,18 @@
             }
         </script>
         {{-- Custom Scripts --}}
+        {{-- Toogle switch Js --}}
+        <script>
+            $('.cb-value').click(function() {
+                var mainParent = $(this).parent('.toggle-btn');
+
+                if($(mainParent).find('input.cb-value').is(':checked')) {
+                    $(mainParent).addClass('active');
+                } else {
+                    $(mainParent).removeClass('active');
+                }
+            });
+        </script>
         @yield('footer_scripts')
         @yield('scripts')
 

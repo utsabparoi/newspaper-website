@@ -48,8 +48,8 @@ class CategoryController extends Controller
             'name'       => 'required|unique:category',
             'link'       => 'required|unique:category',
             'serial_num' => 'required|numeric',
-            'status'     => 'required|boolean',
-            'is_home'    => 'numeric',
+            // 'status'     => 'required|boolean',
+            // 'is_home'    => 'numeric',
         ]);
 
         try {
@@ -57,8 +57,8 @@ class CategoryController extends Controller
                 'name'      => $request->name,
                 'link'      => $request->link,
                 'serial_num'=> $request->serial_num,
-                'status'    => $request->status,
-                'is_home'   => $request->is_home,
+                'status'    => $request->status == 'on' ? 1 : 0,
+                'is_home'   => $request->is_home == 'on' ? 1 : 0,
                 'created_at'=> Carbon::now(),
             ]);
             return redirect()->route('category.index')->with('success','Category Added Successfully');
@@ -104,8 +104,6 @@ class CategoryController extends Controller
             'name'       => 'required',
             'link'       => 'required',
             'serial_num' => 'required|numeric',
-            'status'     => 'required|boolean',
-            'is_home'    => 'numeric',
         ]);
 
         try {
@@ -113,8 +111,8 @@ class CategoryController extends Controller
                 'name'      => $request->name,
                 'link'      => $request->link,
                 'serial_num'=> $request->serial_num,
-                'status'    => $request->status,
-                'is_home'   => $request->is_home,
+                'status'    => $request->status == 'on' ? 1 : 0,
+                'is_home'   => $request->is_home =='on' ? 1 : 0,
             ]);
             return back()->with('success','Category Updated Successfully');
         } catch (\Throwable $th) {

@@ -55,20 +55,16 @@ class NewsController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'title'             => 'required|max:255',
-        //     'link'              => 'required|max:70|unique:news',
-        //     'fk_category_id'    => 'required',
-        //     'short_description' => 'required|max:255',
-        //     'description'       => 'required',
-        //     'photo'             => 'required',
-        // ]);
         $request->validate([
-            'title'             => 'required',
-            'link'              => 'required|unique:news',
+            'title'             => 'required|max:200',
+            'link'              => 'required|max:70|unique:news',
             'fk_category_id'    => 'required',
+            'short_description' => 'required|max:200',
+            'description'       => 'required',
+            'photo'             => 'required',
         ]);
-
+        // $logged_id = auth()->user()->id;
+        // dd($logged_id);
         try {
             $model = News::create([
                 'title'                 => $request->title,
@@ -87,7 +83,7 @@ class NewsController extends Controller
                 'photo'                 => 'default.jpg',
             ]);
 
-        $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
+            $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
 
            return back()->with('success','Data Added Successfully');
 
@@ -226,16 +222,17 @@ class NewsController extends Controller
     */
     public function change_status($id)
     {
-        if (News::find($id)->status == 0) {
-            News::find($id)->update([
+        $news = News::find($id);
+        if ($news->status == 0) {
+            $news->update([
                 'status'=> 1
             ]);
         } else {
-            News::find($id)->update([
+            $news->update([
                 'status'=> 0
             ]);
         }
-        return back()->with('success','Ads Status Changed!');
+        return back()->with('success','Status Changed!');
     }
 
 
@@ -315,7 +312,9 @@ class NewsController extends Controller
          Session::put('title_msg',$news_details->title);
          Session::put('metaDescription',$news_details->short_description);
          Session::put('tags',$news_details->tags);
+        //  Session::put('company_name', $info->comapny_name);
 
+        // $singleTitle=$news_details->title . Session::get('company_name');
         $singleTitle=$news_details->title ." |  Desi Media Point ";
         $ogImage=$news_details->photo;
 

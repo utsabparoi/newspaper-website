@@ -16,26 +16,20 @@
                 <li class="active">Add</li>
             </ul><!-- /.breadcrumb -->
 
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-                    <span class="input-icon">
-                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-                        <i class="ace-icon fa fa-search nav-search-icon"></i>
-                    </span>
-                </form>
-            </div><!-- /.nav-search -->
         </div>
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    <b>Adding News</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-plus"></i> Add News
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('manage-news.index') }}" class="">
+                        <i class="fa fa-list-alt"></i> View <span class="hide-in-sm">News</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -47,48 +41,64 @@
                             <div class="left col-lg-11" style="margin-left: 20px">
 
                                 <div class="form-group">
-                                    <label for="category_id">Category</label>   {{-- category --}}
+                                    <label for="category_id">News Main Category <span class="text-danger">*</span></label>   {{-- category --}}
                                     <select name="fk_category_id" id="cat_dropdown" class="form-control">
                                         <option value="">-Select a Category-</option>
 
                                         @foreach ($category_infos as $category_info)
                                             <option value="{{ $category_info->id }}">{{ $category_info->name }}</option>
                                         @endforeach
-
                                     </select>
+                                    @if($errors->has('fk_category_id'))
+                                        <span class="text-danger">Please insert a category for news</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">    {{-- sub category --}}
-                                    <label for="subcategory_id">Sub Category</label>
+                                    <label for="subcategory_id">Sub Category <span class="text-danger">*</span></label>
 
                                     <select name="fk_sub_category_id" id="subcat_dropdown" class="form-control">
                                         <option value="">-Select a Category First-</option>
                                     </select>
-
+                                    @if($errors->has('fk_sub_category_id'))
+                                        <span class="text-danger">Please insert a sub category for news</span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> News title </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> News title <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="title" type="text" id="form-field-1" placeholder="News title" class="form-control slug-input">
+                                        @if($errors->has('title'))
+                                            <span class="text-danger">{{ $errors->first('title') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> News link </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> News link <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="link" type="text" id="form-field-1" placeholder="News link " class="form-control slug-output">
+                                        @if($errors->has('link'))
+                                            <span class="text-danger">{{ $errors->first('link') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Short Description </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Short Description <span class="text-danger">*</span></label>
                                     <div >
                                         <textarea name="short_description" cols="30" rows="8" placeholder="Short description..." class="form-control"></textarea>
+                                        @if($errors->has('short_description'))
+                                            <span class="text-danger">{{ $errors->first('short_description') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">Description </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1">Description <span class="text-danger">*</span></label>
                                     <div >
                                         <textarea name="description" cols="30" rows="15" placeholder="Long description...." class="form-control"></textarea>
+                                        @if($errors->has('description'))
+                                            <span class="text-danger">{{ $errors->first('description') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -98,7 +108,7 @@
                                     </div>
                                 </div>
                                 <div class="file-upload form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-2">Choose New Image </label>
+                                    <label class=" control-label no-padding-right" for="form-field-2">Choose New Image <span class="text-danger">*</span></label>
                                     <div class="file-upload-select">
                                         <div class="file-select-button" >Choose File</div>
                                     <div class="file-select-name">No file chosen...</div>

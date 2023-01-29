@@ -80,12 +80,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Status <span class="text-danger">*</span></label>
-                                    <div >
-                                        <input name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
-                                        @if($errors->has('status'))
-                                            <span class="text-danger">The status field must be 0 or 1</span>
-                                        @endif
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="status" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

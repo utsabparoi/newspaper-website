@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,FrontendController,AdsManagementController,AboutCompanyController,HomeController};
-use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
