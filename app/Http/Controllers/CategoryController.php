@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Carbon\Carbon;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -45,19 +45,20 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:category',
-            'link' =>'required|unique:category',
-            'serial_num' => 'required',
-            'status'    => 'required|boolean',
+            'name'       => 'required|unique:category',
+            'link'       => 'required|unique:category',
+            'serial_num' => 'required|numeric',
+            'status'     => 'required|boolean',
+            'is_home'    => 'numeric',
         ]);
 
         try {
             Category::insert([
-                'name'=> $request->name,
-                'link'=> $request->link,
+                'name'      => $request->name,
+                'link'      => $request->link,
                 'serial_num'=> $request->serial_num,
-                'status'=> $request->status,
-                'is_home'=> $request->is_home,
+                'status'    => $request->status,
+                'is_home'   => $request->is_home,
                 'created_at'=> Carbon::now(),
             ]);
             return redirect()->route('category.index')->with('success','Category Added Successfully');
@@ -100,19 +101,26 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'link' =>'required',
-            'serial_num' => 'required',
+            'name'       => 'required',
+            'link'       => 'required',
+            'serial_num' => 'required|numeric',
+            'status'     => 'required|boolean',
+            'is_home'    => 'numeric',
         ]);
 
-        Category::find($id)->update([
-            'name'=> $request->name,
-            'link'=> $request->link,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'is_home'=> $request->is_home,
-        ]);
-        return back()->with('success','Category Updated Successfully');
+        try {
+            Category::find($id)->update([
+                'name'      => $request->name,
+                'link'      => $request->link,
+                'serial_num'=> $request->serial_num,
+                'status'    => $request->status,
+                'is_home'   => $request->is_home,
+            ]);
+            return back()->with('success','Category Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
+
     }
 
 
@@ -124,12 +132,19 @@ class CategoryController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = Category::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Category Deleted!');
+        try {
+            $smart_move = Category::find($id);
+
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+
+            return back()->with('deleted','Category Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
+
     }
 
 
@@ -142,6 +157,7 @@ class CategoryController extends Controller
     public function change_status($id)
     {
         $category = Category::find($id);
+
         if ($category->status == 0) {
             $category->update([
                 'status'=> 1
@@ -151,6 +167,7 @@ class CategoryController extends Controller
                 'status'=> 0
             ]);
         }
+
         return back()->with('success','Status Changed!');
     }
 }

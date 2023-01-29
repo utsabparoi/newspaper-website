@@ -30,7 +30,7 @@
 
             <div class="page-header widget-header">
                 <h4 class="widget-title">
-                    <i class="menu-icon fa fa-list"></i> Add New Category
+                    <i class="menu-icon fa fa-plus"></i> Add New Category
                 </h4>
                 <span class="widget-toolbar">
                     <!--------------- CREATE---------------->
@@ -75,13 +75,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Status </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Status <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="status" type="number" id="form-field-1" placeholder="Input: 1 or 0" class="form-control">
+                                        @if($errors->has('status'))
+                                            <span class="text-danger">The status field must be 0 or 1</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Category is Home </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Category is Home <span class="text-warning">(If this category is a home category then insert 1 else 0)</span></label>
                                     <div >
                                         <input name="is_home" type="number" id="form-field-1" placeholder="Input: 1 or 0" class="form-control">
                                     </div>

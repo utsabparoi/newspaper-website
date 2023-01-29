@@ -51,16 +51,20 @@ class SubCategoryController extends Controller
             'name' => 'required|unique:category',
             'link' =>'required|unique:category',
         ]);
+        try {
+            SubCategory::insert([
+                'name'=> $request->name,
+                'link'=> $request->link,
+                'fk_category_id'=> $request->fk_category_id,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status,
+                'created_at'=> Carbon::now(),
+            ]);
+            return back()->with('success','Sub Category Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
 
-        SubCategory::insert([
-            'name'=> $request->name,
-            'link'=> $request->link,
-            'fk_category_id'=> $request->fk_category_id,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Sub Category Added Successfully');
     }
 
 
@@ -100,15 +104,19 @@ class SubCategoryController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+        try {
+            SubCategory::find($id)->update([
+                'name'=> $request->name,
+                'link'=> $request->link,
+                'fk_category_id'=> $request->fk_category_id,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status,
+            ]);
+            return back()->with('success','Sub Category Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
 
-        SubCategory::find($id)->update([
-            'name'=> $request->name,
-            'link'=> $request->link,
-            'fk_category_id'=> $request->fk_category_id,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-        ]);
-        return back()->with('success','Sub Category Updated Successfully');
     }
 
 
