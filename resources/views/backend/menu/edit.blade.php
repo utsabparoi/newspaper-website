@@ -11,45 +11,29 @@
                 </li>
 
                 <li>
-                    <a href="#">AdsManagements</a>
+                    <a href=" route('menu.index') ">Menu</a>
                 </li>
-                <li class="active">Add</li>
+                <li class="active">Edit</li>
             </ul><!-- /.breadcrumb -->
-
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-                    <span class="input-icon">
-                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-                        <i class="ace-icon fa fa-search nav-search-icon"></i>
-                    </span>
-                </form>
-            </div><!-- /.nav-search -->
         </div>
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    <b>Adding Ads Management</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-edit"></i> Edit Menu
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('menu.index') }}" class="">
+                        <i class="fa fa-list"></i> View <span class="hide-in-sm">Menus</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
                 <div class="col-lg-12">
                     <!-- PAGE CONTENT BEGINS -->
-                    <div class="row">
-                        <div class="col-lg-5"  style="margin-left: 20px">
-                            @if (session('success'))
-                                <div class="alert alert-success text-center">
-                                    <span>{{ session('success') }}</span>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
                     <form action="{{ route('menu.update',$target_ads->id) }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
@@ -59,12 +43,18 @@
                                     <label class=" control-label no-padding-right" for="form-field-1"> Menu Name </label>
                                     <div >
                                         <input value="{{ $target_ads->name }}" name="name" type="text" id="form-field-1" placeholder="Category Name" class="form-control">
+                                        @if($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Menu Url </label>
                                     <div >
                                         <input value="{{ $target_ads->url }}" name="url" type="text" id="form-field-1" placeholder="Category link" class="form-control">
+                                        @if($errors->has('url'))
+                                            <span class="text-danger">{{ $errors->first('url') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -74,9 +64,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Menu Status </label>
-                                    <div >
-                                        <input value="{{ $target_ads->status }}" name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
+                                    <div class="input-group width-100">
+                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn {{ $target_ads->status == 1 ? 'active' : " " }}">
+                                            <input type="checkbox" name="status" {{ $target_ads->status == 1 ? 'checked' : " " }} class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
 

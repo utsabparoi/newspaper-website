@@ -49,14 +49,19 @@ class MenuController extends Controller
             'url' => 'required',
         ]);
 
-        Menu::insert([
-            'name'=> $request->name,
-            'url'=> $request->url,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Menu Added Successfully');
+        try {
+            Menu::insert([
+                'name'=> $request->name,
+                'url'=> $request->url,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'created_at'=> Carbon::now(),
+            ]);
+            return back()->with('success','Menu Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -97,13 +102,18 @@ class MenuController extends Controller
             'url' => 'required',
         ]);
 
-        Menu::find($id)->update([
-            'name'=> $request->name,
-            'url'=> $request->url,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-        ]);
-        return back()->with('success','Menu Updated Successfully');
+        try {
+            Menu::find($id)->update([
+                'name'=> $request->name,
+                'url'=> $request->url,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status == 'on' ? 1 : 0,
+            ]);
+            return back()->with('success','Menu Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -115,12 +125,17 @@ class MenuController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = Menu::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Menu position Deleted!');
+        try {
+            $smart_move = Menu::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Menu position Deleted!');
+        } catch (\Throwable $th) {
+            return redirec()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -132,12 +147,13 @@ class MenuController extends Controller
     */
     public function change_status($id)
     {
-        if (Menu::find($id)->status == 0) {
-            Menu::find($id)->update([
+        $menu = Menu::find($id);
+        if ($menu->status == 0) {
+            $menu->update([
                 'status'=> 1
             ]);
         } else {
-            Menu::find($id)->update([
+            $menu->update([
                 'status'=> 0
             ]);
         }
