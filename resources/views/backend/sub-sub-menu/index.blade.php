@@ -33,7 +33,7 @@
                 </h4>
                 <span class="widget-toolbar">
                     <!--------------- CREATE---------------->
-                    <a href="{{ route('sub-menu.create') }}" class="">
+                    <a href="{{ route('subsub-menu.create') }}" class="">
                         <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
                     </a>
                 </span>

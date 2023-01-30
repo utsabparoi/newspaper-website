@@ -53,18 +53,22 @@ class SubSubMenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required',
-            'url' => 'required',
+            'name'=> 'required|unique:sub_sub_menu,name',
+            'url' => 'required|unique:sub_sub_menu,url',
         ]);
+        try {
+            SubSubMenu::create([
+                'name'=> $request->name,
+                'url'=> $request->url,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'serial_num'=> $request->serial_num,
+                'fk_sub_menu_id'=> $request->fk_sub_menu_id,
+            ]);
+           return back()->with('success','Data Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
 
-        SubSubMenu::create([
-            'name'=> $request->name,
-            'url'=> $request->url,
-            'status'=> $request->status,
-            'serial_num'=> $request->serial_num,
-            'fk_sub_menu_id'=> $request->fk_sub_menu_id,
-        ]);
-       return back()->with('success','Data Added Successfully');
 
     }
 
@@ -118,7 +122,7 @@ class SubSubMenuController extends Controller
             $page->update([
                 'name'=> $request->name,
                 'url'=> $request->url,
-                'status'=> $request->status,
+                'status'=> $request->status == 'on' ? 1 : 0,
                 'serial_num'=> $request->serial_num,
                 'fk_sub_menu_id'=> $request->fk_sub_menu_id,
             ]);
@@ -140,12 +144,17 @@ class SubSubMenuController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = SubSubMenu::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Deleted!');
+        try {
+            $smart_move = SubSubMenu::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -157,12 +166,14 @@ class SubSubMenuController extends Controller
     */
     public function change_status($id)
     {
-        if (SubSubMenu::find($id)->status == 0) {
-            SubSubMenu::find($id)->update([
+        $subsub_menu = SubSubMenu::find($id);
+
+        if ($subsub_menu->status == 0) {
+            $subsub_menu->update([
                 'status'=> 1
             ]);
         } else {
-            SubSubMenu::find($id)->update([
+            $subsub_menu->update([
                 'status'=> 0
             ]);
         }

@@ -40,6 +40,7 @@
                         <div class="row">
                             <div class="left col-lg-5" style="margin-left: 20px">
                                 <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="fk_category_id"> Select a Parent Menu <span class="text-danger">*</span></label>
                                     <select name="fk_category_id" class="form-control">
                                         <option value="" >-Select One-</option>
                                         @foreach ($menu_infos as $category)
@@ -50,24 +51,23 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Sub Menu Name </label>
                                     <div >
-                                        <input value="{{ $target_ads->name }}" name="name" type="text" id="form-field-1" placeholder="Category Name" class="form-control">
+                                        <input value="{{ $target_ads->name }}" name="name" type="text" id="form-field-1" placeholder="Sub menu Name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Sub Menu link </label>
                                     <div >
-                                        <input value="{{ $target_ads->url }}" name="url" type="text" id="form-field-1" placeholder="Category link" class="form-control">
+                                        <input value="{{ $target_ads->url }}" name="url" type="text" id="form-field-1" placeholder="Sub menu link" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Sub Menu Serial Num </label>
                                     <div >
-                                        <input value="{{ $target_ads->serial_num }}" name="serial_num" type="number" id="form-field-1" placeholder="Category Serial Num" class="form-control">
+                                        <input value="{{ $target_ads->serial_num }}" name="serial_num" type="number" id="form-field-1" placeholder="Sub Menu Serial Num" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group width-100">
-                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
                                         <span class="input-group-addon width-20" style="text-align: left">
                                             Status
                                         </span>

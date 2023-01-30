@@ -45,8 +45,8 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required',
-            'url' => 'required',
+            'name'=> 'required|unique:menu,name',
+            'url' => 'required|unique:menu,url',
         ]);
 
         try {

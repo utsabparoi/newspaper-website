@@ -48,8 +48,8 @@ class SubMenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required',
-            'url' => 'required',
+            'name'=> 'required|unique:sub_menu,name',
+            'url' => 'required|unique:sub_menu,url',
         ]);
         try {
             SubMenu::insert([
@@ -90,9 +90,6 @@ class SubMenuController extends Controller
             'menu_infos'=> Menu::all(),
         ]);
     }
-
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -153,7 +150,7 @@ class SubMenuController extends Controller
     public function change_status($id)
     {
         $sub_menu = SubMenu::find($id);
-        
+
         if ($sub_menu->status == 0) {
             $sub_menu->update([
                 'status'=> 1

@@ -11,7 +11,7 @@
                 </li>
 
                 <li>
-                    <a href="#">SubCategory</a>
+                    <a href="{{ route('sub-menu.index') }}">SubMneu</a>
                 </li>
                 <li class="active">Add</li>
             </ul><!-- /.breadcrumb -->
@@ -56,6 +56,9 @@
                                     <label class=" control-label no-padding-right" for="form-field-1"> Sub Menu Name <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="name" type="text" id="form-field-1" placeholder="Sub Menu Name" class="form-control slug-input">
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
