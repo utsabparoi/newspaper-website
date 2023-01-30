@@ -63,7 +63,14 @@ class NewsController extends Controller
             'description'       => 'required',
             'photo'             => 'required',
         ]);
-        // $logged_id = auth()->user()->id;
+
+        // check if a user login or not
+        if (is_null(auth()->id())) {
+            $logged_id = 0; //user is not login
+        }else {
+            $logged_id = auth()->id();  //user is loged in
+        }
+
         // dd($logged_id);
         try {
             $model = News::create([
@@ -79,7 +86,7 @@ class NewsController extends Controller
                 'tags'                  => $request->tags,
                 'status'                => $request->status == 'on' ? 1 : 0,
                 'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
-                'created_by'            => auth()->id(),
+                'created_by'            => $logged_id,
                 'photo'                 => 'default.jpg',
             ]);
 
@@ -132,18 +139,26 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
 
-        // $request->validate([
-        //     'title'             => 'required|max:255',
-        //     'link'              => 'required|max:70',
-        //     'short_description' => 'required|max:255',
-        //     'description'       => 'required',
+        $request->validate([
+            'title'             => 'required|max:255',
+            'link'              => 'required|max:70',
+            'short_description' => 'required|max:255',
+            'description'       => 'required',
 
-        // ]);
+        ]);
         // if($request->hasFile('photo')){
         //     $request->validate([
         //         'photo' => 'required',
         //     ]);
         // }
+
+        // check if a user login or not
+        if (is_null(auth()->id())) {
+            $logged_id = 0; //user is not login
+        }else {
+            $logged_id = auth()->id(); //user is loged in
+        }
+
         try {
             $model = News::find($id);
             if($request->file('photo') != NULL){
@@ -160,7 +175,7 @@ class NewsController extends Controller
                     'tags'                  => $request->tags,
                     'status'                => $request->status == 'on' ? 1 : 0,
                     'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
-                    'updated_by'            => auth()->id(),
+                    'updated_by'            => $logged_id,
                     'photo'                 => $model->photo,
                 ]);
 
@@ -180,7 +195,7 @@ class NewsController extends Controller
                     'tags'                  => $request->tags,
                     'status'                => $request->status == 'on' ? 1 : 0,
                     'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
-                    'updated_by'            => auth()->id(),
+                    'updated_by'            => $logged_id,
                 ]);
 
             }

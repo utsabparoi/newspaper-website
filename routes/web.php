@@ -14,9 +14,6 @@ Auth::routes();
 */
 Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 
-
-
-
 /*
  |--------------------------------------------------------------------------
  | HomeController Routes
