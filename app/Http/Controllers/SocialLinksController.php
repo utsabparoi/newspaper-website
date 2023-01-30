@@ -51,15 +51,20 @@ class SocialLinksController extends Controller
             'icon_class' => 'required',
         ]);
 
-        SocialLink::insert([
-            'name'=> $request->name,
-            'link'=> $request->link,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'icon_class'=> $request->icon_class,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success',' Added Successfully');
+        try {
+            SocialLink::insert([
+                'name'=> $request->name,
+                'link'=> $request->link,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'icon_class'=> $request->icon_class,
+                'created_at'=> Carbon::now(),
+            ]);
+            return back()->with('success',' Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -101,14 +106,19 @@ class SocialLinksController extends Controller
             'icon_class' => 'required',
         ]);
 
-        SocialLink::find($id)->update([
-            'name'=> $request->name,
-            'link'=> $request->link,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'icon_class'=> $request->icon_class,
-        ]);
-        return back()->with('success',' Updated Successfully');
+        try {
+            SocialLink::find($id)->update([
+                'name'=> $request->name,
+                'link'=> $request->link,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'icon_class'=> $request->icon_class,
+            ]);
+            return back()->with('success',' Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -120,12 +130,17 @@ class SocialLinksController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = SocialLink::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Ads position Deleted!');
+        try {
+            $smart_move = SocialLink::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Ads position Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -137,12 +152,14 @@ class SocialLinksController extends Controller
     */
     public function change_status($id)
     {
-        if (SocialLink::find($id)->status == 0) {
-            SocialLink::find($id)->update([
+        $social_link = SocialLink::find($id);
+        
+        if ($social_link->status == 0) {
+            $social_link->update([
                 'status'=> 1
             ]);
         } else {
-            SocialLink::find($id)->update([
+            $social_link->update([
                 'status'=> 0
             ]);
         }

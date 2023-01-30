@@ -10,9 +10,9 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="#">Social Links</a>
                 </li>
-                <li class="active">Simple &amp; Dynamic</li>
+                <li class="active">All SocialLinks</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -26,16 +26,16 @@
         </div>
 
         <div class="page-content">
-            
-
-            <div class="page-header">
-                <h1>
-                    Tables
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Static &amp; Dynamic Tables
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list-alt"></i> SocialLinks
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('social-links.create') }}" class="">
+                        <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Links</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -49,7 +49,7 @@
                                     <th>#</th>
                                     <th>Category Name</th>
                                     <th>link</th>
-                                    <th>serial_num</th>
+                                    <th class="text-center">Serial Num</th>
                                     <th>Icon Class</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -61,7 +61,7 @@
                                             <th>{{ $loop->index+1 }}</th>
                                             <td>{{ $all_adds->name }}</td>
                                             <td>{{ $all_adds->link }}</td>
-                                            <td>{{ $all_adds->serial_num }}</td>
+                                            <td class="text-center">{{ $all_adds->serial_num }}</td>
                                             <td>{{ $all_adds->icon_class }}</td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">

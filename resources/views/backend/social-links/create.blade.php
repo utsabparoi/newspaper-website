@@ -13,29 +13,23 @@
                 <li>
                     <a href="#">Social Link</a>
                 </li>
-                <li class="active">Add</li>
+                <li class="active">AddLink</li>
             </ul><!-- /.breadcrumb -->
 
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-                    <span class="input-icon">
-                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-                        <i class="ace-icon fa fa-search nav-search-icon"></i>
-                    </span>
-                </form>
-            </div><!-- /.nav-search -->
         </div>
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    <b>Adding Social Link</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-plus"></i> Add Link
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('social-links.index') }}" class="">
+                        <i class="fa fa-list-alt"></i> View <span class="hide-in-sm">SocialLinks</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -46,33 +40,38 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">  Name </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1">  Name <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="name" type="text" id="form-field-1" placeholder="Name" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">  link </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1">  Link <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="link" type="url" id="form-field-1" placeholder="link" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">  serial num </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1">  Serial num <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="serial_num" type="number" id="form-field-1" placeholder="serial_num" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1">  Status </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Icon Class <span class="text-danger">*</span></label>
                                     <div >
-                                        <input name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
+                                        <input name="icon_class" type="text" id="form-field-1" placeholder="icon_class" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Icon Class </label>
-                                    <div >
-                                        <input name="icon_class" type="text" id="form-field-1" placeholder="icon_class" class="form-control">
+                                    <div class="input-group width-100">
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="status" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
