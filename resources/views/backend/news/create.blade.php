@@ -205,53 +205,5 @@
             chosenSelectInit();
         });
 
-
-
-
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    |   Slug Creator Js
-    |--------------------------------------------------------------------------
-    */
-        var slug = function(str) {
-            var $slug = '';
-            var trimmed = $.trim(str);
-            $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
-            replace(/-+/g, '-').
-            replace(/^-|-$/g, '');
-            return $slug.toLowerCase();
-        }
-
-        $('.slug-input').keyup(function() {
-            var takedata = $('.slug-input').val();
-            $('.slug-output').val(slug(takedata));
-        });
-
-
-
-
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    |   Toogle switch Js
-    |--------------------------------------------------------------------------
-    */
-        $('.cb-value').click(function() {
-            var mainParent = $(this).parent('.toggle-btn');
-
-            if($(mainParent).find('input.cb-value').is(':checked')) {
-                $(mainParent).addClass('active');
-            } else {
-                $(mainParent).removeClass('active');
-            }
-        });
-
-
-
     </script>
 @endsection

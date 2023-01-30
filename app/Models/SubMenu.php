@@ -12,7 +12,11 @@ class SubMenu extends Model
     protected $table = 'sub_menu';
     protected $guarded = [];
 
-    
+    function menu()
+    {
+        return $this->belongsTo(Menu::class,'fk_menu_id');
+    }
+
     function relationtomenu(){
         return $this->hasOne(Menu::class,'id','fk_menu_id');
     }

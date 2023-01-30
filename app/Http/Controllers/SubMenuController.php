@@ -51,16 +51,20 @@ class SubMenuController extends Controller
             'name'=> 'required',
             'url' => 'required',
         ]);
+        try {
+            SubMenu::insert([
+                'name'=> $request->name,
+                'url'=> $request->url,
+                'fk_menu_id'=> $request->fk_menu_id,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'created_at'=> Carbon::now(),
+            ]);
+            return back()->with('success','Sub Menu Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error'. $th->getMessage);
+        }
 
-        SubMenu::insert([
-            'name'=> $request->name,
-            'url'=> $request->url,
-            'fk_menu_id'=> $request->fk_menu_id,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Sub Menu Added Successfully');
     }
 
 
@@ -101,15 +105,19 @@ class SubMenuController extends Controller
             'name'=> 'required',
             'url' => 'required',
         ]);
+        try {
+            SubMenu::find($id)->update([
+                'name'=> $request->name,
+                'url'=> $request->url,
+                'fk_category_id'=> $request->fk_category_id,
+                'serial_num'=> $request->serial_num,
+                'status'=> $request->status == 'on' ? 1 : 0,
+            ]);
+            return back()->with('success','SubCategory Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error'. $th->getMessage);
+        }
 
-        SubMenu::find($id)->update([
-            'name'=> $request->name,
-            'url'=> $request->url,
-            'fk_category_id'=> $request->fk_category_id,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-        ]);
-        return back()->with('success','SubCategory Updated Successfully');
     }
 
 
@@ -121,12 +129,18 @@ class SubMenuController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = SubMenu::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Sub Category Deleted!');
+        try {
+            $smart_move = SubMenu::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Sub Category Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error'. $th->getMessage);
+
+        }
+
     }
 
 
@@ -138,12 +152,14 @@ class SubMenuController extends Controller
     */
     public function change_status($id)
     {
-        if (SubMenu::find($id)->status == 0) {
-            SubMenu::find($id)->update([
+        $sub_menu = SubMenu::find($id);
+        
+        if ($sub_menu->status == 0) {
+            $sub_menu->update([
                 'status'=> 1
             ]);
         } else {
-            SubMenu::find($id)->update([
+            $sub_menu->update([
                 'status'=> 0
             ]);
         }

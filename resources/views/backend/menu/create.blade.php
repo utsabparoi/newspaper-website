@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Menu Name <span class="text-danger">*</span></label>
                                     <div >
-                                        <input name="name" type="text" id="form-field-1" placeholder="Menu Name" class="form-control">
+                                        <input name="name" type="text" id="form-field-1" placeholder="Menu Name" class="form-control slug-input">
                                         @if($errors->has('name'))
                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif
@@ -59,7 +59,7 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Menu url <span class="text-danger">*</span></label>
                                     <div >
-                                        <input name="url" type="text" id="form-field-1" placeholder="Menu url " class="form-control">
+                                        <input name="url" type="text" id="form-field-1" placeholder="Menu url " class="form-control slug-output">
                                         @if($errors->has('url'))
                                             <span class="text-danger">{{ $errors->first('url') }}</span>
                                         @endif

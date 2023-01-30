@@ -10,9 +10,9 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="{{ route('subsub-menu.index') }}">Sub Menu</a>
                 </li>
-                <li class="active">Simple &amp; Dynamic</li>
+                <li class="active">All Sub-Menus</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -26,16 +26,17 @@
         </div>
 
         <div class="page-content">
-            
 
-            <div class="page-header">
-                <h1>
-                    Tables
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Static &amp; Dynamic Tables
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list-alt"></i> Sub-Menus
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('sub-menu.create') }}" class="">
+                        <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -46,11 +47,11 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                   <tr>
-                                    <th>#</th>
+                                    <th>#SL</th>
                                     <th>Sub Sub Menu Name</th>
                                     <th>url</th>
-                                    <th>serial_num</th>
-                                    <th>Sub Menu Id</th>
+                                    <th class="text-center">Serial Num</th>
+                                    <th>Parent Sub-Menu</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -61,8 +62,8 @@
                                             <th>{{ $loop->index+1 }}</th>
                                             <td>{{ $all_adds->name }}</td>
                                             <td>{{ $all_adds->url }}</td>
-                                            <td>{{ $all_adds->serial_num }}</td>
-                                            <td>{{ $all_adds->fk_sub_menu_id }}</td>
+                                            <td class="text-center">{{ $all_adds->serial_num }}</td>
+                                            <td>{{ $all_adds->subMenu->name }}</td>
                                             <td>
                                                 @if ($all_adds->status == 1)
                                                     <a href="{{ route('subSubMenu_status',$all_adds->id) }}"><i class="fa fa-toggle-on" style="font-size: 24px"></i></a>
