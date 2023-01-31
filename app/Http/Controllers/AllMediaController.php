@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllMedia;
-use App\Models\Category;
+// use App\Models\Category;
 use App\Models\MediaCategory;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class AllMediaController extends Controller
     {
 
         return view('backend.all-media.index',[
-            'all_adds'=> AllMedia::where('status',1)->paginate(20),
+            'all_adds'=> AllMedia::all(),
         ]);
     }
 
@@ -54,12 +54,12 @@ class AllMediaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'serial_number' => 'required',
+            'serial_number'  => 'required|numeric',
             'fk_category_id' => 'required',
-            'media_name' => 'required',
-            'media_link' => 'required',
-            'photo' => 'required',
-            'status' => 'required',
+            'media_name'     => 'required|max:200',
+            'media_link'     => 'required|unique:all_media,media_link',
+            'photo'          => 'required',
+
         ]);
 
         try {
@@ -68,7 +68,7 @@ class AllMediaController extends Controller
                 'fk_category_id'=> $request->fk_category_id,
                 'media_name'=> $request->media_name,
                 'media_link'=> $request->media_link,
-                'status'=> $request->status,
+                'status'=> $request->status == 'on' ? 1 : 0,
                 'photo'=> 'default.jpg',
             ]);
 
@@ -118,9 +118,9 @@ class AllMediaController extends Controller
     {
 
         $request->validate([
-            'serial_number' => 'required',
+            'serial_number' => 'required|numeric',
             'fk_category_id' => 'required',
-            'media_name' => 'required',
+            'media_name' => 'required|max:200',
             'media_link' => 'required',
             'status' => 'required',
         ]);
@@ -139,13 +139,13 @@ class AllMediaController extends Controller
                     'fk_category_id'=> $request->fk_category_id,
                     'media_name'=> $request->media_name,
                     'media_link'=> $request->media_link,
-                    'status'=> $request->status,
+                    'status'=> $request->status == 'on' ? 1 : 0,
                     'photo'=> $all_media->photo,
                 ]);
 
             $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'uploads/all-media', 110, 50);
 
-            return back()->with('success','Data Added Successfully');
+            return back()->with('success','Data Updated Successfully');
 
             }
             catch(\Exception $ex) {
@@ -162,12 +162,17 @@ class AllMediaController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = AllMedia::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Deleted!');
+        try {
+            $smart_move = AllMedia::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -179,16 +184,17 @@ class AllMediaController extends Controller
     */
     public function change_status($id)
     {
-        if (AllMedia::find($id)->status == 0) {
-            AllMedia::find($id)->update([
+        $all_media = AllMedia::find($id);
+        if ($all_media->status == 0) {
+            $all_media->update([
                 'status'=> 1
             ]);
         } else {
-            AllMedia::find($id)->update([
+            $all_media->update([
                 'status'=> 0
             ]);
         }
-        return back()->with('success','Ads Status Changed!');
+        return back()->with('success','Media Status Changed!');
     }
 
 

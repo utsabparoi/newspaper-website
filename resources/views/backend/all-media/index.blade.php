@@ -10,9 +10,9 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="{{ route('all-media.index') }}">All Media</a>
                 </li>
-                <li class="active">Simple &amp; Dynamic</li>
+                <li class="active">View Media</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -27,14 +27,16 @@
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    Tables
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Static &amp; Dynamic Tables
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list-alt"></i> Medias
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('all-media.create') }}" class="">
+                        <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Media</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -44,32 +46,33 @@
                         <div class="col-xs-12">
                             <table class="table">
                                 <thead class="thead-dark">
-                                  <tr>
-                                    <th>#</th>
-                                        <th>serial_number</th>
-                                        <th>fk_category_id</th>
-                                        <th>media_name</th>
-                                        <th>media_link</th>
-                                        <th>photo</th>
-                                        <th>status</th>
+                                    <tr>
+                                        <th>Sl#</th>
+                                        <th>Media Name</th>
+                                        <th>Serial No</th>
+                                        <th>Media Category Name</th>
+                                        <th>Media Link</th>
+                                        <th>Photo</th>
+                                        <th>Status</th>
                                         <th>Action</th>
-                                  </tr>
+                                    </tr>
                                 </thead>
                                 <tbody>
+
                                     @forelse ($all_adds as $all_add)
                                         <tr>
-                                                <th>{{ $loop->index+1 }}</th>
-                                                <td>{{ $all_add->serial_number }}</td>
-                                                <td>{{ $all_add->fk_category_id }}</td>
-                                                <td>{{ $all_add->media_name }}</td>
-                                                <td>{{ $all_add->media_link }}</td>
-                                                <td>
-                                                    @if ( strpos($all_add->photo,'assets') )
-                                                        <img src="{{ asset($all_add->photo) }}" alt="not found" width="100px">
-                                                    @else
-                                                        <img src="{{asset('img/allMedia/'.$all_add->photo)}}" alt="not found" width="100px">
-                                                    @endif
-                                                </td>
+                                            <th>{{ $loop->index+1 }}</th>
+                                            <td>{{ $all_add->media_name }}</td>
+                                            <td>{{ $all_add->serial_number }}</td>
+                                            <td>{{ $all_add->fk_category_id }}</td>
+                                            <td>{{ $all_add->media_link }}</td>
+                                            <td>
+                                                @if ( strpos($all_add->photo,'assets') )
+                                                    <img src="{{ asset($all_add->photo) }}" alt="not found" width="100px">
+                                                @else
+                                                    <img src="{{asset('img/allMedia/'.$all_add->photo)}}" alt="not found" width="100px">
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="div" style="margin-top:-2px">
                                                     @if ($all_add->status == 1)
@@ -100,7 +103,7 @@
                                     @endforelse
                                 </tbody>
                               </table>
-                              {{$all_adds->links('pagination::bootstrap-4')}}
+                              {{-- {{$all_adds->links('pagination::bootstrap-4')}} --}}
                         </div>
                     </div>
 
