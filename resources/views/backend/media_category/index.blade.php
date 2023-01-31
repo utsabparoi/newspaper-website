@@ -49,8 +49,8 @@
                                 <thead class="thead-dark">
                                   <tr>
                                     <th>#</th>
-                                    <th>Category Name</th>
-                                    <th class="text-center">Serial</th>
+                                    <th>Media Category Name</th>
+                                    <th class="text-center">Serial No</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>

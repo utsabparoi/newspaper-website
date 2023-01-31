@@ -11,7 +11,7 @@
                 </li>
 
                 <li>
-                    <a href="#">Media Category</a>
+                    <a href="{{ route('media-category.index') }}">Media Category</a>
                 </li>
                 <li class="active">Add</li>
             </ul><!-- /.breadcrumb -->
@@ -39,7 +39,7 @@
                         @csrf
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <div >
                                         <label class=" control-label no-padding-right" for="fk_category_id"> Select a Category <span class="text-danger">*</span></label>
                                         <select name="category_name" class="form-control">
@@ -52,9 +52,20 @@
                                             <span class="text-danger">Please select a Category</span>
                                         @endif
                                     </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Media Category Name
+                                        <span class="text-danger">*</span></label>
+                                    <div>
+                                        <input name="category_name" type="text" id="form-field-1"
+                                            placeholder="Media Category Name" class="form-control slug-input">
+                                        @if ($errors->has('category_name'))
+                                            <span class="text-danger">{{ $errors->first('category_name') }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Media Category serial num </label>
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Media Category serial num <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="serial" type="number" id="form-field-1" placeholder="serial num" class="form-control">
                                         @if($errors->has('serial'))

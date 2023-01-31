@@ -38,7 +38,7 @@
                         @method('PATCH')
                         <div class="row">
                             <div class="left col-lg-5" style="margin-left: 20px">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class=" control-label no-padding-right" for="fk_category_id"> Select a Category <span class="text-danger">*</span></label>
                                     <select name="category_name" class="form-control">
                                         <option value="" >-Select One-</option>
@@ -46,6 +46,15 @@
                                         <option value="{{ $category->id }}" {{ ( $category->id )== $target_ads->relationtocategory->id ? 'selected' : "" }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Media Category Name </label>
+                                    <div >
+                                        <input value="{{ $target_ads->category_name }}" name="category_name" type="text" id="form-field-1" placeholder="Category Name" class="form-control">
+                                        @if($errors->has('category_name'))
+                                            <span class="text-danger">{{ $errors->first('category_name') }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Media Category Serial Num </label>
