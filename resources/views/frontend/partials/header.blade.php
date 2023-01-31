@@ -305,7 +305,7 @@
 								</li>
 								@endforeach<!-- Features menu end -->
 								<li class="dropdown">
-									<a href="{{url('/media-list')}}" class="dropdown-toggle">অন্যান্য <i class="fa fa-angle-down"></i></a>
+									<a href="{{url('/media-list')}}" class="dropdown-toggle">Media Point <i class="fa fa-angle-down"></i></a>
 									<ul class="dropdown-menu" role="menu">
 									@foreach($mediaCat as $mCat)
 										<li><a href='{{URL::to("media-list/$mCat->id")}}'>{{$mCat->category_name}}</a></li>
