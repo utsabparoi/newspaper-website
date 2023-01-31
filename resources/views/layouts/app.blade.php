@@ -370,7 +370,7 @@
                      | Blog list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('admin-blog*', 'blog-category*') ? 'open active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('admin-blog*', 'blog-category*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-rss"></i>
 							<span class="menu-text"> Blog </span>
@@ -381,7 +381,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-                            {{-- paste --}}
+
                             <li class="{{ request()->routeIs('admin-blog.create') ? 'active' : '' }}">
                                 <a href="{{ route('admin-blog.create') }}">
                                     <i class=" fa fa-plus purple"></i>
@@ -409,7 +409,7 @@
 								</a>
 
 								<b class="arrow"></b>
-                                {{-- sub category --}}
+
 								<ul class="submenu">
 									<li class="{{ request()->routeIs('blog-category.create') ? 'active' : '' }}">
                                         <a href="{{ route('blog-category.create') }}">
@@ -431,7 +431,7 @@
 								</ul>
 							</li>
 						</ul>
-					</li>
+					</li> --}}
 
 
 
@@ -625,7 +625,7 @@
                      | Events list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('events*') ? 'open active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('events*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-calendar"></i>
 							<span class="menu-text"> Events </span>
@@ -654,7 +654,7 @@
 							</li>
 
 						</ul>
-					</li>
+					</li> --}}
 
 
                     {{--
@@ -729,7 +729,7 @@
                      | Slider list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('sliders*') ? 'open active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('sliders*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-sliders"></i>
 							<span class="menu-text"> SLider </span>
@@ -758,7 +758,7 @@
 							</li>
 
 						</ul>
-					</li>
+					</li> --}}
 
 
 
@@ -768,7 +768,7 @@
                      | Performer Schedule list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('schedule*') ? 'open active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('schedule*') ? 'open active' : '' }}">
                         <a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-clock-o"></i>
 							<span class="menu-text"> Performer Schedule </span>
@@ -798,7 +798,7 @@
 							</li>
 
 						</ul>
-					</li>
+					</li> --}}
 
 
 

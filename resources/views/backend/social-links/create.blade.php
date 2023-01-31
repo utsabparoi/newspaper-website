@@ -43,24 +43,36 @@
                                     <label class=" control-label no-padding-right" for="form-field-1">  Name <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="name" type="text" id="form-field-1" placeholder="Name" class="form-control">
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1">  Link <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="link" type="url" id="form-field-1" placeholder="link" class="form-control">
+                                        @if ($errors->has('link'))
+                                            <span class="text-danger">{{ $errors->first('link') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1">  Serial num <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="serial_num" type="number" id="form-field-1" placeholder="serial_num" class="form-control">
+                                        @if ($errors->has('serial_num'))
+                                            <span class="text-danger">{{ $errors->first('serial_num') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Icon Class <span class="text-danger">*</span></label>
                                     <div >
                                         <input name="icon_class" type="text" id="form-field-1" placeholder="icon_class" class="form-control">
+                                        @if ($errors->has('icon_class'))
+                                            <span class="text-danger">{{ $errors->first('icon_class') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">

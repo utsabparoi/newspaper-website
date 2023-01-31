@@ -38,22 +38,14 @@ class Category extends Model
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     function sub_categories()
     {
         return $this->hasMany(SubCategory::class,'id');
+    }
+
+    function media_category()
+    {
+        return $this->hasMany(MediaCategory::class,'id');
     }
 
 }

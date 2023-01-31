@@ -49,17 +49,22 @@ class MediaCategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required',
-            'serial' => 'required',
-            'status' => 'required',
+            'serial'        => 'required',
+            'status'        => 'required',
         ]);
 
-        MediaCategory::insert([
-            'category_name'=> Category::find($request->category_name)->name,
-            'serial'=> $request->serial,
-            'status'=> $request->status,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Media Category Added Successfully');
+        try {
+            MediaCategory::insert([
+                'category_name'=> Category::find($request->category_name)->name,
+                'serial'=> $request->serial,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'created_at'=> Carbon::now(),
+            ]);
+            return back()->with('success','Media Category Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -80,6 +85,7 @@ class MediaCategoryController extends Controller
     */
     public function edit($id)
     {
+        // dd(MediaCategory::find($id));
         return view('backend.media_category.edit',[
             'target_ads'=> MediaCategory::find($id),
             'category_infos'=> Category::all(),
@@ -102,12 +108,18 @@ class MediaCategoryController extends Controller
             'status' => 'required',
         ]);
 
-        MediaCategory::find($id)->update([
-            'category_name'=> $request->category_name,
-            'serial'=> $request->serial,
-            'status'=> $request->status,
-        ]);
-        return back()->with('success','Updated Successfully');
+        try {
+            MediaCategory::find($id)->update([
+                'category_name'=> $request->category_name,
+                'serial'=> $request->serial,
+                'status'=> $request->status == 'on' ? 1 : 0,
+            ]);
+            return back()->with('success','Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
+
     }
 
 
@@ -119,29 +131,35 @@ class MediaCategoryController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = MediaCategory::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Sub Category Deleted!');
+        try {
+            $smart_move = MediaCategory::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Sub Category Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
 
     /*
     |--------------------------------------------------------------------------
-    | Destroy Method for deleting Category
+    | Status Change of Media Category
     |--------------------------------------------------------------------------
     */
     public function change_status($id)
     {
-        if (MediaCategory::find($id)->status == 0) {
-            MediaCategory::find($id)->update([
+        $media_cat = MediaCategory::find($id);
+        if ($media_cat->status == 0) {
+            $media_cat->update([
                 'status'=> 1
             ]);
         } else {
-            MediaCategory::find($id)->update([
+            $media_cat->update([
                 'status'=> 0
             ]);
         }

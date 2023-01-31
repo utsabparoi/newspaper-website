@@ -16,26 +16,20 @@
                 <li class="active">Add</li>
             </ul><!-- /.breadcrumb -->
 
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-                    <span class="input-icon">
-                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-                        <i class="ace-icon fa fa-search nav-search-icon"></i>
-                    </span>
-                </form>
-            </div><!-- /.nav-search -->
         </div>
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    <b>Adding Media Category</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-plus"></i> Add Media Category
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('media-category.index') }}" class="">
+                        <i class="fa fa-list-alt"></i> View <span class="hide-in-sm">MediaCategories</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -47,24 +41,36 @@
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
                                     <div >
+                                        <label class=" control-label no-padding-right" for="fk_category_id"> Select a Category <span class="text-danger">*</span></label>
                                         <select name="category_name" class="form-control">
                                             <option value="">--Select a Category--</option>
                                             @foreach ($category_infos as $category_info)
                                                 <option value="{{ $category_info->id }}">{{ $category_info->name }}</option>
                                             @endforeach
                                         </select>
+                                        @if($errors->has('category_name'))
+                                            <span class="text-danger">Please select a Category</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Media Category serial num </label>
                                     <div >
                                         <input name="serial" type="number" id="form-field-1" placeholder="serial num" class="form-control">
+                                        @if($errors->has('serial'))
+                                            <span class="text-danger">{{ $errors->first('serial') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Status </label>
-                                    <div >
-                                        <input name="status" type="number" id="form-field-1" placeholder="Ex: 1 or 0" class="form-control">
+                                    <div class="input-group width-100">
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Status
+                                        </span>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="status" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

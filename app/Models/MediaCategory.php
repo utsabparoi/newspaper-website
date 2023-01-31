@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MediaCategory extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'media_categories';
     protected $guarded = [];
 

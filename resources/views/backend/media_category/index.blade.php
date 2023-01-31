@@ -10,9 +10,9 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="{{ route('media-category.index') }}">Media Category</a>
                 </li>
-                <li class="active">Simple &amp; Dynamic</li>
+                <li class="active">All MediaCategories</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -26,16 +26,18 @@
         </div>
 
         <div class="page-content">
-            
 
-            <div class="page-header">
-                <h1>
-                    Tables
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Static &amp; Dynamic Tables
-                    </small>
-                </h1>
+
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list-alt"></i> Media Categories
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('media-category.create') }}" class="">
+                        <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Media Category</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -48,7 +50,7 @@
                                   <tr>
                                     <th>#</th>
                                     <th>Category Name</th>
-                                    <th>serial</th>
+                                    <th class="text-center">Serial</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -58,7 +60,7 @@
                                         <tr>
                                             <th>{{ $loop->index+1 }}</th>
                                             <td>{{ $all_adds->category_name }}</td>
-                                            <td>{{ $all_adds->serial }}</td>
+                                            <td class="text-center">{{ $all_adds->serial }}</td>
                                             <td>
                                                 @if ($all_adds->status == 1)
                                                     <a href="{{ route('mediaCat_status',$all_adds->id) }}"><i class="fa fa-toggle-on" style="font-size: 24px"></i></a>

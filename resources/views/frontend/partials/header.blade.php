@@ -234,7 +234,7 @@
                     </div><!-- header right end -->
                 @else
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 header-right">
-                        <div class="ad-banner pull-right">
+                        <div class="ad-banner pull-right ad-iframe">
                         <?php if($ads1) {
                             echo $ads1->script;
                         }else{ ?>

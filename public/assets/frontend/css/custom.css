@@ -363,3 +363,8 @@ hr.min{margin: 4px 0;}
 .media-iframe{min-height: 500px;width: 100%;}
 .media-iframe iframe{min-height: 700px;}
 .single-post p{font-size: 17px !important}
+
+.ad-iframe iframe{
+    height: 200px;
+    width: 200px;
+}

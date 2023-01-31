@@ -48,14 +48,14 @@
                                             @endforeach
                                         </select>
                                         @if($errors->has('fk_category_id'))
-                                            <span class="text-danger">{{ $errors->first('fk_category_id') }}</span>
+                                            <span class="text-danger">Please select a Main Category</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Sub Category Name <span class="text-danger">*</span></label>
                                     <div >
-                                        <input name="name" type="text" id="form-field-1" placeholder="Sub Category Name" class="form-control">
+                                        <input name="name" type="text" id="form-field-1" placeholder="Sub Category Name" class="form-control slug-input">
                                         @if($errors->has('name'))
                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif
@@ -64,7 +64,7 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Sub Category link <span class="text-danger">*</span></label>
                                     <div >
-                                        <input name="link" type="text" id="form-field-1" placeholder="Sub Category link " class="form-control">
+                                        <input name="link" type="text" id="form-field-1" placeholder="Sub Category link " class="form-control slug-output">
                                         @if($errors->has('link'))
                                             <span class="text-danger">{{ $errors->first('link') }}</span>
                                         @endif
