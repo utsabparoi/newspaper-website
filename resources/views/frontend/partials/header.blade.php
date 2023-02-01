@@ -206,7 +206,7 @@
 	<header id="header" class="header">
 		<div class="container">
 			<div class="row header-row">
-				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important">
+				<div class="col-sm-4 col-mb-4 col-md-4 col-lg-3" style="padding-right: 0 !important">
 					<div class="logo" style="width: 272px;">
                         {{-- TEST 2 --}}
                         @if ( strpos($info->logo,'assets') )
@@ -223,14 +223,14 @@
 				</div><!-- logo col end -->
 
                 @if(Request::path()=='media')
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 header-right">
-                        <div class="ad-banner pull-right">
+                    <div class="col-sm-8 col-md-8 col-lg-9 header-right">
+                        <div class="ad-banner pull-right ">
                             <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
                         </div>
                     </div><!-- header right end -->
                 @else
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 header-right">
-                        <div class="ad-banner pull-right">
+                    <div class="col-sm-8 col-md-8 col-lg-9 header-right">
+                        <div class="ad-banner pull-right bg-danger">
                         <?php if($ads1) {
                             echo $ads1->script;
                         }else{ ?>

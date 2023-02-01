@@ -694,14 +694,14 @@
 
             <div class="widget text-center">
                 @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 7)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
+                    @if ($ads_manage->serial_num == 7)
+                        <?php if($ads_manage) {
+                                echo $ads_manage->script;
+                                } else{ ?>
+                            <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                        <?php 	}?>
+                    @endif
+                @endforeach
 
             </div><!-- Sidebar Ad end -->
 
@@ -827,14 +827,14 @@
             </div><!-- Col end -->
             <div class="col-sm-4">
                 @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 9)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
+                    @if ($ads_manage->serial_num == 9)
+                        <?php if($ads_manage) {
+                                echo $ads_manage->script;
+                                } else{ ?>
+                            <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                        <?php 	}?>
+                    @endif
+                @endforeach
 
             </div><!-- Col end -->
         </div><!-- Row end -->
@@ -1142,24 +1142,20 @@
 <section class="block-wrapper custom_padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 bg-danger text-center">
                 @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 10)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
-
-
-
+                    @if ($ads_manage->serial_num == 10)
+                        {!!$ads_manage->script!!}
+                        {{-- @if($ads_manage)
+                            {!!$ads_manage->script!!}
+                        @else
+                            <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                        @endif --}}
+                    @endif
+                @endforeach
             </div>
-
-
         </div>
-
+    </div>
 </section>
 
 <section class="block-wrapper">
@@ -1338,8 +1334,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <a href="http://www.smartsoftware.com.bd/" target="_blank"><img class="img-responsive"
-                        src="{{asset('assets/frontend/images/adManager/banner1.jpg')}}" alt="" /> </a>
+                <a href="http://www.smartsoftware.com.bd/" target="_blank">
+                    <img class="img-responsive" src="{{asset('assets/frontend/images/adManager/banner1.jpg')}}" alt="" />
+                </a>
             </div>
         </div>
     </div>
