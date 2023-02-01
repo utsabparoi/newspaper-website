@@ -45,19 +45,23 @@ class AdsManagementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'script' => 'required',
+            'script'      => 'required',
             'position_id' => 'required',
-            'serial_num' => 'required',
+            'serial_num'  => 'required|numeric',
         ]);
+        try {
+            AdsManagement::insert([
+                'script'     => $request->script,
+                'position_id'=> $request->position_id,
+                'serial_num' => $request->serial_num,
+                'status'     => $request->status == 'on' ? 1 : 0,
+                'created_at' => Carbon::now(),
+            ]);
+            return back()->with('success','Ads Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
 
-        AdsManagement::insert([
-            'script'=> $request->script,
-            'position_id'=> $request->position_id,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Ads Added Successfully');
     }
 
 
@@ -94,17 +98,21 @@ class AdsManagementController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'script' => 'required',
-            'serial_num' => 'required',
+            'script'     => 'required',
+            'serial_num' => 'required|numeric',
         ]);
+        try {
+            AdsManagement::find($id)->update([
+                'script'     => $request->script,
+                'position_id'=> $request->position_id,
+                'serial_num' => $request->serial_num,
+                'status'     => $request->status == 'on' ? 1 : 0,
+            ]);
+            return back()->with('success','Ads Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
 
-        AdsManagement::find($id)->update([
-            'script'=> $request->script,
-            'position_id'=> $request->position_id,
-            'serial_num'=> $request->serial_num,
-            'status'=> $request->status,
-        ]);
-        return back()->with('success','Ads Updated Successfully');
     }
 
 
@@ -116,12 +124,17 @@ class AdsManagementController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = AdsManagement::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Ads Deleted!');
+        try {
+            $smart_move = AdsManagement::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Ads Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -133,16 +146,20 @@ class AdsManagementController extends Controller
     */
     public function change_status($id)
     {
-        if (AdsManagement::find($id)->status == 0) {
-            AdsManagement::find($id)->update([
+        $ads_manage = AdsManagement::find($id);
+
+        if ($ads_manage->status == 0) {
+            $ads_manage->update([
                 'status'=> 1
             ]);
         }
         else {
-            AdsManagement::find($id)->update([
+            $ads_manage->update([
                 'status'=> 0
             ]);
         }
+
+        return back()->with('success','Status Changed!');
     }
 
 

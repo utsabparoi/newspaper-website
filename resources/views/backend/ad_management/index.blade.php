@@ -10,9 +10,9 @@
                     <a href="#">Home</a>
                 </li>
                 <li>
-                    <a href="#">Tables</a>
+                    <a href="{{ route('ads-management.index') }}">Ads Management</a>
                 </li>
-                <li class="active">Simple &amp; Dynamic</li>
+                <li class="active">View Ads</li>
             </ul><!-- /.breadcrumb -->
 
             <div class="nav-search" id="nav-search">
@@ -28,14 +28,16 @@
         <div class="page-content">
 
 
-            <div class="page-header">
-                <h1>
-                    Tables
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Static &amp; Dynamic Tables
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-list-alt"></i> Advertisements
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('ads-management.create') }}" class="">
+                        <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -48,8 +50,8 @@
                                   <tr>
                                     <th>#</th>
                                     <th>Ads Script</th>
-                                    <th>Ads Position Id</th>
-                                    <th>Ads Serial No.</th>
+                                    <th class="text-center">Position Id</th>
+                                    <th class="text-center">Serial No.</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -59,8 +61,8 @@
                                         <tr>
                                             <th>{{ $loop->index+1 }}</th>
                                             <td>{{ $all_adds->script }}</td>
-                                            <td>{{ $all_adds->position_id }}</td>
-                                            <td>{{ $all_adds->serial_num }}</td>
+                                            <td class="text-center">{{ $all_adds->position_id }}</td>
+                                            <td class="text-center">{{ $all_adds->serial_num }}</td>
                                             <td>
                                                 @if ($all_adds->status == 1)
                                                     <a href="{{ route('adsManagement_status',$all_adds->id) }}"><i class="fa fa-toggle-on" style="font-size: 24px"></i></a>

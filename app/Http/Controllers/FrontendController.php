@@ -40,7 +40,8 @@ class FrontendController extends Controller
 
 
         //all ads management
-        $ads_manages = AdsManagement::where([['status',1],['position_id',1]])->get();
+        // $ads_manages = AdsManagement::where([['status',1],['position_id',1]])->get();
+        $ads_manages = AdsManagement::where('status',1)->get();
 
         return view('frontend.home',compact('categories','slider_news','featurd_news','popular_news','latest_news','ads_manages')
         );

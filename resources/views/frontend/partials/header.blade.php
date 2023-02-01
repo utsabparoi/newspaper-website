@@ -181,15 +181,11 @@
                 <div class="col-md-3">
                     <div class="search">
 
-				 {{-- {!! Form::open(['url'=>'/search','method'=>'get']) !!}
-					<input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
-					{!! Form::close() !!} --}}
-                    {{-- my custom code --}}
-                    <form action="{{ url('/search') }}" method="get">
+                    {{-- <form action="{{ url('/search') }}" method="get">
                         <input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
-                    </form>
+                    </form> --}}
 
-				</div><!-- Site search end -->
+				</div>
                 </div>
 				<div class="col-md-3 col-sm-3 col-xs-12 top-social text-right">
 					<ul class="unstyled">
@@ -234,7 +230,7 @@
                     </div><!-- header right end -->
                 @else
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 header-right">
-                        <div class="ad-banner pull-right ad-iframe">
+                        <div class="ad-banner pull-right">
                         <?php if($ads1) {
                             echo $ads1->script;
                         }else{ ?>
