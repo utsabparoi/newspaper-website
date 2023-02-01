@@ -49,10 +49,10 @@
                                     <tr>
                                         <th>Sl#</th>
                                         <th>Media Name</th>
-                                        <th>Serial No</th>
-                                        <th>Media Category Name</th>
+                                        <th class="text-center">Serial No</th>
+                                        <th>Category Name</th>
                                         <th>Media Link</th>
-                                        <th>Photo</th>
+                                        <th class="text-center">Photo</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -63,10 +63,10 @@
                                         <tr>
                                             <th>{{ $loop->index+1 }}</th>
                                             <td>{{ $all_add->media_name }}</td>
-                                            <td>{{ $all_add->serial_number }}</td>
-                                            <td>{{ $all_add->fk_category_id }}</td>
+                                            <td class="text-center">{{ $all_add->serial_number }}</td>
+                                            <td>{{ $all_add->media_category->category_name }}</td>
                                             <td>{{ $all_add->media_link }}</td>
-                                            <td>
+                                            <td class="text-center">
                                                 @if ( strpos($all_add->photo,'assets') )
                                                     <img src="{{ asset($all_add->photo) }}" alt="not found" width="100px">
                                                 @else

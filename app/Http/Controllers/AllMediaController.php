@@ -21,10 +21,8 @@ class AllMediaController extends Controller
     */
     public function index()
     {
-
-        return view('backend.all-media.index',[
-            'all_adds'=> AllMedia::all(),
-        ]);
+        $data['all_adds'] = AllMedia::all();
+        return view('backend.all-media.index', $data);
     }
 
 
@@ -72,7 +70,7 @@ class AllMediaController extends Controller
                 'photo'=> 'default.jpg',
             ]);
 
-           $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'uploads/all-media', 110, 50);
+           $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'uploads/all-media', 471, 107);
 
            return back()->with('success','Data Added Successfully');
 
@@ -143,7 +141,7 @@ class AllMediaController extends Controller
                     'photo'=> $all_media->photo,
                 ]);
 
-            $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'uploads/all-media', 110, 50);
+            $this->uploadFileWithResize($request->photo, $all_media, 'photo', 'uploads/all-media', 471, 107);
 
             return back()->with('success','Data Updated Successfully');
 

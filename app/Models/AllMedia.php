@@ -14,9 +14,9 @@ class AllMedia extends Model
 
 
 
-    function relationtocategory(){
-        return $this->hasOne(Category::class,'id','fk_category_id');
-    }
+    // function relationtocategory(){
+    //     return $this->hasOne(Category::class,'id','fk_category_id');
+    // }
 
 
 
@@ -28,5 +28,9 @@ class AllMedia extends Model
 
     function mediacategory() {
         return $this->belongsTo(MediaCategory::class,'id');
+    }
+
+    function relationtomediacategory(){
+        return $this->belongsTo(MediaCategory::class,'id', 'fk_category_id');
     }
 }
