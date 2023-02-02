@@ -53,7 +53,7 @@
                                         <select name="position_id" type="number" class="form-control" >
                                             <option value="" >-Select a Position-</option>
                                             @foreach ($ads_position as $position)
-                                                <option value="{{ $position->id }}" {{ $position->id == $target_ads->ads_position->id ? 'selected' : "" }}>{{ $position->position_name }}</option>
+                                                <option value="{{ $position->id }}" {{ $position->id == $target_ads->position_id ? 'selected' : "" }}>{{ $position->position_name }}</option>
                                             @endforeach
                                         </select>
                                         {{-- <input value="{{ $target_ads->position_id }}" name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control"> --}}

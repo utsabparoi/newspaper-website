@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\AdsPosition;
+use App\Models\AdsManagement;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,8 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             AboutCompanyTableSeeder::class,
+            AdsManagementSeeder::class,
+            AdsPositionSeeder::class,
         ]);
-        
+
     }
 
 }
