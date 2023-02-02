@@ -48,12 +48,17 @@ class AdsPositionController extends Controller
             '*'=>'required',
         ]);
 
-        AdsPosition::insert([
-            'position_name'=> $request->position_name,
-            'status'=> $request->status,
-            'created_at'=> Carbon::now(),
-        ]);
-        return back()->with('success','Ads Position Added Successfully');
+        try {
+            AdsPosition::insert([
+                'position_name'=> $request->position_name,
+                'status'=> $request->status == 'on' ? 1 : 0,
+                'created_at'=> Carbon::now(),
+            ]);
+            return back()->with('success','Ads Position Added Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -93,11 +98,16 @@ class AdsPositionController extends Controller
             '*'=>'required',
         ]);
 
-        AdsPosition::find($id)->update([
-            'position_name'=> $request->position_name,
-            'status'=> $request->status,
-        ]);
-        return back()->with('success','Ads Position Updated Successfully');
+        try {
+            AdsPosition::find($id)->update([
+                'position_name'=> $request->position_name,
+                'status'=> $request->status == 'on' ? 1 : 0,
+            ]);
+            return back()->with('success','Ads Position Updated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
     }
 
 
@@ -109,12 +119,16 @@ class AdsPositionController extends Controller
     */
     public function destroy($id)
     {
-        $smart_move = AdsPosition::find($id);
-        $smart_move->update([
-            'status'=> 0,
-        ]);
-        $smart_move->delete();
-        return back()->with('deleted','Ads position Deleted!');
+        try {
+            $smart_move = AdsPosition::find($id);
+            $smart_move->update([
+                'status'=> 0,
+            ]);
+            $smart_move->delete();
+            return back()->with('deleted','Ads position Deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
 
@@ -126,12 +140,13 @@ class AdsPositionController extends Controller
     */
     public function change_status($id)
     {
-        if (AdsPosition::find($id)->status == 0) {
-            AdsPosition::find($id)->update([
+        $ads_potision = AdsPosition::find($id);
+        if ($ads_potision->status == 0) {
+            $ads_potision->update([
                 'status'=> 1
             ]);
         } else {
-            AdsPosition::find($id)->update([
+            $ads_potision->update([
                 'status'=> 0
             ]);
         }

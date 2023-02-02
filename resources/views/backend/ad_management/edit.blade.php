@@ -11,7 +11,7 @@
                 </li>
 
                 <li>
-                    <a href=" route('ads-management.index') ">Category</a>
+                    <a href=" route('ads-management.index') ">Ads Management</a>
                 </li>
                 <li class="active">Edit</li>
             </ul><!-- /.breadcrumb -->
@@ -43,12 +43,21 @@
                                     <label class=" no-padding-right" for="form-field-1"> Ads Script </label>
                                     <div >
                                         <textarea name="script" placeholder="Ads Script" class="form-control">{{ $target_ads->script }}</textarea>
+                                        <span class="text-danger">* Input image maximum width and height (1000px x 120px)</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Position Id </label>
+                                    {{-- <label class=" control-label no-padding-right" for="form-field-1"> Ads Position Id </label> --}}
                                     <div >
-                                        <input value="{{ $target_ads->position_id }}" name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control">
+                                        <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
+                                        <select name="position_id" type="number" class="form-control" >
+                                            <option value="" >-Select a Position-</option>
+                                            @foreach ($ads_position as $position)
+                                                <option value="{{ $position->id }}" {{ $position->id == $target_ads->ads_position->id ? 'selected' : "" }}>{{ $position->position_name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <input value="{{ $target_ads->position_id }}" name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control"> --}}
+
                                     </div>
                                 </div>
                                 <div class="form-group">

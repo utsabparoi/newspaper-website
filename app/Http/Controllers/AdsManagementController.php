@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdsManagement;
 use Carbon\Carbon;
+use App\Models\AdsPosition;
 use Illuminate\Http\Request;
+use App\Models\AdsManagement;
 
 class AdsManagementController extends Controller
 {
@@ -31,7 +32,8 @@ class AdsManagementController extends Controller
     */
     public function create()
     {
-        return view('backend.ad_management.create');
+        $data['ads_position'] = AdsPosition::where('status',1)->get();
+        return view('backend.ad_management.create', $data);
     }
 
 
@@ -83,7 +85,8 @@ class AdsManagementController extends Controller
     public function edit($id)
     {
         return view('backend.ad_management.edit',[
-            'target_ads'=> AdsManagement::find($id),
+            'target_ads'   => AdsManagement::find($id),
+            'ads_position' => AdsPosition::all(),
         ]);
     }
 

@@ -39,26 +39,39 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" no-padding-right" for="form-field-1"> Ads Script </label>
+                                    <label class=" no-padding-right" for="form-field-1"> Ads Script <span class="text-danger">*</span></label>
                                     <div >
                                         <textarea name="script" placeholder="Ads Script" class="form-control"></textarea>
+                                        <span class="text-danger">* Input image maximum width and height (1000px x 120px)</span>
+                                        @if ($errors->has('script'))
+                                            <span class="text-danger">{{ $errors->first('script') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Position Id </label>
+                                    {{-- <label class=" control-label no-padding-right" for="form-field-1"> Ads Position Id </label> --}}
                                     <div >
-                                        <input name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control">
+                                        {{-- <input name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control"> --}}
+                                        <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
+                                        <select name="position_id" type="number" class="form-control" >
+                                            <option value="" >-Select a Position-</option>
+                                            @foreach ($ads_position as $position)
+                                                <option value="{{ $position->id }}">{{ $position->position_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Ads Serial Number </label>
                                     <div >
                                         <input name="serial_num" type="number" id="form-field-1" placeholder="Ads Serial Number" class="form-control">
+                                        @if ($errors->has('serial_num'))
+                                            <span class="text-danger">{{ $errors->first('serial_num') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group width-100">
-                                        {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
                                         <span class="input-group-addon width-20" style="text-align: left">
                                             Status
                                         </span>
