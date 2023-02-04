@@ -57,7 +57,7 @@
 
                 <div class="gap-50"></div>
 
-                <div style="margin-bottom: 30px; padding: 0px" class="col-md-12">
+                <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
 
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 2)
@@ -217,7 +217,7 @@
 
             </div>
 
-            <div style="margin-bottom: 30px; padding: 0px" class="col-md-12">
+            <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
                 @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 3)
                             <?php if($ads_manage) {
@@ -393,16 +393,16 @@
         </div>
 
 
-        <div style="margin-bottom: 30px; padding: 0px" class="col-md-12">
+        <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
             @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 4)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
+                @if ($ads_manage->serial_num == 4)
+                    <?php if($ads_manage) {
+                            echo $ads_manage->script;
+                            } else{ ?>
+                        <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                    <?php 	}?>
+                @endif
+            @endforeach
 
         </div>
         <div class="gap-40"></div>
@@ -554,16 +554,16 @@
 
     </div>
 
-    <div style="margin-bottom: 30px; padding: 0px" class="col-md-12">
+    <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
         @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 5)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
+            @if ($ads_manage->serial_num == 5)
+                <?php if($ads_manage) {
+                        echo $ads_manage->script;
+                        } else{ ?>
+                    <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                <?php 	}?>
+            @endif
+        @endforeach
 
 
     </div>
@@ -572,16 +572,16 @@
 
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class="sidebar sidebar-right">
-            <div class="sidebar_ads1">
+            <div class="sidebar_ads1 custom-image">
                 @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 6)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
+                    @if ($ads_manage->serial_num == 6)
+                        <?php if($ads_manage) {
+                                echo $ads_manage->script;
+                                } else{ ?>
+                            <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                        <?php 	}?>
+                    @endif
+                @endforeach
 
 
             </div>
@@ -692,7 +692,7 @@
             {{-------------------- CATEGORY 7 END --------------------}}
 
 
-            <div class="widget text-center">
+            <div class="widget text-center custom-image">
                 @foreach ($ads_manages as $ads_manage)
                     @if ($ads_manage->serial_num == 7)
                         <?php if($ads_manage) {
@@ -788,11 +788,6 @@
                                         @endif
 
 
-
-
-
-
-
                                     </ul><!-- List post end -->
                                 </div><!-- List post block end -->
                             @endforeach
@@ -813,19 +808,19 @@
 <section class="ad-content-area text-center no-padding">
     <div class="container">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8 custom-image">
                 @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 8)
-                            <?php if($ads_manage) {
-                                    echo $ads_manage->script;
-                                    } else{ ?>
-                                <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                            <?php 	}?>
-                        @endif
-                    @endforeach
+                    @if ($ads_manage->serial_num == 8)
+                        <?php if($ads_manage) {
+                                echo $ads_manage->script;
+                                } else{ ?>
+                            <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
+                        <?php 	}?>
+                    @endif
+                @endforeach
 
             </div><!-- Col end -->
-            <div class="col-sm-4">
+            <div class="col-sm-4 custom-image">
                 @foreach ($ads_manages as $ads_manage)
                     @if ($ads_manage->serial_num == 9)
                         <?php if($ads_manage) {
@@ -1142,7 +1137,7 @@
 <section class="block-wrapper custom_padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 bg-danger text-center">
+            <div class="col-md-8 text-center custom-image">
                 @foreach ($ads_manages as $ads_manage)
                     @if ($ads_manage->serial_num == 10)
                         {!!$ads_manage->script!!}
@@ -1330,7 +1325,7 @@
 
 <!-- Footer Add -->
 
-<section class="ad-content-area text-center">
+<section class="text-center">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">

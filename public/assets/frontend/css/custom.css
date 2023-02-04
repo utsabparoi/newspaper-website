@@ -366,5 +366,10 @@ hr.min{margin: 4px 0;}
 
 /* .ad-iframe iframe{
     height: 100px;
-    width: 200px;s
+    width: 200px;
 } */
+
+.custom-image a img{
+    width: 100% !important;
+    height: 100px !important;
+}

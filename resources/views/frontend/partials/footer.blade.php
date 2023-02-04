@@ -62,7 +62,6 @@
                                         </a>
                                     @endif
                                 </div>
-
 							</div>
 							<div class="col-md-4 col-xs-12" id="middle_part2">
 								<div class="footer_apple">

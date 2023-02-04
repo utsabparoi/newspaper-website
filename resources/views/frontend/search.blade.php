@@ -61,8 +61,8 @@
 							@else
 							@if($key == 4)
 								<div class="col-xs-12 col-sm-12 col-md-12 ">
-									<div  class="ad-banner custom-ad-banner text-center">
-														<?php if($ads1) {
+									<div  class="text-center custom-image">
+										<?php if($ads1) {
 										echo $ads1->script;
 										} else{ ?>
 											<img class="img-responsive" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />

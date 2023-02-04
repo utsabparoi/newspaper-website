@@ -39,7 +39,7 @@
 							<div class="post-media post-featured-image">
 
                                 @if(isset($ads[1]))
-								<div  class="banner_section">
+								<div class="banner_section custom-image">
 									<?php echo $ads[1]->script; ?>
 								</div>
 								@endif
@@ -62,7 +62,7 @@
 										<?php } ?>
 
                                         @if(isset($ads[2]))
-                                        <div  class="banner_section">
+                                        <div class="banner_section custom-image">
                                             <?php echo $ads[2]->script; ?>
                                         </div>
                                         @endif
@@ -73,7 +73,7 @@
 								 <?php echo $news_details->description; ?>
 							</div><!-- Entery content end -->
 							@if(isset($ads[3]))
-							<div  class="banner_section">
+							<div  class="banner_section custom-image">
 								<?php echo $ads[3]->script; ?>
 							</div>
 							@endif
@@ -148,7 +148,7 @@
 					<div class="sidebar sidebar-right">
 						<div class="widget">
 							@if(isset($ads[5]))
-								<div  class="banner_section">
+								<div  class="banner_section custom-image">
 									<?php echo $ads[5]->script; ?>
 								</div>
 								@endif
@@ -242,7 +242,7 @@
 
 						<div class="widget">
 							@if(isset($ads[4]))
-								<div  class="banner_section">
+								<div  class="banner_section custom-image">
 									<?php echo $ads[5]->script; ?>
 								</div>
 								@endif

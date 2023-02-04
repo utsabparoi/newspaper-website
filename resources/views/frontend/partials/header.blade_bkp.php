@@ -206,8 +206,8 @@
 	<header id="header" class="header">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;">
-					<div class="logo" style="width: 272px;">
+				<div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important">
+					<div class="logo" style="max-width: 270px;min-width: 180px">
                         {{-- TEST 2 --}}
                         @if ( strpos($info->logo,'assets') )
                             <a href="{{URL::to('/')}}">
@@ -222,13 +222,15 @@
 					</div>
 				</div><!-- logo col end -->
 
-                <div class="col-sm-8 col-md-8 col-lg-9 header-right">
-                    @if(Request::path()=='media')
-                        <div class="pull-right">
+                @if(Request::path()=='media')
+                    <div class="col-sm-8 col-md-8 col-lg-9 header-right">
+                        <div class="ad-banner pull-right ">
                             <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
                         </div>
-                    @else
-                        <div class="pull-right custom-image">
+                    </div><!-- header right end -->
+                @else
+                    <div class="col-sm-8 col-md-8 col-lg-9 header-right">
+                        <div class="pull-right">
                         <?php if($ads1) {
                             echo $ads1->script;
                         }else{ ?>
@@ -237,8 +239,8 @@
                         ?>
 
                         </div>
-                    @endif
-                </div><!-- header right end -->
+                    </div><!-- header right end -->
+                @endif
 
 
 

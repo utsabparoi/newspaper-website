@@ -66,7 +66,7 @@
 							@else
 							@if($key == 4)
 								<div class="col-xs-12 col-sm-12 col-md-12 ">
-									<div  class="ad-banner custom-ad-banner text-center">
+									<div  class="text-center custom-image">
                                         @foreach ($ads_manages as $ads_manage)
                                             @if ($ads_manage->serial_num == 1)
                                                 <?php if($ads_manage) {
@@ -136,7 +136,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="sidebar sidebar-right">
 						<div class="widget">
-							<div class="widget text-center">
+							<div class="widget text-center custom-image">
                                 @foreach ($ads_manages as $ads_manage)
                                 @if ($ads_manage->serial_num == 2)
                                     <?php if($ads_manage) {
@@ -223,7 +223,7 @@
 
 						</div><!-- Popular news widget end -->
 
-						<div class="widget text-center">
+						<div class="widget text-center custom-image">
                             @foreach ($ads_manages as $ads_manage)
                             @if ($ads_manage->serial_num == 1)
                                 <?php if($ads_manage) {
