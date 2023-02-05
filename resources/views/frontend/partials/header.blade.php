@@ -235,7 +235,7 @@
                             <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
                         <?php }
                         ?>
-
+                        
                         </div>
                     @endif
                 </div><!-- header right end -->

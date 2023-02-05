@@ -40,10 +40,9 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" no-padding-right" for="form-field-1"> Ads Script </label>
+                                    <label class=" no-padding-right" for="form-field-1"> Ads Script <span class="text-danger">(Input image maximum width and height (1000px x 120px))</span></label>
                                     <div >
-                                        <textarea name="script" placeholder="Ads Script" class="form-control">{{ $target_ads->script }}</textarea>
-                                        <span class="text-danger">* Input image maximum width and height (1000px x 120px)</span>
+                                        <textarea name="script" placeholder="Ads Script" class="form-control" id="inputImagePath">{{ $target_ads->script }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
