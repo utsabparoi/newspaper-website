@@ -75,7 +75,6 @@
 
                                     <div class="form-group">
                                         <div class="input-group width-100">
-                                            {{-- <label class=" control-label no-padding-right" for="form-field-1">Status </label> --}}
                                             <span class="input-group-addon width-20" style="text-align: left">
                                                 Status
                                             </span>
@@ -88,7 +87,6 @@
 
                                     <div class="form-group">
                                         <div class="input-group width-100">
-                                            {{-- <label class=" control-label no-padding-right" for="form-field-1"> Is Home </label> --}}
                                             <span class="input-group-addon width-20" style="text-align: left">
                                                 Is Home
                                             </span>

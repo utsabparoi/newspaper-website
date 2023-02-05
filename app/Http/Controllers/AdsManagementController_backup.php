@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\AdsPosition;
-use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Models\AdsManagement;
 
 class AdsManagementController extends Controller
 {
-    use FileSaver;
     /*
     |--------------------------------------------------------------------------
     | Index Method for Reading AdManagement
@@ -49,24 +47,18 @@ class AdsManagementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'script'      => 'required',
             'position_id' => 'required',
             'serial_num'  => 'required|numeric',
         ]);
-        // dd($request);
         try {
-            $model = AdsManagement::create([
+            AdsManagement::insert([
                 'script'     => $request->script,
-                'ads_image'  => 'default.jpg',
                 'position_id'=> $request->position_id,
                 'serial_num' => $request->serial_num,
                 'status'     => $request->status == 'on' ? 1 : 0,
-                'script_image_status'   => $request->script_image_status == 'on' ? 1 : 0,
                 'created_at' => Carbon::now(),
             ]);
-            $this->upload_File($request->ads_image, $model, 'ads_image', 'uploads/ads-image');
-
-            // $this->uploadFileWithResize($request->ads_image, $model, 'ads_image', 'uploads/ads-image', 1000, 120);
-
             return back()->with('success','Ads Added Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
@@ -113,29 +105,12 @@ class AdsManagementController extends Controller
             'serial_num' => 'required|numeric',
         ]);
         try {
-            $model = AdsManagement::find($id);
-            if($request->file('ads_image') != NULL){
-                $model->update([
-                    'script'     => $request->script,
-                    'ads_image'  => $model->photo,
-                    'position_id'=> $request->position_id,
-                    'serial_num' => $request->serial_num,
-                    'status'     => $request->status == 'on' ? 1 : 0,
-                    'script_image_status'   => $request->script_image_status == 'on' ? 1 : 0,
-                ]);
-                $this->upload_File($request->ads_image, $model, 'ads_image', 'uploads/ads-image');
-                // $this->uploadFileWithResize($request->ads_image, $model, 'ads_image', 'uploads/ads-image', 1000, 120);
-            }else{
-                $model->update([
-                    'script'     => $request->script,
-                    'position_id'=> $request->position_id,
-                    'serial_num' => $request->serial_num,
-                    'status'     => $request->status == 'on' ? 1 : 0,
-                    'script_image_status'   => $request->script_image_status == 'on' ? 1 : 0,
-                ]);
-            }
-
-
+            AdsManagement::find($id)->update([
+                'script'     => $request->script,
+                'position_id'=> $request->position_id,
+                'serial_num' => $request->serial_num,
+                'status'     => $request->status == 'on' ? 1 : 0,
+            ]);
             return back()->with('success','Ads Updated Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
@@ -167,7 +142,11 @@ class AdsManagementController extends Controller
 
 
 
-    //Main Status active inactive condition
+    /*
+    |--------------------------------------------------------------------------
+    | Destroy Method for deleting AdManagement
+    |--------------------------------------------------------------------------
+    */
     public function change_status($id)
     {
         $ads_manage = AdsManagement::find($id);
@@ -180,24 +159,6 @@ class AdsManagementController extends Controller
         else {
             $ads_manage->update([
                 'status'=> 0
-            ]);
-        }
-
-        return back()->with('success','Status Changed!');
-    }
-
-    // Image or Script Active Inactive Status Condition
-    public function change_statusOfscriptORimage($id){
-        $ads_manage = AdsManagement::find($id);
-
-        if ($ads_manage->script_image_status == 0) {
-            $ads_manage->update([
-                'script_image_status'=> 1
-            ]);
-        }
-        else {
-            $ads_manage->update([
-                'script_image_status'=> 0
             ]);
         }
 

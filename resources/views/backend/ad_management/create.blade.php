@@ -39,20 +39,22 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" no-padding-right" for="form-field-1"> Ads Script <span class="text-danger">*</span>
-                                        <span class="text-danger">(Input image maximum width and height (1000px x 120px))</span>
-                                    </label>
+                                    <label class=" no-padding-right" for="form-field-1"> Ads Script </label>
                                     <div >
                                         <textarea name="script" placeholder="Ads Script" class="form-control" id="inputImagePath"></textarea>
-                                        @if ($errors->has('script'))
-                                            <span class="text-danger">{{ $errors->first('script') }}</span>
-                                        @endif
                                     </div>
                                 </div>
+                                <div class="file-upload form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-2">Choose New Image </label>
+                                    <div class="file-upload-select">
+                                        <div class="file-select-button" >Choose File</div>
+                                        <div class="file-select-name">No file chosen...</div>
+                                        <input type="file" name="ads_image" id="file-upload-input">
+                                    </div>
+                                    <small class="text-danger">* Image maximum width and height (1000 X 120)</small>
+                                </div>
                                 <div class="form-group">
-                                    {{-- <label class=" control-label no-padding-right" for="form-field-1"> Ads Position Id </label> --}}
                                     <div >
-                                        {{-- <input name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control"> --}}
                                         <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
                                         <select name="position_id" type="number" class="form-control" >
                                             <option value="" >-Select a Position-</option>
@@ -81,6 +83,18 @@
                                             <span class="round-btn"></span>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group width-100">
+                                        <span class="input-group-addon width-20" style="text-align: left">
+                                            Is active file Image or Script
+                                        </span>
+                                        <div class="toggle-btn active">
+                                            <input type="checkbox" name="script_image_status" checked class="cb-value" />
+                                            <span class="round-btn"></span>
+                                        </div>
+                                    </div>
+                                    <small class="text-danger">* Status ON(1) for show Script and OFF(0) for show Image</small>
                                 </div>
                             </div>
                         </div>
