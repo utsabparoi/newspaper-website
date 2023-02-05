@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                            <div class="form-group">
                                     <div class="input-group width-100">
                                         <span class="input-group-addon width-20" style="text-align: left">
                                             Is active file Image or Script
