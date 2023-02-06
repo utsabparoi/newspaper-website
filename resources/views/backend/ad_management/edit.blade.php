@@ -67,6 +67,12 @@
                                     <small class="text-danger">* News Image size 1000 x 100 (Max)</small>
                                 </div>
                                 <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Image link</label>
+                                    <div >
+                                        <input value="{{ $target_ads->image_url }}" name="image_url" type="text" id="form-field-1" placeholder="Image link " class="form-control slug-output">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <div >
                                         <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
                                         <select name="position_id" type="number" class="form-control" >

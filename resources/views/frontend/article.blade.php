@@ -41,7 +41,7 @@
                                 @if(isset($ads[1]))
                                     <div class="banner_section custom-image">
                                         @if ($ads[1]->script_image_status == 0)
-                                            <a href="#"><img src="{{asset($ads[1]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                            <a href="{{ asset($ads[1]->image_url) }}" target="_blank"><img src="{{asset($ads[1]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
                                         @elseif ($ads[1]->script_image_status == 1)
                                             {!! $ads[1]->script !!}
                                         @else
@@ -70,7 +70,7 @@
                                         @if(isset($ads[2]))
                                             <div class="banner_section custom-image">
                                                 @if ($ads[2]->script_image_status == 0)
-                                                    <a href="#"><img src="{{asset($ads[2]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                                    <a href="{{ asset($ads[2]->image_url) }}" target="_blank"><img src="{{asset($ads[2]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
                                                 @elseif ($ads[2]->script_image_status == 1)
                                                     {!! $ads[2]->script !!}
                                                 @else
@@ -87,7 +87,7 @@
 							@if(isset($ads[3]))
                                 <div  class="banner_section custom-image">
                                     @if ($ads[3]->script_image_status == 0)
-                                        <a href="#"><img src="{{asset($ads[3]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                        <a href="{{ asset($ads[3]->image_url) }}" target="_blank"><img src="{{asset($ads[3]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
                                     @elseif ($ads[3]->script_image_status == 1)
                                         {!! $ads[3]->script !!}
                                     @else
@@ -168,7 +168,7 @@
 							@if(isset($ads[4]))
 								<div  class="banner_section custom-image">
 									@if ($ads[4]->script_image_status == 0)
-                                        <a href="#"><img src="{{asset($ads[4]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                        <a href="{{ asset($ads[4]->image_url) }}" target="_blank"><img src="{{asset($ads[4]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
                                     @elseif ($ads[4]->script_image_status == 1)
                                         {!! $ads[4]->script !!}
                                     @else
@@ -268,7 +268,7 @@
 							@if(isset($ads[5]))
                                 <div  class="banner_section custom-image">
                                     @if ($ads[5]->script_image_status == 0)
-                                        <a href="#"><img src="{{asset($ads[5]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                        <a href="{{ asset($ads[5]->image_url) }}" target="_blank"" class="img-responsive" alt="Fix the page position and serial no"></a>
                                     @elseif ($ads[5]->script_image_status == 1)
                                         {!! $ads[5]->script !!}
                                     @else

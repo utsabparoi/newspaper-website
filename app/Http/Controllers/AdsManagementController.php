@@ -57,6 +57,7 @@ class AdsManagementController extends Controller
             $model = AdsManagement::create([
                 'script'     => $request->script,
                 'ads_image'  => 'default.jpg',
+                'image_url'  => $request->image_url,
                 'position_id'=> $request->position_id,
                 'serial_num' => $request->serial_num,
                 'status'     => $request->status == 'on' ? 1 : 0,
@@ -117,17 +118,18 @@ class AdsManagementController extends Controller
             if($request->file('ads_image') != NULL){
                 $model->update([
                     'script'     => $request->script,
-                    'ads_image'  => $model->photo,
+                    'ads_image'  => $model->ads_image,
+                    'image_url'  => $request->image_url,
                     'position_id'=> $request->position_id,
                     'serial_num' => $request->serial_num,
                     'status'     => $request->status == 'on' ? 1 : 0,
                     'script_image_status'   => $request->script_image_status == 'on' ? 1 : 0,
                 ]);
                 $this->upload_File($request->ads_image, $model, 'ads_image', 'uploads/ads-image');
-                // $this->uploadFileWithResize($request->ads_image, $model, 'ads_image', 'uploads/ads-image', 1000, 120);
             }else{
                 $model->update([
                     'script'     => $request->script,
+                    'image_url'  => $request->image_url,
                     'position_id'=> $request->position_id,
                     'serial_num' => $request->serial_num,
                     'status'     => $request->status == 'on' ? 1 : 0,

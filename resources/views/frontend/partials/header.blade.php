@@ -230,7 +230,9 @@
                     @else
                         <div class="pull-right custom-image">
                             @if ($ads1->script_image_status == 0)
-                                <a href="#"><img src="{{asset($ads1->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                <a href="{{ asset($ads1->image_url) }}" target="_blank">
+                                    <img src="{{asset($ads1->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no">
+                                </a>
                             @elseif ($ads1->script_image_status == 1)
                                 {!! $ads1->script !!}
                             @else

@@ -63,8 +63,10 @@
                         @foreach ($ads_manages as $ads_manage)
                             @if ($ads_manage->serial_num == 2)
                                 @if ($ads_manage->script_image_status == 0)
-                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                    <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                        <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                         alt="Fix the adsimage position and serial no" />
+                                    </a>
                                 @elseif ($ads_manage->script_image_status == 1)
                                     {!! $ads_manage->script !!}
                                 @else
@@ -233,8 +235,10 @@
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 3)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
@@ -419,8 +423,10 @@
                 @foreach ($ads_manages as $ads_manage)
                     @if ($ads_manage->serial_num == 4)
                         @if ($ads_manage->script_image_status == 0)
-                            <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                            <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                 alt="Fix the adsimage position and serial no" />
+                            </a>
                         @elseif ($ads_manage->script_image_status == 1)
                             {!! $ads_manage->script !!}
                         @else
@@ -589,8 +595,10 @@
             @foreach ($ads_manages as $ads_manage)
                 @if ($ads_manage->serial_num == 5)
                     @if ($ads_manage->script_image_status == 0)
-                        <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                        <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                            <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                             alt="Fix the adsimage position and serial no" />
+                        </a>
                     @elseif ($ads_manage->script_image_status == 1)
                         {!! $ads_manage->script !!}
                     @else
@@ -609,8 +617,10 @@
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 6)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
@@ -740,8 +750,10 @@
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 7)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
@@ -869,8 +881,10 @@
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 8)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
@@ -885,8 +899,10 @@
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 9)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
@@ -1224,8 +1240,10 @@
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 10)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
@@ -1417,12 +1435,14 @@
     <section class="text-center">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 text-center custom-image">
+                <div class="col-sm- text-center custom-image">
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 11)
                             @if ($ads_manage->script_image_status == 0)
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
                                     alt="Fix the adsimage position and serial no" />
+                                </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
