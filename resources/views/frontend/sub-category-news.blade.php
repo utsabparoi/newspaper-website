@@ -63,11 +63,15 @@
 									<div  class="custom-ad-banner text-center custom-image">
                                         @foreach ($ads_manages as $ads_manage)
                                             @if ($ads_manage->serial_num == 1)
-                                                <?php if($ads_manage) {
-                                                        echo $ads_manage->script;
-                                                        } else{ ?>
-                                                    <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                                                <?php 	}?>
+                                                @if ($ads_manage->script_image_status == 0)
+                                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                                        alt="Fix the adsimage position and serial no" />
+                                                @elseif ($ads_manage->script_image_status == 1)
+                                                    {!! $ads_manage->script !!}
+                                                @else
+                                                    <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                                        alt="" />
+                                                @endif
                                             @endif
                                         @endforeach
 									</div>
@@ -132,11 +136,15 @@
 						<div class="widget custom-image">
 							@foreach ($ads_manages as $ads_manage)
                                 @if ($ads_manage->serial_num == 2)
-                                    <?php if($ads_manage) {
-                                            echo $ads_manage->script;
-                                            } else{ ?>
-                                        <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                                    <?php 	}?>
+                                    @if ($ads_manage->script_image_status == 0)
+                                        <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                            alt="Fix the adsimage position and serial no" />
+                                    @elseif ($ads_manage->script_image_status == 1)
+                                        {!! $ads_manage->script !!}
+                                    @else
+                                        <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                            alt="" />
+                                    @endif
                                 @endif
                             @endforeach
 						</div><!-- Widget Social end -->
@@ -215,12 +223,16 @@
 
 						<div class="widget text-center custom-image">
 							@foreach ($ads_manages as $ads_manage)
-                                @if ($ads_manage->serial_num == 2)
-                                    <?php if($ads_manage) {
-                                            echo $ads_manage->script;
-                                            } else{ ?>
-                                        <img style="width: 100%;" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-                                    <?php 	}?>
+                                @if ($ads_manage->serial_num == 3)
+                                    @if ($ads_manage->script_image_status == 0)
+                                        <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                            alt="Fix the adsimage position and serial no" />
+                                    @elseif ($ads_manage->script_image_status == 1)
+                                        {!! $ads_manage->script !!}
+                                    @else
+                                        <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                            alt="" />
+                                    @endif
                                 @endif
                             @endforeach
 						</div><!-- Sidebar Ad end -->

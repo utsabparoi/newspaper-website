@@ -67,7 +67,6 @@
                                     <small class="text-danger">* News Image size 1000 x 100 (Max)</small>
                                 </div>
                                 <div class="form-group">
-                                    {{-- <label class=" control-label no-padding-right" for="form-field-1"> Ads Position Id </label> --}}
                                     <div >
                                         <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
                                         <select name="position_id" type="number" class="form-control" >
@@ -76,8 +75,6 @@
                                                 <option value="{{ $position->id }}" {{ $position->id == $target_ads->position_id ? 'selected' : "" }}>{{ $position->position_name }}</option>
                                             @endforeach
                                         </select>
-                                        {{-- <input value="{{ $target_ads->position_id }}" name="position_id" type="number" id="form-field-1" placeholder="Ads Position Id" class="form-control"> --}}
-
                                     </div>
                                 </div>
                                 <div class="form-group">

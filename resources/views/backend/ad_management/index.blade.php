@@ -26,9 +26,7 @@
         </div>
 
         <div class="page-content">
-
-
-            <div class="page-header widget-header">
+            <div class="page-header widget-header" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px #438EB9;">
                 <h4 class="widget-title">
                     <i class="menu-icon fa fa-list-alt"></i> Advertisements
                 </h4>
@@ -52,7 +50,7 @@
                                             <th class="text-center" width="5%">Sl</th>
                                             {{-- <th class="text-center" width="20%">Ads Script</th> --}}
                                             <th class="text-center" width="35%">Ads Image</th>
-                                            <th class="text-center" width="10%">Position</th>
+                                            <th class="text-center" width="15%">Position</th>
                                             <th class="text-center" width="10%">Serial</th>
                                             <th class="text-center" width="20%">Image/Script Status</th>
                                             <th class="text-center" width="10%">Status</th>
@@ -71,13 +69,19 @@
                                                             <img src="{{asset('img/ads-image/'.$all_adds->ads_image)}}" alt="Not Found" width="300px" height="100%">
                                                         @endif
                                                     </td>
-                                                    <td class="text-center">{{ $all_adds->position_id }}</td>
-                                                    <td class="text-center">{{ $all_adds->serial_num }}</td>
+                                                    <td class="text-center">{{ $all_adds->ads_position->position_name }}</td>
+                                                    <td class="text-center">
+                                                        @foreach ($sl_names as $key => $name)
+                                                            @if ($key == $all_adds->serial_num)
+                                                                {!!$name!!}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
                                                     <td class="text-center">
                                                         @if ($all_adds->script_image_status == 1)
                                                             <a href="{{ route('scriptORimage_status',$all_adds->id) }}"><i class="fa fa-toggle-on" style="font-size: 18px"><br>Active Script</i></a>
                                                         @else
-                                                            <a href="{{ route('scriptORimage_status',$all_adds->id) }}"><i class="fa fa-toggle-off" style="font-size: 18px; color:red;"><br>Active Image</i></a>
+                                                            <a href="{{ route('scriptORimage_status',$all_adds->id) }}"><i class="fa fa-toggle-off" style="font-size: 18px; color:orange;"><br>Active Image</i></a>
                                                         @endif
                                                     </td>
                                                     <td class="text-center">

@@ -32,7 +32,7 @@
 
     }
 
-     $ads1=DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
+    $ads1=DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
 
 ?>
 

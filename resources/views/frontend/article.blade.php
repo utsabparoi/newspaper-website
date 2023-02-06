@@ -39,9 +39,15 @@
 							<div class="post-media post-featured-image">
 
                                 @if(isset($ads[1]))
-								<div class="banner_section custom-image">
-									<?php echo $ads[1]->script; ?>
-								</div>
+                                    <div class="banner_section custom-image">
+                                        @if ($ads[1]->script_image_status == 0)
+                                            <a href="#"><img src="{{asset($ads[1]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                        @elseif ($ads[1]->script_image_status == 1)
+                                            {!! $ads[1]->script !!}
+                                        @else
+                                            <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                        @endif
+                                    </div>
 								@endif
 
 									<?php if($news_details->photo){ ?>
@@ -62,9 +68,15 @@
 										<?php } ?>
 
                                         @if(isset($ads[2]))
-                                        <div class="banner_section custom-image">
-                                            <?php echo $ads[2]->script; ?>
-                                        </div>
+                                            <div class="banner_section custom-image">
+                                                @if ($ads[2]->script_image_status == 0)
+                                                    <a href="#"><img src="{{asset($ads[2]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                                @elseif ($ads[2]->script_image_status == 1)
+                                                    {!! $ads[2]->script !!}
+                                                @else
+                                                    <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                                @endif
+                                            </div>
                                         @endif
 					<br/>
 
@@ -73,9 +85,15 @@
 								 <?php echo $news_details->description; ?>
 							</div><!-- Entery content end -->
 							@if(isset($ads[3]))
-							<div  class="banner_section custom-image">
-								<?php echo $ads[3]->script; ?>
-							</div>
+                                <div  class="banner_section custom-image">
+                                    @if ($ads[3]->script_image_status == 0)
+                                        <a href="#"><img src="{{asset($ads[3]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                    @elseif ($ads[3]->script_image_status == 1)
+                                        {!! $ads[3]->script !!}
+                                    @else
+                                        <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                    @endif
+                                </div>
 							@endif
    								<div id="share"></div>
 
@@ -147,11 +165,17 @@
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="sidebar sidebar-right">
 						<div class="widget">
-							@if(isset($ads[5]))
+							@if(isset($ads[4]))
 								<div  class="banner_section custom-image">
-									<?php echo $ads[5]->script; ?>
+									@if ($ads[4]->script_image_status == 0)
+                                        <a href="#"><img src="{{asset($ads[4]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                    @elseif ($ads[4]->script_image_status == 1)
+                                        {!! $ads[4]->script !!}
+                                    @else
+                                        <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                    @endif
 								</div>
-								@endif
+							@endif
 						</div><!-- Widget Social end -->
 
 						<div class="widget color-default">
@@ -241,11 +265,17 @@
 						</div><!-- Popular news widget end -->
 
 						<div class="widget">
-							@if(isset($ads[4]))
-								<div  class="banner_section custom-image">
-									<?php echo $ads[5]->script; ?>
-								</div>
-								@endif
+							@if(isset($ads[5]))
+                                <div  class="banner_section custom-image">
+                                    @if ($ads[5]->script_image_status == 0)
+                                        <a href="#"><img src="{{asset($ads[5]->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                    @elseif ($ads[5]->script_image_status == 1)
+                                        {!! $ads[5]->script !!}
+                                    @else
+                                        <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                    @endif
+                                </div>
+                            @endif
 						</div>
 
 						<?php $info=DB::table('about_company')->First(); ?>

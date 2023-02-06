@@ -18,9 +18,9 @@ class AdsManagementController extends Controller
     */
     public function index()
     {
-        return view('backend.ad_management.index',[
-            'all_adds'=> AdsManagement::all(),
-        ]);
+        $data['sl_names'] = array("Header Right", "Page Content1", "Page Content2", "Page Content3", "Page Content4", "Right Sidebar1", "Right Sidebar2", "Right Sidebar2", "Page Content4", "Footer Top");
+        $data['all_adds'] = AdsManagement::all();
+        return view('backend.ad_management.index', $data);
     }
 
 
@@ -194,15 +194,16 @@ class AdsManagementController extends Controller
             $ads_manage->update([
                 'script_image_status'=> 1
             ]);
+            return back()->with('success','Script is Activated!');
+
         }
         else {
             $ads_manage->update([
                 'script_image_status'=> 0
             ]);
+            return back()->with('success','Image is Activated!');
         }
 
-        return back()->with('success','Status Changed!');
     }
-
 
 }

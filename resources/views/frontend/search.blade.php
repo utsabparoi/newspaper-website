@@ -62,11 +62,13 @@
 							@if($key == 4)
 								<div class="col-xs-12 col-sm-12 col-md-12 ">
 									<div  class="text-center custom-image">
-										<?php if($ads1) {
-										echo $ads1->script;
-										} else{ ?>
-											<img class="img-responsive" src="{{asset('img/ads-image/730x90-placeholder.png')}}" alt="" />
-										<?php 	}?>
+										@if ($ads1->script_image_status == 0)
+                                            <a href="#"><img src="{{asset($ads1->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                                        @elseif ($ads1->script_image_status == 1)
+                                            {!! $ads1->script !!}
+                                        @else
+                                            <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                        @endif
 									</div>
 							    </div>
 							@endif
@@ -225,11 +227,13 @@
 						</div><!-- Popular news widget end -->
 
 						<div class="widget text-center">
-											<?php if($ads2) {
-										echo $ads2->script;
-										} else{ ?>
-											<img class="img-responsive" src="{{asset('img/ads-image/300.png')}}" alt="" />
-										<?php 	}?>
+                            @if ($ads2->script_image_status == 0)
+                                <a href="#"><img src="{{asset($ads2->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no"></a>
+                            @elseif ($ads2->script_image_status == 1)
+                                {!! $ads2->script !!}
+                            @else
+                                <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                            @endif
 						</div><!-- Sidebar Ad end -->
 
 						<?php $info=DB::table('about_company')->First(); ?>
