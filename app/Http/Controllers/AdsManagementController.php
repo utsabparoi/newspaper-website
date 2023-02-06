@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\AdsPosition;
+use App\Models\AdsSerial;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Models\AdsManagement;
@@ -18,7 +19,7 @@ class AdsManagementController extends Controller
     */
     public function index()
     {
-        $data['sl_names'] = array("Header Right", "Page Content1", "Page Content2", "Page Content3", "Page Content4", "Right Sidebar1", "Right Sidebar2", "Right Sidebar2", "Page Content4", "Footer Top");
+        // $data['sl_names'] = array("Header Right", "Page Content1", "Page Content2", "Page Content3", "Page Content4", "Right Sidebar1", "Right Sidebar2", "Right Sidebar2", "Page Content4", "Footer Top");
         $data['all_adds'] = AdsManagement::all();
         return view('backend.ad_management.index', $data);
     }
@@ -35,6 +36,7 @@ class AdsManagementController extends Controller
     public function create()
     {
         $data['ads_position'] = AdsPosition::where('status',1)->get();
+        $data['ads_serial'] = AdsSerial::where('status',1)->get();
         return view('backend.ad_management.create', $data);
     }
 
@@ -93,10 +95,11 @@ class AdsManagementController extends Controller
     */
     public function edit($id)
     {
-        return view('backend.ad_management.edit',[
-            'target_ads'   => AdsManagement::find($id),
-            'ads_position' => AdsPosition::all(),
-        ]);
+        $data['target_ads'] = AdsManagement::find($id);
+        $data['ads_position'] = AdsPosition::where('status',1)->get();
+        $data['ads_serial'] = AdsSerial::where('status',1)->get();
+        
+        return view('backend.ad_management.edit',$data);
     }
 
 

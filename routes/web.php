@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,FrontendController,AdsManagementController,AboutCompanyController,HomeController};
+use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,AdsSerialController,FrontendController,AdsManagementController,AboutCompanyController,HomeController};
 
 Auth::routes();
 
@@ -102,6 +102,14 @@ Route::get('/script_image_status/{id}', [AdsManagementController::class, 'change
 */
 Route::resource('ad-position', AdsPositionController::class);
 Route::get('/Ads/Position/status/change/{id}', [AdsPositionController::class, 'change_status'])->name('adsPosition_status');
+
+/*
+|--------------------------------------------------------------------------
+| AdsSerialController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('ad-serial', AdsSerialController::class);
+Route::get('/Ads/Serial/status/change/{id}', [AdsSerialController::class, 'change_status'])->name('adsSerial_status');
 
 
 

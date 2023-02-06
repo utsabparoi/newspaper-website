@@ -15,4 +15,8 @@ class AdsManagement extends Model
     function ads_position(){
         return $this->belongsTo(AdsPosition::class, 'position_id');
     }
+
+    function ads_serial(){
+        return $this->belongsTo(AdsSerial::class, 'serial_num');
+    }
 }

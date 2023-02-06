@@ -489,7 +489,7 @@
 								</a>
 
 								<b class="arrow"></b>
-                                {{-- sub category --}}
+                                {{-- ads position --}}
 								<ul class="submenu">
 									<li class="{{ request()->routeIs('ad-position.create') ? 'active' : '' }}">
                                         <a href="{{ route('ad-position.create') }}">
@@ -503,6 +503,35 @@
                                         <a href="{{ route('ad-position.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Ads Position
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+								</ul>
+							</li>
+                            <li class="{{ request()->routeIs('ad-serial*') ? 'open active' : '' }}">
+								<a href="#" class="dropdown-toggle">
+									<i class="fa fa-leaf green"></i>
+
+									Ads Serial
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+                                {{-- sub category --}}
+								<ul class="submenu">
+									<li class="{{ request()->routeIs('ad-serial.create') ? 'active' : '' }}">
+                                        <a href="{{ route('ad-serial.create') }}">
+                                            <i class=" fa fa-plus purple"></i>
+                                            Add Ads Serial
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="{{ request()->routeIs('ad-serial.index') ? 'active' : '' }}">
+                                        <a href="{{ route('ad-serial.index') }}">
+                                            <i class=" fa fa-eye pink"></i>
+                                            View Ads Serial
                                         </a>
 
                                         <b class="arrow"></b>

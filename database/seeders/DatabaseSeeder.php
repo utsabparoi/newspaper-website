@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             AboutCompanyTableSeeder::class,
             AdsManagementSeeder::class,
             AdsPositionSeeder::class,
+            AdsSerialSeeder::class,
         ]);
 
     }

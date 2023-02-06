@@ -70,13 +70,7 @@
                                                         @endif
                                                     </td>
                                                     <td class="text-center">{{ $all_adds->ads_position->position_name }}</td>
-                                                    <td class="text-center">
-                                                        @foreach ($sl_names as $key => $name)
-                                                            @if ($key == $all_adds->serial_num)
-                                                                {!!$name!!}
-                                                            @endif
-                                                        @endforeach
-                                                    </td>
+                                                    <td class="text-center">{{ $all_adds->ads_serial->serial_name }}</td>
                                                     <td class="text-center">
                                                         @if ($all_adds->script_image_status == 1)
                                                             <a href="{{ route('scriptORimage_status',$all_adds->id) }}"><i class="fa fa-toggle-on" style="font-size: 18px"><br>Active Script</i></a>

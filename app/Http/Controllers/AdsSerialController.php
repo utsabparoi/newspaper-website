@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdsPosition;
+use App\Models\AdsSerial;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class AdsPositionController extends Controller
+class AdsSerialController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Index Method for Reading AdPosition
+    | Index Method for Reading AdSerial
     |--------------------------------------------------------------------------
     */
     public function index()
     {
-        return view('backend.ad_position.index',[
-            'all_adds'=> AdsPosition::all(),
+        return view('backend.ad_serial.index',[
+            'all_adds'=> AdsSerial::all(),
         ]);
     }
 
@@ -26,12 +26,12 @@ class AdsPositionController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Create Method for Creating AdPosition
+    | Create Method for Creating AdSerial
     |--------------------------------------------------------------------------
     */
     public function create()
     {
-        return view('backend.ad_position.create');
+        return view('backend.ad_serial.create');
     }
 
 
@@ -39,7 +39,7 @@ class AdsPositionController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Store Method for Storing the data into AdPosition
+    | Store Method for Storing the data into AdSerial
     |--------------------------------------------------------------------------
     */
     public function store(Request $request)
@@ -49,12 +49,12 @@ class AdsPositionController extends Controller
         ]);
 
         try {
-            AdsPosition::insert([
-                'position_name'=> $request->position_name,
+            AdsSerial::insert([
+                'serial_name'=> $request->serial_name,
                 'status'=> $request->status == 'on' ? 1 : 0,
                 'created_at'=> Carbon::now(),
             ]);
-            return back()->with('success','Ads Position Added Successfully');
+            return back()->with('success','Ads Serial Added Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -74,13 +74,13 @@ class AdsPositionController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Edit Method for Edit the AdPosition
+    | Edit Method for Edit the AdSerial
     |--------------------------------------------------------------------------
     */
     public function edit($id)
     {
-        return view('backend.ad_position.edit',[
-            'target_ads'=> AdsPosition::find($id),
+        return view('backend.ad_serial.edit',[
+            'target_ads'=> AdsSerial::find($id),
         ]);
     }
 
@@ -89,7 +89,7 @@ class AdsPositionController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Update Method for Updating AdPosition
+    | Update Method for Updating AdSerial
     |--------------------------------------------------------------------------
     */
     public function update(Request $request, $id)
@@ -99,11 +99,11 @@ class AdsPositionController extends Controller
         ]);
 
         try {
-            AdsPosition::find($id)->update([
-                'position_name'=> $request->position_name,
+            AdsSerial::find($id)->update([
+                'serial_name'=> $request->serial_name,
                 'status'=> $request->status == 'on' ? 1 : 0,
             ]);
-            return back()->with('success','Ads Position Updated Successfully');
+            return back()->with('success','Ads Serial Updated Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -114,18 +114,18 @@ class AdsPositionController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Destroy Method for deleting AdPosition
+    | Destroy Method for deleting AdSerial
     |--------------------------------------------------------------------------
     */
     public function destroy($id)
     {
         try {
-            $smart_move = AdsPosition::find($id);
+            $smart_move = AdsSerial::find($id);
             $smart_move->update([
                 'status'=> 0,
             ]);
             $smart_move->delete();
-            return back()->with('deleted','Ads position Deleted!');
+            return back()->with('deleted','Ads serial Deleted!');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -135,18 +135,18 @@ class AdsPositionController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Destroy Method for deleting AdPosition
+    | Destroy Method for deleting AdSerial
     |--------------------------------------------------------------------------
     */
     public function change_status($id)
     {
-        $ads_position = AdsPosition::find($id);
-        if ($ads_position->status == 0) {
-            $ads_position->update([
+        $ads_serial = AdsSerial::find($id);
+        if ($ads_serial->status == 0) {
+            $ads_serial->update([
                 'status'=> 1
             ]);
         } else {
-            $ads_position->update([
+            $ads_serial->update([
                 'status'=> 0
             ]);
         }

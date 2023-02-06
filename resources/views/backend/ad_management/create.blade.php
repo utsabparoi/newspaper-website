@@ -71,6 +71,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <div >
+                                        <label class=" control-label no-padding-right" for="serial_num"> Select Ads Serial <span class="text-danger">*</span></label>
+                                        <select name="serial_num" type="number" class="form-control" >
+                                            <option value="" >-Select a Serial-</option>
+                                            @foreach ($ads_serial as $serial)
+                                                <option value="{{ $serial->id }}">{{ $serial->serial_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                {{-- <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Ads Serial Number </label>
                                     <div >
                                         <input name="serial_num" type="number" id="form-field-1" placeholder="Ads Serial Number" class="form-control">
@@ -78,7 +89,7 @@
                                             <span class="text-danger">{{ $errors->first('serial_num') }}</span>
                                         @endif
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <div class="input-group width-100">
                                         <span class="input-group-addon width-20" style="text-align: left">

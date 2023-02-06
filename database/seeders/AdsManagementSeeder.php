@@ -131,7 +131,7 @@ class AdsManagementSeeder extends Seeder
                                    data-ad-format="auto"></ins>
                               <script>
                               (adsbygoogle = window.adsbygoogle || []).push({});
-                              </script>','ads_image' => './assets/uploads/ads-image/2023/Feb/1675596218.gif','script_image_status' => '0','image_url' => 'https://www.smartsoftware.com.bd/','position_id' => '1','serial_num' => '0','status' => '1','created_at' => '2017-11-25 11:15:55','updated_at' => '2023-02-06 11:01:38'),
+                              </script>','ads_image' => './assets/uploads/ads-image/2023/Feb/1675596218.gif','script_image_status' => '0','image_url' => 'https://www.smartsoftware.com.bd/','position_id' => '1','serial_num' => '10','status' => '1','created_at' => '2017-11-25 11:15:55','updated_at' => '2023-02-06 11:01:38'),
             array('id' => '18','script' => '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                               <!-- DM-Search -->
                               <ins class="adsbygoogle"
@@ -211,12 +211,6 @@ class AdsManagementSeeder extends Seeder
             array('id' => '30','script' => '<amp-auto-ads type="adsense"
                                             data-ad-client="ca-pub-8770580490084389">
                               </amp-auto-ads>','ads_image' => './assets/uploads/ads-image/2023/Feb/1675595595.gif','script_image_status' => '0','image_url' => 'https://www.tradebangla.com.bd','position_id' => '1','serial_num' => '10','status' => '1','created_at' => '2018-11-04 23:54:42','updated_at' => '2023-02-06 11:30:57'),
-            array('id' => '31','script' => '<amp-auto-ads type="adsense"
-                                            data-ad-client="ca-pub-8770580490084389">
-                              </amp-auto-ads>','ads_image' => './assets/uploads/ads-image/2023/Feb/1675596218.gif','script_image_status' => '0','image_url' => 'https://www.smartsoftware.com.bd/','position_id' => '1','serial_num' => '11','status' => '1','created_at' => '2018-11-04 23:54:49','updated_at' => '2018-11-04 23:54:49'),
-            array('id' => '32','script' => '<amp-auto-ads type="adsense"
-                                            data-ad-client="ca-pub-8770580490084389">
-                              </amp-auto-ads>','ads_image' => './assets/uploads/ads-image/2023/Feb/1675662076.png','script_image_status' => '0','image_url' => 'https://play.google.com/store/apps/details?id=com.smartsoftwarebd.dokani','position_id' => '1','serial_num' => '12','status' => '1','created_at' => '2018-11-04 23:54:55','updated_at' => '2018-11-04 23:54:55')
         );
 
         foreach ($all_ads as $item) {
