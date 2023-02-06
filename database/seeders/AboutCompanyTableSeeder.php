@@ -13,7 +13,7 @@ class AboutCompanyTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('about_company')->insert([
+        DB::table('about_company')->insertOrIgnore([
             'company_name'=>  'Desi Media Point',
             'logo'=>  'default.png',
             'address'=>  'Panthapath, Dhaka 1205',

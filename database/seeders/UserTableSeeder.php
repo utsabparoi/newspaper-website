@@ -11,7 +11,7 @@ class UserTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('users')->insertOrIgnore([
             'name'		=>'admin',
             'user_type'		=> 1,
             'status'		=> 1,
@@ -19,5 +19,5 @@ class UserTableSeeder extends Seeder
     		'password'	=>Hash::make(12345678),
         ]);
     }
-    
+
 }
