@@ -13,14 +13,16 @@ class CreateMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('url');
-            $table->integer('serial_num');
-            $table->tinyInteger('status')->default(1);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('menu')){
+            Schema::create('menu', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('url');
+                $table->integer('serial_num');
+                $table->tinyInteger('status')->default(1);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

@@ -13,12 +13,14 @@ class CreatePagePhotoTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_photo', function (Blueprint $table) {
-            $table->id();
-            $table->longText('photo');
-            $table->integer('fk_page_id');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('page_photo')){
+            Schema::create('page_photo', function (Blueprint $table) {
+                $table->id();
+                $table->longText('photo');
+                $table->integer('fk_page_id');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

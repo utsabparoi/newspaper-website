@@ -13,13 +13,15 @@ class CreateBlogCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog_category', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('serial_num');
-            $table->integer('status');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('blog_category')){
+            Schema::create('blog_category', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->integer('serial_num');
+                $table->integer('status');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

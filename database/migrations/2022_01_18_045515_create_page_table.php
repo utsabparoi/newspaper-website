@@ -13,16 +13,18 @@ class CreatePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('page', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('link');
-            $table->string('title');
-            $table->string('file');
-            $table->text('description');
-            $table->tinyInteger('status')->default(1);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('page')){
+            Schema::create('page', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('link');
+                $table->string('title');
+                $table->string('file');
+                $table->text('description');
+                $table->tinyInteger('status')->default(1);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

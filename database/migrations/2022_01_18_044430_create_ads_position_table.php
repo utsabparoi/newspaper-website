@@ -13,12 +13,14 @@ class CreateAdsPositionTable extends Migration
      */
     public function up()
     {
-        Schema::create('ads_position', function (Blueprint $table) {
-            $table->id();
-            $table->string('position_name');
-            $table->tinyInteger('status');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('ads_position')){
+            Schema::create('ads_position', function (Blueprint $table) {
+                $table->id();
+                $table->string('position_name');
+                $table->tinyInteger('status');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

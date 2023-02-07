@@ -13,12 +13,14 @@ class CreateAdsSerialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ads_serials', function (Blueprint $table) {
-            $table->id();
-            $table->string('serial_name');
-            $table->tinyInteger('status');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('ads_serials')){
+            Schema::create('ads_serials', function (Blueprint $table) {
+                $table->id();
+                $table->string('serial_name');
+                $table->tinyInteger('status');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

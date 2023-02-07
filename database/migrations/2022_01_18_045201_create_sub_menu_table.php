@@ -13,15 +13,17 @@ class CreateSubMenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_menu', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('url');
-            $table->string('serial_num');
-            $table->integer('fk_menu_id');
-            $table->tinyInteger('status')->default(1);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('sub_menu')){
+            Schema::create('sub_menu', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('url');
+                $table->string('serial_num');
+                $table->integer('fk_menu_id');
+                $table->tinyInteger('status')->default(1);
+                $table->timestamps();
+            });
+        }
     }
 
     /**

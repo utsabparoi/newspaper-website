@@ -13,22 +13,24 @@ class CreateBlogTable extends Migration
      */
     public function up()
     {
-        Schema::create('blog', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('short_description');
-            $table->string('link')->nullable();
-            $table->integer('category');
-            $table->text('description');
-            $table->string('photo');
-            $table->tinyInteger('status')->default(1);
-            $table->integer('hit_count')->nullable();
-            $table->integer('is_apporved')->default(0);
-            $table->integer('apporved_by')->nullable();
-            $table->integer('created_by')->nullable();
-            $table->integer('updated_by')->nullable();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('blog')){
+            Schema::create('blog', function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                $table->string('short_description');
+                $table->string('link')->nullable();
+                $table->integer('category');
+                $table->text('description');
+                $table->string('photo');
+                $table->tinyInteger('status')->default(1);
+                $table->integer('hit_count')->nullable();
+                $table->integer('is_apporved')->default(0);
+                $table->integer('apporved_by')->nullable();
+                $table->integer('created_by')->nullable();
+                $table->integer('updated_by')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

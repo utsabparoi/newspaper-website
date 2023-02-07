@@ -13,14 +13,16 @@ class CreateAdsManagementTable extends Migration
      */
     public function up()
     {
-        Schema::create('ads_management', function (Blueprint $table) {
-            $table->id();
-            $table->text('script');
-            $table->integer('position_id');
-            $table->integer('serial_num')->nullable();
-            $table->integer('status');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('ads_management')){
+            Schema::create('ads_management', function (Blueprint $table) {
+                $table->id();
+                $table->text('script');
+                $table->integer('position_id');
+                $table->integer('serial_num')->nullable();
+                $table->integer('status');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

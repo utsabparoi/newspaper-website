@@ -13,19 +13,21 @@ class CreateAboutCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('about_company', function (Blueprint $table) {
-            $table->id();
-            $table->string('company_name');
-            $table->string('logo');
-            $table->text('address');
-            $table->string('mobile_no');
-            $table->string('fb_link');
-            $table->string('email');
-            $table->text('short_description');
-            $table->longText('description');
-            $table->text('map_embed');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('about_company')){
+            Schema::create('about_company', function (Blueprint $table) {
+                $table->id();
+                $table->string('company_name');
+                $table->string('logo');
+                $table->text('address');
+                $table->string('mobile_no');
+                $table->string('fb_link');
+                $table->string('email');
+                $table->text('short_description');
+                $table->longText('description');
+                $table->text('map_embed');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

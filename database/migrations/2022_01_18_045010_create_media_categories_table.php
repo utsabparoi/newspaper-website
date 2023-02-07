@@ -13,13 +13,15 @@ class CreateMediaCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('media_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('category_name')->default(0);
-            $table->Integer('serial')->default(0);
-            $table->tinyInteger('status')->default(0);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('media_categories')){
+            Schema::create('media_categories', function (Blueprint $table) {
+                $table->id();
+                $table->string('category_name')->default(0);
+                $table->Integer('serial')->default(0);
+                $table->tinyInteger('status')->default(0);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
