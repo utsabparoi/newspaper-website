@@ -56,8 +56,11 @@
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Ads Image link</label>
                                     <div >
-                                        <input name="image_url" type="text" id="form-field-1" placeholder="Image link " class="form-control slug-output">
+                                        <input name="image_url" type="text" id="form-field-1" placeholder="Ex: https://www.example.com" class="form-control slug-output">
                                     </div>
+                                    @if($errors->has('image_url'))
+                                        <span class="text-danger">{{ $errors->first('image_url') }} Ex: https://www.example.com</span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <div >

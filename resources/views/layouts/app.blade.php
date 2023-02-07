@@ -758,7 +758,7 @@
                      | Slider list start
                      |--------------------------------------------------------------------------
                     --}}
-                    {{-- <li class="{{ request()->routeIs('sliders*') ? 'open active' : '' }}">
+                    <li class="{{ request()->routeIs('sliders*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-sliders"></i>
 							<span class="menu-text"> SLider </span>
@@ -772,7 +772,7 @@
 							<li class="{{ request()->routeIs('sliders.create') ? 'active' : '' }}">
 								<a href="{{ route('sliders.create') }}">
 									<i class=" fa fa-plus purple"></i>
-									Add SLider
+									Add Slider
 								</a>
 
 								<b class="arrow"></b>
@@ -780,14 +780,14 @@
 							<li class="{{ request()->routeIs('sliders.index') ? 'active' : '' }}">
 								<a href="{{ route('sliders.index') }}">
 									<i class=" fa fa-eye pink"></i>
-									View SLider
+									View Slider
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 						</ul>
-					</li> --}}
+					</li>
 
 
 

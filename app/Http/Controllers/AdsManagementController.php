@@ -19,7 +19,6 @@ class AdsManagementController extends Controller
     */
     public function index()
     {
-        // $data['sl_names'] = array("Header Right", "Page Content1", "Page Content2", "Page Content3", "Page Content4", "Right Sidebar1", "Right Sidebar2", "Right Sidebar2", "Page Content4", "Footer Top");
         $data['all_adds'] = AdsManagement::all();
         return view('backend.ad_management.index', $data);
     }
@@ -53,6 +52,7 @@ class AdsManagementController extends Controller
         $request->validate([
             'position_id' => 'required',
             'serial_num'  => 'required|numeric',
+            'image_url'   => 'required|url'
         ]);
         // dd($request);
         try {
@@ -98,7 +98,7 @@ class AdsManagementController extends Controller
         $data['target_ads'] = AdsManagement::find($id);
         $data['ads_position'] = AdsPosition::where('status',1)->get();
         $data['ads_serial'] = AdsSerial::where('status',1)->get();
-        
+
         return view('backend.ad_management.edit',$data);
     }
 

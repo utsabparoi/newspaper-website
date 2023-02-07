@@ -231,7 +231,7 @@
                         <div class="pull-right custom-image">
                             @if ($ads1->script_image_status == 0)
                                 <a href="{{ asset($ads1->image_url) }}" target="_blank">
-                                    <img src="{{asset($ads1->ads_image)}}" class="img-responsive" alt="Fix the page position and serial no">
+                                    <img src="{{asset($ads1->ads_image)}}" class="img-responsive" alt="Image Not Found">
                                 </a>
                             @elseif ($ads1->script_image_status == 1)
                                 {!! $ads1->script !!}
