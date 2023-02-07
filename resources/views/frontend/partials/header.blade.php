@@ -32,7 +32,8 @@
 
     }
 
-    $ads1=DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
+    $ads1 = DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
+    $latest_news = DB::table('news')->where('status',1)->orderby('id','DESC')->paginate(50);
 
 ?>
 
@@ -251,6 +252,35 @@
 
 	<div class="main-nav fixed_menu clearfix">
 		<div class="container">
+            {{-- <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td style="width:80px; background: #085e0f; color:#fff; font-size: 20px; text-align:center; padding: 4px 0 3px 0">শিরোনাম:</td>
+                        <td style="border: 0px solid #2786B2; padding: 0 5px 0 5px">
+                            <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="3">
+                                @foreach ($latest_news as $news)
+                                    <span class="ticker">
+                                        <a style="font-size: 17px" href="{{asset($news->link)}}">* {!! $news->title !!}</a>
+                                        &nbsp;&nbsp;
+                                    </span>
+                                @endforeach
+                            </marquee>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> --}}
+            {{-- Latest News row --}}
+                <div class="row" style="height: 50px">
+                    <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
+                        @foreach ($latest_news as $news)
+                            <span>
+                                <a style="font-size: 18px" href="{{asset($news->link)}}" target="_blank">* {!! $news->title !!}</a>
+                                &nbsp;&nbsp;&nbsp;
+                            </span>
+                        @endforeach
+                    </marquee>
+                </div>
+            {{-- Latest News row end--}}
 			<div class="row">
 				<nav class="site-navigation navigation">
 					<div class="site-nav-inner pull-left">
@@ -318,6 +348,8 @@
 				</nav><!--/ Navigation end -->
 
 			</div><!--/ Row end -->
+
+
 		</div><!--/ Container end -->
 
 	</div><!-- Menu wrapper end -->

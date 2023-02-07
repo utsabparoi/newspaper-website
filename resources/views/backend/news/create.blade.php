@@ -84,6 +84,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> News video link <span class="text-danger">(if exist)</span></label>
+                                    <div >
+                                        <input name="video_link" type="text" id="form-field-1" placeholder="Input a youtube link if exist" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Short Description <span class="text-danger">*</span></label>
                                     <div >
                                         <textarea name="short_description" cols="30" rows="8" placeholder="Short description..." class="form-control"></textarea>

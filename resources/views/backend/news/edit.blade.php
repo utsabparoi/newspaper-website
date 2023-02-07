@@ -15,27 +15,20 @@
                 </li>
                 <li class="active">Edit</li>
             </ul><!-- /.breadcrumb -->
-
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-                    <span class="input-icon">
-                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-                        <i class="ace-icon fa fa-search nav-search-icon"></i>
-                    </span>
-                </form>
-            </div><!-- /.nav-search -->
         </div>
 
         <div class="page-content">
 
-            <div class="page-header">
-                <h1>
-                    <b>Adding News</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
-                    </small>
-                </h1>
+            <div class="page-header widget-header">
+                <h4 class="widget-title">
+                    <i class="menu-icon fa fa-edit"></i> Edit News
+                </h4>
+                <span class="widget-toolbar">
+                    <!--------------- CREATE---------------->
+                    <a href="{{ route('manage-news.index') }}" class="">
+                        <i class="fa fa-list"></i> View <span class="hide-in-sm">News</span>
+                    </a>
+                </span>
             </div><!-- /.page-header -->
 
             <div class="row">
@@ -74,6 +67,12 @@
                                     <label class=" control-label no-padding-right" for="form-field-1"> News link </label>
                                     <div >
                                         <input value="{{ $news->link }}" name="link" type="text" id="form-field-1" placeholder="News link " class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> News video link </label>
+                                    <div >
+                                        <input value="{{ $news->video_link }}" name="video_link" type="text" id="form-field-1" placeholder="News video link " class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">

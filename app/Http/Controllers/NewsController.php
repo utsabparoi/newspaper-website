@@ -88,6 +88,7 @@ class NewsController extends Controller
                 'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
                 'created_by'            => $logged_id,
                 'photo'                 => 'default.jpg',
+                'video_link'            => $request->video_link,
             ]);
 
             $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
@@ -177,6 +178,7 @@ class NewsController extends Controller
                     'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
                     'updated_by'            => $logged_id,
                     'photo'                 => $model->photo,
+                    'video_link'            => $request->video_link,
                 ]);
 
                 $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
@@ -196,6 +198,7 @@ class NewsController extends Controller
                     'status'                => $request->status == 'on' ? 1 : 0,
                     'publish_status'        => $request->publish_status == 'on' ? 1 : 0,
                     'updated_by'            => $logged_id,
+                    'video_link'            => $request->video_link,
                 ]);
 
             }

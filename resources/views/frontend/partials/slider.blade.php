@@ -29,6 +29,10 @@
                                                         {{-- my custom code --}}
                                                         {{ Str::limit($slider_news->title, 50) }}
                                                         </a>
+                                                        @if (isset($slider_news->video_link))
+                                                            <a href="{{URL::to(asset($slider_news->video_link))}}" target="_blank"> <i class="fa fa-youtube-play" style="color:red; float:right;">Watch</i></a>
+                                                        @endif
+
                                                     </h2>
 
                                                 </div>
