@@ -380,6 +380,14 @@ marquee{
     padding: 10px 0;
     color: #000000;
 }
+.main-nav marquee span .color-change{
+    font-size:18px;
+    color: black;
+}
+
+.main-nav marquee span .color-change:hover{
+	color: red;
+}
 
 
 

@@ -173,7 +173,7 @@
 					</div>
 					<ul class="unstyled top-nav">
 						<li><a href="#">About</a></li>
-						<li><a href="#">Write for Us</a></li>
+						<li><a href="{{url('/media')}}">Write for Us</a></li>
 						<li><a href="#">Advertise</a></li>
 						<li><a href="#">Contact</a></li>
 						<li><a href="{{url('/media-list')}}">All Media</a></li>
@@ -270,16 +270,16 @@
                 </tbody>
             </table> --}}
             {{-- Latest News row --}}
-                <div class="row" style="height: 50px">
-                    <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
-                        @foreach ($latest_news as $news)
-                            <span>
-                                <a style="font-size: 18px" href="{{asset($news->link)}}" target="_blank">* {!! $news->title !!}</a>
-                                &nbsp;&nbsp;&nbsp;
-                            </span>
-                        @endforeach
-                    </marquee>
-                </div>
+            <div class="row" style="height: 50px" class="hover-color">
+                <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1">
+                    @foreach ($latest_news as $news)
+                        <span>
+                            <a class="color-change" href="{{asset($news->link)}}" target="_blank">* {!! $news->title !!}</a>
+                            &nbsp;&nbsp;&nbsp;
+                        </span>
+                    @endforeach
+                </marquee>
+            </div>
             {{-- Latest News row end--}}
 			<div class="row">
 				<nav class="site-navigation navigation">

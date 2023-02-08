@@ -274,9 +274,6 @@ Route::get('/media-list/{id}', [AllMediaShowController::class, 'category']);
 Route::get('/media', [AllMediaShowController::class, 'show']);
 
 
-
-
-
 /*
 |--------------------------------------------------------------------------
 | CategoryNewsController Routes
