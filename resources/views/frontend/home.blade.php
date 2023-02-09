@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row">
                 <div class="ads-img-flex">
+                    {{-- Position of Page Content1 Advertisement Start --}}
                     <div class="col-md-4 ads-img-resize">
-                        {{-- <img class="img-responsive" src="{{asset('/assets/frontend/images/boxed-bg.jpg')}}" alt=""> --}}
                         @foreach ($ads_manages as $ads_manage)
                             @if ($ads_manage->serial_num == 3)
                                 @if ($ads_manage->script_image_status == 0)
@@ -24,8 +24,10 @@
                             @endif
                         @endforeach
                     </div>
+                    {{-- Position of Page Content1 Advertisement End --}}
+
+                    {{-- Position of Page Content2 Advertisement Start --}}
                     <div class="col-md-4 ads-img-resize">
-                        {{-- <img class="img-responsive" src="{{asset('/assets/frontend/images/boxed-bg.jpg')}}" alt=""> --}}
                         @foreach ($ads_manages as $ads_manage)
                             @if ($ads_manage->serial_num == 4)
                                 @if ($ads_manage->script_image_status == 0)
@@ -42,8 +44,10 @@
                             @endif
                         @endforeach
                     </div>
+                    {{-- Position of Page Content2 Advertisement End --}}
+
+                    {{-- Position of Page Content3 Advertisement Start --}}
                     <div class="col-md-4 ads-img-resize">
-                        {{-- <img class="img-responsive" src="{{asset('/assets/frontend/images/boxed-bg.jpg')}}" alt=""> --}}
                         @foreach ($ads_manages as $ads_manage)
                             @if ($ads_manage->serial_num == 5)
                                 @if ($ads_manage->script_image_status == 0)
@@ -60,11 +64,13 @@
                             @endif
                         @endforeach
                     </div>
+                    {{-- Position of Page Content3 Advertisement End --}}
                 </div>
             </div>
         </div>
     </section>
     {{-- End of Adevertisement Section --}}
+
     @include('frontend.partials.slider')
     <section class="block-wrapper">
         <div class="container">
@@ -121,11 +127,10 @@
                     <!--- Latest news end -->
 
                     <div class="gap-50"></div>
-
-                    <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
-
+                    {{-- Position of Page Content4 Advertisement Start --}}
+                    {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
                         @foreach ($ads_manages as $ads_manage)
-                            @if ($ads_manage->serial_num == 2)
+                            @if ($ads_manage->serial_num == 6)
                                 @if ($ads_manage->script_image_status == 0)
                                     <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                         <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -139,8 +144,8 @@
                                 @endif
                             @endif
                         @endforeach
-
-                    </div>
+                    </div> --}}
+                    {{-- Position of Page Content4 Advertisement Start --}}
 
                     <!--- Featured Tab startet -->
                     <div class="row">
@@ -294,10 +299,10 @@
 
 
                 </div>
-
+                {{-- check1 --}}
                 <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 3)
+                        @if ($ads_manage->serial_num == 7)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -482,10 +487,10 @@
 
             </div>
 
-
-            <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
+            {{-- check2 --}}
+            {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
                 @foreach ($ads_manages as $ads_manage)
-                    @if ($ads_manage->serial_num == 4)
+                    @if ($ads_manage->serial_num == 8)
                         @if ($ads_manage->script_image_status == 0)
                             <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -499,7 +504,7 @@
                         @endif
                     @endif
                 @endforeach
-            </div>
+            </div> --}}
             <div class="gap-40"></div>
 
             {{-- this is section four --}}
@@ -654,10 +659,11 @@
             {{-- ------------------ CATEGORY 5 END ------------------ --}}
 
         </div>
+        {{-- check3 --}}
 
         <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
             @foreach ($ads_manages as $ads_manage)
-                @if ($ads_manage->serial_num == 5)
+                @if ($ads_manage->serial_num == 9)
                     @if ($ads_manage->script_image_status == 0)
                         <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -677,9 +683,22 @@
 
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="sidebar sidebar-right">
-                <div class="sidebar_ads1 custom-image">
+
+
+                <?php $info = DB::table('about_company')->First(); ?>
+                <div class="widget color-red">
+                    <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
+                    <div class="fb-page" data-href="{{ $info->fb_link }}" data-tabs="timeline, messages"
+                        data-height="250" data-small-header="false" data-adapt-container-width="false"
+                        data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="{{ $info->fb_link }}" class="fb-xfbml-parse-ignore"><a
+                                href="{{ $info->fb_link }}">Facebook</a></blockquote>
+                    </div><!-- Newsletter end -->
+                </div>
+                {{-- check4 --}}
+                <div class="sidebar_ads1 custom-image2">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 6)
+                        @if ($ads_manage->serial_num == 10)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -693,17 +712,6 @@
                             @endif
                         @endif
                     @endforeach
-                </div>
-
-                <?php $info = DB::table('about_company')->First(); ?>
-                <div class="widget color-red">
-                    <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
-                    <div class="fb-page" data-href="{{ $info->fb_link }}" data-tabs="timeline, messages"
-                        data-height="250" data-small-header="false" data-adapt-container-width="false"
-                        data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="{{ $info->fb_link }}" class="fb-xfbml-parse-ignore"><a
-                                href="{{ $info->fb_link }}">Facebook</a></blockquote>
-                    </div><!-- Newsletter end -->
                 </div>
 
                 {{-- ------------------ CATEGORY 7 START ------------------ --}}
@@ -809,10 +817,10 @@
                 @endforeach
                 {{-- ------------------ CATEGORY 7 END ------------------ --}}
 
-
-                <div class="widget text-center custom-image">
+                {{-- check5 --}}
+                {{-- <div class="widget text-center custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 7)
+                        @if ($ads_manage->serial_num == 11)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -827,7 +835,7 @@
                         @endif
                     @endforeach
 
-                </div><!-- Sidebar Ad end -->
+                </div> --}}
 
                 {{-- ------------------ CATEGORY 8 START ------------------ --}}
                 @foreach ($categories as $category)
@@ -930,20 +938,37 @@
                     @endif
                 @endforeach
                 {{-- ------------------ CATEGORY 8 END ------------------ --}}
+                <div class="widget text-center custom-image2">
+                    @foreach ($ads_manages as $ads_manage)
+                        @if ($ads_manage->serial_num == 10)
+                            @if ($ads_manage->script_image_status == 0)
+                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
+                                    alt="Fix the adsimage position and serial no" />
+                                </a>
+                            @elseif ($ads_manage->script_image_status == 1)
+                                {!! $ads_manage->script !!}
+                            @else
+                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                    alt="" />
+                            @endif
+                        @endif
+                    @endforeach
 
+                </div>
             </div><!-- Sidebar right end -->
         </div><!-- Sidebar Col end -->
 
         </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- First block end -->
-
+    {{-- check6 --}}
     <section class="ad-content-area text-center no-padding">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 8)
+                        @if ($ads_manage->serial_num == 12)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -959,9 +984,9 @@
                     @endforeach
 
                 </div><!-- Col end -->
-                <div class="col-sm-4 custom-image">
+                {{-- <div class="col-sm-4 custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 9)
+                        @if ($ads_manage->serial_num == 13)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -976,7 +1001,7 @@
                         @endif
                     @endforeach
 
-                </div><!-- Col end -->
+                </div> --}}
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section><!-- Ad content top end -->
@@ -1296,13 +1321,13 @@
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section>
-
+    {{-- check7 --}}
     <section class="block-wrapper custom_padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 text-center custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 10)
+                        @if ($ads_manage->serial_num == 13)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -1495,13 +1520,13 @@
     <!-- Video block end -->
 
     <!-- Footer Add -->
-
+    {{-- check8 --}}
     <section class="text-center">
         <div class="container">
             <div class="row">
                 <div class="col-sm- text-center custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 11)
+                        @if ($ads_manage->serial_num == 1)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"

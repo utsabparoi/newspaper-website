@@ -36,6 +36,8 @@
     $ads2 = DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',2)->first();
     $latest_news = DB::table('news')->where('status',1)->orderby('id','DESC')->paginate(50);
 
+    $menus = DB::table('menu')->where('status', 1)->get();
+
 ?>
 
 <!DOCTYPE html>
@@ -173,11 +175,9 @@
                         </span>
 					</div>
 					<ul class="unstyled top-nav">
-						<li><a href="#">About</a></li>
-						<li><a href="{{url('/media')}}">Write for Us</a></li>
-						<li><a href="#">Advertise</a></li>
-						<li><a href="#">Contact</a></li>
-						<li><a href="{{url('/media-list')}}">All Media</a></li>
+                        @foreach ($menus as $item)
+                            <li><a href="{{ asset($item->url) }}">{!! $item->name !!}</a></li>
+                        @endforeach
 					</ul>
 				</div><!--/ Top bar left end -->
                 <div class="col-md-3">
