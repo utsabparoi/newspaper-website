@@ -84,9 +84,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Serial Number </label>
                                     <div >
-                                        <input value="{{ $target_ads->serial_num }}" name="serial_num" type="number" id="form-field-1" placeholder="Ads Serial Number" class="form-control">
+                                        <label class=" control-label no-padding-right" for="serial_num"> Select Ads Serial <span class="text-danger">*</span></label>
+                                        <select name="serial_num" type="number" class="form-control" >
+                                            <option value="" >-Select a Serial-</option>
+                                            @foreach ($ads_serial as $serial)
+                                                <option value="{{ $serial->id }}" {{ $serial->id == $target_ads->serial_num ? 'selected' : "" }}>{{ $serial->serial_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

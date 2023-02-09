@@ -33,6 +33,7 @@
     }
 
     $ads1 = DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
+    $ads2 = DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',2)->first();
     $latest_news = DB::table('news')->where('status',1)->orderby('id','DESC')->paginate(50);
 
 ?>
@@ -181,11 +182,9 @@
 				</div><!--/ Top bar left end -->
                 <div class="col-md-3">
                     <div class="search">
-
-                    <form action="{{ url('/search') }}" method="get">
+                    {{-- <form action="{{ url('/search') }}" method="get">
                         <input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
-                    </form>
-
+                    </form> --}}
 				</div>
                 </div>
 				<div class="col-md-3 col-sm-3 col-xs-12 top-social text-right">
@@ -223,25 +222,47 @@
 					</div>
 				</div><!-- logo col end -->
 
-                <div class="col-sm-8 col-md-8 col-lg-9 header-right">
-                    @if(Request::path()=='media')
-                        <div class="pull-right">
-                            <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
-                        </div>
-                    @else
-                        <div class="pull-right custom-image">
-                            @if ($ads1->script_image_status == 0)
-                                <a href="{{ asset($ads1->image_url) }}" target="_blank">
-                                    <img src="{{asset($ads1->ads_image)}}" class="img-responsive" alt="Image Not Found">
-                                </a>
-                            @elseif ($ads1->script_image_status == 1)
-                                {!! $ads1->script !!}
-                            @else
-                                <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
-                            @endif
+                <div style="display: flex; justify-content: end;">
+                    <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
+                        @if(Request::path()=='media')
+                            <div class="pull-right">
+                                <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                            </div>
+                        @else
+                            <div class="pull-right custom-image">
+                                @if ($ads1->script_image_status == 0)
+                                    <a href="{{ asset($ads1->image_url) }}" target="_blank">
+                                        <img src="{{asset($ads1->ads_image)}}" class="responsive-image" alt="Image Not Found">
+                                    </a>
+                                @elseif ($ads1->script_image_status == 1)
+                                    {!! $ads1->script !!}
+                                @else
+                                    <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                @endif
 
-                        </div>
-                    @endif
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
+                        @if(Request::path()=='media')
+                            <div class="pull-right">
+                                <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                            </div>
+                        @else
+                            <div class="pull-right custom-image">
+                                @if ($ads2->script_image_status == 0)
+                                    <a href="{{ asset($ads2->image_url) }}" target="_blank">
+                                        <img src="{{asset($ads2->ads_image)}}" class="responsive-image" alt="Image Not Found">
+                                    </a>
+                                @elseif ($ads2->script_image_status == 1)
+                                    {!! $ads2->script !!}
+                                @else
+                                    <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                @endif
+
+                            </div>
+                        @endif
+                    </div>
                 </div><!-- header right end -->
 
 
@@ -252,25 +273,26 @@
 
 	<div class="main-nav fixed_menu clearfix">
 		<div class="container">
-            {{-- <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
-                <tbody>
+            {{-- Latest news marquee slide show --}}
+            <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+                <tbody class="hover-color">
                     <tr>
-                        <td style="width:80px; background: #085e0f; color:#fff; font-size: 20px; text-align:center; padding: 4px 0 3px 0">শিরোনাম:</td>
-                        <td style="border: 0px solid #2786B2; padding: 0 5px 0 5px">
-                            <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="3">
+                        <td style="width:80px; color:red; font-size: 26px; text-align:center; padding: 4px 3px 4px 3px"><strong>শিরোনাম</strong></td>
+                        <td style="padding: 7px 5px 0px 5px">
+                            <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
                                 @foreach ($latest_news as $news)
                                     <span class="ticker">
-                                        <a style="font-size: 17px" href="{{asset($news->link)}}">* {!! $news->title !!}</a>
-                                        &nbsp;&nbsp;
+                                        <a class="color-change" href="{{asset($news->link)}}" target="_blank">* {!! $news->title !!}</a>
+                                        &nbsp;&nbsp;&nbsp;
                                     </span>
                                 @endforeach
                             </marquee>
                         </td>
                     </tr>
                 </tbody>
-            </table> --}}
+            </table>
             {{-- Latest News row --}}
-            <div class="row" style="height: 50px" class="hover-color">
+            {{-- <div class="row" style="height: 50px" class="hover-color">
                 <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1">
                     @foreach ($latest_news as $news)
                         <span>
@@ -279,7 +301,7 @@
                         </span>
                     @endforeach
                 </marquee>
-            </div>
+            </div> --}}
             {{-- Latest News row end--}}
 			<div class="row">
 				<nav class="site-navigation navigation">

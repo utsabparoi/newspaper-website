@@ -1,6 +1,70 @@
 @extends('frontend.app')
 
 @section('content')
+    {{-- Adevertisement Section --}}
+    <section class="block-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="ads-img-flex">
+                    <div class="col-md-4 ads-img-resize">
+                        {{-- <img class="img-responsive" src="{{asset('/assets/frontend/images/boxed-bg.jpg')}}" alt=""> --}}
+                        @foreach ($ads_manages as $ads_manage)
+                            @if ($ads_manage->serial_num == 3)
+                                @if ($ads_manage->script_image_status == 0)
+                                    <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                        <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
+                                        alt="Fix the adsimage position and serial no" />
+                                    </a>
+                                @elseif ($ads_manage->script_image_status == 1)
+                                    {!! $ads_manage->script !!}
+                                @else
+                                    <img class="img-responsive" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                        alt="" />
+                                @endif
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="col-md-4 ads-img-resize">
+                        {{-- <img class="img-responsive" src="{{asset('/assets/frontend/images/boxed-bg.jpg')}}" alt=""> --}}
+                        @foreach ($ads_manages as $ads_manage)
+                            @if ($ads_manage->serial_num == 4)
+                                @if ($ads_manage->script_image_status == 0)
+                                    <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                        <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
+                                        alt="Fix the adsimage position and serial no" />
+                                    </a>
+                                @elseif ($ads_manage->script_image_status == 1)
+                                    {!! $ads_manage->script !!}
+                                @else
+                                    <img class="img-responsive" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                        alt="" />
+                                @endif
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="col-md-4 ads-img-resize">
+                        {{-- <img class="img-responsive" src="{{asset('/assets/frontend/images/boxed-bg.jpg')}}" alt=""> --}}
+                        @foreach ($ads_manages as $ads_manage)
+                            @if ($ads_manage->serial_num == 5)
+                                @if ($ads_manage->script_image_status == 0)
+                                    <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
+                                        <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
+                                        alt="Fix the adsimage position and serial no" />
+                                    </a>
+                                @elseif ($ads_manage->script_image_status == 1)
+                                    {!! $ads_manage->script !!}
+                                @else
+                                    <img class="img-responsive" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                        alt="" />
+                                @endif
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- End of Adevertisement Section --}}
     @include('frontend.partials.slider')
     <section class="block-wrapper">
         <div class="container">

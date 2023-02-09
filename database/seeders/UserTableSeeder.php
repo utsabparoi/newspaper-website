@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
             'user_type'		=> 1,
             'status'		=> 1,
     		'email'		=>'admin@gmail.com',
-    		'password'	=>Hash::make(12345678),
+    		'password'	=>Hash::make(123456789),
         ]);
     }
 
