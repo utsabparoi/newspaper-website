@@ -210,7 +210,7 @@
 					<div class="logo" style="width: 272px;">
                         {{-- TEST 2 --}}
                         @if ( strpos($info->logo,'assets') )
-                            <a href="{{URL::to('/')}}">
+                            <a href="{{URL::to('/')}}" id="show">
                                 <img style="width:100%; height:100%;" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
                             </a>
                         @else
@@ -353,7 +353,7 @@
 
 								</li>
 								@endforeach<!-- Features menu end -->
-								<li class="dropdown">
+								{{-- <li class="dropdown">
 									<a href="{{url('/media-list')}}" class="dropdown-toggle">Media Point <i class="fa fa-angle-down"></i></a>
 									<ul class="dropdown-menu" role="menu">
 									@foreach($mediaCat as $mCat)
@@ -361,7 +361,7 @@
 									@endforeach
 									</ul>
 
-								</li>
+								</li> --}}
 
 							</ul><!--/ Nav ul end -->
 						</div><!--/ Collapse end -->

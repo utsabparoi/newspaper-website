@@ -272,7 +272,9 @@
     box-shadow: 2px 4px 8px #6796b1;
 }
 
-.f-nav ul li a {}
+.f-nav ul li a {
+
+}
 
 .header_post_block .list-post li {
     max-height: 70px
@@ -575,3 +577,50 @@ marquee {
     border-left: 30px solid transparent;
 }
 
+#progress {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -6px;
+    width: 1%;
+    height: 3px;
+    background-color: #E77C32;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    -moz-transition: width 600ms ease-out, opacity 500ms linear;
+    -ms-transition: width 600ms ease-out, opacity 500ms linear;
+    -o-transition: width 600ms ease-out, opacity 500ms linear;
+    -webkit-transition: width 600ms ease-out, opacity 500ms linear;
+    transition: width 1000ms ease-out, opacity 500ms linear;
+}
+#progress b, #progress i {
+    position: absolute;
+    top: 0;
+    height: 3px;
+    -moz-box-shadow: #777777 1px 0 6px 1px;
+    -ms-box-shadow: #777777 1px 0 6px 1px;
+    -webkit-box-shadow: #777777 1px 0 6px 1px;
+    box-shadow: #777777 1px 0 6px 1px;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+#progress b {
+    clip: rect(-6px, 22px, 14px, 10px);
+    opacity: 0.6;
+    width: 20px;
+    right: 0;
+}
+
+#progress i {
+    clip: rect(-6px, 90px, 14px, -6px);
+    opacity: 0.6;
+    width: 180px;
+    right: -80px;
+}
+
+.top-social .unstyled li > a:hover{
+    color: #e77c32;
+}

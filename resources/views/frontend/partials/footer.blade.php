@@ -140,11 +140,12 @@ $social_link = DB::table('social_links')->get();
 
 <!-- Javascript Files
  ================================================== -->
-
 <!-- initialize jQuery Library -->
 <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.js') }}"></script>
 <!-- Bootstrap jQuery -->
 <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
+{{-- ProgressBar Loader --}}
+<script type="text/javascript" src="{{ asset('assets/frontend/js/progress_bar.js') }}"></script>
 <!-- Owl Carousel -->
 <script type="text/javascript" src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
 <!-- Counter -->
@@ -158,8 +159,8 @@ $social_link = DB::table('social_links')->get();
 <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.minical.js') }}"></script>
 
 <script src="{{ asset('assets/frontend/jssocials/jssocials.min.js') }}"></script>
+
 <!-- Template custom -->
-<script type="text/javascript" src="{{ asset('assets/frontend/js/custom.js') }}"></script>
 <script type="text/javascript">
     jQuery("document").ready(function($) {
 
@@ -192,5 +193,7 @@ $social_link = DB::table('social_links')->get();
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
 
 </div><!-- Body inner end -->

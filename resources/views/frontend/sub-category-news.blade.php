@@ -62,7 +62,7 @@
 								<div class="col-xs-12 col-sm-12 col-md-12 ">
 									<div  class="custom-ad-banner text-center custom-image">
                                         @foreach ($ads_manages as $ads_manage)
-                                            @if ($ads_manage->serial_num == 1)
+                                            @if ($ads_manage->serial_num == 3)
                                                 @if ($ads_manage->script_image_status == 0)
                                                     <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                                         <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -137,7 +137,7 @@
 					<div class="sidebar sidebar-right">
 						<div class="widget custom-image">
 							@foreach ($ads_manages as $ads_manage)
-                                @if ($ads_manage->serial_num == 2)
+                                @if ($ads_manage->serial_num == 4)
                                     @if ($ads_manage->script_image_status == 0)
                                         <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -225,9 +225,16 @@
 
 						</div><!-- Popular news widget end -->
 
-						<div class="widget text-center custom-image">
+
+						<?php $info=DB::table('about_company')->First(); ?>
+						<div class="widget m-bottom-0">
+							<h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
+							  <div class="fb-page" data-href="{{$info->fb_link}}" data-tabs="timeline, messages" data-height="250" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$info->fb_link}}" class="fb-xfbml-parse-ignore"><a href="{{$info->fb_link}}">Facebook</a></blockquote></div><!-- Newsletter end -->
+						</div><!-- Newsletter widget end -->
+                        <div class="gap-40"></div>
+                        <div class="widget text-center custom-image2">
 							@foreach ($ads_manages as $ads_manage)
-                                @if ($ads_manage->serial_num == 3)
+                                @if ($ads_manage->serial_num == 8)
                                     @if ($ads_manage->script_image_status == 0)
                                         <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -242,11 +249,6 @@
                                 @endif
                             @endforeach
 						</div><!-- Sidebar Ad end -->
-						<?php $info=DB::table('about_company')->First(); ?>
-						<div class="widget m-bottom-0">
-							<h3 class="block-title"><span>Facebook like page</span></h3>
-							  <div class="fb-page" data-href="{{$info->fb_link}}" data-tabs="timeline, messages" data-height="250" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{$info->fb_link}}" class="fb-xfbml-parse-ignore"><a href="{{$info->fb_link}}">Facebook</a></blockquote></div><!-- Newsletter end -->
-						</div><!-- Newsletter widget end -->
 
 					</div><!-- Sidebar right end -->
 				</div>

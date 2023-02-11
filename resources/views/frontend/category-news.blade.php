@@ -74,7 +74,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12 ">
                                             <div class="text-center custom-image">
                                                 @foreach ($ads_manages as $ads_manage)
-                                                    @if ($ads_manage->serial_num == 1)
+                                                    @if ($ads_manage->serial_num == 3)
                                                         @if ($ads_manage->script_image_status == 0)
                                                             <a href="{{ $ads_manage->image_url }}" target="_blank">
                                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -91,6 +91,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                        <div class="gap-20"></div>
                                     @endif
                                     <div
                                         class="post-block-style list_post_block_style post-list clearfix col-md-12 no-padding">
@@ -127,9 +128,6 @@
                                                             href='{{ URL::to("article/$news->id/$news->link") }}'>{{ $news->title }}</a>
                                                     </h2>
                                                     <div class="post-meta">
-
-
-
                                                     </div>
                                                     <p>{{ $news->short_description }}</p>
                                                 </div><!-- Post content end -->
@@ -152,12 +150,12 @@
 
                 </div><!-- Content Col end -->
 
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
-                            <div class="widget text-center custom-image">
+                            <div class="custom-image">
                                 @foreach ($ads_manages as $ads_manage)
-                                    @if ($ads_manage->serial_num == 2)
+                                    @if ($ads_manage->serial_num == 4)
                                         @if ($ads_manage->script_image_status == 0)
                                             <a href="{{ $ads_manage->image_url }}" target="_blank">
                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -265,9 +263,21 @@
 
                         </div><!-- Popular news widget end -->
 
-                        <div class="widget text-center custom-image">
+                        <?php $info = DB::table('about_company')->First(); ?>
+                        <div class="widget m-bottom-0">
+                            <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
+                            <div class="fb-page" data-href="{{ $info->fb_link }}" data-tabs="timeline, messages"
+                                data-height="250" data-small-header="false" data-adapt-container-width="false"
+                                data-hide-cover="false" data-show-facepile="true">
+                                <blockquote cite="{{ $info->fb_link }}" class="fb-xfbml-parse-ignore"><a
+                                        href="{{ $info->fb_link }}">Facebook</a></blockquote>
+                            </div><!-- Newsletter end -->
+                        </div><!-- Newsletter widget end -->
+                        <div class="gap-40"></div>
+
+                        <div class="widget text-center custom-image2">
                             @foreach ($ads_manages as $ads_manage)
-                                @if ($ads_manage->serial_num == 3)
+                                @if ($ads_manage->serial_num == 8)
                                     @if ($ads_manage->script_image_status == 0)
                                         <a href="{{ $ads_manage->image_url }}" target="_blank">
                                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -282,17 +292,6 @@
                                 @endif
                             @endforeach
                         </div><!-- Sidebar Ad end -->
-
-                        <?php $info = DB::table('about_company')->First(); ?>
-                        <div class="widget m-bottom-0">
-                            <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন </span></h3>
-                            <div class="fb-page" data-href="{{ $info->fb_link }}" data-tabs="timeline, messages"
-                                data-height="250" data-small-header="false" data-adapt-container-width="false"
-                                data-hide-cover="false" data-show-facepile="true">
-                                <blockquote cite="{{ $info->fb_link }}" class="fb-xfbml-parse-ignore"><a
-                                        href="{{ $info->fb_link }}">Facebook</a></blockquote>
-                            </div><!-- Newsletter end -->
-                        </div><!-- Newsletter widget end -->
 
                     </div><!-- Sidebar right end -->
                 </div><!-- Sidebar Col end -->

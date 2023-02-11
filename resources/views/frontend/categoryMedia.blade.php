@@ -7,8 +7,8 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<ol class="breadcrumb">
-     					<li><a href="{{URL::to('/')}}">Home</a></li>
-     					<li><a href="{{URL::to('/media-list')}}">All Media</a></li>
+     					{{-- <li><a href="{{URL::to('/')}}">Home</a></li>
+     					<li><a href="{{URL::to('/media-list')}}">All Media</a></li> --}}
      					<li>{{$category->category_name}}</li>
      				</ol>
 				</div><!-- Col end -->
