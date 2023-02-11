@@ -1,10 +1,18 @@
 <section class="featured-post-area custom-featured-post-area no-padding">
     <div class="container">
         <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12 main-section-title" >
+                <h4>প্রধান সংবাদ</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="featured-post-area custom-featured-post-area no-padding">
+    <div class="container">
+
+        <div class="row">
             <div class="col-md-8">
                 <div class="col-md-8 col-xs-12 col-sm-8">
-
-
                     <div id="featured-sliders" class="custom-featured-sliders">
 
                         <?php
@@ -17,7 +25,7 @@
 
                         @if (strpos($slider_img, 'assets'))
 
-                            <div class="item"
+                            <div class="item bg-danger"
                                 style="background-image:url({{ asset($slider_img) }});background-repeat: no-repeat;background-size: 100% 100%;">
                                 <div class="featured-post">
                                     <div class="post-content custom_post_content new-title-hover">

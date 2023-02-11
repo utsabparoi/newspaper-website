@@ -13,7 +13,7 @@
                                 @if ($ads_manage->script_image_status == 0)
                                     <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                         <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
-                                        alt="Fix the adsimage position and serial no" />
+                                            alt="Image Not Found" />
                                     </a>
                                 @elseif ($ads_manage->script_image_status == 1)
                                     {!! $ads_manage->script !!}
@@ -33,7 +33,7 @@
                                 @if ($ads_manage->script_image_status == 0)
                                     <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                         <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
-                                        alt="Fix the adsimage position and serial no" />
+                                            alt="Image Not Found" />
                                     </a>
                                 @elseif ($ads_manage->script_image_status == 1)
                                     {!! $ads_manage->script !!}
@@ -53,7 +53,7 @@
                                 @if ($ads_manage->script_image_status == 0)
                                     <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                         <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
-                                        alt="Fix the adsimage position and serial no" />
+                                            alt="Image Not Found" />
                                     </a>
                                 @elseif ($ads_manage->script_image_status == 1)
                                     {!! $ads_manage->script !!}
@@ -111,9 +111,9 @@
                                                         href='{{ URL::to("article/$featured->id/$featured->link") }}'>{{ $featured->title }}</a>
                                                 </h2>
                                                 <!-- <div class="post-meta">
-                                                            <span class="post-author"><a href="#">John Doe</a></span>
-                                                            <span class="post-date">Jan 12, 2017</span>
-                                                        </div> -->
+                                                                <span class="post-author"><a href="#">John Doe</a></span>
+                                                                <span class="post-date">Jan 12, 2017</span>
+                                                            </div> -->
                                             </div><!-- Post content end -->
                                         </div><!-- List post 2 end -->
 
@@ -127,6 +127,7 @@
                     <!--- Latest news end -->
 
                     <div class="gap-50"></div>
+
                     {{-- Position of Page Content4 Advertisement Start --}}
                     {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
                         @foreach ($ads_manages as $ads_manage)
@@ -134,7 +135,7 @@
                                 @if ($ads_manage->script_image_status == 0)
                                     <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                         <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                        alt="Fix the adsimage position and serial no" />
+                                        alt="Image Not Found" />
                                     </a>
                                 @elseif ($ads_manage->script_image_status == 1)
                                     {!! $ads_manage->script !!}
@@ -154,8 +155,6 @@
                     </div>
 
                     {{-- <p>this is section two</p> --}}
-
-
 
                     {{-- ------------------ CATEGORY 1 START ------------------ --}}
                     @foreach ($categories as $category)
@@ -296,17 +295,15 @@
                     @endforeach
                     {{-- ------------------ CATEGORY 1 END ------------------ --}}
 
-
-
                 </div>
-                {{-- check1 --}}
+                {{-- Position of Page Section1 Advertisement --}}
                 <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 7)
+                        @if ($ads_manage->serial_num == 6)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
+                                        alt="Image Not Found" />
                                 </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
@@ -320,12 +317,7 @@
                 <div class="gap-40"></div>
 
 
-
-
-
                 {{-- <p>this is section threee</p> --}}
-
-
 
                 {{-- ------------------ CATEGORY 2 START ------------------ --}}
                 @foreach ($categories as $category)
@@ -349,16 +341,10 @@
                                         </li>
                                     @endforeach
 
-
-
-
-
                                 </ul>
                             @endif
 
                             <div class="tab-content">
-
-
                                 @foreach ($category->subcategories as $c2_sub_cat)
                                     <?php $j++; ?>
                                     <div class="tab-pane {{ $j > 1 ? '' : 'active' }} animated fadeInRight"
@@ -494,7 +480,7 @@
                         @if ($ads_manage->script_image_status == 0)
                             <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                alt="Fix the adsimage position and serial no" />
+                                alt="Image Not Found" />
                             </a>
                         @elseif ($ads_manage->script_image_status == 1)
                             {!! $ads_manage->script !!}
@@ -659,15 +645,14 @@
             {{-- ------------------ CATEGORY 5 END ------------------ --}}
 
         </div>
-        {{-- check3 --}}
-
-        <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
+        {{-- Position of Adevertisement at Page Serial Section2 --}}
+        {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
             @foreach ($ads_manages as $ads_manage)
-                @if ($ads_manage->serial_num == 9)
+                @if ($ads_manage->serial_num == 7)
                     @if ($ads_manage->script_image_status == 0)
                         <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                            alt="Fix the adsimage position and serial no" />
+                                alt="Image Not Found" />
                         </a>
                     @elseif ($ads_manage->script_image_status == 1)
                         {!! $ads_manage->script !!}
@@ -677,14 +662,13 @@
                     @endif
                 @endif
             @endforeach
-        </div>
+        </div> --}}
+
         <div class="gap-40"></div>
         </div><!-- Content Col end -->
 
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="sidebar sidebar-right">
-
-
                 <?php $info = DB::table('about_company')->First(); ?>
                 <div class="widget color-red">
                     <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
@@ -695,14 +679,15 @@
                                 href="{{ $info->fb_link }}">Facebook</a></blockquote>
                     </div><!-- Newsletter end -->
                 </div>
-                {{-- check4 --}}
+
+                {{-- Position of Adevertisement at Bottom of the Facebook page  --}}
                 <div class="sidebar_ads1 custom-image2">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 10)
+                        @if ($ads_manage->serial_num == 8)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
+                                        alt="Image Not Found" />
                                 </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
@@ -802,12 +787,6 @@
                                                 </li><!-- Li 1 end -->
                                             @endif
 
-
-
-
-
-
-
                                         </ul><!-- List post end -->
                                     </div><!-- List post block end -->
                                 @endforeach
@@ -824,7 +803,7 @@
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
+                                    alt="Image Not Found" />
                                 </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
@@ -938,13 +917,14 @@
                     @endif
                 @endforeach
                 {{-- ------------------ CATEGORY 8 END ------------------ --}}
+                {{-- Position of Adevertisement at bottom of the Page right sidebar --}}
                 <div class="widget text-center custom-image2">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 10)
+                        @if ($ads_manage->serial_num == 9)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
+                                        alt="Image Not Found" />
                                 </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
@@ -963,48 +943,7 @@
         </div><!-- Container end -->
     </section><!-- First block end -->
     {{-- check6 --}}
-    <section class="ad-content-area text-center no-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 custom-image">
-                    @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 12)
-                            @if ($ads_manage->script_image_status == 0)
-                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
-                                </a>
-                            @elseif ($ads_manage->script_image_status == 1)
-                                {!! $ads_manage->script !!}
-                            @else
-                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                    alt="" />
-                            @endif
-                        @endif
-                    @endforeach
 
-                </div><!-- Col end -->
-                {{-- <div class="col-sm-4 custom-image">
-                    @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 13)
-                            @if ($ads_manage->script_image_status == 0)
-                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
-                                </a>
-                            @elseif ($ads_manage->script_image_status == 1)
-                                {!! $ads_manage->script !!}
-                            @else
-                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                    alt="" />
-                            @endif
-                        @endif
-                    @endforeach
-
-                </div> --}}
-            </div><!-- Row end -->
-        </div><!-- Container end -->
-    </section><!-- Ad content top end -->
 
     <section class="block-wrapper">
         <div class="container">
@@ -1316,22 +1255,20 @@
                 @endforeach
                 {{-- ------------------ CATEGORY 5 END ------------------ --}}
 
-
-
             </div><!-- Row end -->
         </div><!-- Container end -->
     </section>
-    {{-- check7 --}}
+    <div class="gap-40"></div>
     <section class="block-wrapper custom_padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 text-center custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 13)
+                        @if ($ads_manage->serial_num == 10)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
+                                        alt="Image Not Found" />
                                 </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
@@ -1520,22 +1457,22 @@
     <!-- Video block end -->
 
     <!-- Footer Add -->
-    {{-- check8 --}}
-    <section class="text-center">
+    {{-- Position of Advertisement at top of the page footer --}}
+    <section class="ad-content-area text-center">
         <div class="container">
             <div class="row">
-                <div class="col-sm- text-center custom-image">
+                <div class="col-sm-12">
                     @foreach ($ads_manages as $ads_manage)
                         @if ($ads_manage->serial_num == 1)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Fix the adsimage position and serial no" />
+                                    <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"
+                                        alt="Image Not Found" />
                                 </a>
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
-                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                <img class="img-responsive" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
                                     alt="" />
                             @endif
                         @endif

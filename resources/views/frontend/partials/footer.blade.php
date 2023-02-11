@@ -9,7 +9,7 @@ $social_link = DB::table('social_links')->get();
                 <div class="footer-info">
                     <div class="col-md-12 footer_menu text-center">
                         <ul class="unstyled footer-social">
-                            <li class="listed">
+                            <li class="listed" style="display: inline">
                                 <a href="{{ URL::to('lifestyle') }}">
                                     <span class="social-icon"><i>জীবনধারা</i></span>
                                 </a>
@@ -112,21 +112,19 @@ $social_link = DB::table('social_links')->get();
 <div class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-4">
+            <div class="col-xs-12 col-sm-3">
                 <div class="copyright-info">
-                    <span>All Rights Reserved by : <a href="{{ url('/') }}"> {{ $info->company_name }}</a></span>
-
+                    <p>All Rights Reserved By : <a href="{{ url('/') }}" style="color:#f38233;font-size:16px"> {{ $info->company_name }}</a></p>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-2">
-                <div align='center'>
-                    {{-- <img src='http://www.free-website-hit-counter.com/c.php?d=9&id=110464&s=36' border='0' title='free website hit counter'> --}}
+            <div class="col-xs-12 col-sm-6"></div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="copyright-info">
+                    <p>Developed By:<a href="http://www.smartsoftware.com.bd" target="_blank"
+                        title="best web design & Development Company in Bangladesh, best Software Development Company in Bangladesh" style="color:#f38233;font-size:16px">
+                        Smart Software Ltd</a>
+                    </p>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <p style="margin-left: 280px">Developed By:<a href="http://www.smartsoftware.com.bd" target="_blank"
-                        title="best web design & Development Company in Bangladesh, best Software Development Company in Bangladesh"><strong>
-                            Smart Software Ltd</strong> </a></p>
             </div>
         </div><!-- Row end -->
 
