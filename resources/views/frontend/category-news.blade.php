@@ -265,7 +265,7 @@
 
                         <?php $info = DB::table('about_company')->First(); ?>
                         <div class="widget m-bottom-0">
-                            <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
+                            <h3 class="block-title"><span>সোস্যাল নেটওয়ার্ক</span></h3>
                             <div class="fb-page" data-href="{{ $info->fb_link }}" data-tabs="timeline, messages"
                                 data-height="250" data-small-header="false" data-adapt-container-width="false"
                                 data-hide-cover="false" data-show-facepile="true">

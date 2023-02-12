@@ -39,32 +39,8 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" no-padding-right" for="form-field-1"> Ads Script </label>
                                     <div >
-                                        <textarea name="script" placeholder="Ads Script" class="form-control" id="inputImagePath"></textarea>
-                                    </div>
-                                </div>
-                                <div class="file-upload form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-2">Choose New Image </label>
-                                    <div class="file-upload-select">
-                                        <div class="file-select-button" >Choose File</div>
-                                        <div class="file-select-name">No file chosen...</div>
-                                        <input type="file" name="ads_image" id="file-upload-input">
-                                    </div>
-                                    <small class="text-danger">* Image maximum width and height (1000 X 120)</small>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Image link</label>
-                                    <div >
-                                        <input name="image_url" type="text" id="form-field-1" placeholder="Ex: https://www.example.com" class="form-control slug-output">
-                                    </div>
-                                    @if($errors->has('image_url'))
-                                        <span class="text-danger">{{ $errors->first('image_url') }} Ex: https://www.example.com</span>
-                                    @endif
-                                </div>
-                                <div class="form-group">
-                                    <div >
-                                        <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
+                                        <label class=" control-label no-padding-right" for="position_id"> Select Ads Position(Page Name) <span class="text-danger">*</span></label>
                                         <select name="position_id" type="number" class="form-control" >
                                             <option value="" >-Select a Position-</option>
                                             @foreach ($ads_position as $position)
@@ -76,7 +52,7 @@
                                 <div class="form-group">
                                     <div >
                                         <label class=" control-label no-padding-right" for="serial_num"> Select Ads Serial <span class="text-danger">*</span></label>
-                                        <select name="serial_num" type="number" class="form-control" >
+                                        <select name="serial_num" type="number" class="form-control" id="sl-no" onchange="loadSerialWiseImageSizes(this)" >
                                             <option value="" >-Select a Serial-</option>
                                             @foreach ($ads_serial as $serial)
                                                 <option value="{{ $serial->id }}">{{ $serial->serial_name }}</option>
@@ -84,15 +60,31 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Serial Number </label>
+                                <div class="form-group">
+                                    <label class=" no-padding-right" for="form-field-1"> Ads Script </label>
                                     <div >
-                                        <input name="serial_num" type="number" id="form-field-1" placeholder="Ads Serial Number" class="form-control">
-                                        @if ($errors->has('serial_num'))
-                                            <span class="text-danger">{{ $errors->first('serial_num') }}</span>
-                                        @endif
+                                        <textarea name="script" placeholder="Ads Script" class="form-control" id="inputImagePath"></textarea>
                                     </div>
-                                </div> --}}
+                                </div>
+                                <div class="file-upload form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-2">Choose New Image <span id="invoice-id" class="text-danger"></span></label>
+                                    <div class="file-upload-select">
+                                        <div class="file-select-button" >Choose File</div>
+                                        <div class="file-select-name">No file chosen...</div>
+                                        <input type="file" name="ads_image" id="file-upload-input">
+                                    </div>
+                                    {{-- <small class="text-danger">* Image maximum width and height (1000 X 120)</small> --}}
+                                </div>
+                                <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-1"> Ads Image link</label>
+                                    <div >
+                                        <input name="image_url" type="text" id="form-field-1" placeholder="Ex: https://www.example.com" class="form-control slug-output">
+                                    </div>
+                                    @if($errors->has('image_url'))
+                                        <span class="text-danger">{{ $errors->first('image_url') }} Ex: https://www.example.com</span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group">
                                     <div class="input-group width-100">
                                         <span class="input-group-addon width-20" style="text-align: left">
@@ -127,4 +119,47 @@
         </div><!-- /.page-content -->
     </div>
 </div>
+<script>
+    function loadSerialWiseImageSizes() {
+
+        let invoice = $('#invoice-id')
+        // invoice.empty()
+        // invoice.append('Maximum image size: ')
+        let sl = document.getElementById('sl-no').value;
+        sl = sl - 1;
+
+        $.get("/get-serial-num", function (data) {
+            $(data).each(function (index, item) {
+                switch (item.ads_serial[sl]) {
+                    case 1:
+                    case 2:
+                        invoice.empty()
+                        invoice.append('<span> *Input image size must be 390 X 150 </span>')
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                        invoice.empty()
+                        invoice.append('<span> *Input image size must be 360 X 260 </span>')
+                        break;
+                    case 6:
+                    case 9:
+                    case 10:
+                        invoice.empty()
+                        invoice.append('<span> *Input image size must be 750 X 100 </span>')
+                        break;
+                    case 7:
+                    case 8:
+                        invoice.empty()
+                        invoice.append('<span> *Input image size must be 360 X 280 </span>')
+                        break;
+                    default:
+                        invoice.empty()
+                        invoice.append("<span>*Input image size must be 'Acording to the Position of this Ads'</span>")
+                        break;
+                }
+            })
+        })
+    }
+</script>
 @endsection

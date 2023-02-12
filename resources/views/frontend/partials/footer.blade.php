@@ -7,7 +7,7 @@ $social_link = DB::table('social_links')->get();
         <div class="container">
             <div class="row">
                 <div class="footer-info">
-                    <div class="col-md-12 footer_menu text-center">
+                    {{-- <div class="col-md-12 footer_menu text-center">
                         <ul class="unstyled footer-social">
                             <li class="listed" style="display: inline">
                                 <a href="{{ URL::to('lifestyle') }}">
@@ -44,7 +44,7 @@ $social_link = DB::table('social_links')->get();
                             </li>
                         </ul>
 
-                    </div>
+                    </div> --}}
                     <div class="col-md-12 footer_logo_others">
                         <div class="row">
                             <div class="col-md-4 col-xs-12" id="middle_part1">
@@ -63,7 +63,7 @@ $social_link = DB::table('social_links')->get();
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12" id="middle_part2">
-                                <div class="footer_apple">
+                                {{-- <div class="footer_apple">
                                     <a href="#"><img class="img-responsive"
                                             src="{{ asset('assets/frontend/images/download.png') }}"
                                             alt="" /></a>
@@ -72,7 +72,7 @@ $social_link = DB::table('social_links')->get();
                                     <a href=""><img class="img-responsive"
                                             src="{{ asset('assets/frontend/images/en_badge_web_generic.png') }}"
                                             alt="" /></a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="footer_icon text-right">
@@ -122,7 +122,7 @@ $social_link = DB::table('social_links')->get();
                 <div class="copyright-info">
                     <p>Developed By:<a href="http://www.smartsoftware.com.bd" target="_blank"
                         title="best web design & Development Company in Bangladesh, best Software Development Company in Bangladesh" style="color:#f38233;font-size:16px">
-                        Smart Software Ltd</a>
+                        Smart Software Ltd.</a>
                     </p>
                 </div>
             </div>

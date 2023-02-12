@@ -40,7 +40,29 @@
                         <div class="row">
                             <div class="left col-lg-11" style="margin-left: 20px">
                                 <div class="form-group">
-                                    <label class=" no-padding-right" for="form-field-1"> Ads Script <span class="text-danger">(Input image maximum width and height (1000px x 120px))</span></label>
+                                    <div >
+                                        <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
+                                        <select name="position_id" type="number" class="form-control" >
+                                            <option value="" >-Select a Position-</option>
+                                            @foreach ($ads_position as $position)
+                                                <option value="{{ $position->id }}" {{ $position->id == $target_ads->position_id ? 'selected' : "" }}>{{ $position->position_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div >
+                                        <label class=" control-label no-padding-right" for="serial_num"> Select Ads Serial <span class="text-danger">*</span></label>
+                                        <select name="serial_num" type="number" class="form-control" >
+                                            <option value="" >-Select a Serial-</option>
+                                            @foreach ($ads_serial as $serial)
+                                                <option value="{{ $serial->id }}" {{ $serial->id == $target_ads->serial_num ? 'selected' : "" }}>{{ $serial->serial_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" no-padding-right" for="form-field-1"> Ads Script</label>
                                     <div >
                                         <textarea name="script" placeholder="Ads Script" class="form-control" id="inputImagePath">{{ $target_ads->script }}</textarea>
                                     </div>
@@ -64,7 +86,6 @@
                                     <div class="file-select-name">No file chosen...</div>
                                     <input type="file" name="ads_image" id="file-upload-input">
                                     </div>
-                                    <small class="text-danger">* News Image size 1000 x 100 (Max)</small>
                                 </div>
                                 <div class="form-group">
                                     <label class=" control-label no-padding-right" for="form-field-1"> Ads Image link</label>
@@ -72,28 +93,7 @@
                                         <input value="{{ $target_ads->image_url }}" name="image_url" type="text" id="form-field-1" placeholder="Image link " class="form-control slug-output">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div >
-                                        <label class=" control-label no-padding-right" for="position_id"> Select Ads Position <span class="text-danger">*</span></label>
-                                        <select name="position_id" type="number" class="form-control" >
-                                            <option value="" >-Select a Position-</option>
-                                            @foreach ($ads_position as $position)
-                                                <option value="{{ $position->id }}" {{ $position->id == $target_ads->position_id ? 'selected' : "" }}>{{ $position->position_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div >
-                                        <label class=" control-label no-padding-right" for="serial_num"> Select Ads Serial <span class="text-danger">*</span></label>
-                                        <select name="serial_num" type="number" class="form-control" >
-                                            <option value="" >-Select a Serial-</option>
-                                            @foreach ($ads_serial as $serial)
-                                                <option value="{{ $serial->id }}" {{ $serial->id == $target_ads->serial_num ? 'selected' : "" }}>{{ $serial->serial_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+
                                 <div class="form-group">
                                     <div class="input-group width-100">
                                         <span class="input-group-addon width-20" style="text-align: left">
@@ -115,7 +115,13 @@
                                             <span class="round-btn"></span>
                                         </div>
                                     </div>
-                                    <small class="text-danger">* Status ON(1) for show Script and OFF(0) for show Image</small>
+                                    <span class="text-danger">
+                                        @if ($target_ads->script_image_status == 0)
+                                            {{ "Now Image is Activated" }}
+                                        @else
+                                            {{ "Now Script is Activated" }}
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -128,4 +134,40 @@
         </div><!-- /.page-content -->
     </div>
 </div>
+<script>
+    function loadSerialWiseImageSizes() {
+
+        let invoice = $('#invoice-id')
+        // invoice.empty()
+        // invoice.append('Maximum image size: ')
+        let sl = document.getElementById('sl-no').value;
+        sl = sl - 1;
+
+        $.get("/get-serial-num", function (data) {
+            $(data).each(function (index, item) {
+                switch (item.ads_serial[sl]) {
+                    case 1:
+                    case 2:
+                        invoice.empty()
+                        invoice.append('<span class="text-danger"> *Input image maximum size must be 390 X 150 </span>')
+                        break;
+                    case 3:
+                    case 4:
+                    case 5:
+                        invoice.empty()
+                        invoice.append('<span class="text-danger"> *Input image maximum size must be 360 X 260 </span>')
+                        break;
+                    case 3:
+                        invoice.empty()
+                        invoice.append('<span class="text-danger"> *Input image maximum size must be 360 X 280 </span>')
+                        break;
+                    default:
+                        invoice.empty()
+                        invoice.append('<span class="text-danger"> *Input image maximum size must be 750 X 100 </span>')
+                        break;
+                }
+            })
+        })
+    }
+</script>
 @endsection

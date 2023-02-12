@@ -126,28 +126,7 @@
                     </div>
                     <!--- Latest news end -->
 
-                    <div class="gap-50"></div>
-
-                    {{-- Position of Page Content4 Advertisement Start --}}
-                    {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
-                        @foreach ($ads_manages as $ads_manage)
-                            @if ($ads_manage->serial_num == 6)
-                                @if ($ads_manage->script_image_status == 0)
-                                    <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                                        <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                        alt="Image Not Found" />
-                                    </a>
-                                @elseif ($ads_manage->script_image_status == 1)
-                                    {!! $ads_manage->script !!}
-                                @else
-                                    <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                        alt="" />
-                                @endif
-                            @endif
-                        @endforeach
-                    </div> --}}
-                    {{-- Position of Page Content4 Advertisement Start --}}
-
+                    <div class="gap-30"></div>
                     <!--- Featured Tab startet -->
                     <div class="row">
 
@@ -473,24 +452,6 @@
 
             </div>
 
-            {{-- check2 --}}
-            {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
-                @foreach ($ads_manages as $ads_manage)
-                    @if ($ads_manage->serial_num == 8)
-                        @if ($ads_manage->script_image_status == 0)
-                            <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                                <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                alt="Image Not Found" />
-                            </a>
-                        @elseif ($ads_manage->script_image_status == 1)
-                            {!! $ads_manage->script !!}
-                        @else
-                            <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                alt="" />
-                        @endif
-                    @endif
-                @endforeach
-            </div> --}}
             <div class="gap-40"></div>
 
             {{-- this is section four --}}
@@ -645,24 +606,6 @@
             {{-- ------------------ CATEGORY 5 END ------------------ --}}
 
         </div>
-        {{-- Position of Adevertisement at Page Serial Section2 --}}
-        {{-- <div style="margin-bottom: 30px; padding: 0px" class="col-md-12 custom-image">
-            @foreach ($ads_manages as $ads_manage)
-                @if ($ads_manage->serial_num == 7)
-                    @if ($ads_manage->script_image_status == 0)
-                        <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                            <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                alt="Image Not Found" />
-                        </a>
-                    @elseif ($ads_manage->script_image_status == 1)
-                        {!! $ads_manage->script !!}
-                    @else
-                        <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                            alt="" />
-                    @endif
-                @endif
-            @endforeach
-        </div> --}}
 
         <div class="gap-40"></div>
         </div><!-- Content Col end -->
@@ -671,7 +614,7 @@
             <div class="sidebar sidebar-right">
                 <?php $info = DB::table('about_company')->First(); ?>
                 <div class="widget color-red">
-                    <h3 class="block-title"><span>নিউজ আপডেট পেতে লাইক দিন</span></h3>
+                    <h3 class="block-title"><span>সোস্যাল নেটওয়ার্ক</span></h3>
                     <div class="fb-page" data-href="{{ $info->fb_link }}" data-tabs="timeline, messages"
                         data-height="250" data-small-header="false" data-adapt-container-width="false"
                         data-hide-cover="false" data-show-facepile="true">
@@ -683,7 +626,7 @@
                 {{-- Position of Adevertisement at Bottom of the Facebook page  --}}
                 <div class="sidebar_ads1 custom-image2">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 8)
+                        @if ($ads_manage->serial_num == 7)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -794,27 +737,6 @@
                         </div><!-- Popular news widget end -->
                     @endif
                 @endforeach
-                {{-- ------------------ CATEGORY 7 END ------------------ --}}
-
-                {{-- check5 --}}
-                {{-- <div class="widget text-center custom-image">
-                    @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 11)
-                            @if ($ads_manage->script_image_status == 0)
-                                <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
-                                    <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                    alt="Image Not Found" />
-                                </a>
-                            @elseif ($ads_manage->script_image_status == 1)
-                                {!! $ads_manage->script !!}
-                            @else
-                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                    alt="" />
-                            @endif
-                        @endif
-                    @endforeach
-
-                </div> --}}
 
                 {{-- ------------------ CATEGORY 8 START ------------------ --}}
                 @foreach ($categories as $category)
@@ -920,7 +842,7 @@
                 {{-- Position of Adevertisement at bottom of the Page right sidebar --}}
                 <div class="widget text-center custom-image2">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 9)
+                        @if ($ads_manage->serial_num == 8)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -1262,9 +1184,10 @@
     <section class="block-wrapper custom_padding">
         <div class="container">
             <div class="row">
+                {{-- Position of the Advertisement at Page Section 2 --}}
                 <div class="col-md-8 text-center custom-image">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 10)
+                        @if ($ads_manage->serial_num == 9)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
@@ -1441,14 +1364,10 @@
 
             </div>
 
-
             <div class="col-md-4 color-red">
-                <h3 class="block-title "><span>Archive</span></h3>
+                <h3 class="block-title "><span>আর্কাইভ</span></h3>
                 <form class="demo-2" id="calender">
-
                     <input id="changeDate" type='text' class="form-control">
-
-
                 </form>
             </div>
         </div>
@@ -1463,7 +1382,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     @foreach ($ads_manages as $ads_manage)
-                        @if ($ads_manage->serial_num == 1)
+                        @if ($ads_manage->serial_num == 10)
                             @if ($ads_manage->script_image_status == 0)
                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                     <img class="img-responsive" src="{{ asset($ads_manage->ads_image) }}"

@@ -211,4 +211,10 @@ class AdsManagementController extends Controller
 
     }
 
+    public function get_Serial_num(){
+        $data['ads_serial'] = AdsSerial::pluck('id');
+
+        return $data;
+    }
+
 }
