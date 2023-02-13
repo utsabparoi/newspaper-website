@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,AdsSerialController,FrontendController,AdsManagementController,AboutCompanyController,HomeController};
+use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,AdsSerialController,FrontendController,AdsManagementController,AboutCompanyController, AdsPlacementController, HomeController};
 
 Auth::routes();
 
@@ -95,7 +95,15 @@ Route::get('/get-serial-num', [AdsManagementController::class, 'get_Serial_num']
 
 
 
-
+/*
+|--------------------------------------------------------------------------
+| AdsPlacementController Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('ads-placement', AdsPlacementController::class);
+Route::get('/Ads/Placement/status/change/{id}', [AdsPlacementController::class, 'change_status'])->name('adsPlacement_status');
+// Route::get('/script_image_status/{id}', [AdsPlacementController::class, 'change_statusOfscriptORimage'])->name('scriptORimage_status');
+// Route::get('/get-serial-num', [AdsPlacementController::class, 'get_Serial_num']);
 /*
 |--------------------------------------------------------------------------
 | AdsPositionController Routes

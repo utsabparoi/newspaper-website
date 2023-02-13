@@ -166,7 +166,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="ts-date">
+					{{-- <div class="ts-date"> --}}
+                    <div>
 						{{-- <i class="fa fa-calendar-check-o"></i> --}}
                         <span>Today
                         <?php
@@ -174,11 +175,11 @@
 						?>
                         </span>
 					</div>
-					<ul class="unstyled top-nav">
+					{{-- <ul class="unstyled top-nav">
                         @foreach ($menus as $item)
                             <li><a href="{{ asset($item->url) }}">{!! $item->name !!}</a></li>
                         @endforeach
-					</ul>
+					</ul> --}}
 				</div><!--/ Top bar left end -->
                 <div class="col-md-3">
                     <div class="search">
@@ -197,7 +198,7 @@
 							@endforeach
 						</li>
 					</ul><!-- Ul end -->
-				</div><!--/ Top social col end -->
+				</div>
 			</div><!--/ Content row end -->
 		</div><!--/ Container end -->
 	</div><!--/ Topbar end -->

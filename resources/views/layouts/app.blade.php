@@ -538,6 +538,35 @@
                                     </li>
 								</ul>
 							</li>
+                            <li class="{{ request()->routeIs('ads-placement*') ? 'open active' : '' }}">
+								<a href="#" class="dropdown-toggle">
+									<i class="fa fa-leaf green"></i>
+
+									Ads Placement
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+                                {{-- sub category --}}
+								<ul class="submenu">
+									<li class="{{ request()->routeIs('ads-placement.create') ? 'active' : '' }}">
+                                        <a href="{{ route('ads-placement.create') }}">
+                                            <i class=" fa fa-plus purple"></i>
+                                            Add Ads Placement
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="{{ request()->routeIs('ads-placement.index') ? 'active' : '' }}">
+                                        <a href="{{ route('ads-placement.index') }}">
+                                            <i class=" fa fa-eye pink"></i>
+                                            View Ads Placement
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 

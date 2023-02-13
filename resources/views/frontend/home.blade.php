@@ -1391,7 +1391,7 @@
                             @elseif ($ads_manage->script_image_status == 1)
                                 {!! $ads_manage->script !!}
                             @else
-                                <img class="img-responsive" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
+                                <img class="img-responsive" src="{{ asset('/adManager/ad-placeholder.jpg') }}"
                                     alt="" />
                             @endif
                         @endif
