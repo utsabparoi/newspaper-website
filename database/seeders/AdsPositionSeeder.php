@@ -23,6 +23,7 @@ class AdsPositionSeeder extends Seeder
             array('id' => '4', 'position_name' => 'News Details Page',      'status' => 1),
             array('id' => '5', 'position_name' => 'Archive Page',           'status' => 1),
             array('id' => '6', 'position_name' => 'Search Page',            'status' => 1),
+            array('id' => '7', 'position_name' => 'Header',                  'status' => 1),
         );
 
         foreach ($all_ads as $item) {

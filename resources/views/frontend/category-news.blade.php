@@ -276,8 +276,9 @@
                         <div class="gap-40"></div>
 
                         <div class="widget text-center custom-image2">
+                            <h1>Test</h1>
                             @foreach ($ads_manages as $ads_manage)
-                                @if ($ads_manage->serial_num == 8)
+                                @if ($ads_manage->serial_num == 7)
                                     @if ($ads_manage->script_image_status == 0)
                                         <a href="{{ $ads_manage->image_url }}" target="_blank">
                                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"

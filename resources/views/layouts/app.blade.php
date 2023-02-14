@@ -334,7 +334,7 @@
                      | Advertisement list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('ads-management*') ? 'open active' : '' }}">
+                    <li class="{{ request()->routeIs('ads-management*', 'ads-placement*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-bullhorn"></i>
 							<span class="menu-text"> Advertisement </span>
@@ -345,7 +345,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="{{ request()->routeIs('ads-management*', 'ads-placement*') ? 'open active' : '' }}">
+							<li class="{{ request()->routeIs('ads-management*') ? 'open active' : '' }}">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 

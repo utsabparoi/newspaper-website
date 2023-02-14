@@ -106,7 +106,7 @@
                                             <span class="round-btn"></span>
                                         </div>
                                     </div>
-                                    <small class="text-danger">* Status ON(1) for show Script and OFF(0) for show Image</small>
+                                    <span class="text-danger">* Status ON(1) for show Script and OFF(0) for show Image</span>
                                 </div>
                             </div>
                         </div>
