@@ -47,7 +47,7 @@ class AdsPositionController extends Controller
         $request->validate([
             '*'=>'required',
         ]);
-
+        
         try {
             AdsPosition::insert([
                 'position_name'=> $request->position_name,

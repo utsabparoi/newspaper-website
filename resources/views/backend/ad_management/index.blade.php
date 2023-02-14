@@ -50,10 +50,10 @@
                                             <th class="text-center" width="5%">Sl</th>
                                             {{-- <th class="text-center" width="20%">Ads Script</th> --}}
                                             <th class="text-center" width="35%">Ads Image</th>
-                                            <th class="text-center" width="15%">Position</th>
-                                            <th class="text-center" width="10%">Serial</th>
-                                            <th class="text-center" width="20%">Image/Script Status</th>
-                                            <th class="text-center" width="10%">Status</th>
+                                            <th class="text-center" width="15%">Position/Page Name</th>
+                                            <th class="text-center" width="15%">Serial(Position/Page Wise)</th>
+                                            <th class="text-center" width="15%">Image/Script Status</th>
+                                            <th class="text-center" width="10%">Ads Status</th>
                                             <th class="text-center" width="10%">Action</th>
                                         </tr>
                                         </thead>

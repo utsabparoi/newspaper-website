@@ -48,7 +48,7 @@
 	</head>
 
 	<body class="no-skin">
-		<div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div id="navbar" class="navbar navbar-default ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
 					<span class="sr-only">Toggle sidebar</span>
@@ -66,21 +66,14 @@
 							<i class="fa fa-leaf"></i>
 							Admin Panel
 						</small>
-                        {{-- <div class="my_div" style="display:flex">
-                            <img src="{{ asset('uploads/logo').'/'.App\Models\Company::find(1)->company_logo }}" alt="image not found" width="40px" height="30px">
-                            <small class="mt-5 ml-2" style="margin: 5px 0 0 5px">Hunger</small>
-                        </div> --}}
                     </a>
 				</div>
 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 
-
-
 						<li class="light-blue dropdown-modal" >
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								{{-- <img class="nav-user-photo" src="{{ asset('uploads/admin_profile').'/'. auth()->user()->admin_image}}" width="100px" alt="Jason's Photo" /> --}}
 								<span class="user-info">
 									<small>Welcome,</small>
 									<strong>{{ optional(Auth()->user())->name }}</strong>
@@ -122,12 +115,12 @@
 			</div><!-- /.navbar-container -->
 		</div>
 
-		<div class="main-container ace-save-state" id="main-container">
+		<div class="main-container ace-save-state" id="main-container" >
 			<script type="text/javascript">
 				try{ace.settings.loadState('main-container')}catch(e){}
 			</script>
 
-			<div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+			<div id="sidebar" class="sidebar responsive ace-save-state">
 				<script type="text/javascript">
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
@@ -259,18 +252,15 @@
 							</li>
 						</ul>
 					</li>
-
-
-
                     {{--
                      |--------------------------------------------------------------------------
-                     | Menu list start
+                     | Position & Serial list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('menu*', 'sub-menu*', 'subsub-menu*') ? 'open active' : '' }}">
+                    <li class="{{ request()->routeIs('ad-position*', 'ad-serial*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-bars"></i>
-							<span class="menu-text"> Menu </span>
+							<i class="menu-icon fa fa-map-pin"></i>
+							<span class="menu-text"> Ads Page & Serial </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -278,213 +268,11 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-
-                            <li class="{{ request()->routeIs('menu.create') ? 'active' : '' }}">
-								<a href="{{ route('menu.create') }}">
-									<i class="fa fa-plus purple"></i>
-									Add Menu
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="{{ request()->routeIs('menu.index') ? 'active' : '' }}">
-								<a href="{{ route('menu.index') }}">
-									<i class=" fa fa-eye pink"></i>
-									View Menu
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-                            {{-- Sub Menu --}}
-                            <li class="{{ request()->routeIs('sub-menu*') ? 'open active' : '' }}">
-								<a href="#" class="dropdown-toggle">
-									<i class="fa fa-leaf green"></i>
-
-									Sub Menu
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-                                {{-- sub category --}}
-								<ul class="submenu">
-									<li class="{{ request()->routeIs('sub-menu.create') ? 'active' : '' }}">
-                                        <a href="{{ route('sub-menu.create') }}">
-                                            <i class=" fa fa-plus purple"></i>
-                                            Add Sub Menu
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="{{ request()->routeIs('sub-menu.index') ? 'active' : '' }}">
-                                        <a href="{{ route('sub-menu.index') }}">
-                                            <i class=" fa fa-eye pink"></i>
-                                            View Sub Menu
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-								</ul>
-							</li>
-
-                            {{-- Sub Sub Menu --}}
-                            <li class="{{ request()->routeIs('subsub-menu*') ? 'open active' : '' }}">
-								<a href="#" class="dropdown-toggle">
-									<i class="fa fa-leaf green"></i>
-
-									Sub Sub Menu
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-                                {{-- sub category --}}
-								<ul class="submenu">
-									<li class="{{ request()->routeIs('subsub-menu.create') ? 'active' : '' }}">
-                                        <a href="{{ route('subsub-menu.create') }}">
-                                            <i class=" fa fa-plus purple"></i>
-                                            Add Sub Sub Menu
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="{{ request()->routeIs('subsub-menu.index') ? 'active' : '' }}">
-                                        <a href="{{ route('subsub-menu.index') }}">
-                                            <i class=" fa fa-eye pink"></i>
-                                            View Sub Sub Menu
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-								</ul>
-							</li>
-
-						</ul>
-
-					</li>
-
-
-
-                    {{--
-                     |--------------------------------------------------------------------------
-                     | Blog list start
-                     |--------------------------------------------------------------------------
-                    --}}
-                    {{-- <li class="{{ request()->routeIs('admin-blog*', 'blog-category*') ? 'open active' : '' }}">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-rss"></i>
-							<span class="menu-text"> Blog </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-
-                            <li class="{{ request()->routeIs('admin-blog.create') ? 'active' : '' }}">
-                                <a href="{{ route('admin-blog.create') }}">
-                                    <i class=" fa fa-plus purple"></i>
-                                    Add Blog
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="{{ request()->routeIs('admin-blog.index') ? 'active' : '' }}">
-                                <a href="{{ route('admin-blog.index') }}">
-                                    <i class=" fa fa-eye pink"></i>
-                                    View Blog
-                                </a>
-
-                                <b class="arrow"></b>
-                            </li>
-
-                            <li class="{{ request()->routeIs('blog-category*') ? 'open active' : '' }}">
-								<a href="#" class="dropdown-toggle">
-									<i class="fa fa-leaf green"></i>
-
-									Blog Category
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="{{ request()->routeIs('blog-category.create') ? 'active' : '' }}">
-                                        <a href="{{ route('blog-category.create') }}">
-                                            <i class=" fa fa-plus purple"></i>
-                                            Add Blog Category
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-
-                                    <li class="{{ request()->routeIs('blog-category.index') ? 'active' : '' }}">
-                                        <a href="{{ route('blog-category.index') }}">
-                                            <i class=" fa fa-eye pink"></i>
-                                            View Blog Category
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-								</ul>
-							</li>
-						</ul>
-					</li> --}}
-
-
-
-                    {{--
-                     |--------------------------------------------------------------------------
-                     | Advertisement list start
-                     |--------------------------------------------------------------------------
-                    --}}
-                    <li class="{{ request()->routeIs('ads-management*', 'ad-position*') ? 'open active' : '' }}">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-bullhorn"></i>
-							<span class="menu-text"> Advertisement </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="{{ request()->routeIs('ads-management*') ? 'open active' : '' }}">
-								<a href="#" class="dropdown-toggle">
-									<i class="fa fa-leaf green"></i>
-
-									Ads Management
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-                                {{-- sub category --}}
-								<ul class="submenu">
-									<li class="{{ request()->routeIs('ads-management.create') ? 'active' : '' }}">
-                                        <a href="{{ route('ads-management.create') }}">
-                                            <i class=" fa fa-plus purple"></i>
-                                            Add Ads
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="{{ request()->routeIs('ads-management.index') ? 'active' : '' }}">
-                                        <a href="{{ route('ads-management.index') }}">
-                                            <i class=" fa fa-eye pink"></i>
-                                            View Ads
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-								</ul>
-							</li>
 							<li class="{{ request()->routeIs('ad-position*') ? 'open active' : '' }}">
 								<a href="#" class="dropdown-toggle">
 									<i class="fa fa-leaf green"></i>
 
-									Ads Position
+									Ads Page
 									<b class="arrow fa fa-angle-down"></b>
 								</a>
 
@@ -494,7 +282,7 @@
 									<li class="{{ request()->routeIs('ad-position.create') ? 'active' : '' }}">
                                         <a href="{{ route('ad-position.create') }}">
                                             <i class=" fa fa-plus purple"></i>
-                                            Add Ads Position
+                                            Add Ads Page
                                         </a>
 
                                         <b class="arrow"></b>
@@ -502,7 +290,7 @@
                                     <li class="{{ request()->routeIs('ad-position.index') ? 'active' : '' }}">
                                         <a href="{{ route('ad-position.index') }}">
                                             <i class=" fa fa-eye pink"></i>
-                                            View Ads Position
+                                            View Ads Page
                                         </a>
 
                                         <b class="arrow"></b>
@@ -532,6 +320,54 @@
                                         <a href="{{ route('ad-serial.index') }}">
                                             <i class=" fa fa-eye pink"></i>
                                             View Ads Serial
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+                    {{--
+                     |--------------------------------------------------------------------------
+                     | Advertisement list start
+                     |--------------------------------------------------------------------------
+                    --}}
+                    <li class="{{ request()->routeIs('ads-management*') ? 'open active' : '' }}">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-bullhorn"></i>
+							<span class="menu-text"> Advertisement </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="{{ request()->routeIs('ads-management*', 'ads-placement*') ? 'open active' : '' }}">
+								<a href="#" class="dropdown-toggle">
+									<i class="fa fa-leaf green"></i>
+
+									Ads Management
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+
+								<b class="arrow"></b>
+                                {{-- sub category --}}
+								<ul class="submenu">
+									<li class="{{ request()->routeIs('ads-management.create') ? 'active' : '' }}">
+                                        <a href="{{ route('ads-management.create') }}">
+                                            <i class=" fa fa-plus purple"></i>
+                                            Add Ads
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="{{ request()->routeIs('ads-management.index') ? 'active' : '' }}">
+                                        <a href="{{ route('ads-management.index') }}">
+                                            <i class=" fa fa-eye pink"></i>
+                                            View Ads
                                         </a>
 
                                         <b class="arrow"></b>
@@ -677,53 +513,15 @@
 					</li>
 
 
-
-                    {{--
-                     |--------------------------------------------------------------------------
-                     | Events list start
-                     |--------------------------------------------------------------------------
-                    --}}
-                    {{-- <li class="{{ request()->routeIs('events*') ? 'open active' : '' }}">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-calendar"></i>
-							<span class="menu-text"> Events </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="{{ request()->routeIs('events.create') ? 'active' : '' }}">
-								<a href="{{ route('events.create') }}">
-									<i class=" fa fa-plus purple"></i>
-									Add Events
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="{{ request()->routeIs('events.index') ? 'active' : '' }}">
-								<a href="{{ route('events.index') }}">
-									<i class=" fa fa-eye pink"></i>
-									View Events
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-						</ul>
-					</li> --}}
-
-
                     {{--
                      |--------------------------------------------------------------------------
                      | All Media list start
                      |--------------------------------------------------------------------------
                     --}}
-                    <li class="{{ request()->routeIs('all-media*','media-category*') ? 'open active' : '' }}">
+                    {{-- <li class="{{ request()->routeIs('all-media*','media-category*') ? 'open active' : '' }}">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-video-camera"></i>
-							<span class="menu-text"> All Media </span>
+							<span class="menu-text"> বিবিধ </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -756,7 +554,7 @@
 								</a>
 
 								<b class="arrow"></b>
-                                {{-- sub category --}}
+
 								<ul class="submenu">
 									<li class="{{ request()->routeIs('media-category.create') ? 'active' : '' }}">
                                         <a href="{{ route('media-category.create') }}">
@@ -778,7 +576,7 @@
 								</ul>
 							</li>
 						</ul>
-					</li>
+					</li> --}}
 
 
 
@@ -817,48 +615,6 @@
 
 						</ul>
 					</li>
-
-
-
-
-                    {{--
-                     |--------------------------------------------------------------------------
-                     | Performer Schedule list start
-                     |--------------------------------------------------------------------------
-                    --}}
-                    {{-- <li class="{{ request()->routeIs('schedule*') ? 'open active' : '' }}">
-                        <a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-clock-o"></i>
-							<span class="menu-text"> Performer Schedule </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-
-							<li class="{{ request()->routeIs('schedule.create') ? 'active' : '' }}">
-								<a href="{{ route('schedule.create') }}">
-									<i class=" fa fa-plus purple"></i>
-									Add Schedule
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-							<li class="{{ request()->routeIs('schedule.index') ? 'active' : '' }}">
-								<a href="{{ route('schedule.index') }}">
-									<i class=" fa fa-eye pink"></i>
-									View Schedule
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-						</ul>
-					</li> --}}
-
-
 
                     {{--
                      |--------------------------------------------------------------------------

@@ -21,12 +21,12 @@
 
                 <div class="page-header widget-header">
                     <h4 class="widget-title">
-                        <i class="menu-icon fa fa-plus"></i> Add New Ads
+                        <i class="menu-icon fa fa-plus"></i> Add Ads Placement
                     </h4>
                     <span class="widget-toolbar">
                         <!--------------- CREATE---------------->
                         <a href="{{ route('ads-placement.index') }}" class="">
-                            <i class="fa fa-list-alt"></i> View <span class="hide-in-sm">Ads</span>
+                            <i class="fa fa-list-alt"></i> View <span class="hide-in-sm">Ads Placement</span>
                         </a>
                     </span>
                 </div><!-- /.page-header -->
@@ -41,9 +41,8 @@
                                 <div class="left col-lg-11" style="margin-left: 20px">
                                     <div class="form-group">
                                         <div>
-                                            <label class=" control-label no-padding-right" for="position_id"> Select Ads
-                                                Position(Page Name) <span class="text-danger">*</span></label>
-                                            <select name="position_id" type="number" class="form-control">
+                                            <label class=" control-label no-padding-right" for="position_id"> Select Ads Page Name <span class="text-danger">*</span></label>
+                                            <select name="ads_position_id" type="number" class="form-control">
                                                 <option value="">-Select a Position-</option>
                                                 @foreach ($ads_position as $position)
                                                     <option value="{{ $position->id }}">{{ $position->position_name }}
@@ -56,7 +55,7 @@
                                         <div>
                                             <label class=" control-label no-padding-right" for="serial_num"> Select Ads
                                                 Serial <span class="text-danger">*</span></label>
-                                            <select name="serial_num" type="number" class="form-control" id="sl-no"
+                                            <select name="ads_serial_id" type="number" class="form-control" id="sl-no"
                                                 onchange="loadSerialWiseImageSizes(this)">
                                                 <option value="">-Select a Serial-</option>
                                                 @foreach ($ads_serial as $serial)

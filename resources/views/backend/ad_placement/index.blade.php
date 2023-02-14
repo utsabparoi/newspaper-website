@@ -51,8 +51,8 @@
                                             <thead class="thead-dark">
                                                 <tr style="background-color: rgb(110, 110, 110); color:white">
                                                     <th class="text-center" width="5%">Sl</th>
-                                                    <th class="text-center" width="15%">Position(Page Name)</th>
-                                                    <th class="text-center" width="10%">Serial</th>
+                                                    <th class="text-center" width="35%">Ads Page Name</th>
+                                                    <th class="text-center" width="35%">Ads Serial Name</th>
                                                     <th class="text-center" width="10%">Status</th>
                                                     <th class="text-center" width="10%">Action</th>
                                                 </tr>
@@ -63,8 +63,10 @@
                                                         <th class="text-center">{{ $loop->index + 1 }}</th>
 
                                                         <td class="text-center">
-                                                            {{ $placement->ads_position->position_name }}</td>
-                                                        <td class="text-center">{{ $placement->ads_serial->serial_name }}
+                                                            {{ $placement->ads_position->position_name }}
+                                                        </td>
+                                                        <td class="text-center">
+                                                            {{ $placement->ads_serial->serial_name }}
                                                         </td>
 
                                                         <td class="text-center">

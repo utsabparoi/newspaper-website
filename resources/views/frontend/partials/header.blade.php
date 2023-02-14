@@ -292,18 +292,7 @@
                     </tr>
                 </tbody>
             </table>
-            {{-- Latest News row --}}
-            {{-- <div class="row" style="height: 50px" class="hover-color">
-                <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1">
-                    @foreach ($latest_news as $news)
-                        <span>
-                            <a class="color-change" href="{{asset($news->link)}}" target="_blank">* {!! $news->title !!}</a>
-                            &nbsp;&nbsp;&nbsp;
-                        </span>
-                    @endforeach
-                </marquee>
-            </div> --}}
-            {{-- Latest News row end--}}
+
 			<div class="row">
 				<nav class="site-navigation navigation">
 					<div class="site-nav-inner pull-left">
@@ -354,15 +343,15 @@
 
 								</li>
 								@endforeach<!-- Features menu end -->
-								{{-- <li class="dropdown">
-									<a href="{{url('/media-list')}}" class="dropdown-toggle">Media Point <i class="fa fa-angle-down"></i></a>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle">বিবিধ<i class="fa fa-angle-down"></i></a>
 									<ul class="dropdown-menu" role="menu">
 									@foreach($mediaCat as $mCat)
 										<li><a href='{{URL::to("media-list/$mCat->id")}}'>{{$mCat->category_name}}</a></li>
 									@endforeach
 									</ul>
 
-								</li> --}}
+								</li>
 
 							</ul><!--/ Nav ul end -->
 						</div><!--/ Collapse end -->
