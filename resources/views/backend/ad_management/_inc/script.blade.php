@@ -1,5 +1,5 @@
 <script>
-
+    //Function of load image size serial wise
     function loadSerialWiseImageSizes() {
 
         let image = $('#image-size')
@@ -37,7 +37,7 @@
         })
     }
 
-    // Funtion of get Position wise Serial from placements table
+    // Funtion of get Serial Position/Page name wise from placements table
     function loadPositionSerialId(object) {
 
         let positionId = $(object).val();
