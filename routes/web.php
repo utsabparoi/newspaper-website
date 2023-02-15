@@ -91,6 +91,7 @@ Route::resource('ads-management', AdsManagementController::class);
 Route::get('/Ads/Management/status/change/{id}', [AdsManagementController::class, 'change_status'])->name('adsManagement_status');
 Route::get('/script_image_status/{id}', [AdsManagementController::class, 'change_statusOfscriptORimage'])->name('scriptORimage_status');
 Route::get('/get-serial-num', [AdsManagementController::class, 'get_Serial_num']);
+Route::get('/get-serial-id', [AdsManagementController::class, 'get_SerialId']);
 
 
 

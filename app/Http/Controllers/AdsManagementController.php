@@ -8,6 +8,7 @@ use App\Models\AdsSerial;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Models\AdsManagement;
+use App\Models\AdsPlacement;
 
 class AdsManagementController extends Controller
 {
@@ -52,7 +53,6 @@ class AdsManagementController extends Controller
         $request->validate([
             'position_id' => 'required',
             'serial_num'  => 'required|numeric',
-            'image_url'   => 'required|url'
         ]);
         // dd($request);
         try {
@@ -97,7 +97,10 @@ class AdsManagementController extends Controller
     {
         $data['target_ads'] = AdsManagement::find($id);
         $data['ads_position'] = AdsPosition::where('status',1)->get();
-        $data['ads_serial'] = AdsSerial::where('status',1)->get();
+
+        $positionId = AdsManagement::where('id', $id)->first()->position_id;
+        $data['ads_serial'] = AdsPlacement::where('ads_position_id', $positionId)->get();
+        // dd($data['ads_serial']);
 
         return view('backend.ad_management.edit',$data);
     }
@@ -113,7 +116,6 @@ class AdsManagementController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'script'     => 'required',
             'serial_num' => 'required|numeric',
         ]);
         try {
@@ -215,6 +217,15 @@ class AdsManagementController extends Controller
         $data['ads_serial'] = AdsSerial::pluck('id');
 
         return $data;
+    }
+
+    public function get_SerialId(Request $request){
+        try{
+            $data = AdsPlacement::where('ads_position_id', $request->position_id)->with('ads_serial')->get();
+            return $data;
+        }catch(\Throwable $th){
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
 }

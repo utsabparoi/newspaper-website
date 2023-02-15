@@ -32,8 +32,8 @@
 
     }
 
-    $ads1 = DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',1)->first();
-    $ads2 = DB::table('ads_management')->where('status',1)->where('position_id',1)->where('serial_num',2)->first();
+    $ads1 = DB::table('ads_management')->where('status',1)->where('position_id',7)->where('serial_num',1)->first();
+    $ads2 = DB::table('ads_management')->where('status',1)->where('position_id',7)->where('serial_num',2)->first();
     $latest_news = DB::table('news')->where('status',1)->orderby('id','DESC')->paginate(50);
 
     $menus = DB::table('menu')->where('status', 1)->get();
@@ -231,14 +231,15 @@
                             </div>
                         @else
                             <div class="pull-right custom-image">
-                                @if ($ads1->script_image_status == 0)
+                                @if (isset($ads1->ads_image) and ($ads1->script_image_status == 0))
                                     <a href="{{ asset($ads1->image_url) }}" target="_blank">
                                         <img src="{{asset($ads1->ads_image)}}" class="responsive-image" alt="Image Not Found">
                                     </a>
-                                @elseif ($ads1->script_image_status == 1)
+                                @elseif (isset($ads1->script) and ($ads1->script_image_status == 1))
                                     {!! $ads1->script !!}
                                 @else
-                                    <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                    <h4 style="font-family: Stylish; color:gray">Place Your Ads(Size 390 X 150)</h4>
+                                    <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}" background="transparent" speed="1" style="width: 120px; height: 100px;" loop autoplay></lottie-player>
                                 @endif
 
                             </div>
@@ -251,14 +252,15 @@
                             </div>
                         @else
                             <div class="pull-right custom-image">
-                                @if ($ads2->script_image_status == 0)
+                                @if (isset($ads2->ads_image) and ($ads2->script_image_status == 0))
                                     <a href="{{ asset($ads2->image_url) }}" target="_blank">
                                         <img src="{{asset($ads2->ads_image)}}" class="responsive-image" alt="Image Not Found">
                                     </a>
-                                @elseif ($ads2->script_image_status == 1)
+                                @elseif (isset($ads2->script) and ($ads2->script_image_status == 1))
                                     {!! $ads2->script !!}
                                 @else
-                                    <a href="#"><img src="{{asset('img/ads-image/730x90-placeholder.png')}}" class="img-responsive" alt=""></a>
+                                    <h4 style="font-family: Stylish; color:gray;">Place Your Ads(Size 390 X 150)</h4>
+                                    <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}" background="transparent" speed="1" style="width: 100px; height: 100px" loop autoplay></lottie-player>
                                 @endif
 
                             </div>
