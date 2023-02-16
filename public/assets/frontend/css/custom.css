@@ -631,3 +631,11 @@ marquee {
     margin-right: auto;
     width: 50%;
 }
+
+.bangla-date-format{
+    display:flex;
+    justify-content:space-around;
+    color:white;
+    font-weight: 600;
+    font-family:NotoSansBengali;
+}

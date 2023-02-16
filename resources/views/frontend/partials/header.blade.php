@@ -233,7 +233,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {{-- <div class="ts-date"> --}}
-                            <div style="display:flex;justify-content:space-around;color:white;font-weight: 600;font-family:NotoSansBengali">
+                            <div class="bangla-date-format">
                                 {{-- <i class="fa fa-calendar-check-o"></i> --}}
                                 <span style="font-size:16px">আজ</span>
                                 <span>
@@ -258,11 +258,6 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                                     @endphp
                                 </span>
                             </div>
-                            {{-- <ul class="unstyled top-nav">
-                        @foreach ($menus as $item)
-                            <li><a href="{{ asset($item->url) }}">{!! $item->name !!}</a></li>
-                        @endforeach
-					</ul> --}}
                         </div>
                         <!--/ Top bar left end -->
 
