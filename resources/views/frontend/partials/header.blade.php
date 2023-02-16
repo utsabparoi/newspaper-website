@@ -1,92 +1,150 @@
 <?php
-    $category=DB::table('category')->where('status',1)->orderBy('serial_num','ASC')->get();
+$category = DB::table('category')
+    ->where('status', 1)
+    ->orderBy('serial_num', 'ASC')
+    ->get();
 ?>
 
 <?php
-    $info=DB::table('about_company')->first();
-    $social_link=DB::table('social_links')->get();
-    $mediaCat=DB::table('media_categories')->orderBy('serial','ASC')->get();
+$info = DB::table('about_company')->first();
+$social_link = DB::table('social_links')->get();
+$mediaCat = DB::table('media_categories')
+    ->orderBy('serial', 'ASC')
+    ->get();
 ?>
 
- <?php
+<?php
 
-    if(Session::has('metaDescription')){
-        $metaDescription=Session::get('metaDescription');
-    }else{
-        $metaDescription='Desi Media Point Online Latest Bangla News/Article - Sports, Crime, Entertainment, Business, Politics, Education, Opinion, Lifestyle, Photo, Video, Travel, National & World';
+if (Session::has('metaDescription')) {
+    $metaDescription = Session::get('metaDescription');
+} else {
+    $metaDescription = 'Desi Media Point Online Latest Bangla News/Article - Sports, Crime, Entertainment, Business, Politics, Education, Opinion, Lifestyle, Photo, Video, Travel, National & World';
+}
 
-    }
+if (Session::has('title_msg')) {
+    $title = Session::get('title_msg') . ' |  ' . $info->company_name;
+    $ogTitle = Session::get('title_msg');
+} else {
+    $title = $info->company_name;
+    $ogTitle = $info->company_name;
+}
 
-    if(Session::has('title_msg')){
-        $title=Session::get('title_msg')." |  ".$info->company_name;
-        $ogTitle=Session::get('title_msg');
-    }else{
-        $title=$info->company_name;
-        $ogTitle=$info->company_name;
-    }
+if (Session::has('tags')) {
+    $tags = Session::get('tags') . ',' . $info->company_name;
+} else {
+    $tags =
+        'Desi media point, bangla news, current News, News, Infotainment, videos, photos, news for india, pakistan, usa, uk, iraq, breaking news, bangla newspaper, bangladesh news, online newspaper, bangladeshi newspaper, bangladesh newspapers, all bangla news, bd news, news paper, daily News, bangla paper, election, news website, politics, world news, business news, bollywood news, cricket news, sports, lifestyle, gadgets, tech news, video news,video song, music, film, drama, talk show, reciepe, sports news, celebrity photo, picture, automible news, travel news, healthcare news, welness news, travel news, fashion news, education news, অনলাইন নিউজ পেপার, আজকের নিউজ পেপার, আমার দেশ নিউজ পেপার, সকল পত্রিকা, অনলাইন, বাংলাদেশ, আজকের সংবাদ/খবর , আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর';
+}
 
-    if(Session::has('tags')){
-        $tags=Session::get('tags').",".$info->company_name;
-    }else{
-        $tags='Desi media point, bangla news, current News, News, Infotainment, videos, photos, news for india, pakistan, usa, uk, iraq, breaking news, bangla newspaper, bangladesh news, online newspaper, bangladeshi newspaper, bangladesh newspapers, all bangla news, bd news, news paper, daily News, bangla paper, election, news website, politics, world news, business news, bollywood news, cricket news, sports, lifestyle, gadgets, tech news, video news,video song, music, film, drama, talk show, reciepe, sports news, celebrity photo, picture, automible news, travel news, healthcare news, welness news, travel news, fashion news, education news, অনলাইন নিউজ পেপার, আজকের নিউজ পেপার, আমার দেশ নিউজ পেপার, সকল পত্রিকা, অনলাইন, বাংলাদেশ, আজকের সংবাদ/খবর , আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর';
+$ads1 = DB::table('ads_management')
+    ->where('status', 1)
+    ->where('position_id', 7)
+    ->where('serial_num', 1)
+    ->first();
+$ads2 = DB::table('ads_management')
+    ->where('status', 1)
+    ->where('position_id', 7)
+    ->where('serial_num', 2)
+    ->first();
+$latest_news = DB::table('news')
+    ->where('status', 1)
+    ->orderby('id', 'DESC')
+    ->paginate(50);
 
-    }
+$menus = DB::table('menu')
+    ->where('status', 1)
+    ->get();
 
-    $ads1 = DB::table('ads_management')->where('status',1)->where('position_id',7)->where('serial_num',1)->first();
-    $ads2 = DB::table('ads_management')->where('status',1)->where('position_id',7)->where('serial_num',2)->first();
-    $latest_news = DB::table('news')->where('status',1)->orderby('id','DESC')->paginate(50);
+?>
+{{-- Date convert English to Bangla, Bengali and Hijri --}}
+<?php
+// echo date('D jS M Y, g:i a');
+$onlyDay = date('D');
+$englishDate = date('j F Y');
+$onlyTime = date('g:i a');
 
-    $menus = DB::table('menu')->where('status', 1)->get();
+$search_array = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ':', ',', 'am', 'pm'];
+
+$replace_to_bangla = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '০', 'শনিবার', 'রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগষ্ট', 'সেপ্টেম্বার', 'অক্টোবার', 'নভেম্বার', 'ডিসেম্বার', ':', ',', 'পূর্বাহ্ন', 'অপরাহ্ন'];
+
+// convert all English char to Bangla char
+$banglaOnlyDay = str_replace($search_array, $replace_to_bangla, $onlyDay);
+$banglaDate = str_replace($search_array, $replace_to_bangla, $englishDate);
+$banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
+?>
+<?php
+    use Rajurayhan\Bndatetime\BnDateTimeConverter; // on Top
+
+    $dateConverter  =  new  BnDateTimeConverter();
+    $convertedBanlgaDate1 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'EnBn', 'D j F Y'); // Friday 23rd Bhadra 1425 12:19:50 pm
+    $convertedBanlgaDate2 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'BnBn', 'jS F Y'); // শুক্রবার ২৩শে ভাদ্র ১৪২৫ দুপুর ১২:১৯:৫০
+    $convertedBanlgaDate3 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'BnEn', 'D j F Y'); // শুক্রবার ৭ই সেপ্টেম্বর ২০১৮ দুপুর ১২:১৯:৫০
+    $convertedBanlgaDate4 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'EnEn', 'D j F Y'); // Friday 7th September 2018 12:19:50 PM
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-	<!-- Basic Page Needs
-	================================================== -->
+    <!-- Basic Page Needs
+ ================================================== -->
 
-	<title>@if(isset($singleTitle)){{$singleTitle}}@else{{$title}} | Latest Bangla News, Infotainment, Entertenment, Science, Lifestyle, bangla news, current News, News, Infotainment, videos, photos, news for india, pakistan, usa, uk, iraq, breaking news, bangla newspaper, bangladesh news, online newspaper, bangladeshi newspaper, bangladesh newspapers, all bangla news, bd news, news paper, daily News, bangla paper, election, news website, politics, world news, business news, bollywood news, cricket news, sports, lifestyle, gadgets, tech news, video news,video song, music, film, drama, talk show, reciepe, sports news, celebrity photo, picture, automible news, travel news, healthcare news, welness news, travel news, fashion news, education news, অনলাইন নিউজ পেপার, আজকের নিউজ পেপার, আমার দেশ নিউজ পেপার, সকল পত্রিকা, অনলাইন, বাংলাদেশ, আজকের সংবাদ/খবর , আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর@endif</title>
+    <title>
+        @if (isset($singleTitle))
+            {{ $singleTitle }}@else{{ $title }} | Latest Bangla News, Infotainment, Entertenment, Science,
+            Lifestyle, bangla news, current News, News, Infotainment, videos, photos, news for india, pakistan, usa, uk,
+            iraq, breaking news, bangla newspaper, bangladesh news, online newspaper, bangladeshi newspaper, bangladesh
+            newspapers, all bangla news, bd news, news paper, daily News, bangla paper, election, news website,
+            politics, world news, business news, bollywood news, cricket news, sports, lifestyle, gadgets, tech news,
+            video news,video song, music, film, drama, talk show, reciepe, sports news, celebrity photo, picture,
+            automible news, travel news, healthcare news, welness news, travel news, fashion news, education news,
+            অনলাইন নিউজ পেপার, আজকের নিউজ পেপার, আমার দেশ নিউজ পেপার, সকল পত্রিকা, অনলাইন, বাংলাদেশ, আজকের সংবাদ/খবর ,
+            আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান,
+            মঞ্চ, টেলিভিশন, কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, আইন ও
+            বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর
+        @endif
+    </title>
 
-	<!-- Mobile Specific Metas
-	================================================== -->
+    <!-- Mobile Specific Metas
+ ================================================== -->
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<meta name="description" content="{{$metaDescription}}">
-	<meta name="keywords" content="{{$tags}}">
-	<meta name="Developed By" content="Smart Software Ltd."/>
-	<meta name="Googlebot" content="all" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="Author" content="DesiMediaPoint.com" />
-	<meta name="Copyright" content="DesiMediaPoint.com" />
-	<meta name="owner" content="DesiMediaPoint.com" />
-	<meta name="Rating" content="General" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta name="distribution" content="Global" />
-	<meta property="og:url" content="{{Request::fullUrl()}}" />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="{{ $title }}" />
-	<meta property="og:description" content="{{ $metaDescription }}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="{{ $metaDescription }}">
+    <meta name="keywords" content="{{ $tags }}">
+    <meta name="Developed By" content="Smart Software Ltd." />
+    <meta name="Googlebot" content="all" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="Author" content="DesiMediaPoint.com" />
+    <meta name="Copyright" content="DesiMediaPoint.com" />
+    <meta name="owner" content="DesiMediaPoint.com" />
+    <meta name="Rating" content="General" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta name="distribution" content="Global" />
+    <meta property="og:url" content="{{ Request::fullUrl() }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $metaDescription }}" />
 
-    @if ( isset($ogImage) )
-        @if (strpos($ogImage,'assets'))
+    @if (isset($ogImage))
+        @if (strpos($ogImage, 'assets'))
             <meta property="og:image" content="{{ asset($ogImage) }}" />
         @else
             @php $image=URL::to("img/news/$ogImage"); @endphp
-            <meta property="og:image" content="{{$image}}" />
+            <meta property="og:image" content="{{ $image }}" />
         @endif
     @else
-        @if (strpos($info->logo,'assets'))
-            <meta property="og:image" content="{{ asset($info->logo)}}" />
+        @if (strpos($info->logo, 'assets'))
+            <meta property="og:image" content="{{ asset($info->logo) }}" />
         @else
-            <meta property="og:image" content="{{ asset('assets/uploads/logo/'.$info->logo)}}" />
+            <meta property="og:image" content="{{ asset('assets/uploads/logo/' . $info->logo) }}" />
         @endif
     @endif
 
-	{{-- @if(isset($ogImage))
+    {{-- @if (isset($ogImage))
         @php $image=URL::to("public/assets/frontend/images/news/$ogImage"); @endphp
 	    <meta property="og:image" content="{{$ogImage}}" />
 	@else
@@ -95,275 +153,325 @@
 
 
 
-	<link rel="canonical" href="www.desimediapoint.com"/>
+    <link rel="canonical" href="www.desimediapoint.com" />
 
-	<!--Favicon-->
-    <link rel="apple-touch-icon" sizes="57x57"   href="{{ asset('favicon/apple-icon-57x57.png')}}">
-    <link rel="apple-touch-icon" sizes="60x60"   href="{{ asset('favicon/apple-icon-60x60.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72"   href="{{ asset('favicon/apple-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" 	 href="{{ asset('favicon/apple-icon-76x76.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png')}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png')}}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png')}}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{asset('favicon/android-icon-192x192.png')}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('favicon/favicon-96x96.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{ asset('favicon/manifest.json')}}">
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/manifest.json') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png')}}">
+    <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
 
-	<!--Favicon-End-->
+    <!--Favicon-End-->
 
-	<!-- CSS
-	================================================== -->
+    <!-- CSS
+ ================================================== -->
 
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css')}}">
-	<!-- Template styles-->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/style.css')}}">
-	<!-- Responsive styles-->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/responsive.css')}}">
-	<!-- FontAwesome -->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/font-awesome.min.css')}}">
-	<!-- Animation -->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/animate.css')}}">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/owl.theme.default.min.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/frontend/jssocials/jssocials.css')}}" />
-  	<link rel="stylesheet" href="{{asset('assets/frontend/jssocials/jssocials-theme-flat.css')}}" />
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/jquery.minical.css')}}">
-	<!-- Colorbox -->
-	<link rel="stylesheet" href="{{asset('assets/frontend/css/colorbox.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontend/css/custom.css')}}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/bootstrap.min.css') }}">
+    <!-- Template styles-->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/responsive.css') }}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/font-awesome.min.css') }}">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/animate.css') }}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/jssocials/jssocials.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/frontend/jssocials/jssocials-theme-flat.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/jquery.minical.css') }}">
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/colorbox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/custom.css') }}">
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110586749-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110586749-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-110586749-2');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
+        gtag('config', 'UA-110586749-2');
+    </script>
+    <style>
+        @font-face {
+            font-family: NotoSansBengali;
+            src: url("{{ asset('/fonts/Noto_Sans_Bengali/NotoSansBengali-VariableFont_wdth,wght.ttf') }}");
+        }
+    </style>
 
 
 </head>
 
 <body>
 
-	<div class="body-inner">
+    <div class="body-inner">
 
-	<!--/ Trending end -->
-@if(Request::path()!='media')
-	<div id="top-bar" class="top-bar">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-sm-6 col-xs-12">
-					{{-- <div class="ts-date"> --}}
-                    <div>
-						{{-- <i class="fa fa-calendar-check-o"></i> --}}
-                        <span>Today
-                        <?php
-						    echo date('D jS M Y, g:i a');
-						?>
-                        </span>
-					</div>
-					{{-- <ul class="unstyled top-nav">
+        <!--/ Trending end -->
+        @if (Request::path() != 'media')
+            <div id="top-bar" class="top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{-- <div class="ts-date"> --}}
+                            <div style="display:flex;justify-content:space-around;color:white;font-weight: 600;font-family:NotoSansBengali">
+                                {{-- <i class="fa fa-calendar-check-o"></i> --}}
+                                <span style="font-size:16px">আজ</span>
+                                <span>
+                                    @php
+                                        echo $banglaOnlyDay ." ".$banglaDate ." "."খ্রিঃ";
+                                    @endphp
+                                </span>
+                                <span style="color: #F48333">●</span>
+                                <span>
+                                    @php
+                                        echo $convertedBanlgaDate2 ."বঙ্গাব্দ ";
+                                    @endphp
+                                </span>
+                                <span>
+                                    <lottie-player src="{{ asset('/frontend/lord-icon/wall-clock-loop-loading.json') }}"
+                                        background="transparent" speed="1" style=";width: 20px; height: 20px;" loop
+                                        autoplay></lottie-player>
+                                </span>
+                                <span>
+                                    @php
+                                        echo $banglaTime;
+                                    @endphp
+                                </span>
+                            </div>
+                            {{-- <ul class="unstyled top-nav">
                         @foreach ($menus as $item)
                             <li><a href="{{ asset($item->url) }}">{!! $item->name !!}</a></li>
                         @endforeach
 					</ul> --}}
-				</div><!--/ Top bar left end -->
-                <div class="col-md-3">
-                    <div class="search">
-                    {{-- <form action="{{ url('/search') }}" method="get">
-                        <input type="search" name="search" class="form-control" placeholder="Search and hit enter...">
-                    </form> --}}
-				</div>
+                        </div>
+                        <!--/ Top bar left end -->
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 top-social text-right">
+                            <ul class="unstyled">
+                                <li>
+                                    @foreach ($social_link as $s_link)
+                                        <a title="{{ $s_link->name }}" href='{{ URL::to("$s_link->link") }}'
+                                            target="_blank">
+                                            <span class="social-icon" style="font-size: 20px"><i
+                                                    class="fa {{ $s_link->icon_class }}"></i></span>
+                                        </a>
+                                    @endforeach
+                                </li>
+                            </ul><!-- Ul end -->
+                        </div>
+                    </div>
+                    <!--/ Content row end -->
                 </div>
-				<div class="col-md-3 col-sm-3 col-xs-12 top-social text-right">
-					<ul class="unstyled">
-						<li>
-							@foreach($social_link as $s_link)
-							<a title="{{$s_link->name}}" href='{{URL::to("$s_link->link")}}' target="_blank">
-								<span class="social-icon"><i class="fa {{$s_link->icon_class}}"></i></span>
-							</a>
-							@endforeach
-						</li>
-					</ul><!-- Ul end -->
-				</div>
-			</div><!--/ Content row end -->
-		</div><!--/ Container end -->
-	</div><!--/ Topbar end -->
-@endif
-	<!-- Header start -->
-	<header id="header" class="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;">
-					<div class="logo" style="width: 272px;">
-                        {{-- TEST 2 --}}
-                        @if ( strpos($info->logo,'assets') )
-                            <a href="{{URL::to('/')}}" id="show">
-                                <img style="width:100%; height:100%;" src="{{asset($info->logo)}}" alt="{{$info->company_name}}">
-                            </a>
-                        @else
-                            <a href="{{URL::to('/')}}">
-                                <img style="width:100%; height:100%;" src="{{asset('img/'.$info->logo)}}" alt="image">
-                            </a>
-                        @endif
+                <!--/ Container end -->
+            </div>
+            <!--/ Topbar end -->
+        @endif
+        <!-- Header start -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;">
+                        <div class="logo" style="width: 272px;">
+                            {{-- TEST 2 --}}
+                            @if (strpos($info->logo, 'assets'))
+                                <a href="{{ URL::to('/') }}" id="show">
+                                    <img style="width:100%; height:100%;" src="{{ asset($info->logo) }}"
+                                        alt="{{ $info->company_name }}">
+                                </a>
+                            @else
+                                <a href="{{ URL::to('/') }}">
+                                    <img style="width:100%; height:100%;" src="{{ asset('img/' . $info->logo) }}"
+                                        alt="image">
+                                </a>
+                            @endif
 
-					</div>
-				</div><!-- logo col end -->
+                        </div>
+                    </div><!-- logo col end -->
 
-                <div style="display: flex; justify-content: end;">
-                    <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
-                        @if(Request::path()=='media')
-                            <div class="pull-right">
-                                <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                    <div style="display: flex; justify-content: end;">
+                        <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
+                            @if (Request::path() == 'media')
+                                <div class="pull-right">
+                                    <a href="https://www.tradebangla.com.bd" target="_blank"> <img
+                                            src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                                </div>
+                            @else
+                                <div class="pull-right custom-image">
+                                    @if (isset($ads1->ads_image) and $ads1->script_image_status == 0)
+                                        <a href="{{ asset($ads1->image_url) }}" target="_blank">
+                                            <img src="{{ asset($ads1->ads_image) }}" class="responsive-image"
+                                                alt="Image Not Found">
+                                        </a>
+                                    @elseif (isset($ads1->script) and $ads1->script_image_status == 1)
+                                        {!! $ads1->script !!}
+                                    @else
+                                        <h4 style="font-family: Stylish; color:rgb(182, 182, 182)">Place Your Ads(Size
+                                            390 X 150)</h4>
+                                        <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                            background="transparent" speed="1"
+                                            style="width: 120px; height: 100px;" loop autoplay></lottie-player>
+                                    @endif
+
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
+                            @if (Request::path() == 'media')
+                                <div class="pull-right">
+                                    <a href="https://www.tradebangla.com.bd" target="_blank"> <img
+                                            src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                                </div>
+                            @else
+                                <div class="pull-right custom-image">
+                                    @if (isset($ads2->ads_image) and $ads2->script_image_status == 0)
+                                        <a href="{{ asset($ads2->image_url) }}" target="_blank">
+                                            <img src="{{ asset($ads2->ads_image) }}" class="responsive-image"
+                                                alt="Image Not Found">
+                                        </a>
+                                    @elseif (isset($ads2->script) and $ads2->script_image_status == 1)
+                                        {!! $ads2->script !!}
+                                    @else
+                                        <h4 style="font-family: Stylish; color:rgb(182, 182, 182);">Place Your Ads(Size
+                                            390 X 150)</h4>
+                                        <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                            background="transparent" speed="1"
+                                            style="width: 100px; height: 100px" loop autoplay></lottie-player>
+                                    @endif
+
+                                </div>
+                            @endif
+                        </div>
+                    </div><!-- header right end -->
+
+
+
+                </div><!-- Row end -->
+            </div><!-- Logo and banner area end -->
+        </header>
+        <!--/ Header end -->
+
+        <div class="main-nav fixed_menu clearfix">
+            <div class="container">
+                {{-- Latest news marquee slide show --}}
+                <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+                    <tbody class="hover-color">
+                        <tr>
+                            <td
+                                style="width:80px; color:red; font-size: 26px; text-align:center; padding: 4px 3px 4px 3px">
+                                <strong>শিরোনাম</strong>
+                            </td>
+                            <td style="padding: 7px 5px 0px 5px">
+                                <marquee behavior="scroll" direction="left" onmouseout="this.start()"
+                                    onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
+                                    @foreach ($latest_news as $news)
+                                        <span class="ticker">
+                                            <a class="color-change"
+                                                href="{{ URL::to("article/$news->id/$news->link") }}">*
+                                                {!! $news->title !!}</a>
+                                            &nbsp;&nbsp;&nbsp;
+                                        </span>
+                                    @endforeach
+                                </marquee>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <nav class="site-navigation navigation">
+                        <div class="site-nav-inner pull-left">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a>
+                                    </li>
+
+                                    @foreach ($category as $v_category)
+                                        <li class="dropdown">
+                                            <a href='{{ URL::to("$v_category->link") }}'
+                                                class="dropdown-toggle">{{ $v_category->name }}
+                                                <?php $sub_category = DB::table('sub_category')
+                                                    ->where('status', 1)
+                                                    ->where('fk_category_id', $v_category->id)
+                                                    ->get(); ?>
+                                                @if (count($sub_category) > 0)
+                                                    <i class="fa fa-angle-down"></i>
+                                                @endif
+
+                                            </a>
+                                            @if (count($sub_category) > 0)
+                                                <ul class="dropdown-menu" role="menu">
+                                                    @foreach ($sub_category->sortBy('serial_num') as $s_cat)
+                                                        <li>
+                                                            <a
+                                                                href='{{ URL::to("$v_category->link/$s_cat->link") }}'>{{ $s_cat->name }}</a>
+
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+
+                                        </li>
+                                    @endforeach
+                                    <!-- Features menu end -->
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle">বিবিধ<i
+                                                class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            @foreach ($mediaCat as $mCat)
+                                                <li><a
+                                                        href='{{ URL::to("media-list/$mCat->id") }}'>{{ $mCat->category_name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                    </li>
+
+                                </ul>
+                                <!--/ Nav ul end -->
                             </div>
-                        @else
-                            <div class="pull-right custom-image">
-                                @if (isset($ads1->ads_image) and ($ads1->script_image_status == 0))
-                                    <a href="{{ asset($ads1->image_url) }}" target="_blank">
-                                        <img src="{{asset($ads1->ads_image)}}" class="responsive-image" alt="Image Not Found">
-                                    </a>
-                                @elseif (isset($ads1->script) and ($ads1->script_image_status == 1))
-                                    {!! $ads1->script !!}
-                                @else
-                                    <h4 style="font-family: Stylish; color:gray">Place Your Ads(Size 390 X 150)</h4>
-                                    <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}" background="transparent" speed="1" style="width: 120px; height: 100px;" loop autoplay></lottie-player>
-                                @endif
+                            <!--/ Collapse end -->
 
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
-                        @if(Request::path()=='media')
-                            <div class="pull-right">
-                                <a href="https://www.tradebangla.com.bd" target="_blank"> <img src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
-                            </div>
-                        @else
-                            <div class="pull-right custom-image">
-                                @if (isset($ads2->ads_image) and ($ads2->script_image_status == 0))
-                                    <a href="{{ asset($ads2->image_url) }}" target="_blank">
-                                        <img src="{{asset($ads2->ads_image)}}" class="responsive-image" alt="Image Not Found">
-                                    </a>
-                                @elseif (isset($ads2->script) and ($ads2->script_image_status == 1))
-                                    {!! $ads2->script !!}
-                                @else
-                                    <h4 style="font-family: Stylish; color:gray;">Place Your Ads(Size 390 X 150)</h4>
-                                    <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}" background="transparent" speed="1" style="width: 100px; height: 100px" loop autoplay></lottie-player>
-                                @endif
+                        </div><!-- Site Navbar inner end -->
+                    </nav>
+                    <!--/ Navigation end -->
 
-                            </div>
-                        @endif
-                    </div>
-                </div><!-- header right end -->
+                </div>
+                <!--/ Row end -->
 
 
+            </div>
+            <!--/ Container end -->
 
-			</div><!-- Row end -->
-		</div><!-- Logo and banner area end -->
-	</header><!--/ Header end -->
+        </div><!-- Menu wrapper end -->
+    </div>
 
-	<div class="main-nav fixed_menu clearfix">
-		<div class="container">
-            {{-- Latest news marquee slide show --}}
-            <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
-                <tbody class="hover-color">
-                    <tr>
-                        <td style="width:80px; color:red; font-size: 26px; text-align:center; padding: 4px 3px 4px 3px"><strong>শিরোনাম</strong></td>
-                        <td style="padding: 7px 5px 0px 5px">
-                            <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
-                                @foreach ($latest_news as $news)
-                                    <span class="ticker">
-                                        <a class="color-change" href="{{ URL::to("article/$news->id/$news->link") }}" target="_blank">* {!! $news->title !!}</a>
-                                        &nbsp;&nbsp;&nbsp;
-                                    </span>
-                                @endforeach
-                            </marquee>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-			<div class="row">
-				<nav class="site-navigation navigation">
-					<div class="site-nav-inner pull-left">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						  <span class="sr-only">Toggle navigation</span>
-						  <span class="icon-bar"></span>
-						  <span class="icon-bar"></span>
-						  <span class="icon-bar"></span>
-						</button>
-
-						<div class="collapse navbar-collapse navbar-responsive-collapse">
-							<ul class="nav navbar-nav">
-								<!-- <li class="active">
-									<a href="{{URL::to('/')}}" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-								</li> -->
-
-								<li>
-									<a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a>
-								</li>
-
-								<!-- @foreach($category as $v_category)
-								<li>
-									<a href='{{URL::to("$v_category->link")}}'>{{$v_category->name}}</a>
-
-
-								</li>
-								@endforeach -->
-
-								@foreach($category as $v_category)
-								<li class="dropdown">
-									<a href='{{URL::to("$v_category->link")}}' class="dropdown-toggle">{{$v_category->name}}
-									<?php $sub_category=DB::table('sub_category')->where('status',1)->where('fk_category_id',$v_category->id)->get(); ?>
-									@if(count($sub_category)>0)
-									<i class="fa fa-angle-down"></i>
-									@endif
-
-									</a>
-									 @if(count($sub_category)>0)
-									<ul class="dropdown-menu" role="menu">
-										@foreach($sub_category->sortBy('serial_num') as $s_cat)
-										<li>
-											<a href='{{URL::to("$v_category->link/$s_cat->link")}}'>{{$s_cat->name}}</a>
-
-										</li>
-										@endforeach
-									</ul>
-									@endif
-
-								</li>
-								@endforeach<!-- Features menu end -->
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle">বিবিধ<i class="fa fa-angle-down"></i></a>
-									<ul class="dropdown-menu" role="menu">
-									@foreach($mediaCat as $mCat)
-										<li><a href='{{URL::to("media-list/$mCat->id")}}'>{{$mCat->category_name}}</a></li>
-									@endforeach
-									</ul>
-
-								</li>
-
-							</ul><!--/ Nav ul end -->
-						</div><!--/ Collapse end -->
-
-					</div><!-- Site Navbar inner end -->
-				</nav><!--/ Navigation end -->
-
-			</div><!--/ Row end -->
-
-
-		</div><!--/ Container end -->
-
-	</div><!-- Menu wrapper end -->
+</body>
