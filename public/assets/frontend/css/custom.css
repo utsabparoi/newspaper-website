@@ -624,3 +624,10 @@ marquee {
 .top-social .unstyled li > a:hover{
     color: #e77c32;
 }
+
+.lotti-icon-center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

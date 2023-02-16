@@ -239,7 +239,7 @@ Route::get('/media/cat/status/change/{id}', [MediaCategoryController::class, 'ch
 Route::resource('manage-news', NewsController::class);
 Route::get('/news/status/change/{id}', [NewsController::class, 'change_status'])->name('news_status');
 Route::post('/get/subcat/data', [NewsController::class, 'getsubcat_method'])->name('getsubcat');
-Route::get('article/{id}/{link}', [NewsController::class, 'news_details']);
+Route::get('article/{id}/{link}', [NewsController::class, 'news_details'])->name('newsDetails');
 // Route::post('/get/sub/subcat/data/edit', [NewsController::class, 'getsubcatedit_method'])->name('getsubcatedit');
 
 

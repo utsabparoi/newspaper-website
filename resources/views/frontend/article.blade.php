@@ -37,21 +37,21 @@
 
                         <div class="post-content-area">
                             <div class="post-media post-featured-image">
-                                {{-- <h1>Place your ads</h1>
-                                <lottie-player src="{{ asset('/frontend/lord-icon/ads-blue.json') }}" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></lottie-player> --}}
                                 <div class="banner_section custom-image">
                                     @foreach ($ads_manages as $ads_manage)
                                         @if ($ads_manage->serial_num == 6)
                                             @if ($ads_manage->script_image_status == 0)
                                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                        alt="Image Not Found" />
+                                                        alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                                 </a>
                                             @elseif ($ads_manage->script_image_status == 1)
                                                 {!! $ads_manage->script !!}
                                             @else
-                                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                    alt="" />
+                                                <h3 style="font-family: Stylish;">Place Your Ads(Size 750 X 100)</h3>
+                                                <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                    background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                    autoplay></lottie-player>
                                             @endif
                                         @endif
                                     @endforeach
@@ -80,20 +80,21 @@
                                 <?php } ?>
 
                                 <div class="banner_section custom-image">
-                                <h1>Advertisement2</h1>
 
                                     @foreach ($ads_manages as $ads_manage)
                                         @if ($ads_manage->serial_num == 9)
                                             @if ($ads_manage->script_image_status == 0)
                                                 <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                                     <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                        alt="Image Not Found" />
+                                                        alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                                 </a>
                                             @elseif ($ads_manage->script_image_status == 1)
                                                 {!! $ads_manage->script !!}
                                             @else
-                                                <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                    alt="" />
+                                                <h3 style="font-family: Stylish;">Place Your Ads(Size 750 X 100)</h3>
+                                                <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                    background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                    autoplay></lottie-player>
                                             @endif
                                         @endif
                                     @endforeach
@@ -106,20 +107,20 @@
                             </div><!-- Entery content end -->
 
                             <div class="banner_section custom-image">
-                                <h1>Advertisement3</h1>
-
                                 @foreach ($ads_manages as $ads_manage)
                                     @if ($ads_manage->serial_num == 11)
                                         @if ($ads_manage->script_image_status == 0)
                                             <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                    alt="Image Not Found" />
+                                                    alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                             </a>
                                         @elseif ($ads_manage->script_image_status == 1)
                                             {!! $ads_manage->script !!}
                                         @else
-                                            <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                alt="" />
+                                            <h3 style="font-family: Stylish;">Place Your Ads(Size 750 X 100)</h3>
+                                            <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                autoplay></lottie-player>
                                         @endif
                                     @endif
                                 @endforeach
@@ -176,8 +177,8 @@
                                             </h2>
                                             <!-- <div class="post-meta">
 
-           <span class="post-date">Feb 19, 2017</span>
-           </div> -->
+               <span class="post-date">Feb 19, 2017</span>
+               </div> -->
                                         </div><!-- Post content end -->
                                     </div><!-- Post Block style end -->
                                 </div><!-- Item 1 end -->
@@ -200,22 +201,21 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="sidebar sidebar-right">
                         <div class="widget">
-                            <div class="banner_section custom-image">
-                                <h2>Place your ads</h2>
-                                <lottie-player src="{{ asset('/frontend/lord-icon/ads-blue.json') }}" class="text-center" background="transparent" speed="1" style="width: 140px; height: 140px;" loop autoplay></lottie-player>
-
+                            <div class="banner_section custom-image2">
                                 @foreach ($ads_manages as $ads_manage)
                                     @if ($ads_manage->serial_num == 12)
                                         @if ($ads_manage->script_image_status == 0)
                                             <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                    alt="Image Not Found" />
+                                                    alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                             </a>
                                         @elseif ($ads_manage->script_image_status == 1)
                                             {!! $ads_manage->script !!}
                                         @else
-                                            <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                alt="" />
+                                            <h3 style="font-family: Stylish;">Place Your Ads(Size 30 X 260)</h3>
+                                            <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                autoplay></lottie-player>
                                         @endif
                                     @endif
                                 @endforeach
@@ -307,20 +307,14 @@
                                                         <div class="post-meta">
                                                             <span class="post-date">
                                                                 <?
-                                    echo date(' jS M Y',strtotime($p_news->created_at));
-                                    ?>
+                                        echo date(' jS M Y',strtotime($p_news->created_at));
+                                        ?>
                                                             </span>
                                                         </div>
                                                     </div><!-- Post content end -->
                                                 </div><!-- Post block style end -->
                                             </li><!-- Li 1 end -->
                                         @endif
-
-
-
-
-
-
 
                                     </ul><!-- List post end -->
                                 </div><!-- List post block end -->
@@ -330,20 +324,21 @@
 
                         <div class="widget">
                             <div class="banner_section custom-image">
-                                <h1>Advertisement5</h1>
 
                                 @foreach ($ads_manages as $ads_manage)
                                     @if ($ads_manage->serial_num == 8)
                                         @if ($ads_manage->script_image_status == 0)
                                             <a href="{{ asset($ads_manage->image_url) }}" target="_blank">
                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                    alt="Image Not Found" />
+                                                    alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                             </a>
                                         @elseif ($ads_manage->script_image_status == 1)
                                             {!! $ads_manage->script !!}
                                         @else
-                                            <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                alt="" />
+                                            <h3 style="font-family: Stylish;">Place Your Ads(Size 390 X 260)</h3>
+                                            <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                autoplay></lottie-player>
                                         @endif
                                     @endif
                                 @endforeach

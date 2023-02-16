@@ -78,14 +78,15 @@
                                                         @if ($ads_manage->script_image_status == 0)
                                                             <a href="{{ $ads_manage->image_url }}" target="_blank">
                                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                                    alt="Fix the adsimage position and serial no" />
+                                                                    alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                                             </a>
                                                         @elseif ($ads_manage->script_image_status == 1)
                                                             {!! $ads_manage->script !!}
                                                         @else
-                                                            <img style="width: 100%;"
-                                                                src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                                alt="" />
+                                                            <h3 style="font-family: Stylish;">Place Your Ads(Size 360 X 260)</h3>
+                                                            <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                                background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                                autoplay></lottie-player>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -159,13 +160,15 @@
                                         @if ($ads_manage->script_image_status == 0)
                                             <a href="{{ $ads_manage->image_url }}" target="_blank">
                                                 <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                    alt="Fix the adsimage position and serial no" />
+                                                    alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                             </a>
                                         @elseif ($ads_manage->script_image_status == 1)
                                             {!! $ads_manage->script !!}
                                         @else
-                                            <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                                alt="" />
+                                            <h3 style="font-family: Stylish;">Place Your Ads(Size 360 X 260)</h3>
+                                            <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                                background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                                autoplay></lottie-player>
                                         @endif
                                     @endif
                                 @endforeach
@@ -276,19 +279,20 @@
                         <div class="gap-40"></div>
 
                         <div class="widget text-center custom-image2">
-                            <h1>Test</h1>
                             @foreach ($ads_manages as $ads_manage)
                                 @if ($ads_manage->serial_num == 7)
                                     @if ($ads_manage->script_image_status == 0)
                                         <a href="{{ $ads_manage->image_url }}" target="_blank">
                                             <img style="width: 100%;" src="{{ asset($ads_manage->ads_image) }}"
-                                                alt="Fix the adsimage position and serial no" />
+                                                alt="{{ $ads_manage->ads_serial->serial_name }} image not found" />
                                         </a>
                                     @elseif ($ads_manage->script_image_status == 1)
                                         {!! $ads_manage->script !!}
                                     @else
-                                        <img style="width: 100%;" src="{{ asset('img/ads-image/730x90-placeholder.png') }}"
-                                            alt="" />
+                                        <h3 style="font-family: Stylish;">Place Your Ads(Size 360 X 260)</h3>
+                                        <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                            background="transparent" speed="1" style="width: 120px; height: 120px;" loop
+                                            autoplay></lottie-player>
                                     @endif
                                 @endif
                             @endforeach

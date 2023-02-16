@@ -23,7 +23,7 @@ class NewsController extends Controller
     */
     public function index()
     {
-        return view('backend.news.index',[
+        return view('backend.news.index', [
             'all_adds'  => News::latest()->paginate(15),
         ]);
     }
@@ -39,7 +39,7 @@ class NewsController extends Controller
     */
     public function create()
     {
-        return view('backend.news.create',[
+        return view('backend.news.create', [
             'category_infos'    => Category::all(),
         ]);
     }
@@ -67,7 +67,7 @@ class NewsController extends Controller
         // check if a user login or not
         if (is_null(auth()->id())) {
             $logged_id = 0; //user is not login
-        }else {
+        } else {
             $logged_id = auth()->id();  //user is loged in
         }
 
@@ -93,12 +93,10 @@ class NewsController extends Controller
 
             $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
 
-           return back()->with('success','Data Added Successfully');
-
-        } catch(\Exception $ex) {
+            return back()->with('success', 'Data Added Successfully');
+        } catch (\Exception $ex) {
             return redirect()->back()->withError($ex->getMessage());
         }
-
     }
 
 
@@ -125,7 +123,7 @@ class NewsController extends Controller
         $data['subcategories']      = SubCategory::all();
 
         // dd($data);
-        return view('backend.news.edit',$data);
+        return view('backend.news.edit', $data);
     }
 
 
@@ -156,13 +154,13 @@ class NewsController extends Controller
         // check if a user login or not
         if (is_null(auth()->id())) {
             $logged_id = 0; //user is not login
-        }else {
+        } else {
             $logged_id = auth()->id(); //user is loged in
         }
 
         try {
             $model = News::find($id);
-            if($request->file('photo') != NULL){
+            if ($request->file('photo') != NULL) {
                 $model->update([
                     'title'                 => $request->title,
                     'link'                  => $request->link,
@@ -182,8 +180,7 @@ class NewsController extends Controller
                 ]);
 
                 $this->uploadFileWithResize($request->photo, $model, 'photo', 'uploads/news', 470, 365);
-            }
-            else{
+            } else {
                 $model->update([
                     'title'                 => $request->title,
                     'link'                  => $request->link,
@@ -200,16 +197,13 @@ class NewsController extends Controller
                     'updated_by'            => $logged_id,
                     'video_link'            => $request->video_link,
                 ]);
-
             }
 
 
-           return back()->with('success','Data Edited Successfully');
-
-        } catch(\Exception $ex) {
+            return back()->with('success', 'Data Edited Successfully');
+        } catch (\Exception $ex) {
             return redirect()->back()->withError($ex->getMessage());
         }
-
     }
 
 
@@ -224,10 +218,10 @@ class NewsController extends Controller
     {
         $smart_move = News::find($id);
         $smart_move->update([
-            'status'=> 0,
+            'status' => 0,
         ]);
         $smart_move->delete();
-        return back()->with('deleted','Deleted!');
+        return back()->with('deleted', 'Deleted!');
     }
 
 
@@ -243,14 +237,14 @@ class NewsController extends Controller
         $news = News::find($id);
         if ($news->status == 0) {
             $news->update([
-                'status'=> 1
+                'status' => 1
             ]);
         } else {
             $news->update([
-                'status'=> 0
+                'status' => 0
             ]);
         }
-        return back()->with('success','Status Changed!');
+        return back()->with('success', 'Status Changed!');
     }
 
 
@@ -263,11 +257,11 @@ class NewsController extends Controller
     public function getsubcat_method(Request $request)
     {
         $show_cat = "<option value=''>-Select a Sub Category-</option>";
-        foreach (SubCategory::where('fk_category_id',$request->catx_id)->get(['id','name']) as $subcat_data) {
+        foreach (SubCategory::where('fk_category_id', $request->catx_id)->get(['id', 'name']) as $subcat_data) {
             $show_cat .= "<option value='$subcat_data->id'>$subcat_data->name</option>";
         }
 
-       echo $show_cat;
+        echo $show_cat;
     }
 
 
@@ -301,40 +295,40 @@ class NewsController extends Controller
     |--------------------------------------------------------------------------
     */
 
-    public function news_details($id,$link)
+    public function news_details($id, $link)
     {
 
-      $news_details=News::where('link',$link)->first();
-      $data=array();
-      $data['hit_counter']=$news_details->hit_counter+1;
-      $news_details=News::where('link',$link)->update($data);
+        $news_details = News::where('link', $link)->first();
+        $data = array();
+        $data['hit_counter'] = $news_details->hit_counter + 1;
+        $news_details = News::where('link', $link)->update($data);
 
-       $news_details=News::leftJoin('category','news.fk_category_id','category.id')
+        $news_details = News::leftJoin('category', 'news.fk_category_id', 'category.id')
 
-                         ->leftJoin('sub_category','news.fk_sub_category_id','sub_category.id')
-                         ->leftJoin('users','news.created_by','users.id')
-                        ->select('category.name as cat_name','category.id as category_id','news.*','users.id as user_id','users.name as admin_name','sub_category.name as sub_cat_name')
-                        ->where('news.link',$link)
+            ->leftJoin('sub_category', 'news.fk_sub_category_id', 'sub_category.id')
+            ->leftJoin('users', 'news.created_by', 'users.id')
+            ->select('category.name as cat_name', 'category.id as category_id', 'news.*', 'users.id as user_id', 'users.name as admin_name', 'sub_category.name as sub_cat_name')
+            ->where('news.link', $link)
 
 
-                        ->first();
-					         if($news_details==null){
-					    		return redirect()->back();
-					    	}
-        $category_id=$news_details->category_id;
+            ->first();
+        if ($news_details == null) {
+            return redirect()->back();
+        }
+        $category_id = $news_details->category_id;
 
-        $related_news=News::where('fk_category_id',$category_id)->where('status',1)->orderby('id','DESC')->paginate(10);
-          $popular_news=News::where('status',1)->orderBy('hit_counter','DESC')->where('fk_category_id',$category_id)->paginate(5);
-          //title message
-           $info=AboutCompany::first();
-         Session::put('title_msg',$news_details->title);
-         Session::put('metaDescription',$news_details->short_description);
-         Session::put('tags',$news_details->tags);
+        $related_news = News::where('fk_category_id', $category_id)->where('status', 1)->orderby('id', 'DESC')->paginate(10);
+        $popular_news = News::where('status', 1)->orderBy('hit_counter', 'DESC')->where('fk_category_id', $category_id)->paginate(5);
+        //title message
+        $info = AboutCompany::first();
+        Session::put('title_msg', $news_details->title);
+        Session::put('metaDescription', $news_details->short_description);
+        Session::put('tags', $news_details->tags);
         //  Session::put('company_name', $info->comapny_name);
 
         // $singleTitle=$news_details->title . Session::get('company_name');
-        $singleTitle=$news_details->title ." |  Daily Chandpur Sangbad ";
-        $ogImage=$news_details->photo;
+        $singleTitle = $news_details->title . " |  Daily Chandpur Sangbad ";
+        $ogImage = $news_details->photo;
 
 
         // $ads1=AdsManagement::where('status',1)->where('position_id',4)->where('serial_num',1)->first();
@@ -342,6 +336,6 @@ class NewsController extends Controller
         // $ads=AdsManagement::where('status',1)->where('position_id',4)->get()->keyBy('serial_num');
         $ads_manages = AdsManagement::where('status', 1)->where('position_id', 4)->get();
 
-    	return view('frontend.article',compact('news_details','related_news','popular_news','ads_manages','singleTitle','ogImage'));
+        return view('frontend.article', compact('news_details', 'related_news', 'popular_news', 'ads_manages', 'singleTitle', 'ogImage'));
     }
 }

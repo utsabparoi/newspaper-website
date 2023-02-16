@@ -192,7 +192,7 @@
 					<ul class="unstyled">
 						<li>
 							@foreach($social_link as $s_link)
-							<a title="{{$s_link->name}}" href='{{URL::to("$s_link->link")}}'>
+							<a title="{{$s_link->name}}" href='{{URL::to("$s_link->link")}}' target="_blank">
 								<span class="social-icon"><i class="fa {{$s_link->icon_class}}"></i></span>
 							</a>
 							@endforeach
@@ -285,7 +285,7 @@
                             <marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
                                 @foreach ($latest_news as $news)
                                     <span class="ticker">
-                                        <a class="color-change" href="{{asset($news->link)}}" target="_blank">* {!! $news->title !!}</a>
+                                        <a class="color-change" href="{{ URL::to("article/$news->id/$news->link") }}" target="_blank">* {!! $news->title !!}</a>
                                         &nbsp;&nbsp;&nbsp;
                                     </span>
                                 @endforeach

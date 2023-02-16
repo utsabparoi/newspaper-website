@@ -79,7 +79,7 @@ $social_link = DB::table('social_links')->get();
                                     <ul class="unstyled footer-social">
                                         <li>
                                             @foreach ($social_link as $s_link)
-                                                <a title="{{ $s_link->name }}" href='{{ URL::to("$s_link->link") }}'>
+                                                <a title="{{ $s_link->name }}" href='{{ URL::to("$s_link->link") }}' target="_blank">
                                                     <span class="social-icon"><i
                                                             class="fa {{ $s_link->icon_class }}"></i></span>
                                                 </a>
