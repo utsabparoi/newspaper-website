@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdsManagement;
+use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +22,12 @@ class HomeController extends Controller
     */
     public function index()
     {
-        return view('home');
+        $data['total_news']   = News::count();
+        $data['total_ads']    = AdsManagement::count();
+        $data['total_users']  = User::count();
+        $data['latest_news']  = News::latest()->limit(10)->get();
+        
+        return view('home', $data);
     }
 
 

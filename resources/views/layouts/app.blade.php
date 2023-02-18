@@ -45,6 +45,12 @@
 		<script src="{{ asset('assets/dashboard') }}/assets/js/html5shiv.min.js"></script>
 		<script src="{{ asset('assets/dashboard') }}/assets/js/respond.min.js"></script>
 		<![endif]-->
+        <style>
+            @font-face {
+                font-family: Stylish;
+                src: url("{{ asset('/fonts/Stylish/Stylish-Regular.ttf') }}");
+            }
+        </style>
 	</head>
 
 	<body class="no-skin">

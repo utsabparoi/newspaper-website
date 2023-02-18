@@ -72,8 +72,9 @@ $banglaOnlyDay = str_replace($search_array, $replace_to_bangla, $onlyDay);
 $banglaDate = str_replace($search_array, $replace_to_bangla, $englishDate);
 $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
 ?>
+{{-- rajurayhan package for covert English date convert to 4 different date times --}}
 <?php
-    use Rajurayhan\Bndatetime\BnDateTimeConverter; // on Top
+    use Rajurayhan\Bndatetime\BnDateTimeConverter;
 
     $dateConverter  =  new  BnDateTimeConverter();
     $convertedBanlgaDate1 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'EnBn', 'D j F Y'); // Friday 23rd Bhadra 1425 12:19:50 pm
@@ -235,7 +236,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                             {{-- <div class="ts-date"> --}}
                             <div class="bangla-date-format">
                                 {{-- <i class="fa fa-calendar-check-o"></i> --}}
-                                <span style="font-size:16px">আজ</span>
+                                <span>আজ</span>
                                 <span>
                                     @php
                                         echo $banglaOnlyDay ." ".$banglaDate ." "."খ্রিঃ";
@@ -244,7 +245,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                                 <span style="color: #F48333">●</span>
                                 <span>
                                     @php
-                                        echo $convertedBanlgaDate2 ."বঙ্গাব্দ ";
+                                        echo $convertedBanlgaDate2 ."বঙ্গাব্দ";
                                     @endphp
                                 </span>
                                 <span>

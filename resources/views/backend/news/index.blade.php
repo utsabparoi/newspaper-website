@@ -63,19 +63,19 @@
                                             @forelse ($all_adds as $all_add)
                                                 {{-- @dd($all_add) --}}
                                                 <tr>
-                                                        <th>{{ $loop->index+1 }}</th>
-                                                        <td>{{ $all_add->title }}</td>
-                                                        <td>{{ $all_add->short_description }}</td>
-                                                        <td>{{ $all_add->link }}</td>
-                                                        <td>{{ optional($all_add->category)->name }}</td>
-                                                        <td>{{ $all_add->tags }}</td>
-                                                        <td>
-                                                            @if ( strpos($all_add->photo,'assets') )
-                                                                <img src="{{ asset($all_add->photo) }}" alt="not found" width="80px">
-                                                            @else
-                                                                <img src="{{asset('img/news/'.$all_add->photo)}}" alt="not found" width="80px">
-                                                            @endif
-                                                        </td>
+                                                    <th>{{ $loop->index+1 }}</th>
+                                                    <td>{{ $all_add->title }}</td>
+                                                    <td>{{ $all_add->short_description }}</td>
+                                                    <td>{{ $all_add->link }}</td>
+                                                    <td>{{ optional($all_add->category)->name }}</td>
+                                                    <td>{{ $all_add->tags }}</td>
+                                                    <td>
+                                                        @if ( strpos($all_add->photo,'assets') )
+                                                            <img src="{{ asset($all_add->photo) }}" alt="not found" width="80px">
+                                                        @else
+                                                            <img src="{{asset('img/news/'.$all_add->photo)}}" alt="not found" width="80px">
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         <div class="div" style="margin-top:-2px">
                                                             @if ($all_add->status == 1)
