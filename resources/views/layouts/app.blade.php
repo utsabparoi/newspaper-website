@@ -167,7 +167,7 @@
                      | Setting list start
                      |--------------------------------------------------------------------------
                     --}}
-                <li class="{{ request()->routeIs('user', 'createUserForm', 'company_index') ? 'open active' : '' }}">
+                <li class="{{ request()->routeIs('user', 'createUserForm', 'company_index', 'editUserFrom') ? 'open active' : '' }}">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-cog"></i>
                         <span class="menu-text"> Settings </span>
@@ -178,7 +178,7 @@
                     <b class="arrow"></b>
 
                     <ul class="submenu">
-                        <li class="{{ request()->routeIs('user', 'createUserForm') ? 'active' : '' }}">
+                        <li class="{{ request()->routeIs('user', 'createUserForm', 'editUserFrom') ? 'active' : '' }}">
                             <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-user"></i>
                                 <span class="menu-text"> User Info</span>

@@ -28,9 +28,18 @@
                     <div class="col-sm-12">
                         <div class="widget-box">
                             <div class="widget-header">
-                                <h4 class="widget-title"> <i class="fa fa-pencil-square-o"></i> User
+                                <h4 class="widget-title">
+                                    <div class="d-flex" style="display: flex;justify-content: space-between">
+                                        <span>
+                                            <i class="fa fa-user"></i> User
+                                        </span>
+                                        <a href="{{ route('user') }}" class="float-right">
+                                            <i class="fa fa-list"></i>User List
+                                        </a>
+                                    </div>
                                 </h4>
                                 <span class="widget-toolbar">
+                                </span>
                             </span>
                             </div>
 
@@ -95,7 +104,7 @@
                                                     <div class="col-md-12 text-right pr-2">
                                                         <button type="button" class="btn btn-primary btn-sm btn-block"
                                                                 style="max-width: 150px" onclick="UpdateUser()">
-                                                            <i class="fa fa-save"></i> Create
+                                                            <i class="fa fa-save"></i> Update
                                                         </button>
                                                     </div>
                                                 </div>
