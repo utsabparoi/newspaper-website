@@ -26,7 +26,7 @@ class HomeController extends Controller
         $data['total_ads']    = AdsManagement::count();
         $data['total_users']  = User::count();
         $data['latest_news']  = News::latest()->limit(10)->get();
-        
+
         return view('home', $data);
     }
 
@@ -44,6 +44,10 @@ class HomeController extends Controller
         return view('backend.user_info.user_info',[
             'allUserInfo'=> User::find(auth()->id()),
         ]);
+    }
+
+    public function user_create(){
+        return view('backend.user_info.user_create');
     }
 
 

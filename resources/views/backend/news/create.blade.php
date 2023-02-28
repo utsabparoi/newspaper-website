@@ -162,7 +162,7 @@
                                     <div class="form-group">
                                         <label class=" control-label no-padding-right" for="form-field-1"> Is Slider </label>
                                         <div >
-                                            <div class="toggle-btn active">
+                                            <div class="toggle-btn">
                                                 <input type="checkbox" name="is_slider"  checked class="cb-value" />
                                                 <span class="round-btn"></span>
                                             </div>

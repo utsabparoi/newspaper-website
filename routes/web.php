@@ -2,10 +2,18 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\{ArchiveController,CategoryNewsController,AllMediaShowController,SubSubMenuController,SliderController,PagePhotoController,PageController,PerformerScheduleController,AllMediaController,EventsController,SocialLinksController,NewsController,BlogCategoryController,MediaCategoryController,BlogController,SubMenuController,MenuController,SubCategoryController,CategoryController,AdsPositionController,AdsSerialController,FrontendController,AdsManagementController,AboutCompanyController, AdsPlacementController, HomeController};
 
 Auth::routes();
 
+//user
+Route::get('/user',[UserController::class, "User"])->name("user");
+Route::get('/createUserForm',[UserController::class, "CreateUserForm"])->name("createUserForm");
+Route::post('/createUser',[UserController::class, "CreateUser"])->name("createUser");
+Route::get('/editUserForm/{id}',[UserController::class, "EditUserForm"])->name("editUserFrom");
+Route::post('/updateUser',[UserController::class, "UserUpdate"])->name("userUpdate");
+Route::get('/userDelete/{id}',[UserController::class, "UserDelete"])->name("deleteUser");
 
 /*
  |--------------------------------------------------------------------------

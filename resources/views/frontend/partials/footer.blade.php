@@ -7,44 +7,6 @@ $social_link = DB::table('social_links')->get();
         <div class="container">
             <div class="row">
                 <div class="footer-info">
-                    {{-- <div class="col-md-12 footer_menu text-center">
-                        <ul class="unstyled footer-social">
-                            <li class="listed" style="display: inline">
-                                <a href="{{ URL::to('lifestyle') }}">
-                                    <span class="social-icon"><i>জীবনধারা</i></span>
-                                </a>
-                                <a href="{{ URL::to('entertainment') }}">
-                                    <span class="social-icon"><i> বিনোদন</i></span>
-                                </a>
-                                <a href="{{ URL::to('health') }}">
-                                    <span class="social-icon"><i>স্বাস্থ্য তথ্য</i></span>
-                                </a>
-                                <a href="{{ URL::to('sports') }}">
-                                    <span class="social-icon"><i>খেলাধুলা</i></span>
-                                </a>
-                                <a href="{{ URL::to('tech') }}">
-                                    <span class="social-icon"><i class="tech">বিজ্ঞান ও প্রযুক্তি</i></span>
-                                </a>
-                                <a href="{{ URL::to('arts-literature') }}">
-                                    <span class="social-icon"><i>শিল্প ও সাহিত্য</i></span>
-                                </a>
-                                <a href="{{ URL::to('priyo-probashi') }}">
-                                    <span class="social-icon"><i>প্রিয় প্রবাসী</i></span>
-                                </a>
-                                <a href="{{ URL::to('job-circular') }}">
-                                    <span class="social-icon"><i>লাইফ হ্যাক</i></span>
-                                </a>
-                                <a href="{{ URL::to('tutorial') }}">
-                                    <span class="social-icon"><i>টিউটোরিয়াল</i></span>
-                                </a>
-                                <a href="{{ URL::to('job-circular') }}">
-                                    <span class="social-icon"><i>চাকরি</i></span>
-                                </a>
-
-                            </li>
-                        </ul>
-
-                    </div> --}}
                     <div class="col-md-12 footer_logo_others">
                         <div class="row">
                             <div class="col-md-4 col-xs-12" id="middle_part1">
@@ -63,16 +25,7 @@ $social_link = DB::table('social_links')->get();
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12" id="middle_part2">
-                                {{-- <div class="footer_apple">
-                                    <a href="#"><img class="img-responsive"
-                                            src="{{ asset('assets/frontend/images/download.png') }}"
-                                            alt="" /></a>
-                                </div>
-                                <div class="footer_playstore">
-                                    <a href=""><img class="img-responsive"
-                                            src="{{ asset('assets/frontend/images/en_badge_web_generic.png') }}"
-                                            alt="" /></a>
-                                </div> --}}
+
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="footer_icon text-right">
@@ -81,7 +34,7 @@ $social_link = DB::table('social_links')->get();
                                             @foreach ($social_link as $s_link)
                                                 <a title="{{ $s_link->name }}" href='{{ URL::to("$s_link->link") }}' target="_blank">
                                                     <span class="social-icon"><i
-                                                            class="fa {{ $s_link->icon_class }}"></i></span>
+                                                            class="fa {{ $s_link->icon_class }}" style="border-radius: 10px"></i></span>
                                                 </a>
                                             @endforeach
                                         </li>
@@ -112,12 +65,12 @@ $social_link = DB::table('social_links')->get();
 <div class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-3">
+            <div class="col-xs-12 col-sm-6">
                 <div class="copyright-info">
                     <p>All Rights Reserved By : <a href="{{ url('/') }}" style="color:#f38233;font-size:16px"> {{ $info->company_name }}</a></p>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6"></div>
+            <div class="col-xs-12 col-sm-3"></div>
             <div class="col-xs-12 col-sm-3">
                 <div class="copyright-info">
                     <p>Developed By:<a href="http://www.smartsoftware.com.bd" target="_blank"

@@ -8,15 +8,14 @@ use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
-
     public function run()
     {
         DB::table('users')->insertOrIgnore([
-            'name'		=>'admin',
+            ['name'		=>'admin',
             'user_type'		=> 1,
             'status'		=> 1,
     		'email'		=>'admin@gmail.com',
-    		'password'	=>Hash::make(123456789),
+    		'password'	=>Hash::make(123456789)],
         ]);
     }
 

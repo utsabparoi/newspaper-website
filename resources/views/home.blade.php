@@ -108,23 +108,21 @@
                 <!-- ./col -->
             </div>
 
-            <div class="card card-primary card-outline">
-                <div class="card-body" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px #C8D8C2;">
+            <div class="card card-primary card-outline" style="font-family: NotoSansBengali;">
+                <h2>Top Ten Latest News:</h2>
+                <div class="card-body" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(253, 241, 136);">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th class="text-center">#SL</th>
+                            <tr style="box-shadow: 2px 4px 8px rgb(253, 241, 136);">
                                 <th width="30%">Title</th>
                                 <th class="text-center" width="25%">Photo</th>
                                 <th width="30%">Short Description</th>
-                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         @if ($latest_news)
                             @foreach ($latest_news as $key => $news)
                                 <tr>
-                                    <td class="text-center">{{ ++$key }}</td>
                                     <td>{{ $news->title ?? ''}}</td>
                                     <td class="text-center">
                                         @if ( strpos($news->photo,'assets') )
@@ -134,15 +132,6 @@
                                         @endif
                                     </td>
                                     <td>{{ $news->short_description ?? ''}}</td>
-                                    <td style="display: flex;justify-content:space-around">
-                                        <a href="{{ route('manage-news.edit',$news->id) }}" style="margin-bottom: 5px"><i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-top: 0px; margin-right: 5px; font-size:22px;"></i></a>
-                                        <form action="{{ route('manage-news.destroy',$news->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" style="background: none; border:none;"><i class="fa fa-trash-o" aria-hidden="true"  style=" font-size:22px;margin-top: -2px;
-                                                color: red; cursor:pointer"></i></button>
-                                        </form>
-                                    </td>
                                 </tr>
                             @endforeach
                         @endif
