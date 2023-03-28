@@ -14,7 +14,7 @@
 
 </style>
 @section('auth_content')
-<div id="login-box" class="login-box visible widget-box no-border" style="border-radius:10px">
+<div id="login-box" class="login-box visible widget-box no-border" style="border-radius:10px;">
     <h1 style="font-family:Stylish !important;color: white;margin-top:10px;text-align:center">{{ $company_info->company_name }}</h1>
     <div class="widget-body">
         <div class="widget-main">

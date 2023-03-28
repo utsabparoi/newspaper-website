@@ -31,9 +31,15 @@ class AppServiceProvider extends ServiceProvider
 
         if ( !app()->runningInConsole() ){
 
-            $company_info = AboutCompany::first();
+            // $company_info = AboutCompany::first();
 
-            View::Share(compact("company_info"));
+            // View::Share(compact("company_info"));
+            if ( !app()->runningInConsole() ){
+                $company_info = AboutCompany::first();
+
+                View::Share(compact("company_info"));
+
+            }
         }
     }
 }

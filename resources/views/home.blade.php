@@ -26,7 +26,7 @@
             <div class="page-content">
                 <!-- /.ace-settings-container -->
 
-                <div class="page-header">
+                {{-- <div class="page-header">
                     <h1>
                         Dashboard
                         <small>
@@ -34,11 +34,11 @@
                             overview &amp; stats
                         </small>
                     </h1>
-                </div><!-- /.page-header -->
+                </div> --}}
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
+
                         <div class="alert alert-block alert-info text-center text-white welcome">
                             <button type="button" class="close" data-dismiss="alert">
                                 <i class="ace-icon fa fa-times"></i>
@@ -49,10 +49,10 @@
                                 Dashboard
                             </strong>
                         </div>
-                        <!-- PAGE CONTENT ENDS -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.page-content -->
+
+                    </div>
+                </div> --}}
+            </div>
         </div>
 
         <div class="container-fluid">
@@ -60,7 +60,7 @@
             <div class="row" style="display:flex; justify-content: space-around;">
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(250, 238, 134);">
+                    <div class="small-box bg-info" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(248, 238, 149);">
                         <div class="inner">
                             <h3>{{ $total_users ?? 0 }}</h3>
 
@@ -76,7 +76,7 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(247, 234, 123);">
+                    <div class="small-box bg-success" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(248, 238, 149);">
                         <div class="inner">
                             <h3>{{ $total_news ?? 0 }}</h3>
 
@@ -92,7 +92,7 @@
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(253, 241, 136);">
+                    <div class="small-box bg-danger" style="border: 1px #f0ecec solid; padding: 10px; box-shadow: 2px 4px 8px rgb(248, 238, 149);">
                         <div class="inner">
                             <h3>{{ $total_ads ?? 0 }}</h3>
 

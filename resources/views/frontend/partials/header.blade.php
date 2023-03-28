@@ -90,6 +90,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+
     <!-- Basic Page Needs
  ================================================== -->
 
@@ -157,7 +158,8 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
     <link rel="canonical" href="www.desimediapoint.com" />
 
     <!--Favicon-->
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
+    <link rel="icon" href="{{ asset($company_info->favicon) }}" style="margin-top:-10px !important" type="image/x-icon">
+    {{-- <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon/apple-icon-72x72.png') }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon/apple-icon-76x76.png') }}">
@@ -173,7 +175,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
     <link rel="manifest" href="{{ asset('favicon/manifest.json') }}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff"> --}}
 
     <!--Favicon-End-->
 
@@ -286,25 +288,24 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
         <header id="header" class="header">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;">
+                    <div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;margin: 15px 0">
                         <div class="logo" style="width: 272px;">
                             {{-- TEST 2 --}}
                             @if (strpos($info->logo, 'assets'))
                                 <a href="{{ URL::to('/') }}" id="show">
-                                    <img style="width:100%; height:100%;" src="{{ asset($info->logo) }}"
+                                    <img style="width:100%; height:80px;" src="{{ asset($info->logo) }}"
                                         alt="{{ $info->company_name }}">
                                 </a>
                             @else
                                 <a href="{{ URL::to('/') }}">
-                                    <img style="width:100%; height:100%;" src="{{ asset('img/' . $info->logo) }}"
+                                    <img style="width:100%; height:80px;" src="{{ asset('img/' . $info->logo) }}"
                                         alt="image">
                                 </a>
                             @endif
-
                         </div>
                     </div><!-- logo col end -->
 
-                    <div style="display: flex; justify-content: end;">
+                    <div style="display: flex; justify-content: end;margin-top:-10px">
                         <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
                             @if (Request::path() == 'media')
                                 <div class="pull-right">
@@ -325,7 +326,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                                             390 X 150)</h4>
                                         <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
                                             background="transparent" speed="1"
-                                            style="width: 120px; height: 100px;" loop autoplay></lottie-player>
+                                            style="width: 100px; height: 100px;margin-top:-15px" loop autoplay></lottie-player>
                                     @endif
 
                                 </div>
@@ -351,7 +352,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                                             390 X 150)</h4>
                                         <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
                                             background="transparent" speed="1"
-                                            style="width: 100px; height: 100px" loop autoplay></lottie-player>
+                                            style="width: 100px; height: 100px;margin-top:-15px" loop autoplay></lottie-player>
                                     @endif
 
                                 </div>
@@ -382,7 +383,7 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                                     @foreach ($latest_news as $news)
                                         <span class="ticker">
                                             <a class="color-change"
-                                                href="{{ URL::to("article/$news->id/$news->link") }}">*
+                                                href="{{ URL::to("article/$news->id/$news->link") }}"><img style="width:32px; height:32px;margin-top:-11px" src="{{ asset($info->favicon) }}" alt="no favicon">
                                                 {!! $news->title !!}</a>
                                             &nbsp;&nbsp;&nbsp;
                                         </span>

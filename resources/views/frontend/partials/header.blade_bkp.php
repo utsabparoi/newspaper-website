@@ -40,6 +40,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="{{ asset($company_info->favicon) }}" type="image/x-icon">
 
 	<!-- Basic Page Needs
 	================================================== -->

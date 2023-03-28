@@ -40,7 +40,7 @@ class AboutCompanyController extends Controller
         try {
             $model = AboutCompany::first();
 
-            if($request->file('logo') != NULL)
+            if($request->file('logo') || $request->file('favicon') != NULL)
             {
                 $model->update([
                     'company_name'      => $request->company_name,
@@ -52,9 +52,11 @@ class AboutCompanyController extends Controller
                     'description'       => $request->description ?? 0,
                     'map_embed'         => $request->map_embed ?? 0,
                     'logo'              => $model->logo,
+                    'favicon'           => $model->favicon,
                 ]);
 
-                $this->uploadFileWithResize($request->logo, $model, 'logo', 'uploads/logo', 300, 132);
+                $this->upload_file($request->logo, $model, 'logo', 'uploads/logo');
+                $this->upload_file($request->favicon, $model, 'favicon', 'uploads/favicon');
             }
             else{
                 $model->update([

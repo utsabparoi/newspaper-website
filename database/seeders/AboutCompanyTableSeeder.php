@@ -16,6 +16,7 @@ class AboutCompanyTableSeeder extends Seeder
         DB::table('about_company')->insertOrIgnore([
             'company_name'=>  'Daily Chandpur Sangbad',
             'logo'=>  'default.png',
+            'favicon'=>  'default.png',
             'address'=>  'Panthapath, Dhaka 1205',
             'mobile_no'=>  '0123456789',
             'fb_link'=>  'https://www.facebook.com/your_fb_page_name/',

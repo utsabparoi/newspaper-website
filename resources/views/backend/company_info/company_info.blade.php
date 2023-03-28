@@ -117,7 +117,7 @@
                                             <br>
                                         <small class="text-danger">*Logo size 270 x 100 (Max)</small>
                                     </div>
-                                </div><br>
+                                </div>
 
 
                                 <div class="file-upload form-group">
@@ -127,6 +127,26 @@
                                     <div class="file-select-name">No file chosen...</div>
                                     <input type="file" name="logo" id="file-upload-input">
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class=" control-label no-padding-right" for="form-field-2">Previous Favicon </label>
+                                    <div >
+
+                                        @if ( strpos($allSiteInfo->favicon,'assets') )
+                                            <img width="100px" src="{{ asset($allSiteInfo->favicon) }}" alt="{{$allSiteInfo->company_name}}">
+                                        @else
+                                            <img width="100px" src="{{asset('img/'.$allSiteInfo->favicon)}}" alt="No Favicon upload yet">
+                                        @endif
+
+                                            <br>
+                                        <small class="text-danger">*Favicon size must be 32 x 32</small>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="file" name="favicon">
                                 </div>
 
 
