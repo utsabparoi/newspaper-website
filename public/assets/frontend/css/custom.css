@@ -506,7 +506,8 @@ marquee {
 }
 
 .main-nav table tbody tr marquee span .color-change {
-    font-size: 20px;
+    margin-top:-8px !important;
+    font-size: 18px;
     color: red;
 }
 

@@ -146,37 +146,10 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
         @endif
     @endif
 
-    {{-- @if (isset($ogImage))
-        @php $image=URL::to("public/assets/frontend/images/news/$ogImage"); @endphp
-	    <meta property="og:image" content="{{$ogImage}}" />
-	@else
-	    <meta property="og:image" content="{{ asset('assets/uploads/logo/'.$info->logo)}}" />
-	@endif --}}
-
-
-
     <link rel="canonical" href="www.desimediapoint.com" />
 
     <!--Favicon-->
     <link rel="icon" href="{{ asset($company_info->favicon) }}" style="margin-top:-10px !important" type="image/x-icon">
-    {{-- <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon/apple-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('favicon/apple-icon-76x76.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon/apple-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('favicon/apple-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('favicon/android-icon-192x192.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('favicon/favicon-96x96.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('favicon/manifest.json') }}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
-    <meta name="theme-color" content="#ffffff"> --}}
-
     <!--Favicon-End-->
 
     <!-- CSS
@@ -374,16 +347,16 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                     <tbody class="hover-color">
                         <tr>
                             <td
-                                style="width:80px; color:red; font-size: 26px; text-align:center; padding: 4px 3px 4px 3px">
+                                style="width:80px; color:red; font-size: 26px; text-align:center;">
                                 <strong>শিরোনাম</strong>
                             </td>
-                            <td style="padding: 7px 5px 0px 5px">
+                            <td>
                                 <marquee behavior="scroll" direction="left" onmouseout="this.start()"
                                     onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
                                     @foreach ($latest_news as $news)
-                                        <span class="ticker">
+                                        <span class="ticker" >
                                             <a class="color-change"
-                                                href="{{ URL::to("article/$news->id/$news->link") }}"><img style="width:32px; height:32px;margin-top:-11px" src="{{ asset($info->favicon) }}" alt="no favicon">
+                                                href="{{ URL::to("article/$news->id/$news->link") }}"><img style="width:32px; height:32px;margin-top:-7px" src="{{ asset($info->favicon) }}" alt="no favicon">
                                                 {!! $news->title !!}</a>
                                             &nbsp;&nbsp;&nbsp;
                                         </span>
@@ -440,8 +413,9 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
                                     @endforeach
                                     <!-- Features menu end -->
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle">বিবিধ<i
-                                                class="fa fa-angle-down"></i></a>
+                                        <a href="#" class="dropdown-toggle">বিবিধ
+                                            {{-- <i class="fa fa-angle-down"></i> --}}
+                                            </a>
                                         <ul class="dropdown-menu" role="menu">
                                             @foreach ($mediaCat as $mCat)
                                                 <li><a
@@ -469,6 +443,5 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
             <!--/ Container end -->
 
         </div><!-- Menu wrapper end -->
-    </div>
 
 </body>
