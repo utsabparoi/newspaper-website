@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdsManagement;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\AdsManagement;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -87,4 +87,21 @@ class HomeController extends Controller
         ]);
         return back();
     }
+
+    //Get data from API
+    // public function hijriDate(){
+
+    //     $client = new Client();
+    //     $res = $client->request('POST', 'https://url_to_the_api', [
+    //         'form_params' => [
+    //             'client_id' => 'test_id',
+    //             'secret' => 'test_secret',
+    //         ]
+    //     ]);
+
+    //     $result= $res->getBody();
+    //     dd($result);
+    // }
+
+
 }

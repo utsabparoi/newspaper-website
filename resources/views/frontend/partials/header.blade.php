@@ -57,24 +57,28 @@ $menus = DB::table('menu')
 
 ?>
 {{-- Date convert English to Bangla, Bengali and Hijri --}}
-<?php
-// echo date('D jS M Y, g:i a');
-$onlyDay = date('D');
-$englishDate = date('j F Y');
-$onlyTime = date('g:i a');
-
-$search_array = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ':', ',', 'am', 'pm'];
-
-$replace_to_bangla = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '০', 'শনিবার', 'রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগষ্ট', 'সেপ্টেম্বার', 'অক্টোবার', 'নভেম্বার', 'ডিসেম্বার', ':', ',', 'পূর্বাহ্ন', 'অপরাহ্ন'];
-
-// convert all English char to Bangla char
-$banglaOnlyDay = str_replace($search_array, $replace_to_bangla, $onlyDay);
-$banglaDate = str_replace($search_array, $replace_to_bangla, $englishDate);
-$banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
-?>
-{{-- rajurayhan package for covert English date convert to 4 different date times --}}
-<?php
+@php
     use Rajurayhan\Bndatetime\BnDateTimeConverter;
+    use Illuminate\Support\Facades\Http;
+
+    $onlyDay = date('D');
+    $englishDate = date('j F Y');
+    $onlyTime = date('g:i a');
+
+    $search_array = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ':', ',', 'am', 'pm'];
+
+    $replace_to_bangla = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '০', 'শনিবার', 'রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগষ্ট', 'সেপ্টেম্বার', 'অক্টোবার', 'নভেম্বার', 'ডিসেম্বার', ':', ',', 'পূর্বাহ্ন', 'অপরাহ্ন'];
+    $hijriArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Muḥarram', 'Ṣafar', 'Rabīʿ al-awwal', 'Rabīʿ al-thānī', 'Jumādá al-ūlá', 'Jumādá al-ākhirah', 'Rajab', 'Shaʿbān', 'Ramaḍān', 'Shawwāl', 'Dhū al-Qaʿdah', 'Dhū al-Ḥijjah', ','];
+    $banglaArray = ['১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '০', 'মুহররম', 'সফর', 'রবিউল আউয়াল', 'রবিউস সানি', 'জমাদিউল আউয়াল', 'জমাদিউস সানি', 'রজব', 'শা’বান', 'রমজান', 'শাওয়াল', 'জ্বিলকদ', 'জ্বিলহজ্জ', ','];
+
+    // convert all English char to Bangla char
+    $banglaOnlyDay = str_replace($search_array, $replace_to_bangla, $onlyDay);
+    $banglaDate = str_replace($search_array, $replace_to_bangla, $englishDate);
+    $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
+
+    /*================================================================================
+        rajurayhan package for covert English date convert to 4 different date times
+    =================================================================================*/
 
     $dateConverter  =  new  BnDateTimeConverter();
     $convertedBanlgaDate1 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'EnBn', 'D j F Y'); // Friday 23rd Bhadra 1425 12:19:50 pm
@@ -82,7 +86,25 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
     $convertedBanlgaDate3 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'BnEn', 'D j F Y'); // শুক্রবার ৭ই সেপ্টেম্বর ২০১৮ দুপুর ১২:১৯:৫০
     $convertedBanlgaDate4 = $dateConverter->getConvertedDateTime( date('D j F Y'),  'EnEn', 'D j F Y'); // Friday 7th September 2018 12:19:50 PM
 
-?>
+    /*==============================================
+        Gregorian Date to Hijri Date Conversition
+    ===============================================*/
+    $var = date('d-m-Y');
+    $date = date('d-m-Y', time() - 60 * 60 * 24);
+    $response = Http::get("http://api.aladhan.com/v1/gToH/$date");
+    // $currentDate = Arr::flatten($response->json('data')['hijri']);
+    $allData = $response->json('data');
+    $hijriDay = $allData['hijri']['day'];
+    $hijriMonthEN = $allData['hijri']['month']['en'];
+    $hijriYear = $allData['hijri']['year'];
+
+    // convert all English Hijiri date charecter to Bangla charecter
+    // $hijriOnlyDay = str_replace($search_array, $replace_to_bangla, $onlyDay);
+    $hijriDay = str_replace($hijriArray, $banglaArray, $hijriDay);
+    $hijriMonthEN = str_replace($hijriArray, $banglaArray, $hijriMonthEN);
+    $hijriYear = str_replace($hijriArray, $banglaArray, $hijriYear);
+
+@endphp
 
 <!DOCTYPE html>
 <html lang="en">
@@ -194,254 +216,238 @@ $banglaTime = str_replace($search_array, $replace_to_bangla, $onlyTime);
             src: url("{{ asset('/fonts/Noto_Sans_Bengali/NotoSansBengali-VariableFont_wdth,wght.ttf') }}");
         }
     </style>
-
-
 </head>
 
 <body>
+    <!--/ Trending end -->
+    @if (Request::path() != 'media')
+        <div id="top-bar" class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        {{-- <div class="ts-date"> --}}
+                        <div class="bangla-date-format">
+                            {{-- <i class="fa fa-calendar-check-o"></i> --}}
+                            <span>আজ</span>
+                            <span> {!! $banglaOnlyDay ." ".$banglaDate ." "."খ্রিঃ" !!} </span>
+                            <span style="color: #F48333">●</span>
+                            <span> {!! $convertedBanlgaDate2 ."বঙ্গাব্দ" !!} </span>
+                            <span style="color: #F48333">●</span>
+                            <span>{!! $hijriDay !!} {!! $hijriMonthEN !!}, {!! $hijriYear !!}</span>
+                            <span>
+                                <lottie-player src="{{ asset('/frontend/lord-icon/wall-clock-loop-loading.json') }}"
+                                    background="transparent" speed="1" style=";width: 20px; height: 20px;" loop
+                                    autoplay></lottie-player>
+                            </span>
+                            <span> {!!$banglaTime!!} </span>
 
-    <div class="body-inner">
-
-        <!--/ Trending end -->
-        @if (Request::path() != 'media')
-            <div id="top-bar" class="top-bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            {{-- <div class="ts-date"> --}}
-                            <div class="bangla-date-format">
-                                {{-- <i class="fa fa-calendar-check-o"></i> --}}
-                                <span>আজ</span>
-                                <span>
-                                    @php
-                                        echo $banglaOnlyDay ." ".$banglaDate ." "."খ্রিঃ";
-                                    @endphp
-                                </span>
-                                <span style="color: #F48333">●</span>
-                                <span>
-                                    @php
-                                        echo $convertedBanlgaDate2 ."বঙ্গাব্দ";
-                                    @endphp
-                                </span>
-                                <span>
-                                    <lottie-player src="{{ asset('/frontend/lord-icon/wall-clock-loop-loading.json') }}"
-                                        background="transparent" speed="1" style=";width: 20px; height: 20px;" loop
-                                        autoplay></lottie-player>
-                                </span>
-                                <span>
-                                    @php
-                                        echo $banglaTime;
-                                    @endphp
-                                </span>
-                            </div>
-                        </div>
-                        <!--/ Top bar left end -->
-
-                        <div class="col-md-6 col-sm-6 col-xs-12 top-social text-right">
-                            <ul class="unstyled">
-                                <li>
-                                    @foreach ($social_link as $s_link)
-                                        <a title="{{ $s_link->name }}" href='{{ URL::to("$s_link->link") }}'
-                                            target="_blank">
-                                            <span class="social-icon" style="font-size: 20px"><i
-                                                    class="fa {{ $s_link->icon_class }}"></i></span>
-                                        </a>
-                                    @endforeach
-                                </li>
-                            </ul><!-- Ul end -->
                         </div>
                     </div>
-                    <!--/ Content row end -->
+                    <!--/ Top bar left end -->
+
+                    <div class="col-md-5 col-sm-5 col-xs-12 top-social text-right">
+                        <ul class="unstyled">
+                            <li>
+                                @foreach ($social_link as $s_link)
+                                    <a title="{{ $s_link->name }}" href='{{ URL::to("$s_link->link") }}'
+                                        target="_blank">
+                                        <span class="social-icon" style="font-size: 20px"><i
+                                                class="fa {{ $s_link->icon_class }}"></i></span>
+                                    </a>
+                                @endforeach
+                            </li>
+                        </ul><!-- Ul end -->
+                    </div>
                 </div>
-                <!--/ Container end -->
-            </div>
-            <!--/ Topbar end -->
-        @endif
-        <!-- Header start -->
-        <header id="header" class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;margin: 15px 0">
-                        <div class="logo" style="width: 272px;">
-                            {{-- TEST 2 --}}
-                            @if (strpos($info->logo, 'assets'))
-                                <a href="{{ URL::to('/') }}" id="show">
-                                    <img style="width:100%; height:80px;" src="{{ asset($info->logo) }}"
-                                        alt="{{ $info->company_name }}">
-                                </a>
-                            @else
-                                <a href="{{ URL::to('/') }}">
-                                    <img style="width:100%; height:80px;" src="{{ asset('img/' . $info->logo) }}"
-                                        alt="image">
-                                </a>
-                            @endif
-                        </div>
-                    </div><!-- logo col end -->
-
-                    <div style="display: flex; justify-content: end;margin-top:-10px">
-                        <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
-                            @if (Request::path() == 'media')
-                                <div class="pull-right">
-                                    <a href="https://www.tradebangla.com.bd" target="_blank"> <img
-                                            src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
-                                </div>
-                            @else
-                                <div class="pull-right custom-image">
-                                    @if (isset($ads1->ads_image) and $ads1->script_image_status == 0)
-                                        <a href="{{ asset($ads1->image_url) }}" target="_blank">
-                                            <img src="{{ asset($ads1->ads_image) }}" class="responsive-image"
-                                                alt="Image Not Found">
-                                        </a>
-                                    @elseif (isset($ads1->script) and $ads1->script_image_status == 1)
-                                        {!! $ads1->script !!}
-                                    @else
-                                        <h4 style="font-family: Stylish; color:rgb(182, 182, 182)">Place Your Ads(Size
-                                            390 X 150)</h4>
-                                        <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
-                                            background="transparent" speed="1"
-                                            style="width: 100px; height: 100px;margin-top:-15px" loop autoplay></lottie-player>
-                                    @endif
-
-                                </div>
-                            @endif
-                        </div>
-                        <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
-                            @if (Request::path() == 'media')
-                                <div class="pull-right">
-                                    <a href="https://www.tradebangla.com.bd" target="_blank"> <img
-                                            src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
-                                </div>
-                            @else
-                                <div class="pull-right custom-image">
-                                    @if (isset($ads2->ads_image) and $ads2->script_image_status == 0)
-                                        <a href="{{ asset($ads2->image_url) }}" target="_blank">
-                                            <img src="{{ asset($ads2->ads_image) }}" class="responsive-image"
-                                                alt="Image Not Found">
-                                        </a>
-                                    @elseif (isset($ads2->script) and $ads2->script_image_status == 1)
-                                        {!! $ads2->script !!}
-                                    @else
-                                        <h4 style="font-family: Stylish; color:rgb(182, 182, 182);">Place Your Ads(Size
-                                            390 X 150)</h4>
-                                        <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
-                                            background="transparent" speed="1"
-                                            style="width: 100px; height: 100px;margin-top:-15px" loop autoplay></lottie-player>
-                                    @endif
-
-                                </div>
-                            @endif
-                        </div>
-                    </div><!-- header right end -->
-
-
-
-                </div><!-- Row end -->
-            </div><!-- Logo and banner area end -->
-        </header>
-        <!--/ Header end -->
-
-        <div class="main-nav fixed_menu clearfix">
-            <div class="container">
-                {{-- Latest news marquee slide show --}}
-                <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
-                    <tbody class="hover-color">
-                        <tr>
-                            <td
-                                style="width:80px; color:red; font-size: 26px; text-align:center;">
-                                <strong>শিরোনাম</strong>
-                            </td>
-                            <td>
-                                <marquee behavior="scroll" direction="left" onmouseout="this.start()"
-                                    onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
-                                    @foreach ($latest_news as $news)
-                                        <span class="ticker" >
-                                            <a class="color-change"
-                                                href="{{ URL::to("article/$news->id/$news->link") }}"><img style="width:32px; height:32px;margin-top:-7px" src="{{ asset($info->favicon) }}" alt="no favicon">
-                                                {!! $news->title !!}</a>
-                                            &nbsp;&nbsp;&nbsp;
-                                        </span>
-                                    @endforeach
-                                </marquee>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="row">
-                    <nav class="site-navigation navigation">
-                        <div class="site-nav-inner pull-left">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-
-                            <div class="collapse navbar-collapse navbar-responsive-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li>
-                                        <a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a>
-                                    </li>
-
-                                    @foreach ($category as $v_category)
-                                        <li class="dropdown">
-                                            <a href='{{ URL::to("$v_category->link") }}'
-                                                class="dropdown-toggle">{{ $v_category->name }}
-                                                <?php $sub_category = DB::table('sub_category')
-                                                    ->where('status', 1)
-                                                    ->where('fk_category_id', $v_category->id)
-                                                    ->get(); ?>
-                                                @if (count($sub_category) > 0)
-                                                    <i class="fa fa-angle-down"></i>
-                                                @endif
-
-                                            </a>
-                                            @if (count($sub_category) > 0)
-                                                <ul class="dropdown-menu" role="menu">
-                                                    @foreach ($sub_category->sortBy('serial_num') as $s_cat)
-                                                        <li>
-                                                            <a
-                                                                href='{{ URL::to("$v_category->link/$s_cat->link") }}'>{{ $s_cat->name }}</a>
-
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
-
-                                        </li>
-                                    @endforeach
-                                    <!-- Features menu end -->
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle">বিবিধ
-                                            {{-- <i class="fa fa-angle-down"></i> --}}
-                                            </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            @foreach ($mediaCat as $mCat)
-                                                <li><a
-                                                        href='{{ URL::to("media-list/$mCat->id") }}'>{{ $mCat->category_name }}</a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-                                <!--/ Nav ul end -->
-                            </div>
-                            <!--/ Collapse end -->
-
-                        </div><!-- Site Navbar inner end -->
-                    </nav>
-                    <!--/ Navigation end -->
-
-                </div>
-                <!--/ Row end -->
-
-
+                <!--/ Content row end -->
             </div>
             <!--/ Container end -->
+        </div>
+        <!--/ Topbar end -->
+    @endif
+    <!-- Header start -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-3" style="padding-right: 0 !important;margin: 15px 0">
+                    <div class="logo" style="width: 272px;">
+                        {{-- TEST 2 --}}
+                        @if (strpos($info->logo, 'assets'))
+                            <a href="{{ URL::to('/') }}" id="show">
+                                <img style="width:100%; height:80px;" src="{{ asset($info->logo) }}"
+                                    alt="{{ $info->company_name }}">
+                            </a>
+                        @else
+                            <a href="{{ URL::to('/') }}">
+                                <img style="width:100%; height:80px;" src="{{ asset('img/' . $info->logo) }}"
+                                    alt="image">
+                            </a>
+                        @endif
+                    </div>
+                </div><!-- logo col end -->
 
-        </div><!-- Menu wrapper end -->
+                <div style="display: flex; justify-content: end;margin-top:-10px">
+                    <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
+                        @if (Request::path() == 'media')
+                            <div class="pull-right">
+                                <a href="https://www.tradebangla.com.bd" target="_blank"> <img
+                                        src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                            </div>
+                        @else
+                            <div class="pull-right custom-image">
+                                @if (isset($ads1->ads_image) and $ads1->script_image_status == 0)
+                                    <a href="{{ asset($ads1->image_url) }}" target="_blank">
+                                        <img src="{{ asset($ads1->ads_image) }}" class="responsive-image"
+                                            alt="Image Not Found">
+                                    </a>
+                                @elseif (isset($ads1->script) and $ads1->script_image_status == 1)
+                                    {!! $ads1->script !!}
+                                @else
+                                    <h4 style="font-family: Stylish; color:rgb(182, 182, 182)">Place Your Ads(Size
+                                        390 X 150)</h4>
+                                    <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                        background="transparent" speed="1"
+                                        style="width: 100px; height: 100px;margin-top:-15px" loop autoplay></lottie-player>
+                                @endif
 
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-9 ad-responsive-container">
+                        @if (Request::path() == 'media')
+                            <div class="pull-right">
+                                <a href="https://www.tradebangla.com.bd" target="_blank"> <img
+                                        src="http://www.desimediapoint.com/adManager/trade.gif"> </a>
+                            </div>
+                        @else
+                            <div class="pull-right custom-image">
+                                @if (isset($ads2->ads_image) and $ads2->script_image_status == 0)
+                                    <a href="{{ asset($ads2->image_url) }}" target="_blank">
+                                        <img src="{{ asset($ads2->ads_image) }}" class="responsive-image"
+                                            alt="Image Not Found">
+                                    </a>
+                                @elseif (isset($ads2->script) and $ads2->script_image_status == 1)
+                                    {!! $ads2->script !!}
+                                @else
+                                    <h4 style="font-family: Stylish; color:rgb(182, 182, 182);">Place Your Ads(Size
+                                        390 X 150)</h4>
+                                    <lottie-player src="{{ asset('/frontend/lord-icon/banner-ads-red.json') }}"
+                                        background="transparent" speed="1"
+                                        style="width: 100px; height: 100px;margin-top:-15px" loop autoplay></lottie-player>
+                                @endif
+
+                            </div>
+                        @endif
+                    </div>
+                </div><!-- header right end -->
+
+
+
+            </div><!-- Row end -->
+        </div><!-- Logo and banner area end -->
+    </header>
+    <!--/ Header end -->
+
+    <div class="main-nav fixed_menu clearfix">
+        <div class="container">
+            {{-- Latest news marquee slide show --}}
+            <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+                <tbody class="hover-color">
+                    <tr>
+                        <td
+                            style="width:80px; color:red; font-size: 26px; text-align:center;">
+                            <strong>শিরোনাম</strong>
+                        </td>
+                        <td>
+                            <marquee behavior="scroll" direction="left" onmouseout="this.start()"
+                                onmouseover="this.stop()" scrolldelay="1" scrollamount="6">
+                                @foreach ($latest_news as $news)
+                                    <span class="ticker" >
+                                        <a class="color-change"
+                                            href="{{ URL::to("article/$news->id/$news->link") }}"><img style="width:32px; height:32px;margin-top:-7px" src="{{ asset($info->favicon) }}" alt="no favicon">
+                                            {!! $news->title !!}</a>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </span>
+                                @endforeach
+                            </marquee>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <nav class="site-navigation navigation">
+                    <div class="site-nav-inner pull-left">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse navbar-responsive-collapse">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a>
+                                </li>
+
+                                @foreach ($category as $v_category)
+                                    <li class="dropdown">
+                                        <a href='{{ URL::to("$v_category->link") }}'
+                                            class="dropdown-toggle">{{ $v_category->name }}
+                                            <?php $sub_category = DB::table('sub_category')
+                                                ->where('status', 1)
+                                                ->where('fk_category_id', $v_category->id)
+                                                ->get(); ?>
+                                            @if (count($sub_category) > 0)
+                                                <i class="fa fa-angle-down"></i>
+                                            @endif
+
+                                        </a>
+                                        @if (count($sub_category) > 0)
+                                            <ul class="dropdown-menu" role="menu">
+                                                @foreach ($sub_category->sortBy('serial_num') as $s_cat)
+                                                    <li>
+                                                        <a
+                                                            href='{{ URL::to("$v_category->link/$s_cat->link") }}'>{{ $s_cat->name }}</a>
+
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+
+                                    </li>
+                                @endforeach
+                                <!-- Features menu end -->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle">বিবিধ
+                                        {{-- <i class="fa fa-angle-down"></i> --}}
+                                        </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        @foreach ($mediaCat as $mCat)
+                                            <li><a
+                                                    href='{{ URL::to("media-list/$mCat->id") }}'>{{ $mCat->category_name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                            <!--/ Nav ul end -->
+                        </div>
+                        <!--/ Collapse end -->
+
+                    </div><!-- Site Navbar inner end -->
+                </nav>
+                <!--/ Navigation end -->
+
+            </div>
+            <!--/ Row end -->
+
+
+        </div>
+        <!--/ Container end -->
+    </div><!-- Menu wrapper end -->
 </body>
