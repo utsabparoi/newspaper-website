@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             AdsManagementSeeder::class,
             AdsPositionSeeder::class,
             AdsSerialSeeder::class,
+            AdsPlacementSeeder::class,
+            CategorySeeder::class,
         ]);
 
     }
